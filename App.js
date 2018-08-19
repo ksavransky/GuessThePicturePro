@@ -29,9 +29,9 @@ render() {
     return (
       <View style={[containerStyle.centered, backgroundColorStyle.lightBlue]}>
         <Image style={{width: 70, height: 90}} source={require('./assets/images/monkey.png')} />
-        <Text fontFamily='ChalkboardSE' h4 style={{color: 'red'}}>Spunkey Monkey Games</Text>
-        <Text style={{marginBottom: 10}}>Presents</Text>
-        <Text fontFamily='ChalkboardSE' h3 style={{color: 'blue', marginBottom: 120}}>Guess The Picture Pro</Text>
+        <Text fontFamily='ChalkboardSE' h4 style={{color: 'red', marginBottom: 20}}>Spunky Monkey Games</Text>
+        <Text style={{marginBottom: 20}}>Presents</Text>
+        <Text h3 style={{color: 'blue', marginBottom: 200}}>Guess The Picture Pro</Text>
         <Button
           large
           raised
