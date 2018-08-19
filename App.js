@@ -1,20 +1,41 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Button } from 'react-native-elements';
-import { containerStyle, buttonStyle, backgroundColorStyle } from './styles/common.js'
+import { AppLoading, Font } from 'expo';
+import { containerStyle, backgroundColorStyle } from './styles/common.js'
 
 export default class App extends React.Component {
-  render() {
+  state = {
+  loaded: false,
+};
+
+componentWillMount() {
+  this._loadAssetsAsync()
+}
+
+_loadAssetsAsync = async () => {
+  await Font.loadAsync({
+    ChalkboardSE: require('./assets/fonts/ChalkboardSE.ttf'),
+  })
+  this.setState({ loaded: true })
+}
+
+render() {
+  if (!this.state.loaded) {
+    return <AppLoading />;
+  }
+
     return (
-      <View style={[containerStyle.centered, backgroundColorStyle.blue]}>
-        <Text>Open up App.js to start working on your app!!!</Text>
+      <View style={[containerStyle.centered, backgroundColorStyle.lightBlue]}>
         <Button
           large
-          icon={{name: 'play', type: 'font-awesome'}}
-          buttonStyle={buttonStyle.success}
+          raised
+          rounded
+          fontFamily='ChalkboardSE'
+          fontSize={30}
+          backgroundColor='#28a745'
           title='PLAY' />
-        <Text>Shake your phone to open the developer menu.</Text>
       </View>
-    );
+    )
   }
 }

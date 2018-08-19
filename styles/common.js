@@ -2,8 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const buttonStyle = StyleSheet.create({
   success: {
-    backgroundColor: 'green',
-    borderRadius: 10
+    backgroundColor: '#28a745'
   },
 });
 
@@ -18,7 +17,10 @@ export const containerStyle = StyleSheet.create({
 
 
 export const backgroundColorStyle = StyleSheet.create({
-  blue: {
-    backgroundColor: 'blue'
+  lightBlue: {
+    backgroundColor: '#dceff7'
+  },
+  burgundy: {
+    backgroundColor: '#5d0000'
   },
 });
