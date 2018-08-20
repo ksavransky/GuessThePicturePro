@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image } from 'react-native';
+import { Button, Text } from 'react-native-elements';
 import { containerStyle, backgroundColorStyle } from '../styles/common.js'
 
 export default class Categories extends Component {
 
   render() {
     return (
-      <View style={[containerStyle.centered, backgroundColorStyle.lightBlue]}>
-        <Text h4 style={{color: 'blue', marginBottom: 200}}>Choose A Category</Text>
+      <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
+        <Text
+          h4
+          fontFamily='ChalkboardSE'
+          style={{color: 'blue', marginBottom: 50}}
+          >
+            Choose A Category
+          </Text>
       </View>
     )
   }

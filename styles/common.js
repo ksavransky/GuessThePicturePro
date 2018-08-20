@@ -5,16 +5,21 @@ export const buttonStyle = StyleSheet.create({
     backgroundColor: '#28a745',
     borderRadius: 10
   },
-});
-
+})
 
 export const containerStyle = StyleSheet.create({
-  centered: {
+  centeredBoth: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
-});
+  centeredHorizontal: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: '15%'
+  },
+})
 
 
 export const backgroundColorStyle = StyleSheet.create({
@@ -24,4 +29,4 @@ export const backgroundColorStyle = StyleSheet.create({
   burgundy: {
     backgroundColor: '#5d0000'
   },
-});
+})
