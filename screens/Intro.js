@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, Image } from 'react-native';
-import { Button, Text } from 'react-native-elements';
-import { StyleSheet } from 'react-native';
-import { containerStyle, backgroundColorStyle } from '../styles/common.js'
+import { Text } from 'react-native-elements';
+import LargeButton from '../components/buttons/LargeButton'
+import { containerStyle, backgroundColorStyle } from '../styles/common'
 
 export default class Intro extends Component {
   render() {
@@ -12,13 +12,8 @@ export default class Intro extends Component {
         <Text fontFamily='ChalkboardSE' h4 style={{color: 'red', marginBottom: 20}}>Spunky Monkey Games</Text>
         <Text style={{marginBottom: 20}}>Presents</Text>
         <Text h3 style={{color: 'blue', marginBottom: 200}}>Guess The Picture Pro</Text>
-        <Button
-          onPress={() => this.props.navigation.navigate('Categories')}
-          large
-          raised
-          rounded
-          fontFamily='ChalkboardSE'
-          fontSize={30}
+        <LargeButton
+          onPress={() => this.props.navigation.navigate('ChooseDifficulty')}
           backgroundColor='#28a745'
           title='PLAY' />
       </View>
