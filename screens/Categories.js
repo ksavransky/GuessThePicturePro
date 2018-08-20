@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
+import { containerStyle, backgroundColorStyle } from '../styles/common.js'
 
 export default class Categories extends Component {
 
