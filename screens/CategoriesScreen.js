@@ -55,7 +55,7 @@ export default class CategoriesScreen extends Component {
           }}>
           {'< Select Difficulty'}
         </Text>
-        <Text h4 fontFamily='ChalkboardSE' style={{color: this.getTitleClass(), marginBottom: 50}}>
+        <Text h4 fontFamily='ChalkboardSE' style={{color: this.getTitleClass()}}>
           {this.state.difficulty}
         </Text>
         <Categories

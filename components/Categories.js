@@ -19,7 +19,7 @@ export default class Categories extends Component {
       console.warn(Object.keys(category.levels).length)
     })
     return (
-      <List>
+      <List containerStyle={{width: '90%'}}>
         {
           sortBy(this.props.categories, ['name']).map((category) => (
             <ListItem
