@@ -1,16 +1,16 @@
 import { createStackNavigator } from 'react-navigation'
 import Intro from './screens/Intro'
-import Categories from './screens/Categories'
+import CategoriesScreen from './screens/CategoriesScreen'
 import ChooseDifficulty from './screens/ChooseDifficulty'
 
 export const RootStack = createStackNavigator(
   {
     Intro: Intro,
     ChooseDifficulty: ChooseDifficulty,
-    Categories: Categories,
+    CategoriesScreen: CategoriesScreen,
   },
   {
-    initialRouteName: 'Categories',
+    initialRouteName: 'CategoriesScreen',
     navigationOptions: {
       headerStyle: {
         display: 'none',
