@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { List, ListItem } from 'react-native-elements'
-import { sortBy } from 'lodash'
-import { storeData, getAllDataKeys, retrieveData, clearAllData} from '../utils/asyncstorage'
+import { sortBy, clone } from 'lodash'
+import { retrieveData } from '../utils/asyncstorage'
 
 
 // props
@@ -10,21 +10,22 @@ import { storeData, getAllDataKeys, retrieveData, clearAllData} from '../utils/a
 // points - int - from local memory
 
 export default class Categories extends Component {
-
-  componentWillMount() {
-    clearAllData()
-    storeData('a', 'huh')
-  }
-
-  componentDidMount() {
-    getAllDataKeys()
+  constructor(props) {
+    super(props)
+    this.state = {
+      subtitles: {}
+    }
+    props.categories.forEach((category) => {
+      retrieveData((difficulty + ':' + category.name + ':Points'), (value) => {
+        let newSubtitles = clone(this.state.subtitles)
+        newSubtitles[category.name] = value
+        this.setState({subtitles:  newSubtitles})
+      })
+    })
   }
 
   render() {
-    sortBy(this.props.categories, ['name']).forEach((category) => {
-      // console.warn(category.name)
-      // console.warn(Object.keys(category.levels).length)
-    })
+    const difficulty = this.props.difficulty
     return (
       <List containerStyle={{width: '90%'}}>
         {
@@ -33,7 +34,8 @@ export default class Categories extends Component {
               avatar={category.iconURL}
               key={category.name}
               title={category.name}
-              onPress={() => { retrieveData('a')}}
+              subtitle={this.state.subtitles[category.name] || '0')}
+              onPress={() => { console.warn('clicked on list item')}}
             />
           ))
         }
