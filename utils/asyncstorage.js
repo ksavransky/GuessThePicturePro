@@ -13,6 +13,8 @@ export const storeData = async (key, value, callback) => {
 
 export const retrieveData = async (key, callback) => {
   try {
+    console.warn('in _retrieveData key:');
+    console.warn(key);
     const value = await AsyncStorage.getItem(key);
     if (value !== null) {
       console.warn('in _retrieveData value:');

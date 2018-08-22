@@ -59,6 +59,7 @@ export default class CategoriesScreen extends Component {
           {this.state.difficulty}
         </Text>
         <Categories
+          difficulty={this.state.difficulty}
           categories={Data[this.state.difficulty]}
         />
       </View>
