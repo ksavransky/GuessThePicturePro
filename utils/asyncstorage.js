@@ -8,18 +8,6 @@ export const storeData = async (key, value) => {
   }
 }
 
-export const getAllKeys = async () => {
-  try {
-    const value = await AsyncStorage.getAllKeys();
-    if (value !== null) {
-      console.warn('in _getAllKeys value:');
-      console.warn(value);
-    }
-  } catch (error) {
-    console.warn('error in _getAllKeys', error);
-  }
-}
-
 export const retrieveData = async (key) => {
   try {
     const value = await AsyncStorage.getItem(key);
@@ -32,6 +20,18 @@ export const retrieveData = async (key) => {
   }
 }
 
-export const clearAll = () => {
+export const getAllDataKeys = async () => {
+  try {
+    const value = await AsyncStorage.getAllKeys();
+    if (value !== null) {
+      console.warn('in _getAllKeys value:');
+      console.warn(value);
+    }
+  } catch (error) {
+    console.warn('error in _getAllKeys', error);
+  }
+}
+
+export const clearAllData = () => {
   AsyncStorage.clear()
 }

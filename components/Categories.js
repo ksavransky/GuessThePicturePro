@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { List, ListItem } from 'react-native-elements'
 import { sortBy } from 'lodash'
-import { storeData, getAllKeys, retrieveData, clearAll} from '../utils/asyncstorage'
+import { storeData, getAllDataKeys, retrieveData, clearAllData} from '../utils/asyncstorage'
 
 
 // props
@@ -12,12 +12,12 @@ import { storeData, getAllKeys, retrieveData, clearAll} from '../utils/asyncstor
 export default class Categories extends Component {
 
   componentWillMount() {
-    clearAll()
+    clearAllData()
     storeData('a', 'huh')
   }
 
   componentDidMount() {
-    getAllKeys()
+    getAllDataKeys()
   }
 
   render() {
