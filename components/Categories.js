@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { AsyncStorage } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 import { sortBy } from 'lodash'
+import { storeData, getAllKeys, retrieveData, clearAll} from '../utils/asyncstorage'
 
 
 // props
@@ -12,30 +12,13 @@ import { sortBy } from 'lodash'
 export default class Categories extends Component {
 
   componentWillMount() {
-    this._storeData()
+    clearAll()
+    storeData('a', 'huh')
   }
 
-  _storeData = async () => {
-    try {
-      await AsyncStorage.setItem('@AHH:hi:no', '@AHH:hi:no!!');
-    } catch (error) {
-      console.warn('error in _storeData', error);
-    }
+  componentDidMount() {
+    getAllKeys()
   }
-
-
-  _retrieveData = async () => {
-      try {
-        const value = await AsyncStorage.getItem('@AHH:hi:no');
-        if (value !== null) {
-          console.warn('in _retrieveData value:');
-          console.warn(value);
-        }
-      } catch (error) {
-        console.warn('error in _retrieveData', error);
-      }
-  }
-
 
   render() {
     sortBy(this.props.categories, ['name']).forEach((category) => {
@@ -50,7 +33,7 @@ export default class Categories extends Component {
               avatar={category.iconURL}
               key={category.name}
               title={category.name}
-              onPress={this._retrieveData}
+              onPress={() => { retrieveData('a')}}
             />
           ))
         }
