@@ -30,6 +30,10 @@ export default class Categories extends Component {
     })
   }
 
+  launchCategory = (category) => {
+    this.props.navigation.navigate('Level', {difficulty: this.props.difficulty, category: category})
+  }
+
   render() {
     return (
       <List containerStyle={{width: '90%'}}>
@@ -47,7 +51,7 @@ export default class Categories extends Component {
               rightTitle={(this.state.levelsComplete[category.name] || '0') + '/' + (category.levels.length || '0') + ' completed'}
               subtitleStyle={{color: 'gold'}}
               rightTitleStyle={{color: 'grey'}}
-              onPress={() => { console.warn('clicked list item')}}
+              onPress={() => { this.launchCategory(category.name)}}
             />
           ))
         }

@@ -46,6 +46,7 @@ export default class CategoriesScreen extends Component {
           {this.state.difficulty}
         </Text>
         <Categories
+          navigation={this.props.navigation}
           difficulty={this.state.difficulty}
           categories={Data[this.state.difficulty]}
         />
