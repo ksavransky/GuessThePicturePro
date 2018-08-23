@@ -3,8 +3,8 @@ import { View } from 'react-native';
 import { Text } from 'react-native-elements';
 import { containerStyle, backgroundColorStyle } from '../styles/common.js'
 import { Data } from '../data/Data.js'
-import Categories from '../components/Categories.js'
 import { get } from 'lodash'
+import Categories from '../components/Categories.js'
 
 export default class CategoriesScreen extends Component {
   constructor(props) {
@@ -30,19 +30,6 @@ export default class CategoriesScreen extends Component {
       return 'red'
     }
   }
-
-  // getCategories = (difficulty) => {
-    // props to pass
-    // difficulty - string - from Category screen
-    // categoryName - string - from data file
-    // totalPuzzles - int - from data file
-    // completedPuzzles - int - from local memory NOTE: probably want to store array with key names in local memory for complete, then use length here
-    // categoryImageUrl - string
-    // points - int - from local memory
-  //   return (
-  //     null
-  //   )
-  // }
 
   render() {
     return (

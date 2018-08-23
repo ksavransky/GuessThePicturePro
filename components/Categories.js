@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
 import { List, ListItem } from 'react-native-elements'
 import { sortBy, clone } from 'lodash'
-import { retrieveData, storeData } from '../utils/asyncstorage'
-
-
-// props
-// totalPuzzles - int - from data file
-// completedPuzzles - int - from local memory NOTE: probably want to store array with key names in local memory for complete, then use length here
-// points - int - from local memory
+import { retrieveData} from '../utils/asyncstorage'
 
 export default class Categories extends Component {
   constructor(props) {
     super(props)
 
-    this.setSubtitles(props)
+    this.setSubtitlesAndComplete(props)
 
     this.state = {
-      subtitles: {}
+      subtitles: {},
+      levelsComplete: {}
     }
   }
 
-  setSubtitles = (props) => {
+  setSubtitlesAndComplete = (props) => {
     props.categories.forEach((category) => {
       retrieveData((props.difficulty + ':' + category.name + ':Points'), (value) => {
         let newSubtitles = clone(this.state.subtitles)
         newSubtitles[category.name] = value
         this.setState({subtitles: newSubtitles})
+      })
+      retrieveData((props.difficulty + ':' + category.name + ':Complete'), (value) => {
+        let newLevelsComplete = clone(this.state.levelsComplete)
+        newLevelsComplete[category.name] = value
+        this.setState({levelsComplete: newLevelsComplete})
       })
     })
   }
@@ -36,11 +36,18 @@ export default class Categories extends Component {
         {
           sortBy(this.props.categories, ['name']).map((category) => (
             <ListItem
+              containerStyle={{backgroundColor: '#eff7fd', borderRightWidth: 1, borderRightColor: '#cbd2d9', borderLeftWidth: 1, borderLeftColor: '#cbd2d9'}}
+              chevronColor='grey'
               avatar={category.iconURL}
+              roundAvatar
+              avatarStyle={{width: '120%', height: '120%'}}
               key={category.name}
               title={category.name}
               subtitle={((this.state.subtitles[category.name] || '0') + ' points')}
-              onPress={() => { console.warn('clicked on list item')}}
+              rightTitle={(this.state.levelsComplete[category.name] || '0') + '/' + (category.levels.length || '0') + ' completed'}
+              subtitleStyle={{color: 'gold'}}
+              rightTitleStyle={{color: 'grey'}}
+              onPress={() => { console.warn('clicked list item')}}
             />
           ))
         }
