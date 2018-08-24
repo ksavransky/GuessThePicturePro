@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import { get, find, filter } from 'lodash'
 import { AsyncStorage, ActivityIndicator } from 'react-native';
 import { containerStyle, backgroundColorStyle } from '../styles/common'
+import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 // import { retrieveData } from '../utils/asyncstorage'
 
 const GAME_DATA = 'GameData'
@@ -19,7 +20,14 @@ export default class Level extends Component {
       gameData: null,
       availableLevels: [],
       currentLevel: null,
-      points: 100
+      points: 100,
+      visibleTiles: [
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true]
+      ]
     }
   }
 
@@ -52,19 +60,38 @@ export default class Level extends Component {
     })
   }
 
+  renderTiles = () => {
+    let tiles = []
+
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        if (this.state.visibleTiles[i][j]) {
+          let top = (i * 20) + '%'
+          let left = (j * 20) + '%'
+          tiles.push(
+            <Image
+              key={i + '_' + j}
+              style={[styles.tile, {top: top, left: left}]}
+              source={TileIndex[i][j]}
+            />
+          )
+        }
+      }
+    }
+
+    return tiles
+  }
+
   render() {
     if (this.state.currentLevel) {
       return (
         <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
-          <View style={{width: '90%', height: '60%', position: 'relative'}}>
+          <View style={{width: '90%', height: '50%', position: 'relative'}}>
             <Image
               style={{width: '100%', height: '100%'}}
               source={this.state.currentLevel.imagePath}
             />
-            <Image
-              style={{width: '20%', height: '20%', position: 'absolute', top: 0}}
-              source={require('../assets/images/tile.jpeg')}
-            />
+            {this.renderTiles()}
           </View>
         </View>
       )
@@ -76,3 +103,16 @@ export default class Level extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  tile: {
+    position: 'absolute',
+    width: '20%',
+    height: '20%',
+    borderColor: 'grey',
+    borderWidth: 1
+  },
+  red: {
+    color: 'red',
+  },
+});

@@ -1,0 +1,37 @@
+export const TileIndex = [
+  [
+    require('./image_part_001.jpg'),
+    require('./image_part_002.jpg'),
+    require('./image_part_003.jpg'),
+    require('./image_part_004.jpg'),
+    require('./image_part_005.jpg')
+  ],
+  [
+    require('./image_part_006.jpg'),
+    require('./image_part_007.jpg'),
+    require('./image_part_008.jpg'),
+    require('./image_part_009.jpg'),
+    require('./image_part_010.jpg')
+  ],
+  [
+    require('./image_part_011.jpg'),
+    require('./image_part_012.jpg'),
+    require('./image_part_013.jpg'),
+    require('./image_part_014.jpg'),
+    require('./image_part_015.jpg')
+  ],
+  [
+    require('./image_part_016.jpg'),
+    require('./image_part_017.jpg'),
+    require('./image_part_018.jpg'),
+    require('./image_part_019.jpg'),
+    require('./image_part_020.jpg')
+  ],
+  [
+    require('./image_part_021.jpg'),
+    require('./image_part_022.jpg'),
+    require('./image_part_023.jpg'),
+    require('./image_part_024.jpg'),
+    require('./image_part_025.jpg')
+  ]
+]
