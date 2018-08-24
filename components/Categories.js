@@ -1,37 +1,10 @@
 import React, { Component } from 'react';
 import { List, ListItem } from 'react-native-elements'
-import { sortBy, clone } from 'lodash'
-import { retrieveData } from '../utils/asyncstorage'
+import { sortBy } from 'lodash'
 
 export default class Categories extends Component {
-  constructor(props) {
-    super(props)
-
-    // this.setSubtitlesAndComplete(props)
-
-    // this.state = {
-    //   subtitles: {},
-    //   levelsComplete: {}
-    // }
-  }
-
-  // setSubtitlesAndComplete = (props) => {
-  //   props.categories.forEach((category) => {
-  //     retrieveData((props.difficulty + ':' + category.name + ':Points'), (value) => {
-  //       let newSubtitles = clone(this.state.subtitles)
-  //       newSubtitles[category.name] = value
-  //       this.setState({subtitles: newSubtitles})
-  //     })
-  //     retrieveData((props.difficulty + ':' + category.name + ':Complete'), (value) => {
-  //       let newLevelsComplete = clone(this.state.levelsComplete)
-  //       newLevelsComplete[category.name] = value
-  //       this.setState({levelsComplete: newLevelsComplete})
-  //     })
-  //   })
-  // }
-
   launchCategory = (category) => {
-    this.props.navigation.navigate('Level', {difficulty: this.props.difficulty, category: category})
+    this.props.navigation.navigate('Level', {category: category, difficulty: this.props.difficulty, gameDate: this.props.gameData})
   }
 
   render() {

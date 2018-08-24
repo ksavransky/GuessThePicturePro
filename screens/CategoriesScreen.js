@@ -5,7 +5,7 @@ import { containerStyle, backgroundColorStyle } from '../styles/common.js'
 import { GameData } from '../data/Data.js'
 import { get } from 'lodash'
 import Categories from '../components/Categories.js'
-// import { storeData, retrieveData, clearAllData } from '../utils/asyncstorage'
+import { clearAllData } from '../utils/asyncstorage'
 import { AsyncStorage } from 'react-native';
 
 const GAME_DATA = 'GameData'
@@ -17,6 +17,7 @@ export default class CategoriesScreen extends Component {
       difficulty: get(props, 'navigation.state.params.difficulty', 'Easy'),
       gameData: GameData
     }
+    // clearAllData()
     this.getLocalStorageData()
   }
 
