@@ -16,7 +16,8 @@ export default class Level extends Component {
     this.state = {
       gameData: get(props, 'navigation.state.params.gameData', GameData),
       availableLevels: [],
-      currentLevel: null
+      currentLevel: null,
+      points: 100
     }
   }
 
@@ -35,11 +36,21 @@ export default class Level extends Component {
   }
 
   chooseRandomLevel = () => {
-    console.warn('in chooseRandomLevel')
+    const randomLevel = Math.floor(Math.random() * (this.state.availableLevels.length + 1));
+    this.setState({
+      currentLevel: this.state.availableLevels[randomLevel]
+    })
   }
 
   render() {
-    console.warn(this.state.availableLevels)
+    if (this.state.currentLevel) {
+      console.warn('this.state.currentLevel.answer')
+      console.warn(this.state.currentLevel.answer)
+      return (
+        <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
+        </View>
+      )
+    }
     return (
       <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
       </View>
