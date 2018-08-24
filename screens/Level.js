@@ -54,14 +54,18 @@ export default class Level extends Component {
 
   render() {
     if (this.state.currentLevel) {
-      console.warn('this.state.currentLevel.answer')
-      console.warn(this.state.currentLevel.answer)
       return (
         <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
-          <Image
-            style={{width: '90%', height: '60%'}}
-            source={this.state.currentLevel.imagePath}
-          />
+          <View style={{width: '90%', height: '60%', position: 'relative'}}>
+            <Image
+              style={{width: '100%', height: '100%'}}
+              source={this.state.currentLevel.imagePath}
+            />
+            <Image
+              style={{width: '20%', height: '20%', position: 'absolute', top: 0}}
+              source={require('../assets/images/tile.jpeg')}
+            />
+          </View>
         </View>
       )
     }
