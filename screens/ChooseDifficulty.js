@@ -14,6 +14,7 @@ export default class ChooseDifficulty extends Component {
           {difficulty: 'Hard', color: 'red', title: 'HARD'}].map((buttonData) => {
             return (
               <LargeButton
+                key={buttonData.difficulty}
                 onPress={() => this.props.navigation.navigate('CategoriesScreen', {difficulty: buttonData.difficulty})}
                 backgroundColor={buttonData.color}
                 style={{marginBottom: 50}}

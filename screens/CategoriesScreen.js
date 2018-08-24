@@ -2,16 +2,34 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Text } from 'react-native-elements';
 import { containerStyle, backgroundColorStyle } from '../styles/common.js'
-import { Data } from '../data/Data.js'
+import { GameData } from '../data/Data.js'
 import { get } from 'lodash'
 import Categories from '../components/Categories.js'
+// import { storeData, retrieveData, clearAllData } from '../utils/asyncstorage'
+import { AsyncStorage } from 'react-native';
+
+const GAME_DATA = 'GameData'
 
 export default class CategoriesScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      difficulty: get(props, 'navigation.state.params.difficulty', 'Easy')
+      difficulty: get(props, 'navigation.state.params.difficulty', 'Easy'),
+      gameData: GameData
     }
+    this.getLocalStorageData()
+  }
+
+  getLocalStorageData = () => {
+    AsyncStorage.getItem(GAME_DATA).then((storedGameData) => {
+      if (storedGameData) {
+        this.setState({
+          gameData: JSON.parse(storedGameData)
+        })
+      } else {
+        AsyncStorage.setItem(GAME_DATA, JSON.stringify(GameData))
+      }
+    })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,7 +66,7 @@ export default class CategoriesScreen extends Component {
         <Categories
           navigation={this.props.navigation}
           difficulty={this.state.difficulty}
-          categories={Data[this.state.difficulty]}
+          gameData={this.state.gameData}
         />
       </View>
     )

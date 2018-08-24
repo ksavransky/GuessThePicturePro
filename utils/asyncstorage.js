@@ -25,6 +25,10 @@ export const retrieveData = async (key, callback) => {
   }
 }
 
+export const clearAllData = () => {
+  AsyncStorage.clear()
+}
+
 export const getAllDataKeys = async (callback) => {
   try {
     const value = await AsyncStorage.getAllKeys();
@@ -38,6 +42,10 @@ export const getAllDataKeys = async (callback) => {
   }
 }
 
-export const clearAllData = () => {
-  AsyncStorage.clear()
-}
+
+// const SETTINGS_KEY = 'Settings'
+// const settingsObj = {lastUpdate: 1479396301390, language: 'en', theme: 'dark'}
+// AsyncStorage.setItem(SETTINGS_KEY, JSON.stringify(settingsObj))
+// AsyncStorage.getItem(SETTINGS_KEY).then((settingsStr)=>{
+//   const settings = JSON.parse(settingsStr)
+// })
