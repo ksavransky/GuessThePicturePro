@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import { Text } from 'react-native-elements';
 import { get, find, filter } from 'lodash'
-import { GameData } from '../data/Data.js'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 // import { retrieveData } from '../utils/asyncstorage'
 
@@ -11,10 +10,9 @@ export default class Level extends Component {
     super(props)
 
     this.difficulty = get(props, 'navigation.state.params.difficulty', 'Easy')
-    this.category = get(props, 'navigation.state.params.category', 'Places')
+    this.categoryName = get(props, 'navigation.state.params.categoryName', 'Places')
 
     this.state = {
-      gameData: get(props, 'navigation.state.params.gameData', GameData),
       availableLevels: [],
       currentLevel: null,
       points: 100
@@ -25,9 +23,8 @@ export default class Level extends Component {
     this.getAvailableLevels()
   }
 
-  getAvailableLevels = (difficulty, category) => {
-    const allLevels = find(this.state.gameData[this.difficulty], ['name', this.category]).levels
-    const availableLevels = filter(allLevels, ['isCompleted', false])
+  getAvailableLevels = () => {
+    const availableLevels = filter(this.props.navigation.state.params.categoryLevels, ['isCompleted', false])
     this.setState({
       availableLevels: availableLevels
     }, () => {

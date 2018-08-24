@@ -3,8 +3,8 @@ import { List, ListItem } from 'react-native-elements'
 import { sortBy } from 'lodash'
 
 export default class Categories extends Component {
-  launchCategory = (category) => {
-    this.props.navigation.navigate('Level', {category: category, difficulty: this.props.difficulty, gameDate: this.props.gameData})
+  launchCategory = (categoryName, categoryLevels) => {
+    this.props.navigation.navigate('Level', {categoryName: categoryName, difficulty: this.props.difficulty, categoryLevels: categoryLevels})
   }
 
   render() {
@@ -24,7 +24,7 @@ export default class Categories extends Component {
               rightTitle={category.levelsComplete + '/' + (category.levels.length || '0') + ' completed'}
               subtitleStyle={{color: 'gold'}}
               rightTitleStyle={{color: 'grey'}}
-              onPress={() => { this.launchCategory(category.name)}}
+              onPress={() => { this.launchCategory(category.name, category.levels)}}
             />
           ))
         }
