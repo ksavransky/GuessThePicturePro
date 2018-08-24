@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import { Text } from 'react-native-elements';
 import { get, find, filter } from 'lodash'
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, ActivityIndicator } from 'react-native';
 import { containerStyle, backgroundColorStyle } from '../styles/common'
-import Spinner from 'react-native-loading-spinner-overlay';
 // import { retrieveData } from '../utils/asyncstorage'
 
 const GAME_DATA = 'GameData'
@@ -24,7 +23,7 @@ export default class Level extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getAvailableLevels()
     this.getGameData()
   }
@@ -64,7 +63,7 @@ export default class Level extends Component {
     }
     return (
       <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
-        <Spinner visible textContent='Loading...' textStyle={{color: 'white'}} />
+        <ActivityIndicator size="large" color='black' />
       </View>
     )
   }
