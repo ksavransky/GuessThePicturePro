@@ -35,7 +35,7 @@ export const GameData = {
           isCompleted: false
         },
         { answer: 'golden_gate',
-          imagePath: require('../assets/images/places/goldengate.jpeg'),
+          imagePath: require('../assets/images/places/goldengate.jpg'),
           isCompleted: false
         },
         { answer: 'pyramid_giza',

@@ -46,7 +46,7 @@ export default class Level extends Component {
   }
 
   chooseRandomLevel = () => {
-    const randomLevel = Math.floor(Math.random() * (this.state.availableLevels.length + 1));
+    const randomLevel = Math.floor(Math.random() * this.state.availableLevels.length);
     this.setState({
       currentLevel: this.state.availableLevels[randomLevel]
     })
@@ -57,7 +57,11 @@ export default class Level extends Component {
       console.warn('this.state.currentLevel.answer')
       console.warn(this.state.currentLevel.answer)
       return (
-        <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
+        <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
+          <Image
+            style={{width: '90%', height: '60%'}}
+            source={this.state.currentLevel.imagePath}
+          />
         </View>
       )
     }
