@@ -5,15 +5,9 @@ export const Data = {
       iconURL: require('../assets/images/places/eiffel.jpeg'),
       levels: [
         {'colosseum': require('../assets/images/places/colosseum.jpeg')},
-        {'notre dame': require('../assets/images/places/notredame.jpeg')},
-        {'great wall china': require('../assets/images/places/greatwall.jpg')},
-        {'sydney opera house': require('../assets/images/places/sydneyoperahouse.jpg')},
-        {'eiffel tower': require('../assets/images/places/eiffel.jpeg')},
-        {'big ben': require('../assets/images/places/bigben.jpeg')},
-        {'statue liberty': require('../assets/images/places/statueofliberty.jpeg')},
-        {'golden gate': require('../assets/images/places/goldengate.jpeg')},
-        {'pyramid giza': require('../assets/images/places/pyramidofgiza.jpg')},
-        {'taj mahal': require('../assets/images/places/tajmahal.jpg')}
+        {'notre_dame': require('../assets/images/places/notredame.jpeg')},
+        {'great_wall_china': require('../assets/images/places/greatwall.jpg')},
+        {'sydney_opera_house': require('../assets/images/places/sydneyoperahouse.jpg')}
       ]
     }
   ],
@@ -24,3 +18,10 @@ export const Data = {
 
   ]
 }
+//
+// {'eiffel_tower': require('../assets/images/places/eiffel.jpeg')},
+// {'big_ben': require('../assets/images/places/bigben.jpeg')},
+// {'statue_liberty': require('../assets/images/places/statueofliberty.jpeg')},
+// {'golden_gate': require('../assets/images/places/goldengate.jpeg')},
+// {'pyramid_giza': require('../assets/images/places/pyramidofgiza.jpg')},
+// {'taj_mahal': require('../assets/images/places/tajmahal.jpg')}

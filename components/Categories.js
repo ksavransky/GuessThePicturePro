@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { List, ListItem } from 'react-native-elements'
 import { sortBy, clone } from 'lodash'
-import { retrieveData} from '../utils/asyncstorage'
+import { retrieveData } from '../utils/asyncstorage'
 
 export default class Categories extends Component {
   constructor(props) {
