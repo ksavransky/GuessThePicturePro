@@ -15,7 +15,8 @@ export default class Level extends Component {
 
     this.state = {
       gameData: get(props, 'navigation.state.params.gameData', GameData),
-      availableLevels: []
+      availableLevels: [],
+      currentLevel: null
     }
   }
 
@@ -28,7 +29,13 @@ export default class Level extends Component {
     const availableLevels = filter(allLevels, ['isCompleted', false])
     this.setState({
       availableLevels: availableLevels
+    }, () => {
+      this.chooseRandomLevel()
     })
+  }
+
+  chooseRandomLevel = () => {
+    console.warn('in chooseRandomLevel')
   }
 
   render() {

@@ -21,6 +21,12 @@ export default class CategoriesScreen extends Component {
     this.getLocalStorageData()
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      difficulty: get(nextProps, 'navigation.state.params.difficulty', 'Easy')
+    })
+  }
+
   getLocalStorageData = () => {
     AsyncStorage.getItem(GAME_DATA).then((storedGameData) => {
       if (storedGameData) {
@@ -33,11 +39,7 @@ export default class CategoriesScreen extends Component {
     })
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      difficulty: get(nextProps, 'navigation.state.params.difficulty', 'Easy')
-    })
-  }
+
 
   getTitleClass = () => {
     const difficulty = this.state.difficulty
