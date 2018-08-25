@@ -5,6 +5,11 @@ export const GameData = {
       iconPath: require('../assets/images/places/eiffel.jpeg'),
       levelsComplete: 0,
       points: 0,
+      savedLevel: {
+        answer: null,
+        points: null,
+        visibleTiles: null
+      },
       levels: [
         { answer: 'colosseum',
           imagePath: require('../assets/images/places/colosseum.jpeg'),
@@ -40,7 +45,8 @@ export const GameData = {
         },
         { answer: 'pyramid_giza',
           imagePath: require('../assets/images/places/pyramidofgiza.jpg'),
-          isCompleted: false
+          isCompleted: false,
+          optionalAnswer: [['pyramid', 'giza'], ['great', 'pyramid']]
         },
         { answer: 'taj_mahal',
           imagePath: require('../assets/images/places/tajmahal.jpg'),
