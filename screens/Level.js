@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator} from 'react-native';
-import { Text } from 'react-native-elements';
-import { get, find, filter, cloneDeep } from 'lodash'
+import { Text, FormLabel, FormInput } from 'react-native-elements';
+import { get, filter, cloneDeep } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
-// import { retrieveData } from '../utils/asyncstorage'
 
 const GAME_DATA = 'GameData'
 
@@ -14,6 +13,7 @@ export default class Level extends Component {
 
     this.difficulty = get(props, 'navigation.state.params.difficulty', 'Easy')
     this.categoryName = get(props, 'navigation.state.params.categoryName', 'Places')
+    this.titleColor = get(props, 'navigation.state.params.titleColor', '#28a745')
 
     this.state = {
       gameData: null,
@@ -26,7 +26,8 @@ export default class Level extends Component {
         [true, true, true, true, true],
         [true, true, true, true, true],
         [true, true, true, true, true]
-      ]
+      ],
+      guessInput: null
     }
   }
 
@@ -65,7 +66,12 @@ export default class Level extends Component {
     this.setState({
       visibleTiles: visibleTiles
     })
+  }
 
+  handleGuessInput = (event) => {
+    this.setState({
+      guessInput: event
+    })
   }
 
   renderTiles = () => {
@@ -91,7 +97,6 @@ export default class Level extends Component {
         }
       }
     }
-
     return tiles
   }
 
@@ -99,6 +104,12 @@ export default class Level extends Component {
     if (this.state.currentLevel) {
       return (
         <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
+          <Text h4 fontFamily='ChalkboardSE' style={{color: this.titleColor, margin: 10}}>
+            {this.categoryName}
+          </Text>
+          <Text h5 style={{color: 'orange', marginBottom: 10, marginRight: 20, alignSelf: 'flex-end'}}>
+            {'Points: ' + this.state.points}
+          </Text>
           <View style={{width: '90%', height: '50%', position: 'relative'}}>
             <Image
               style={{width: '100%', height: '100%'}}
@@ -106,6 +117,14 @@ export default class Level extends Component {
             />
             {this.renderTiles()}
           </View>
+          <FormLabel
+            containerStyle={{alignSelf: 'flex-start', marginTop: 10}}
+            labelStyle={{color: 'blue', fontFamily: 'ChalkboardSE', fontSize: 20}}>
+            Your Guess
+          </FormLabel>
+          <FormInput
+            inputStyle={{color: 'blue', fontFamily: 'ChalkboardSE', fontSize: 20}}
+            onChangeText={this.handleGuessInput}/>
         </View>
       )
     }
@@ -124,8 +143,5 @@ const styles = StyleSheet.create({
     height: '20%',
     borderColor: 'grey',
     borderWidth: 1
-  },
-  red: {
-    color: 'red',
-  },
+  }
 });

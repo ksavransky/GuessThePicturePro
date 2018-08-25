@@ -4,7 +4,7 @@ import { sortBy } from 'lodash'
 
 export default class Categories extends Component {
   launchCategory = (categoryName, categoryLevels) => {
-    this.props.navigation.navigate('Level', {categoryName: categoryName, difficulty: this.props.difficulty, categoryLevels: categoryLevels})
+    this.props.navigation.navigate('Level', {categoryName: categoryName, difficulty: this.props.difficulty, categoryLevels: categoryLevels, titleColor: this.props.titleColor})
   }
 
   render() {

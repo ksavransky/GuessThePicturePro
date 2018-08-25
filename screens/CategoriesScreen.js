@@ -41,7 +41,7 @@ export default class CategoriesScreen extends Component {
 
 
 
-  getTitleClass = () => {
+  getTitleColor = () => {
     const difficulty = this.state.difficulty
     if ( difficulty === 'Easy' ) {
         return '#28a745'
@@ -53,6 +53,7 @@ export default class CategoriesScreen extends Component {
   }
 
   render() {
+    const titleColor = this.getTitleColor()
     return (
       <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
         <Text
@@ -63,13 +64,14 @@ export default class CategoriesScreen extends Component {
           }}>
           {'< Select Difficulty'}
         </Text>
-        <Text h4 fontFamily='ChalkboardSE' style={{color: this.getTitleClass()}}>
+        <Text h4 fontFamily='ChalkboardSE' style={{color: titleColor}}>
           {this.state.difficulty}
         </Text>
         <Categories
           navigation={this.props.navigation}
           difficulty={this.state.difficulty}
           gameData={this.state.gameData}
+          titleColor={titleColor}
         />
       </View>
     )
