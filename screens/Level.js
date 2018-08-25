@@ -120,10 +120,13 @@ export default class Level extends Component {
           <FormLabel
             containerStyle={{alignSelf: 'flex-start', marginTop: 10}}
             labelStyle={{color: 'blue', fontFamily: 'ChalkboardSE', fontSize: 20}}>
-            Your Guess
+            {'Your Guess:'}
           </FormLabel>
           <FormInput
-            inputStyle={{color: 'blue', fontFamily: 'ChalkboardSE', fontSize: 20}}
+            spellCheck={false}
+            autoCorrect={false}
+            containerStyle={{width: '90%', borderBottomColor: 'black', marginTop: 10}}
+            inputStyle={{color: 'black', fontSize: 20}}
             onChangeText={this.handleGuessInput}/>
         </View>
       )
