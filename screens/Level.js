@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator} from 'react-native';
 import { Text } from 'react-native-elements';
-import { get, find, filter } from 'lodash'
+import { get, find, filter, cloneDeep } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 // import { retrieveData } from '../utils/asyncstorage'
@@ -59,9 +59,13 @@ export default class Level extends Component {
     })
   }
 
-  handleTileClick = (event) => {
-    console.warn('event.target')
-    console.warn(event.target)
+  handleTileClick = (i, j) => {
+    let visibleTiles = cloneDeep(this.state.visibleTiles)
+    visibleTiles[i][j] = false
+    this.setState({
+      visibleTiles: visibleTiles
+    })
+
   }
 
   renderTiles = () => {
@@ -73,13 +77,16 @@ export default class Level extends Component {
           let top = (i * 20) + '%'
           let left = (j * 20) + '%'
           tiles.push(
-            <Image
+            <TouchableOpacity
+              onPress={() => this.handleTileClick(i, j)}
               key={i + '_' + j}
-              id={i + '_' + j}
-              onPress={this.handleTileClick}
               style={[styles.tile, {top: top, left: left}]}
-              source={TileIndex[i][j]}
-              />
+              >
+              <Image
+                style={{width: '100%', height: '100%'}}
+                source={TileIndex[i][j]}
+                />
+            </TouchableOpacity>
           )
         }
       }
