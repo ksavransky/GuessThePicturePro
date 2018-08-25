@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator} from 'react-native';
-import { Text, FormLabel, FormInput } from 'react-native-elements';
+import { Text, FormLabel, FormInput, Button } from 'react-native-elements';
 import { get, filter, cloneDeep } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
@@ -74,6 +74,10 @@ export default class Level extends Component {
     })
   }
 
+  handleSubmit = () => {
+
+  }
+
   renderTiles = () => {
     let tiles = []
 
@@ -107,7 +111,7 @@ export default class Level extends Component {
           <Text h4 fontFamily='ChalkboardSE' style={{color: this.titleColor, margin: 10}}>
             {this.categoryName}
           </Text>
-          <Text h5 style={{color: 'orange', marginBottom: 10, marginRight: 20, alignSelf: 'flex-end'}}>
+          <Text h5 style={{color: 'black', marginBottom: 10, marginRight: 20, alignSelf: 'flex-end'}}>
             {'Points: ' + this.state.points}
           </Text>
           <View style={{width: '90%', height: '50%', position: 'relative'}}>
@@ -118,16 +122,25 @@ export default class Level extends Component {
             {this.renderTiles()}
           </View>
           <FormLabel
-            containerStyle={{alignSelf: 'flex-start', marginTop: 10}}
-            labelStyle={{color: 'blue', fontFamily: 'ChalkboardSE', fontSize: 20}}>
+            containerStyle={{alignSelf: 'flex-start', marginTop: 20}}
+            labelStyle={{color: 'grey', fontSize: 20, fontWeight: '400'}}>
             {'Your Guess:'}
           </FormLabel>
           <FormInput
             spellCheck={false}
             autoCorrect={false}
-            containerStyle={{width: '90%', borderBottomColor: 'black', marginTop: 10}}
+            containerStyle={{width: '90%', borderBottomColor: 'grey', marginTop: 10}}
             inputStyle={{color: 'black', fontSize: 20}}
             onChangeText={this.handleGuessInput}/>
+          <Button
+            onPress={this.handleSubmit}
+            style={{marginTop: 60}}
+            raised
+            rounded
+            fontFamily='ChalkboardSE'
+            fontSize={24}
+            backgroundColor='#28a745'
+            title='SUBMIT' />
         </View>
       )
     }
