@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator, Keyboard} from 'react-native';
+import { View, KeyboardAvoidingView, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator, Keyboard} from 'react-native';
 import { Text, FormLabel, FormInput, Button } from 'react-native-elements';
 import { get, filter, cloneDeep } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
@@ -147,7 +147,7 @@ export default class Level extends Component {
       formLabelMarginTop = 0
       formLabelFontSize = 12
       formInputMarginTop = 0
-      formInputWidth = '60%'
+      formInputWidth = '55%'
       formInputAlignment = 'flex-start'
 
       hideBigButtonWhenKeyboardOpen = 'none'
@@ -161,7 +161,7 @@ export default class Level extends Component {
 
     if (this.state.currentLevel) {
       return (
-        <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
+        <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
           <Text h4 fontFamily='ChalkboardSE' style={{color: this.titleColor, margin: 10, display: hideTitleAndPointsWhenKeyboardOpen}}>
             {this.categoryName}
           </Text>
@@ -184,8 +184,9 @@ export default class Level extends Component {
             <FormInput
               spellCheck={false}
               autoCorrect={false}
-              containerStyle={{borderBottomColor: 'grey', width: formInputWidth, margin: 0}}
-              inputStyle={{color: 'black', fontSize: 20}}
+              maxLength={28}
+              containerStyle={{borderBottomColor: 'grey', width: formInputWidth}}
+              inputStyle={{color: 'black', fontSize: 16}}
               onChangeText={this.handleGuessInput}/>
             <Button
               onPress={this.handleSubmit}
@@ -193,7 +194,7 @@ export default class Level extends Component {
               rounded
               fontFamily='ChalkboardSE'
               fontSize={12}
-              containerViewStyle={{backgroundColor: 'transparent', display: showSmallButtonWhenKeyboardOpen, width: 80, height: 40, margin: 0}}
+              containerViewStyle={{backgroundColor: 'transparent', display: showSmallButtonWhenKeyboardOpen, width: 80, height: 40}}
               backgroundColor='#28a745'
               title='SUBMIT' />
           </View>
@@ -206,7 +207,7 @@ export default class Level extends Component {
             containerViewStyle={{marginTop: 30, backgroundColor: 'transparent', display: hideBigButtonWhenKeyboardOpen}}
             backgroundColor='#28a745'
             title='SUBMIT' />
-        </View>
+        </KeyboardAvoidingView>
       )
     }
     return (
