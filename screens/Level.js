@@ -16,7 +16,6 @@ export default class Level extends Component {
     this.titleColor = get(props, 'navigation.state.params.titleColor', '#28a745')
 
     this.state = {
-      isPhotoLoaded: false,
       isTileLoaded: false,
       gameData: null,
       availableLevels: [],
@@ -143,9 +142,9 @@ export default class Level extends Component {
       formInputMarginTop = 0
     }
 
-    let hideImageWhileLoading = 0
-    if (this.state.isPhotoLoaded && this.state.isTileLoaded) {
-      hideImageWhileLoading = 1
+    let hideImageWhileTileLoading = 0
+    if (this.state.isTileLoaded) {
+      hideImageWhileTileLoading = 1
     }
 
     if (this.state.currentLevel) {
@@ -159,11 +158,8 @@ export default class Level extends Component {
           </Text>
           <View style={{width: '90%', height: '50%', position: 'relative'}}>
             <Image
-              style={{width: '100%', height: '100%', opacity: hideImageWhileLoading}}
+              style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading}}
               source={this.state.currentLevel.imagePath}
-              onLoad={() => {
-                this.setState({isPhotoLoaded: true})
-              }}
             />
             {this.renderTiles()}
           </View>
