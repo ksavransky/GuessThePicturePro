@@ -16,6 +16,7 @@ export default class Level extends Component {
     this.titleColor = get(props, 'navigation.state.params.titleColor', '#28a745')
 
     this.state = {
+      isiPad: false,
       isTileLoaded: false,
       gameData: null,
       availableLevels: [],
@@ -131,15 +132,26 @@ export default class Level extends Component {
   }
 
   render() {
-    let hideElementsWhenKeyboardOpen = 'flex'
+    let hideTitleAndPointsWhenKeyboardOpen = 'flex'
     let formLabelMarginTop = 20
     let formLabelFontSize = 20
     let formInputMarginTop = 10
-    if (this.state.isKeyBoardOpen) {
-      hideElementsWhenKeyboardOpen = 'none'
+    let formInputWidth = '90%'
+    let formInputAlignment = 'center'
+
+    let hideBigButtonWhenKeyboardOpen = 'flex'
+    let showSmallButtonWhenKeyboardOpen = 'none'
+
+    if (this.state.isKeyBoardOpen && !this.state.isiPad) {
+      hideTitleAndPointsWhenKeyboardOpen = 'none'
       formLabelMarginTop = 0
       formLabelFontSize = 12
       formInputMarginTop = 0
+      formInputWidth = '60%'
+      formInputAlignment = 'flex-start'
+
+      hideBigButtonWhenKeyboardOpen = 'none'
+      showSmallButtonWhenKeyboardOpen = 'flex'
     }
 
     let hideImageWhileTileLoading = 0
@@ -150,10 +162,10 @@ export default class Level extends Component {
     if (this.state.currentLevel) {
       return (
         <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
-          <Text h4 fontFamily='ChalkboardSE' style={{color: this.titleColor, margin: 10, display: hideElementsWhenKeyboardOpen}}>
+          <Text h4 fontFamily='ChalkboardSE' style={{color: this.titleColor, margin: 10, display: hideTitleAndPointsWhenKeyboardOpen}}>
             {this.categoryName}
           </Text>
-          <Text h5 style={{color: 'black', marginBottom: 10, marginRight: 20, alignSelf: 'flex-end', display: hideElementsWhenKeyboardOpen}}>
+          <Text h5 style={{color: 'black', marginBottom: 10, marginRight: 20, alignSelf: 'flex-end', display: hideTitleAndPointsWhenKeyboardOpen}}>
             {'Points: ' + this.state.points}
           </Text>
           <View style={{width: '90%', height: '50%', position: 'relative'}}>
@@ -168,19 +180,30 @@ export default class Level extends Component {
             labelStyle={{color: 'grey', fontSize: formLabelFontSize, fontWeight: '400'}}>
             {'Your Guess:'}
           </FormLabel>
-          <FormInput
-            spellCheck={false}
-            autoCorrect={false}
-            containerStyle={{width: '90%', borderBottomColor: 'grey', marginTop: formInputMarginTop}}
-            inputStyle={{color: 'black', fontSize: 20}}
-            onChangeText={this.handleGuessInput}/>
+          <View style={{marginTop: formInputMarginTop, width: '100%', flexDirection: 'row'}}>
+            <FormInput
+              spellCheck={false}
+              autoCorrect={false}
+              containerStyle={{borderBottomColor: 'grey', width: formInputWidth, margin: 0}}
+              inputStyle={{color: 'black', fontSize: 20}}
+              onChangeText={this.handleGuessInput}/>
+            <Button
+              onPress={this.handleSubmit}
+              raised
+              rounded
+              fontFamily='ChalkboardSE'
+              fontSize={12}
+              containerViewStyle={{backgroundColor: 'transparent', display: showSmallButtonWhenKeyboardOpen, width: 80, height: 40, margin: 0}}
+              backgroundColor='#28a745'
+              title='SUBMIT' />
+          </View>
           <Button
             onPress={this.handleSubmit}
             raised
             rounded
             fontFamily='ChalkboardSE'
             fontSize={24}
-            containerViewStyle={{marginTop: 40, backgroundColor: 'transparent'}}
+            containerViewStyle={{marginTop: 30, backgroundColor: 'transparent', display: hideBigButtonWhenKeyboardOpen}}
             backgroundColor='#28a745'
             title='SUBMIT' />
         </View>
