@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator} from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator, Keyboard} from 'react-native';
 import { Text, FormLabel, FormInput, Button } from 'react-native-elements';
 import { get, filter, cloneDeep } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
@@ -27,13 +27,33 @@ export default class Level extends Component {
         [true, true, true, true, true],
         [true, true, true, true, true]
       ],
-      guessInput: null
+      guessInput: null,
+      isKeyBoardOpen: false
     }
   }
 
   componentDidMount() {
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
     this.getAvailableLevels()
     this.getGameData()
+  }
+
+  componentWillUnmount () {
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
+  }
+
+  _keyboardDidShow = () => {
+    this.setState({
+      isKeyBoardOpen: true
+    })
+  }
+
+  _keyboardDidHide = () => {
+    this.setState({
+      isKeyBoardOpen: false
+    })
   }
 
   getAvailableLevels = () => {
@@ -105,13 +125,24 @@ export default class Level extends Component {
   }
 
   render() {
+    let hideElementsWhenKeyboardOpen = 'flex'
+    let formLabelMarginTop = 20
+    let formLabelFontSize = 20
+    let formInputMarginTop = 10
+    if (this.state.isKeyBoardOpen) {
+      hideElementsWhenKeyboardOpen = 'none'
+      formLabelMarginTop = 0
+      formLabelFontSize = 12
+      formInputMarginTop = 0
+    }
+
     if (this.state.currentLevel) {
       return (
         <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
-          <Text h4 fontFamily='ChalkboardSE' style={{color: this.titleColor, margin: 10}}>
+          <Text h4 fontFamily='ChalkboardSE' style={{color: this.titleColor, margin: 10, display: hideElementsWhenKeyboardOpen}}>
             {this.categoryName}
           </Text>
-          <Text h5 style={{color: 'black', marginBottom: 10, marginRight: 20, alignSelf: 'flex-end'}}>
+          <Text h5 style={{color: 'black', marginBottom: 10, marginRight: 20, alignSelf: 'flex-end', display: hideElementsWhenKeyboardOpen}}>
             {'Points: ' + this.state.points}
           </Text>
           <View style={{width: '90%', height: '50%', position: 'relative'}}>
@@ -122,23 +153,23 @@ export default class Level extends Component {
             {this.renderTiles()}
           </View>
           <FormLabel
-            containerStyle={{alignSelf: 'flex-start', marginTop: 20}}
-            labelStyle={{color: 'grey', fontSize: 20, fontWeight: '400'}}>
+            containerStyle={{alignSelf: 'flex-start', marginTop: formLabelMarginTop}}
+            labelStyle={{color: 'grey', fontSize: formLabelFontSize, fontWeight: '400'}}>
             {'Your Guess:'}
           </FormLabel>
           <FormInput
             spellCheck={false}
             autoCorrect={false}
-            containerStyle={{width: '90%', borderBottomColor: 'grey', marginTop: 10}}
+            containerStyle={{width: '90%', borderBottomColor: 'grey', marginTop: formInputMarginTop}}
             inputStyle={{color: 'black', fontSize: 20}}
             onChangeText={this.handleGuessInput}/>
           <Button
             onPress={this.handleSubmit}
-            style={{marginTop: 60}}
             raised
             rounded
             fontFamily='ChalkboardSE'
             fontSize={24}
+            containerViewStyle={{marginTop: 40, backgroundColor: 'transparent'}}
             backgroundColor='#28a745'
             title='SUBMIT' />
         </View>

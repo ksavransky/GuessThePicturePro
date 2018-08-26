@@ -17,7 +17,7 @@ export default class ChooseDifficulty extends Component {
                 key={buttonData.difficulty}
                 onPress={() => this.props.navigation.navigate('CategoriesScreen', {difficulty: buttonData.difficulty})}
                 backgroundColor={buttonData.color}
-                style={{marginBottom: 50}}
+                containerViewStyle={{marginBottom: 50, backgroundColor: 'transparent'}}
                 title={buttonData.title} />
             )
           })}

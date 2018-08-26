@@ -10,6 +10,7 @@ export default class LargeButton extends Component {
         large
         raised
         rounded
+        containerViewStyle={this.props.containerViewStyle || {backgroundColor: 'transparent'}}
         fontFamily='ChalkboardSE'
         fontSize={30}
         backgroundColor={this.props.backgroundColor || '#28a745'}
