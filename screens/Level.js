@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, KeyboardAvoidingView, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator, Keyboard, Dimensions} from 'react-native';
+import { View, KeyboardAvoidingView, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator, Keyboard, Dimensions, TouchableNativeFeedback} from 'react-native';
 import { Text, FormLabel, FormInput, Button } from 'react-native-elements';
 import { get, filter, cloneDeep } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
@@ -222,6 +222,7 @@ export default class Level extends Component {
                 raised
                 rounded
                 fontFamily='ChalkboardSE'
+                Component={TouchableNativeFeedback}
                 fontSize={24}
                 containerViewStyle={{marginTop: 30, backgroundColor: 'transparent'}}
                 backgroundColor='#28a745'
