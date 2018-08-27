@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { View, KeyboardAvoidingView, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator, Keyboard} from 'react-native';
+import { View, KeyboardAvoidingView, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator, Keyboard, Dimensions} from 'react-native';
 import { Text, FormLabel, FormInput, Button } from 'react-native-elements';
 import { get, filter, cloneDeep } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
+
+const window = Dimensions.get('window');
 
 const GAME_DATA = 'GameData'
 
@@ -14,6 +16,8 @@ export default class Level extends Component {
     this.difficulty = get(props, 'navigation.state.params.difficulty', 'Easy')
     this.categoryName = get(props, 'navigation.state.params.categoryName', 'Places')
     this.titleColor = get(props, 'navigation.state.params.titleColor', '#28a745')
+    this.screenHeight = Dimensions.get('window').height
+    this.isiPad = this.screenHeight > 900
 
     this.state = {
       isiPad: false,
@@ -138,20 +142,29 @@ export default class Level extends Component {
     let formInputMarginTop = 10
     let formInputWidth = '90%'
     let formInputAlignment = 'center'
+    let inputFontSize = 20
+    let totalFormWidth = '100%'
 
     let hideBigButtonWhenKeyboardOpen = 'flex'
     let showSmallButtonWhenKeyboardOpen = 'none'
 
-    if (this.state.isKeyBoardOpen && !this.state.isiPad) {
+    if (this.state.isKeyBoardOpen) {
       hideTitleAndPointsWhenKeyboardOpen = 'none'
-      formLabelMarginTop = 0
-      formLabelFontSize = 12
-      formInputMarginTop = 0
-      formInputWidth = '55%'
+      formInputWidth = '90%'
       formInputAlignment = 'flex-start'
-
       hideBigButtonWhenKeyboardOpen = 'none'
       showSmallButtonWhenKeyboardOpen = 'flex'
+
+      if (!this.isiPad) {
+        formLabelMarginTop = 0
+        formLabelFontSize = 12
+        formInputMarginTop = 0
+        inputFontSize = 16
+      }
+    }
+
+    if (this.isiPad) {
+      totalFormWidth = '90%'
     }
 
     let hideImageWhileTileLoading = 0
@@ -175,38 +188,45 @@ export default class Level extends Component {
             />
             {this.renderTiles()}
           </View>
-          <FormLabel
-            containerStyle={{alignSelf: 'flex-start', marginTop: formLabelMarginTop}}
-            labelStyle={{color: 'grey', fontSize: formLabelFontSize, fontWeight: '400'}}>
-            {'Your Guess:'}
-          </FormLabel>
-          <View style={{marginTop: formInputMarginTop, width: '100%', flexDirection: 'row'}}>
-            <FormInput
-              spellCheck={false}
-              autoCorrect={false}
-              maxLength={28}
-              containerStyle={{borderBottomColor: 'grey', width: formInputWidth}}
-              inputStyle={{color: 'black', fontSize: 16}}
-              onChangeText={this.handleGuessInput}/>
-            <Button
-              onPress={this.handleSubmit}
-              raised
-              rounded
-              fontFamily='ChalkboardSE'
-              fontSize={12}
-              containerViewStyle={{backgroundColor: 'transparent', display: showSmallButtonWhenKeyboardOpen, width: 80, height: 40}}
-              backgroundColor='#28a745'
-              title='SUBMIT' />
+          <View style={{width: totalFormWidth, flexDirection: 'column'}}>
+            <FormLabel
+              containerStyle={{width: '100%', marginTop: formLabelMarginTop}}
+              labelStyle={{color: 'grey', fontSize: formLabelFontSize, fontWeight: '400'}}>
+              {'Your Guess:'}
+            </FormLabel>
+            <View style={{marginTop: formInputMarginTop, width: '100%', flexDirection: 'row', position: 'relative'}}>
+              <FormInput
+                spellCheck={false}
+                autoCorrect={false}
+                maxLength={32}
+                containerStyle={{borderBottomColor: 'grey', width: formInputWidth}}
+                inputStyle={{color: 'black', fontSize: inputFontSize}}
+                onChangeText={this.handleGuessInput}/>
+              {this.state.isKeyBoardOpen &&
+                <Button
+                  onPress={this.handleSubmit}
+                  raised
+                  rounded
+                  fontFamily='ChalkboardSE'
+                  fontSize={14}
+                  containerViewStyle={{backgroundColor: 'transparent', width: 90, height: 50, position: 'absolute', right: 0, bottom: 7}}
+                  backgroundColor='#28a745'
+                  title='SUBMIT' />
+              }
+            </View>
           </View>
-          <Button
-            onPress={this.handleSubmit}
-            raised
-            rounded
-            fontFamily='ChalkboardSE'
-            fontSize={24}
-            containerViewStyle={{marginTop: 30, backgroundColor: 'transparent', display: hideBigButtonWhenKeyboardOpen}}
-            backgroundColor='#28a745'
-            title='SUBMIT' />
+          {
+            !this.state.isKeyBoardOpen &&
+              <Button
+                onPress={this.handleSubmit}
+                raised
+                rounded
+                fontFamily='ChalkboardSE'
+                fontSize={24}
+                containerViewStyle={{marginTop: 30, backgroundColor: 'transparent'}}
+                backgroundColor='#28a745'
+                title='SUBMIT' />
+          }
         </KeyboardAvoidingView>
       )
     }
