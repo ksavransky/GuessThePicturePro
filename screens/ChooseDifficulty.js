@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity} from 'react-native';
 import { Text } from 'react-native-elements';
 import LargeButton from '../components/buttons/LargeButton'
 import { containerStyle, backgroundColorStyle } from '../styles/common.js'
@@ -21,6 +21,21 @@ export default class ChooseDifficulty extends Component {
                 title={buttonData.title} />
             )
           })}
+          <TouchableOpacity
+            onPress={() => {console.warn('pressss');}}
+            style={{
+              borderRadius: 25
+            }}
+            >
+            <Text h3 fontFamily='ChalkboardSE' style={{
+              color: 'white',
+              backgroundColor: '#28a745',
+              paddingLeft: 20,
+              paddingRight: 20,
+              paddingTop: 10,
+              paddingBottom: 10
+            }}>EASY</Text>
+          </TouchableOpacity>
       </View>
     )
   }
