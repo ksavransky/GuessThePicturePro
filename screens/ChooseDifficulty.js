@@ -22,19 +22,36 @@ export default class ChooseDifficulty extends Component {
             )
           })}
           <TouchableOpacity
+            activeOpacity={0.9}
             onPress={() => {console.warn('pressss');}}
-            style={{
-              borderRadius: 25
-            }}
             >
-            <Text h3 fontFamily='ChalkboardSE' style={{
-              color: 'white',
-              backgroundColor: '#28a745',
-              paddingLeft: 20,
-              paddingRight: 20,
-              paddingTop: 10,
-              paddingBottom: 10
-            }}>EASY</Text>
+            <View style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              shadowOpacity: 0.4,
+              shadowRadius: 1,
+              shadowColor: 'black',
+              shadowOffset: { height: 2, width: 2 }
+            }}>
+              <View style={{
+                 borderWidth: 1,
+                 borderRadius: 50,
+                 borderColor: '#28a745',
+                 width: '100%',
+                 padding: 10,
+                 backgroundColor: '#28a745'
+              }}>
+                <Text fontFamily='ChalkboardSE' style={{
+                  textAlign: 'center',
+                  color: '#fff',
+                  fontSize: 30,
+                  paddingLeft: 17,
+                  paddingRight: 17,
+                  paddingTop: 6,
+                  paddingBottom: 6
+                }}>EASY</Text>
+              </View>
+            </View>
           </TouchableOpacity>
       </View>
     )
