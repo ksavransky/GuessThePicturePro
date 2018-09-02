@@ -10,6 +10,11 @@ const window = Dimensions.get('window');
 
 const GAME_DATA = 'GameData'
 
+const NUMBER_OF_TILES = {
+  ROW: 5,
+  COLUMN: 5
+}
+
 export default class Level extends Component {
   constructor(props) {
     super(props)
@@ -156,8 +161,8 @@ export default class Level extends Component {
   renderTiles = () => {
     let tiles = []
 
-    for (let i = 0; i < 5; i++) {
-      for (let j = 0; j < 5; j++) {
+    for (let i = 0; i < NUMBER_OF_TILES.ROW; i++) {
+      for (let j = 0; j < NUMBER_OF_TILES.COLUMN; j++) {
         if (this.state.visibleTiles[i][j]) {
           let top = (i * 20) + '%'
           let left = (j * 20) + '%'
