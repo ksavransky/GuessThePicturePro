@@ -26,7 +26,7 @@ export default class Level extends Component {
       gameData: null,
       availableLevels: [],
       currentLevel: null,
-      points: 250,
+      points: 200,
       visibleTiles: [
         [true, true, true, true, true],
         [true, true, true, true, true],
@@ -36,8 +36,8 @@ export default class Level extends Component {
       ],
       guessInput: null,
       isKeyBoardOpen: false,
-      guessesMade: 0,
-      reveals: 0
+      guessesLeft: 3,
+      revealsLeft: 15
     }
   }
 
@@ -90,11 +90,17 @@ export default class Level extends Component {
   }
 
   handleTileClick = (i, j) => {
-    let visibleTiles = cloneDeep(this.state.visibleTiles)
-    visibleTiles[i][j] = false
-    this.setState({
-      visibleTiles: visibleTiles
-    })
+    if (this.state.revealsLeft > 0) {
+      let visibleTiles = cloneDeep(this.state.visibleTiles)
+      visibleTiles[i][j] = false
+      this.setState({
+        visibleTiles: visibleTiles,
+        revealsLeft: this.state.revealsLeft - 1,
+        points: (this.state.revealsLeft < 11 ) ? (this.state.points - 10) : this.state.points
+      })
+    } else {
+      console.warn('No more reveals')
+    }
   }
 
   handleGuessInput = (event) => {
@@ -117,14 +123,14 @@ export default class Level extends Component {
 
   renderGameInfo = (hideTitleAndGameInfoWhenKeyboardOpen) => {
     return (
-      <View style={{marginBottom: 10, display: hideTitleAndGameInfoWhenKeyboardOpen}}>
-        <Text h5 style={{color: 'black'}}>
-          {'Points: ' + this.state.points}
+      <View style={{marginLeft: '10%', width: '100%', flexDirection: 'row', display: hideTitleAndGameInfoWhenKeyboardOpen, marginBottom: 10}}>
+        <Text h5 style={{color: '#3e3e3e', width: '33%'}}>
+          {'Reveals Left: ' + this.state.revealsLeft}
         </Text>
-        <Text h5 style={{color: 'black'}}>
-          {'Points: ' + this.state.points}
+        <Text h5 style={{color: '#3e3e3e', width: '27%', textAlign: 'center'}}>
+          {'Guesses Left: ' + this.state.guessesLeft}
         </Text>
-        <Text h5 style={{color: 'black'}}>
+        <Text h5 style={{color: '#3e3e3e', width: '30%', textAlign: 'right'}}>
           {'Points: ' + this.state.points}
         </Text>
       </View>
@@ -155,6 +161,7 @@ export default class Level extends Component {
           let left = (j * 20) + '%'
           tiles.push(
             <TouchableOpacity
+              activeOpacity={(this.state.revealsLeft > 0) ? 0.5 : 1}
               onPress={() => this.handleTileClick(i, j)}
               key={i + '_' + j}
               style={[styles.tile, {top: top, left: left}]}
