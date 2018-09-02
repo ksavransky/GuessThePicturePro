@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View, KeyboardAvoidingView, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator, Keyboard, Dimensions} from 'react-native';
-import { Text, FormLabel, FormInput, Button } from 'react-native-elements';
+import { Text, FormLabel, FormInput } from 'react-native-elements';
 import { get, filter, cloneDeep } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
+import LargeButton from '../components/buttons/LargeButton'
 
 const window = Dimensions.get('window');
 
@@ -203,29 +204,29 @@ export default class Level extends Component {
                 inputStyle={{color: 'black', fontSize: inputFontSize}}
                 onChangeText={this.handleGuessInput}/>
               {this.state.isKeyBoardOpen &&
-                <Button
+                <LargeButton
                   onPress={this.handleSubmit}
-                  raised
-                  rounded
                   fontFamily='ChalkboardSE'
                   fontSize={14}
-                  containerViewStyle={{backgroundColor: 'transparent', width: 90, height: 50, position: 'absolute', right: 0, bottom: 7}}
+                  style={{
+                    position: 'absolute',
+                    right: 7,
+                    bottom: 7
+                  }}
                   backgroundColor='#28a745'
-                  title='SUBMIT' />
+                  text='SUBMIT' />
               }
             </View>
           </View>
           {
             !this.state.isKeyBoardOpen &&
-              <Button
+              <LargeButton
                 onPress={this.handleSubmit}
-                raised
-                rounded
                 fontFamily='ChalkboardSE'
                 fontSize={24}
-                containerViewStyle={{marginTop: 30, backgroundColor: 'transparent'}}
+                style={{marginTop: 30}}
                 backgroundColor='#28a745'
-                title='SUBMIT' />
+                text='SUBMIT' />
           }
         </KeyboardAvoidingView>
       )

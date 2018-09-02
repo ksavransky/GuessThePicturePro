@@ -17,42 +17,11 @@ export default class ChooseDifficulty extends Component {
                 key={buttonData.difficulty}
                 onPress={() => this.props.navigation.navigate('CategoriesScreen', {difficulty: buttonData.difficulty})}
                 backgroundColor={buttonData.color}
-                containerViewStyle={{marginBottom: 50, backgroundColor: 'transparent'}}
-                title={buttonData.title} />
+                style={{marginBottom: 50}}
+                fontFamily='ChalkboardSE'
+                text={buttonData.title} />
             )
           })}
-          <TouchableOpacity
-            activeOpacity={0.9}
-            onPress={() => {console.warn('pressss');}}
-            >
-            <View style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              shadowOpacity: 0.4,
-              shadowRadius: 1,
-              shadowColor: 'black',
-              shadowOffset: { height: 2, width: 2 }
-            }}>
-              <View style={{
-                 borderWidth: 1,
-                 borderRadius: 50,
-                 borderColor: '#28a745',
-                 width: '100%',
-                 padding: 10,
-                 backgroundColor: '#28a745'
-              }}>
-                <Text fontFamily='ChalkboardSE' style={{
-                  textAlign: 'center',
-                  color: '#fff',
-                  fontSize: 30,
-                  paddingLeft: 17,
-                  paddingRight: 17,
-                  paddingTop: 6,
-                  paddingBottom: 6
-                }}>EASY</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
       </View>
     )
   }

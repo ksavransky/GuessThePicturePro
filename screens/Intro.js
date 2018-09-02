@@ -15,7 +15,8 @@ export default class Intro extends Component {
         <LargeButton
           onPress={() => this.props.navigation.navigate('ChooseDifficulty')}
           backgroundColor='#28a745'
-          title='PLAY' />
+          fontFamily='ChalkboardSE'
+          text='PLAY' />
       </View>
     )
   }
