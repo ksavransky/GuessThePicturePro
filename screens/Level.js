@@ -22,10 +22,18 @@ export default class Level extends Component {
     this.difficulty = get(props, 'navigation.state.params.difficulty', 'Easy')
     this.categoryName = get(props, 'navigation.state.params.categoryName', 'Places')
     this.titleColor = get(props, 'navigation.state.params.titleColor', '#28a745')
+
     const { height, width } = Dimensions.get('window')
     this.screenHeight = height
     this.screenWidth = width
     this.isiPad = this.screenHeight > 900
+    const widthRemainder = (this.screenWidth * 0.9) % NUMBER_OF_TILES.ROW
+    this.photoWidth = (this.screenWidth * 0.9) - widthRemainder
+    this.tileWidth = this.photoWidth / NUMBER_OF_TILES.ROW
+    const heightRemainder = (this.screenHeight * 0.45) % NUMBER_OF_TILES.COLUMN
+    this.photoHeight = (this.screenHeight * 0.45) - heightRemainder
+    this.tileHeight = this.photoHeight / NUMBER_OF_TILES.COLUMN
+
 
     this.state = {
       isiPad: false,
@@ -146,7 +154,7 @@ export default class Level extends Component {
 
   renderPhoto = (hideImageWhileTileLoading) => {
     return (
-      <View style={{width: '90%', height: '50%', position: 'relative'}}>
+      <View style={{width: this.photoWidth, height: this.photoHeight, position: 'relative'}}>
         <Image
           style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading}}
           source={this.state.currentLevel.imagePath}
@@ -164,8 +172,8 @@ export default class Level extends Component {
     for (let i = 0; i < NUMBER_OF_TILES.ROW; i++) {
       for (let j = 0; j < NUMBER_OF_TILES.COLUMN; j++) {
         if (this.state.visibleTiles[i][j]) {
-          let top = (i * 20) + '%'
-          let left = (j * 20) + '%'
+          let top = i * this.tileHeight
+          let left = j * this.tileWidth
           tiles.push(
             <TouchableOpacity
               activeOpacity={(this.state.revealsLeft > 0) ? 0.5 : 1}
@@ -175,8 +183,8 @@ export default class Level extends Component {
                 top: top,
                 left: left,
                 position: 'absolute',
-                width: '20%',
-                height: '20%',
+                height: this.tileHeight,
+                width: this.tileWidth,
                 borderColor: 'grey',
                 borderWidth: 1
               }}
