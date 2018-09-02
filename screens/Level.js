@@ -187,7 +187,9 @@ export default class Level extends Component {
               style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading}}
               source={this.state.currentLevel.imagePath}
             />
-            {this.renderTiles()}
+            <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2, borderColor: 'grey', borderWidth: 1}}>
+              {this.renderTiles()}
+            </View>
           </View>
           <View style={{width: totalFormWidth, flexDirection: 'column'}}>
             <FormLabel
