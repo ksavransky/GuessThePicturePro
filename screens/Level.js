@@ -89,7 +89,7 @@ export default class Level extends Component {
     })
   }
 
-  handleTileClick = (i, j) => {
+  handleTilePress = (i, j) => {
     if (this.state.revealsLeft > 0) {
       let visibleTiles = cloneDeep(this.state.visibleTiles)
       visibleTiles[i][j] = false
@@ -162,9 +162,17 @@ export default class Level extends Component {
           tiles.push(
             <TouchableOpacity
               activeOpacity={(this.state.revealsLeft > 0) ? 0.5 : 1}
-              onPress={() => this.handleTileClick(i, j)}
+              onPress={() => this.handleTilePress(i, j)}
               key={i + '_' + j}
-              style={[styles.tile, {top: top, left: left}]}
+              style={{
+                top: top,
+                left: left,
+                position: 'absolute',
+                width: '20%',
+                height: '20%',
+                borderColor: 'grey',
+                borderWidth: 1
+              }}
               >
               <Image
                 style={{width: '100%', height: '100%'}}
@@ -288,13 +296,3 @@ export default class Level extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  tile: {
-    position: 'absolute',
-    width: '20%',
-    height: '20%',
-    borderColor: 'grey',
-    borderWidth: 1
-  }
-});
