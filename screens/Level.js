@@ -10,6 +10,11 @@ const window = Dimensions.get('window');
 
 const GAME_DATA = 'GameData'
 
+const TILES = {
+  VERTICAL: 5,
+  HORIZONTAL: 5
+}
+
 export default class Level extends Component {
   constructor(props) {
     super(props)
@@ -18,7 +23,13 @@ export default class Level extends Component {
     this.categoryName = get(props, 'navigation.state.params.categoryName', 'Places')
     this.titleColor = get(props, 'navigation.state.params.titleColor', '#28a745')
     this.screenHeight = Dimensions.get('window').height
+    this.screenWidth = Dimensions.get('window').width
     this.isiPad = this.screenHeight > 900
+
+    console.warn('this.screenHeight')
+    console.warn(this.screenHeight)
+    console.warn('this.screenWidth')
+    console.warn(this.screenWidth)
 
     this.state = {
       isiPad: false,
@@ -154,8 +165,8 @@ export default class Level extends Component {
   renderTiles = () => {
     let tiles = []
 
-    for (let i = 0; i < 5; i++) {
-      for (let j = 0; j < 5; j++) {
+    for (let i = 0; i < TILES.HORIZONTAL; i++) {
+      for (let j = 0; j < TILES.VERTICAL; j++) {
         if (this.state.visibleTiles[i][j]) {
           let top = (i * 20) + '%'
           let left = (j * 20) + '%'
