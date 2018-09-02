@@ -10,9 +10,14 @@ const window = Dimensions.get('window');
 
 const GAME_DATA = 'GameData'
 
-const NUMBER_OF_TILES = {
+const NUMBER_OF_TILES_PER = {
   ROW: 5,
   COLUMN: 5
+}
+
+const PHOTO_SCREEN_PERCENT = {
+  WIDTH: 0.9,
+  HEIGHT: 0.45
 }
 
 export default class Level extends Component {
@@ -27,13 +32,16 @@ export default class Level extends Component {
     this.screenHeight = height
     this.screenWidth = width
     this.isiPad = this.screenHeight > 900
-    const widthRemainder = (this.screenWidth * 0.9) % NUMBER_OF_TILES.ROW
-    this.photoWidth = (this.screenWidth * 0.9) - widthRemainder
-    this.tileWidth = this.photoWidth / NUMBER_OF_TILES.ROW
-    const heightRemainder = (this.screenHeight * 0.45) % NUMBER_OF_TILES.COLUMN
-    this.photoHeight = (this.screenHeight * 0.45) - heightRemainder
-    this.tileHeight = this.photoHeight / NUMBER_OF_TILES.COLUMN
 
+    const photoPercentWidthOfScreen = this.screenWidth * PHOTO_SCREEN_PERCENT.WIDTH
+    const widthRemainder = photoPercentWidthOfScreen % NUMBER_OF_TILES_PER.ROW
+    this.photoWidth = photoPercentWidthOfScreen - widthRemainder
+    this.tileWidth = this.photoWidth / NUMBER_OF_TILES_PER.ROW
+
+    const photoPercentHeightOfScreen = this.screenHeight * PHOTO_SCREEN_PERCENT.HEIGHT
+    const heightRemainder = photoPercentHeightOfScreen % NUMBER_OF_TILES_PER.COLUMN
+    this.photoHeight = photoPercentHeightOfScreen - heightRemainder
+    this.tileHeight = this.photoHeight / NUMBER_OF_TILES_PER.COLUMN
 
     this.state = {
       isiPad: false,
@@ -52,7 +60,7 @@ export default class Level extends Component {
       guessInput: null,
       isKeyBoardOpen: false,
       guessesLeft: 3,
-      revealsLeft: 15
+      revealsLeft: 12
     }
   }
 
@@ -169,8 +177,8 @@ export default class Level extends Component {
   renderTiles = () => {
     let tiles = []
 
-    for (let i = 0; i < NUMBER_OF_TILES.ROW; i++) {
-      for (let j = 0; j < NUMBER_OF_TILES.COLUMN; j++) {
+    for (let i = 0; i < NUMBER_OF_TILES_PER.ROW; i++) {
+      for (let j = 0; j < NUMBER_OF_TILES_PER.COLUMN; j++) {
         if (this.state.visibleTiles[i][j]) {
           let top = i * this.tileHeight
           let left = j * this.tileWidth
