@@ -26,7 +26,7 @@ export default class Level extends Component {
       gameData: null,
       availableLevels: [],
       currentLevel: null,
-      points: 100,
+      points: 250,
       visibleTiles: [
         [true, true, true, true, true],
         [true, true, true, true, true],
@@ -35,7 +35,9 @@ export default class Level extends Component {
         [true, true, true, true, true]
       ],
       guessInput: null,
-      isKeyBoardOpen: false
+      isKeyBoardOpen: false,
+      guessesMade: 0,
+      reveals: 0
     }
   }
 
@@ -105,6 +107,44 @@ export default class Level extends Component {
 
   }
 
+  renderTitle = (hideTitleAndGameInfoWhenKeyboardOpen) => {
+    return (
+      <Text h4 fontFamily='ChalkboardSE' style={{color: this.titleColor, margin: 10, display: hideTitleAndGameInfoWhenKeyboardOpen}}>
+        {this.categoryName}
+      </Text>
+    )
+  }
+
+  renderGameInfo = (hideTitleAndGameInfoWhenKeyboardOpen) => {
+    return (
+      <View style={{marginBottom: 10, display: hideTitleAndGameInfoWhenKeyboardOpen}}>
+        <Text h5 style={{color: 'black'}}>
+          {'Points: ' + this.state.points}
+        </Text>
+        <Text h5 style={{color: 'black'}}>
+          {'Points: ' + this.state.points}
+        </Text>
+        <Text h5 style={{color: 'black'}}>
+          {'Points: ' + this.state.points}
+        </Text>
+      </View>
+    )
+  }
+
+  renderPhoto = (hideImageWhileTileLoading) => {
+    return (
+      <View style={{width: '90%', height: '50%', position: 'relative'}}>
+        <Image
+          style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading}}
+          source={this.state.currentLevel.imagePath}
+        />
+        <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2, borderColor: 'grey', borderWidth: 1}}>
+          {this.renderTiles()}
+        </View>
+      </View>
+    )
+  }
+
   renderTiles = () => {
     let tiles = []
 
@@ -136,8 +176,58 @@ export default class Level extends Component {
     return tiles
   }
 
+  renderForm = (totalFormWidth, formLabelMarginTop, formLabelFontSize, formInputMarginTop, formInputWidth, inputFontSize) => {
+    return (
+      <View style={{width: totalFormWidth, flexDirection: 'column'}}>
+        <FormLabel
+          containerStyle={{width: '100%', marginTop: formLabelMarginTop}}
+          labelStyle={{color: 'grey', fontSize: formLabelFontSize, fontWeight: '400'}}>
+          {'Your Guess:'}
+        </FormLabel>
+        <View style={{marginTop: formInputMarginTop, width: '100%', flexDirection: 'row', position: 'relative'}}>
+          <FormInput
+            spellCheck={false}
+            autoCorrect={false}
+            maxLength={32}
+            containerStyle={{borderBottomColor: 'grey', width: formInputWidth}}
+            inputStyle={{color: 'black', fontSize: inputFontSize}}
+            onChangeText={this.handleGuessInput}/>
+          {this.state.isKeyBoardOpen &&
+            <LargeButton
+              onPress={this.handleSubmit}
+              fontFamily='ChalkboardSE'
+              fontSize={14}
+              style={{
+                position: 'absolute',
+                right: 7,
+                bottom: 7
+              }}
+              backgroundColor='#28a745'
+              text='SUBMIT' />
+          }
+        </View>
+      </View>
+    )
+  }
+
+  renderBottomButton = () => {
+    if (!this.state.isKeyBoardOpen) {
+      return (
+          <LargeButton
+            onPress={this.handleSubmit}
+            fontFamily='ChalkboardSE'
+            fontSize={24}
+            style={{marginTop: 30}}
+            backgroundColor='#28a745'
+            text='SUBMIT' />
+        )
+    } else {
+      return null
+    }
+  }
+
   render() {
-    let hideTitleAndPointsWhenKeyboardOpen = 'flex'
+    let hideTitleAndGameInfoWhenKeyboardOpen = 'flex'
     let formLabelMarginTop = 20
     let formLabelFontSize = 20
     let formInputMarginTop = 10
@@ -150,7 +240,7 @@ export default class Level extends Component {
     let showSmallButtonWhenKeyboardOpen = 'none'
 
     if (this.state.isKeyBoardOpen) {
-      hideTitleAndPointsWhenKeyboardOpen = 'none'
+      hideTitleAndGameInfoWhenKeyboardOpen = 'none'
       formInputWidth = '90%'
       formInputAlignment = 'flex-start'
       hideBigButtonWhenKeyboardOpen = 'none'
@@ -176,60 +266,11 @@ export default class Level extends Component {
     if (this.state.currentLevel) {
       return (
         <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
-          <Text h4 fontFamily='ChalkboardSE' style={{color: this.titleColor, margin: 10, display: hideTitleAndPointsWhenKeyboardOpen}}>
-            {this.categoryName}
-          </Text>
-          <Text h5 style={{color: 'black', marginBottom: 10, marginRight: 20, alignSelf: 'flex-end', display: hideTitleAndPointsWhenKeyboardOpen}}>
-            {'Points: ' + this.state.points}
-          </Text>
-          <View style={{width: '90%', height: '50%', position: 'relative'}}>
-            <Image
-              style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading}}
-              source={this.state.currentLevel.imagePath}
-            />
-            <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2, borderColor: 'grey', borderWidth: 1}}>
-              {this.renderTiles()}
-            </View>
-          </View>
-          <View style={{width: totalFormWidth, flexDirection: 'column'}}>
-            <FormLabel
-              containerStyle={{width: '100%', marginTop: formLabelMarginTop}}
-              labelStyle={{color: 'grey', fontSize: formLabelFontSize, fontWeight: '400'}}>
-              {'Your Guess:'}
-            </FormLabel>
-            <View style={{marginTop: formInputMarginTop, width: '100%', flexDirection: 'row', position: 'relative'}}>
-              <FormInput
-                spellCheck={false}
-                autoCorrect={false}
-                maxLength={32}
-                containerStyle={{borderBottomColor: 'grey', width: formInputWidth}}
-                inputStyle={{color: 'black', fontSize: inputFontSize}}
-                onChangeText={this.handleGuessInput}/>
-              {this.state.isKeyBoardOpen &&
-                <LargeButton
-                  onPress={this.handleSubmit}
-                  fontFamily='ChalkboardSE'
-                  fontSize={14}
-                  style={{
-                    position: 'absolute',
-                    right: 7,
-                    bottom: 7
-                  }}
-                  backgroundColor='#28a745'
-                  text='SUBMIT' />
-              }
-            </View>
-          </View>
-          {
-            !this.state.isKeyBoardOpen &&
-              <LargeButton
-                onPress={this.handleSubmit}
-                fontFamily='ChalkboardSE'
-                fontSize={24}
-                style={{marginTop: 30}}
-                backgroundColor='#28a745'
-                text='SUBMIT' />
-          }
+          {this.renderTitle(hideTitleAndGameInfoWhenKeyboardOpen)}
+          {this.renderGameInfo(hideTitleAndGameInfoWhenKeyboardOpen)}
+          {this.renderPhoto(hideImageWhileTileLoading)}
+          {this.renderForm(totalFormWidth, formLabelMarginTop, formLabelFontSize, formInputMarginTop, formInputWidth, inputFontSize)}
+          {this.renderBottomButton()}
         </KeyboardAvoidingView>
       )
     }
