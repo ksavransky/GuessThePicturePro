@@ -5,6 +5,7 @@ import { get, filter, cloneDeep } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 import LargeButton from '../components/buttons/LargeButton'
+import SmallButton from '../components/buttons/SmallButton'
 
 const window = Dimensions.get('window');
 
@@ -164,10 +165,10 @@ export default class Level extends Component {
     return (
       <View style={{width: this.photoWidth, height: this.photoHeight, position: 'relative'}}>
         <Image
-          style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading}}
+          style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading, zIndex: 1}}
           source={this.state.currentLevel.imagePath}
         />
-        <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2, borderColor: 'grey', borderWidth: 1}}>
+        <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2}}>
           {this.renderTiles()}
         </View>
       </View>
@@ -228,16 +229,16 @@ export default class Level extends Component {
             autoCorrect={false}
             maxLength={32}
             containerStyle={{borderBottomColor: 'grey', width: formInputWidth}}
-            inputStyle={{color: 'black', fontSize: inputFontSize}}
+            inputStyle={{paddingLeft: 3, color: 'black', fontSize: inputFontSize}}
             onChangeText={this.handleGuessInput}/>
           {this.state.isKeyBoardOpen &&
-            <LargeButton
+            <SmallButton
               onPress={this.handleSubmit}
               fontFamily='ChalkboardSE'
-              fontSize={14}
+              topBottomPadding={10}
               style={{
                 position: 'absolute',
-                right: 7,
+                right: 9,
                 bottom: 7
               }}
               backgroundColor='#28a745'
