@@ -12,7 +12,7 @@ export const RootStack = createStackNavigator(
     Level: Level,
   },
   {
-    initialRouteName: 'Intro',
+    initialRouteName: 'CategoriesScreen',
     navigationOptions: {
       headerStyle: {
         display: 'none',

@@ -21,6 +21,12 @@ const PHOTO_SCREEN_PERCENT = {
   HEIGHT: 0.45
 }
 
+const INSTRUCTIONS = {
+  LINE_1: 'Tap on the tiles to reveal the photo underneath!',
+  LINE_2: 'When you think you know what the photo is showing, tap below Your Guess and type in your guess.',
+  LINE_3: 'You have 3 guesses, and can reveal up to 12 tiles. Good Luck!'
+}
+
 export default class Level extends Component {
   constructor(props) {
     super(props)
@@ -171,6 +177,31 @@ export default class Level extends Component {
         <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2}}>
           {this.renderTiles()}
         </View>
+        {this.renderInstructions()}
+      </View>
+    )
+  }
+
+  renderInstructions = () => {
+    return (
+      <View style={{
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        zIndex: 3,
+        justifyContent: 'center',
+        alignContent: 'center',
+        pointerEvents: 'none'
+      }}>
+        <Text h5 style={{color: 'black', marginBottom: 15, textAlign: 'center'}}>
+          {INSTRUCTIONS.LINE_1}
+        </Text>
+        <Text h5 style={{color: 'black', marginBottom: 15, textAlign: 'center'}}>
+          {INSTRUCTIONS.LINE_2}
+        </Text>
+        <Text h5 style={{color: 'black', marginBottom: 15, textAlign: 'center'}}>
+          {INSTRUCTIONS.LINE_3}
+        </Text>
       </View>
     )
   }
