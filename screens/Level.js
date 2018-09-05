@@ -22,9 +22,9 @@ const PHOTO_SCREEN_PERCENT = {
 }
 
 const INSTRUCTIONS = {
-  LINE_1: 'Tap on the tiles to reveal the photo underneath!',
-  LINE_2: 'When you think you know what the photo is showing, tap below Your Guess and type in your guess.',
-  LINE_3: 'You have 3 guesses, and can reveal up to 12 tiles. Good Luck!'
+  LINE_1: 'Tap on the tiles underneath this message to reveal the photo!',
+  LINE_2: 'When you think you know what the photo is showing, type your guess below.',
+  LINE_3: 'You have 3 guesses and can reveal up to 12 tiles. Good Luck!'
 }
 
 export default class Level extends Component {
@@ -67,7 +67,8 @@ export default class Level extends Component {
       guessInput: null,
       isKeyBoardOpen: false,
       guessesLeft: 3,
-      revealsLeft: 12
+      revealsLeft: 12,
+      atLeastOneGameStarted: this.props.atLeastOneGameStarted || false
     }
   }
 
@@ -126,7 +127,8 @@ export default class Level extends Component {
       this.setState({
         visibleTiles: visibleTiles,
         revealsLeft: this.state.revealsLeft - 1,
-        points: (this.state.revealsLeft < 11 ) ? (this.state.points - 10) : this.state.points
+        points: (this.state.revealsLeft < 11 ) ? (this.state.points - 10) : this.state.points,
+        atLeastOneGameStarted: true
       })
     } else {
       console.warn('No more reveals')
@@ -177,29 +179,27 @@ export default class Level extends Component {
         <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2}}>
           {this.renderTiles()}
         </View>
-        {this.renderInstructions()}
+        {!this.state.atLeastOneGameStarted && this.renderInstructions()}
       </View>
     )
   }
 
   renderInstructions = () => {
     return (
-      <View style={{
+      <View pointerEvents='none' style={{
         width: '100%',
         height: '100%',
         position: 'absolute',
         zIndex: 3,
-        justifyContent: 'center',
-        alignContent: 'center',
-        pointerEvents: 'none'
+        backgroundColor: 'rgba(255, 255, 255, 0.7)'
       }}>
-        <Text h5 style={{color: 'black', marginBottom: 15, textAlign: 'center'}}>
+        <Text h5 style={{color: 'black', marginTop: (this.tileHeight + 10), textAlign: 'center'}}>
           {INSTRUCTIONS.LINE_1}
         </Text>
-        <Text h5 style={{color: 'black', marginBottom: 15, textAlign: 'center'}}>
+        <Text h5 style={{color: 'black', marginTop: 10, textAlign: 'center'}}>
           {INSTRUCTIONS.LINE_2}
         </Text>
-        <Text h5 style={{color: 'black', marginBottom: 15, textAlign: 'center'}}>
+        <Text h5 style={{color: 'black', marginTop: 10, textAlign: 'center'}}>
           {INSTRUCTIONS.LINE_3}
         </Text>
       </View>
