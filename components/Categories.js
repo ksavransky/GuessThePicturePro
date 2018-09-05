@@ -11,7 +11,7 @@ export default class Categories extends Component {
     return (
       <List containerStyle={{width: '90%'}}>
         {
-          sortBy(this.props.gameData[this.props.difficulty], ['name']).map((category) => (
+          sortBy(this.props.asyncStorageData.Game[this.props.difficulty], ['name']).map((category) => (
             <ListItem
               containerStyle={{backgroundColor: '#eff7fd', borderRightWidth: 1, borderRightColor: '#cbd2d9', borderLeftWidth: 1, borderLeftColor: '#cbd2d9'}}
               chevronColor='grey'

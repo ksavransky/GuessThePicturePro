@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Text } from 'react-native-elements';
 import { containerStyle, backgroundColorStyle } from '../styles/common.js'
-import { GameData } from '../data/Data.js'
+import { AsyncStorageData } from '../data/Data.js'
 import { get } from 'lodash'
 import Categories from '../components/Categories.js'
 import { clearAllData } from '../utils/asyncstorage'
 import { AsyncStorage } from 'react-native';
-
-const GAME_DATA = 'GameData'
 
 export default class CategoriesScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
       difficulty: get(props, 'navigation.state.params.difficulty', 'Easy'),
-      gameData: GameData
+      asyncStorageData: AsyncStorageData
     }
     // clearAllData()
     this.getLocalStorageData()
@@ -28,13 +26,13 @@ export default class CategoriesScreen extends Component {
   }
 
   getLocalStorageData = () => {
-    AsyncStorage.getItem(GAME_DATA).then((storedGameData) => {
-      if (storedGameData) {
+    AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
+      if (storedData) {
         this.setState({
-          gameData: JSON.parse(storedGameData)
+          asyncStorageData: JSON.parse(storedData)
         })
       } else {
-        AsyncStorage.setItem(GAME_DATA, JSON.stringify(GameData))
+        AsyncStorage.setItem('AsyncStorageData', JSON.stringify(AsyncStorageData))
       }
     })
   }
@@ -70,7 +68,7 @@ export default class CategoriesScreen extends Component {
         <Categories
           navigation={this.props.navigation}
           difficulty={this.state.difficulty}
-          gameData={this.state.gameData}
+          asyncStorageData={this.state.asyncStorageData}
           titleColor={titleColor}
         />
       </View>

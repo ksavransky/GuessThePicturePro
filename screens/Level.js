@@ -9,8 +9,6 @@ import SmallButton from '../components/buttons/SmallButton'
 
 const window = Dimensions.get('window');
 
-const GAME_DATA = 'GameData'
-
 const NUMBER_OF_TILES_PER = {
   ROW: 5,
   COLUMN: 5
@@ -53,7 +51,6 @@ export default class Level extends Component {
     this.state = {
       isiPad: false,
       isTileLoaded: false,
-      gameData: null,
       availableLevels: [],
       currentLevel: null,
       points: 200,
@@ -68,15 +65,17 @@ export default class Level extends Component {
       isKeyBoardOpen: false,
       guessesLeft: 3,
       revealsLeft: 12,
-      atLeastOneGameStarted: this.props.atLeastOneGameStarted || false
+      atLeastOneGameStarted: false
     }
+
+    this.storedData = null
   }
 
   componentDidMount() {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
     this.getAvailableLevels()
-    this.getGameData()
+    this.getStoredData()
   }
 
   componentWillUnmount () {
@@ -105,10 +104,11 @@ export default class Level extends Component {
     })
   }
 
-  getGameData = () => {
-    AsyncStorage.getItem(GAME_DATA).then((storedGameData) => {
+  getStoredData = () => {
+    AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
+      this.storedData = JSON.parse(storedData)
       this.setState({
-        gameData: JSON.parse(storedGameData)
+        atLeastOneGameStarted: this.storedData.General.atLeastOneGameStarted
       })
     })
   }
@@ -130,6 +130,11 @@ export default class Level extends Component {
         points: (this.state.revealsLeft < 11 ) ? (this.state.points - 10) : this.state.points,
         atLeastOneGameStarted: true
       })
+
+      if (!this.storedData.General.atLeastOneGameStarted) {        
+        this.storedData.General.atLeastOneGameStarted = true
+        AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
+      }
     } else {
       console.warn('No more reveals')
     }
