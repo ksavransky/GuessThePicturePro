@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, KeyboardAvoidingView, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator, Keyboard, Dimensions} from 'react-native';
 import { Text, FormLabel, FormInput } from 'react-native-elements';
-import { get, filter, cloneDeep } from 'lodash'
+import { get, filter, cloneDeep, every } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 import LargeButton from '../components/buttons/LargeButton'
@@ -131,7 +131,7 @@ export default class Level extends Component {
         atLeastOneGameStarted: true
       })
 
-      if (!this.storedData.General.atLeastOneGameStarted) {        
+      if (!this.storedData.General.atLeastOneGameStarted) {
         this.storedData.General.atLeastOneGameStarted = true
         AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
       }
@@ -146,8 +146,37 @@ export default class Level extends Component {
     })
   }
 
-  handleSubmit = () => {
+  handleWrongAnswer = () => {
+    if (this.state.guessesLeft === 1) {
 
+    } else {
+      
+    }
+  }
+
+  handleCorrectAnswer = () => {
+
+  }
+
+  handleSubmit = () => {
+    const guessArray = this.state.guessInput.toLowerCase().split(' ')
+    const optionalAnswer = this.state.currentLevel.optionalAnswer
+    let isAnswerCorrect = false
+    if (optionalAnswer) {
+      optionalAnswer.forEach((answerArray) => {
+        if (!isAnswerCorrect && every(answerArray, (word) => guessArray.includes(word))) {
+          isAnswerCorrect = true
+        }
+      })
+    } else {
+      const answerArray = this.state.currentLevel.answer.split('_')
+      isAnswerCorrect = every(answerArray, (word) => guessArray.includes(word))
+    }
+    if (isAnswerCorrect) {
+      this.handleCorrectAnswer()
+    } else {
+      this.handleWrongAnswer()
+    }
   }
 
   renderTitle = (hideTitleAndGameInfoWhenKeyboardOpen) => {
