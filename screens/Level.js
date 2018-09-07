@@ -379,21 +379,22 @@ export default class Level extends Component {
     return (
       <View style={{
         flex: 1,
+        backgroundColor: 'rgba(50, 50, 50, 0.5)',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'blue',
-        marginTop: '40%',
-        marginBottom: '70%',
-        marginLeft: '10%',
-        marginRight: '10%',
-        borderWidth: 1,
-        borderColor: 'blue',
-        borderRadius: 10
       }}>
         <View style={{
-          marginTop: '50%',
+          backgroundColor: 'blue',
+          borderWidth: 1,
+          borderColor: 'blue',
+          borderRadius: 50,
+          height: '25%',
+          width: '85%',
+          justifyContent: 'center',
+          marginBottom: 100,
+          paddingBottom: 10
         }}>
-          <Text h4 style={{textAlign: 'center', color: 'white', fontFamily: 'ChalkboardSE'}}>{wrongMessage}</Text>
+          <Text h4 style={{textAlign: 'center', color: 'white', fontFamily: 'ChalkboardSE', marginBottom: 20}}>{wrongMessage}</Text>
           <Text h4 style={{textAlign: 'center', color: 'white', fontFamily: 'ChalkboardSE'}}>
             {'You have ' + this.state.guessesLeft + ' guesses left!'}
           </Text>
@@ -434,7 +435,7 @@ export default class Level extends Component {
     const showModal = this.state.showModal
     return (
       <Modal
-        animationType='slide'
+        animationType='fade'
         transparent
         visible={!!showModal}>
         {showModal === 'win' ? this.renderWinModal() :
