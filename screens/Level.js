@@ -349,37 +349,34 @@ export default class Level extends Component {
 
   renderModal = () => {
     return (
-      <View style={{marginTop: 22, width: '50%', height: '50%'}}>
-        <Modal
-          animationType="slide"
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {
-            console.warn('Modal has been closed.');
+      <Modal
+        animationType='slide'
+        transparent
+        visible={this.state.modalVisible}>
+          <View style={{
+            flex: 1,
+            alignItems: 'center',
+            backgroundColor: 'lightblue',
+            marginTop: '35%',
+            marginBottom: '45%',
+            marginLeft: '5%',
+            marginRight: '5%',
+            borderWidth: 1,
+            borderColor: 'grey'
           }}>
-            <View style={{marginTop: 22}}>
-              <View>
-                <Text>Hello World!</Text>
-
-                <TouchableHighlight
-                  onPress={() => {
-                    this.setState({
-                      modalVisible: false
-                    })
-                  }}>
-                  <Text>Hide Modal</Text>
-                </TouchableHighlight>
-              </View>
+            <View>
+              <Text>Hello World!</Text>
+              <TouchableHighlight
+                onPress={() => {
+                  this.setState({
+                    modalVisible: false
+                  })
+                }}>
+                <Text>Hide Modal</Text>
+              </TouchableHighlight>
             </View>
-        </Modal>
-
-        <TouchableHighlight
-          onPress={() => {
-            this.setModalVisible(true);
-          }}>
-          <Text>Show Modal</Text>
-        </TouchableHighlight>
-      </View>
+          </View>
+      </Modal>
     )
   }
 
