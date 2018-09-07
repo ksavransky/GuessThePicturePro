@@ -375,28 +375,28 @@ export default class Level extends Component {
   }
 
   renderWrongModal = () => {
+    let wrongMessage = "Sorry, That's Wrong"
     return (
       <View style={{
         flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'pink',
-        marginTop: '35%',
-        marginBottom: '45%',
-        marginLeft: '5%',
-        marginRight: '5%',
+        backgroundColor: 'blue',
+        marginTop: '40%',
+        marginBottom: '70%',
+        marginLeft: '10%',
+        marginRight: '10%',
         borderWidth: 1,
-        borderColor: 'grey'
+        borderColor: 'blue',
+        borderRadius: 10
       }}>
-        <View>
-          <Text>{this.state.showModal}</Text>
-          <TouchableHighlight
-            onPress={() => {
-              this.setState({
-                showModal: false
-              })
-            }}>
-            <Text>Hide Modal</Text>
-          </TouchableHighlight>
+        <View style={{
+          marginTop: '50%',
+        }}>
+          <Text h4 style={{textAlign: 'center', color: 'white', fontFamily: 'ChalkboardSE'}}>{wrongMessage}</Text>
+          <Text h4 style={{textAlign: 'center', color: 'white', fontFamily: 'ChalkboardSE'}}>
+            {'You have ' + this.state.guessesLeft + ' guesses left!'}
+          </Text>
         </View>
       </View>
     )
