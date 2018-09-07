@@ -356,7 +356,7 @@ export default class Level extends Component {
           <View style={{
             flex: 1,
             alignItems: 'center',
-            backgroundColor: 'lightblue',
+            backgroundColor: 'pink',
             marginTop: '35%',
             marginBottom: '45%',
             marginLeft: '5%',
