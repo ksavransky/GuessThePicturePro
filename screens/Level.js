@@ -77,7 +77,7 @@ export default class Level extends Component {
       guessesLeft: 3,
       revealsLeft: 12,
       atLeastOneGameStarted: false,
-      modalVisible: false
+      showModal: false
     }
 
     this.storedData = null
@@ -159,15 +159,17 @@ export default class Level extends Component {
   }
 
   handleWrongAnswer = () => {
-    if (this.state.guessesLeft === 1) {
-
-    } else {
-
-    }
+    const guessesLeft = this.state.guessesLeft - 1
+    this.setState({
+      showModal: guessesLeft > 0 ? 'wrong' : 'lose',
+      guessesLeft: guessesLeft
+    })
   }
 
   handleCorrectAnswer = () => {
-
+    this.setState({
+      showModal: 'correct'
+    })
   }
 
   handleSubmit = () => {
@@ -184,14 +186,11 @@ export default class Level extends Component {
       const answerArray = this.state.currentLevel.answer.split('_')
       isAnswerCorrect = every(answerArray, (word) => guessArray.includes(word))
     }
-    this.setState({
-      modalVisible: true
-    })
-    // if (isAnswerCorrect) {
-    //   this.handleCorrectAnswer()
-    // } else {
-    //   this.handleWrongAnswer()
-    // }
+    if (isAnswerCorrect) {
+      this.handleCorrectAnswer()
+    } else {
+      this.handleWrongAnswer()
+    }
   }
 
   renderTitle = (hideTitleAndGameInfoWhenKeyboardOpen) => {
@@ -347,35 +346,100 @@ export default class Level extends Component {
     }
   }
 
+  renderLoseModal = () => {
+    return (
+      <View style={{
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: 'pink',
+        marginTop: '35%',
+        marginBottom: '45%',
+        marginLeft: '5%',
+        marginRight: '5%',
+        borderWidth: 1,
+        borderColor: 'grey'
+      }}>
+        <View>
+          <Text>{this.state.showModal}</Text>
+          <TouchableHighlight
+            onPress={() => {
+              this.setState({
+                showModal: false
+              })
+            }}>
+            <Text>Hide Modal</Text>
+          </TouchableHighlight>
+        </View>
+      </View>
+    )
+  }
+
+  renderWrongModal = () => {
+    return (
+      <View style={{
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: 'pink',
+        marginTop: '35%',
+        marginBottom: '45%',
+        marginLeft: '5%',
+        marginRight: '5%',
+        borderWidth: 1,
+        borderColor: 'grey'
+      }}>
+        <View>
+          <Text>{this.state.showModal}</Text>
+          <TouchableHighlight
+            onPress={() => {
+              this.setState({
+                showModal: false
+              })
+            }}>
+            <Text>Hide Modal</Text>
+          </TouchableHighlight>
+        </View>
+      </View>
+    )
+  }
+
+  renderWinModal = () => {
+    return (
+      <View style={{
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: 'pink',
+        marginTop: '35%',
+        marginBottom: '45%',
+        marginLeft: '5%',
+        marginRight: '5%',
+        borderWidth: 1,
+        borderColor: 'grey'
+      }}>
+        <View>
+          <Text>{this.state.showModal}</Text>
+          <TouchableHighlight
+            onPress={() => {
+              this.setState({
+                showModal: false
+              })
+            }}>
+            <Text>Hide Modal</Text>
+          </TouchableHighlight>
+        </View>
+      </View>
+    )
+  }
+
   renderModal = () => {
+    const showModal = this.state.showModal
     return (
       <Modal
         animationType='slide'
         transparent
-        visible={this.state.modalVisible}>
-          <View style={{
-            flex: 1,
-            alignItems: 'center',
-            backgroundColor: 'pink',
-            marginTop: '35%',
-            marginBottom: '45%',
-            marginLeft: '5%',
-            marginRight: '5%',
-            borderWidth: 1,
-            borderColor: 'grey'
-          }}>
-            <View>
-              <Text>Hello World!</Text>
-              <TouchableHighlight
-                onPress={() => {
-                  this.setState({
-                    modalVisible: false
-                  })
-                }}>
-                <Text>Hide Modal</Text>
-              </TouchableHighlight>
-            </View>
-          </View>
+        visible={!!showModal}>
+        {showModal === 'win' ? this.renderWinModal() :
+          showModal === 'lose' ? this.renderLoseModal() :
+          this.renderWrongModal()}
       </Modal>
     )
   }
