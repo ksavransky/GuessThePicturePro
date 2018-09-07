@@ -1,5 +1,16 @@
 import React, { Component } from 'react';
-import { View, KeyboardAvoidingView, Image, StyleSheet, TouchableOpacity, AsyncStorage, ActivityIndicator, Keyboard, Dimensions} from 'react-native';
+import { View,
+  KeyboardAvoidingView,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableHighlight,
+  AsyncStorage,
+  ActivityIndicator,
+  Keyboard,
+  Dimensions,
+  Modal
+} from 'react-native';
 import { Text, FormLabel, FormInput } from 'react-native-elements';
 import { get, filter, cloneDeep, every } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
@@ -65,7 +76,8 @@ export default class Level extends Component {
       isKeyBoardOpen: false,
       guessesLeft: 3,
       revealsLeft: 12,
-      atLeastOneGameStarted: false
+      atLeastOneGameStarted: false,
+      modalVisible: false
     }
 
     this.storedData = null
@@ -150,7 +162,7 @@ export default class Level extends Component {
     if (this.state.guessesLeft === 1) {
 
     } else {
-      
+
     }
   }
 
@@ -172,11 +184,14 @@ export default class Level extends Component {
       const answerArray = this.state.currentLevel.answer.split('_')
       isAnswerCorrect = every(answerArray, (word) => guessArray.includes(word))
     }
-    if (isAnswerCorrect) {
-      this.handleCorrectAnswer()
-    } else {
-      this.handleWrongAnswer()
-    }
+    this.setState({
+      modalVisible: true
+    })
+    // if (isAnswerCorrect) {
+    //   this.handleCorrectAnswer()
+    // } else {
+    //   this.handleWrongAnswer()
+    // }
   }
 
   renderTitle = (hideTitleAndGameInfoWhenKeyboardOpen) => {
@@ -301,6 +316,7 @@ export default class Level extends Component {
               onPress={this.handleSubmit}
               fontFamily='ChalkboardSE'
               topBottomPadding={10}
+              disabled={!this.state.guessInput}
               style={{
                 position: 'absolute',
                 right: 9,
@@ -319,6 +335,7 @@ export default class Level extends Component {
       return (
           <LargeButton
             onPress={this.handleSubmit}
+            disabled={!this.state.guessInput}
             fontFamily='ChalkboardSE'
             fontSize={24}
             style={{marginTop: 30}}
@@ -328,6 +345,42 @@ export default class Level extends Component {
     } else {
       return null
     }
+  }
+
+  renderModal = () => {
+    return (
+      <View style={{marginTop: 22, width: '50%', height: '50%'}}>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            console.warn('Modal has been closed.');
+          }}>
+            <View style={{marginTop: 22}}>
+              <View>
+                <Text>Hello World!</Text>
+
+                <TouchableHighlight
+                  onPress={() => {
+                    this.setState({
+                      modalVisible: false
+                    })
+                  }}>
+                  <Text>Hide Modal</Text>
+                </TouchableHighlight>
+              </View>
+            </View>
+        </Modal>
+
+        <TouchableHighlight
+          onPress={() => {
+            this.setModalVisible(true);
+          }}>
+          <Text>Show Modal</Text>
+        </TouchableHighlight>
+      </View>
+    )
   }
 
   render() {
@@ -375,6 +428,7 @@ export default class Level extends Component {
           {this.renderPhoto(hideImageWhileTileLoading)}
           {this.renderForm(totalFormWidth, formLabelMarginTop, formLabelFontSize, formInputMarginTop, formInputWidth, inputFontSize)}
           {this.renderBottomButton()}
+          {this.renderModal()}
         </KeyboardAvoidingView>
       )
     }

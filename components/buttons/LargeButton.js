@@ -10,6 +10,7 @@ export default class LargeButton extends Component {
         activeOpacity={this.props.activeOpacity || 0.9}
         onPress={this.props.onPress}
         style={this.props.style}
+        disabled={this.props.disabled}
         >
         <View style={{
           justifyContent: 'center',
@@ -22,9 +23,9 @@ export default class LargeButton extends Component {
           <View style={{
              borderWidth: this.props.borderWidth || 1,
              borderRadius: this.props.borderRadius || 50,
-             borderColor: this.props.borderColor || this.props.backgroundColor || 'transparent',
+             borderColor: this.props.disabled ? 'grey' : (this.props.borderColor || this.props.backgroundColor || 'transparent'),
              width: '100%',
-             backgroundColor: this.props.backgroundColor || '#28a745'
+             backgroundColor: this.props.disabled ? 'grey' : (this.props.backgroundColor || '#28a745')
           }}>
             <Text fontFamily='ChalkboardSE' style={{
               textAlign: 'center',
