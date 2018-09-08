@@ -375,7 +375,12 @@ export default class Level extends Component {
   }
 
   renderWrongModal = () => {
-    let wrongMessage = "Sorry, That's Wrong"
+    const wrongMessages = [
+      "Sorry, That's Wrong.",
+      "Wrong Answer, Try Again.",
+      "Nope, wrong answer."
+    ]
+    const randomWrongMessage = wrongMessages[Math.floor(Math.random() * wrongMessages.length)]
     return (
       <View style={{
         flex: 1,
@@ -387,17 +392,30 @@ export default class Level extends Component {
           backgroundColor: 'blue',
           borderWidth: 1,
           borderColor: 'blue',
-          borderRadius: 50,
-          height: '25%',
+          borderRadius: 1000,
+          height: '40%',
           width: '85%',
           justifyContent: 'center',
+          alignItems: 'center',
           marginBottom: 100,
           paddingBottom: 10
         }}>
-          <Text h4 style={{textAlign: 'center', color: 'white', fontFamily: 'ChalkboardSE', marginBottom: 20}}>{wrongMessage}</Text>
-          <Text h4 style={{textAlign: 'center', color: 'white', fontFamily: 'ChalkboardSE'}}>
+          <Text h4 style={modalStyle.field}>
+            {randomWrongMessage}
+          </Text>
+          <Text h4 style={modalStyle.field}>
             {'You have ' + this.state.guessesLeft + ' guesses left!'}
           </Text>
+          <LargeButton
+            onPress={() => {this.setState({showModal: false})}}
+            fontFamily='ChalkboardSE'
+            fontSize={24}
+            backgroundColor='#28a745'
+            style={{
+              width: 120,
+              alignContent: 'center',
+            }}
+            text='OKAY' />
         </View>
       </View>
     )
@@ -501,3 +519,12 @@ export default class Level extends Component {
     )
   }
 }
+
+const modalStyle = StyleSheet.create({
+  field: {
+    textAlign: 'center',
+    color: 'white',
+    fontFamily: 'ChalkboardSE',
+    marginBottom: 20
+  }
+})
