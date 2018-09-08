@@ -348,27 +348,34 @@ export default class Level extends Component {
 
   renderLoseModal = () => {
     return (
-      <View style={{
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: 'pink',
-        marginTop: '35%',
-        marginBottom: '45%',
-        marginLeft: '5%',
-        marginRight: '5%',
-        borderWidth: 1,
-        borderColor: 'grey'
-      }}>
-        <View>
-          <Text>{this.state.showModal}</Text>
-          <TouchableHighlight
+      <View style={modalStyle.innerContainer}>
+        <Text h4 style={modalStyle.field}>
+          {"You're out of guesses."}
+        </Text>
+        <Text h4 style={modalStyle.field}>
+          {'You Lose!'}
+        </Text>
+        <View style={{
+          flexDirection: 'row'
+        }}>
+          <LargeButton
             onPress={() => {
-              this.setState({
-                showModal: false
+              this.setState({showModal: false}, () => {
+                this.props.navigation.navigate('CategoriesScreen', {difficulty: this.difficulty})
               })
-            }}>
-            <Text>Hide Modal</Text>
-          </TouchableHighlight>
+            }}
+            fontFamily='ChalkboardSE'
+            fontSize={24}
+            backgroundColor='grey'
+            style={[modalStyle.button, {marginRight: 20}]}
+            text='BACK' />
+          <LargeButton
+            onPress={() => {}}
+            fontFamily='ChalkboardSE'
+            fontSize={24}
+            backgroundColor='#28a745'
+            style={modalStyle.button}
+            text='NEXT' />
         </View>
       </View>
     )
@@ -376,50 +383,28 @@ export default class Level extends Component {
 
   renderWrongModal = () => {
     const wrongMessages = [
-      "Sorry, That's Wrong.",
-      "Wrong Answer, Try Again.",
-      "Nope, That's Wrong.",
+      "Sorry, that's wrong.",
+      "Wrong answer. Try again.",
+      "Nope. That's wrong.",
       "You can do better.",
       "Keep trying. You'll get it."
     ]
     const randomWrongMessage = wrongMessages[Math.floor(Math.random() * wrongMessages.length)]
     return (
-      <View style={{
-        flex: 1,
-        backgroundColor: 'rgba(50, 50, 50, 0.5)',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-        <View style={{
-          backgroundColor: '#dceff7',
-          borderWidth: 1,
-          borderColor: 'black',
-          borderRadius: 10,
-          height: '55%',
-          width: '90%',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginBottom: 100,
-          paddingBottom: 10
-        }}>
-          <Text h4 style={modalStyle.field}>
-            {randomWrongMessage}
-          </Text>
-          <Text h4 style={modalStyle.field}>
-            {'You have ' + this.state.guessesLeft + ' guesses left!'}
-          </Text>
-          <LargeButton
-            onPress={() => {this.setState({showModal: false})}}
-            fontFamily='ChalkboardSE'
-            fontSize={24}
-            backgroundColor='#28a745'
-            style={{
-              width: 120,
-              alignContent: 'center',
-              marginTop: 30
-            }}
-            text='OKAY' />
-        </View>
+      <View style={modalStyle.innerContainer}>
+        <Text h4 style={modalStyle.field}>
+          {randomWrongMessage}
+        </Text>
+        <Text h4 style={modalStyle.field}>
+          {'You have ' + this.state.guessesLeft + ' guesses left!'}
+        </Text>
+        <LargeButton
+          onPress={() => {this.setState({showModal: false})}}
+          fontFamily='ChalkboardSE'
+          fontSize={24}
+          backgroundColor='#28a745'
+          style={modalStyle.button}
+          text='OKAY' />
       </View>
     )
   }
@@ -459,9 +444,11 @@ export default class Level extends Component {
         animationType='fade'
         transparent
         visible={!!showModal}>
-        {showModal === 'win' ? this.renderWinModal() :
-          showModal === 'lose' ? this.renderLoseModal() :
-          this.renderWrongModal()}
+        <View style={modalStyle.outerContainer}>
+          {showModal === 'win' ? this.renderWinModal() :
+            showModal === 'lose' ? this.renderLoseModal() :
+            this.renderWrongModal()}
+        </View>
       </Modal>
     )
   }
@@ -529,5 +516,28 @@ const modalStyle = StyleSheet.create({
     color: 'red',
     fontFamily: 'ChalkboardSE',
     marginBottom: 20
+  },
+  outerContainer: {
+    flex: 1,
+    backgroundColor: 'rgba(50, 50, 50, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  innerContainer: {
+    backgroundColor: '#dceff7',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 10,
+    height: '52%',
+    width: '90%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 100,
+    paddingBottom: 10
+  },
+  button: {
+    width: 120,
+    alignContent: 'center',
+    marginTop: 30
   }
 })
