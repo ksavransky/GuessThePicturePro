@@ -378,7 +378,9 @@ export default class Level extends Component {
     const wrongMessages = [
       "Sorry, That's Wrong.",
       "Wrong Answer, Try Again.",
-      "Nope, wrong answer."
+      "Nope, That's Wrong.",
+      "You can do better.",
+      "Keep trying. You'll get it."
     ]
     const randomWrongMessage = wrongMessages[Math.floor(Math.random() * wrongMessages.length)]
     return (
@@ -389,11 +391,11 @@ export default class Level extends Component {
         alignItems: 'center',
       }}>
         <View style={{
-          backgroundColor: 'blue',
+          backgroundColor: '#dceff7',
           borderWidth: 1,
-          borderColor: 'blue',
-          borderRadius: 1000,
-          height: '50%',
+          borderColor: 'black',
+          borderRadius: 10,
+          height: '55%',
           width: '90%',
           justifyContent: 'center',
           alignItems: 'center',
@@ -524,7 +526,7 @@ export default class Level extends Component {
 const modalStyle = StyleSheet.create({
   field: {
     textAlign: 'center',
-    color: 'white',
+    color: 'red',
     fontFamily: 'ChalkboardSE',
     marginBottom: 20
   }
