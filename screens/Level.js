@@ -393,8 +393,8 @@ export default class Level extends Component {
           borderWidth: 1,
           borderColor: 'blue',
           borderRadius: 1000,
-          height: '40%',
-          width: '85%',
+          height: '50%',
+          width: '90%',
           justifyContent: 'center',
           alignItems: 'center',
           marginBottom: 100,
@@ -414,6 +414,7 @@ export default class Level extends Component {
             style={{
               width: 120,
               alignContent: 'center',
+              marginTop: 30
             }}
             text='OKAY' />
         </View>
