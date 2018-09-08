@@ -12,7 +12,7 @@ import { View,
   Modal
 } from 'react-native';
 import { Text, FormLabel, FormInput } from 'react-native-elements';
-import { get, filter, cloneDeep, every } from 'lodash'
+import { get, filter, cloneDeep, every, remove } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 import LargeButton from '../components/buttons/LargeButton'
@@ -35,6 +35,14 @@ const INSTRUCTIONS = {
   LINE_2: 'When you think you know what the photo is showing, type your guess below.',
   LINE_3: 'You have 3 guesses and can reveal up to 12 tiles. Good Luck!'
 }
+
+const ALL_TILES_COVERING = [
+  [true, true, true, true, true],
+  [true, true, true, true, true],
+  [true, true, true, true, true],
+  [true, true, true, true, true],
+  [true, true, true, true, true]
+]
 
 export default class Level extends Component {
   constructor(props) {
@@ -65,13 +73,7 @@ export default class Level extends Component {
       availableLevels: [],
       currentLevel: null,
       points: 200,
-      visibleTiles: [
-        [true, true, true, true, true],
-        [true, true, true, true, true],
-        [true, true, true, true, true],
-        [true, true, true, true, true],
-        [true, true, true, true, true]
-      ],
+      visibleTiles: ALL_TILES_COVERING,
       guessInput: null,
       isKeyBoardOpen: false,
       guessesLeft: 3,
@@ -125,10 +127,11 @@ export default class Level extends Component {
     })
   }
 
-  chooseRandomLevel = () => {
-    const randomLevel = Math.floor(Math.random() * this.state.availableLevels.length);
+  chooseRandomLevel = (remainingLevels) => {
+    const availableLevels = remainingLevels || this.state.availableLevels
+    const randomLevel = Math.floor(Math.random() * availableLevels.length);
     this.setState({
-      currentLevel: this.state.availableLevels[randomLevel]
+      currentLevel: availableLevels[randomLevel]
     })
   }
 
@@ -162,7 +165,8 @@ export default class Level extends Component {
     const guessesLeft = this.state.guessesLeft - 1
     this.setState({
       showModal: guessesLeft > 0 ? 'wrong' : 'lose',
-      guessesLeft: guessesLeft
+      guessesLeft: guessesLeft,
+      points: this.state.points - 50
     })
   }
 
@@ -309,6 +313,7 @@ export default class Level extends Component {
             maxLength={32}
             containerStyle={{borderBottomColor: 'grey', width: formInputWidth}}
             inputStyle={{paddingLeft: 3, color: 'black', fontSize: inputFontSize}}
+            value={this.state.guessInput}
             onChangeText={this.handleGuessInput}/>
           {this.state.isKeyBoardOpen &&
             <SmallButton
@@ -346,6 +351,32 @@ export default class Level extends Component {
     }
   }
 
+  navigateToCategoriesScreen = () => {
+    this.props.navigation.navigate('CategoriesScreen', {difficulty: this.difficulty})
+  }
+
+  setAnotherLevel = () => {
+    this.setState({
+      points: 200,
+      visibleTiles: ALL_TILES_COVERING,
+      guessInput: null,
+      isKeyBoardOpen: false,
+      guessesLeft: 3,
+      revealsLeft: 12,
+      showModal: false
+    }, () => {
+      let remainingLevels = null
+      if (this.state.availableLevels.length > 1) {
+        let availableLevels = cloneDeep(this.state.availableLevels)
+        remove(availableLevels, (level) => {
+          return level.answer === this.state.currentLevel.answer
+        })
+        remainingLevels = availableLevels
+      }
+      this.chooseRandomLevel(remainingLevels)
+    })
+  }
+
   renderLoseModal = () => {
     return (
       <View style={modalStyle.innerContainer}>
@@ -361,7 +392,7 @@ export default class Level extends Component {
           <LargeButton
             onPress={() => {
               this.setState({showModal: false}, () => {
-                this.props.navigation.navigate('CategoriesScreen', {difficulty: this.difficulty})
+                this.navigateToCategoriesScreen()
               })
             }}
             fontFamily='ChalkboardSE'
@@ -370,7 +401,7 @@ export default class Level extends Component {
             style={[modalStyle.button, {marginRight: 20}]}
             text='BACK' />
           <LargeButton
-            onPress={() => {}}
+            onPress={this.setAnotherLevel}
             fontFamily='ChalkboardSE'
             fontSize={24}
             backgroundColor='#28a745'
