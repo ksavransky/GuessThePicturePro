@@ -80,14 +80,15 @@ export default class Level extends Component {
       isTileLoaded: false,
       availableLevels: [],
       currentLevel: null,
-      points: 200,
+      points: 250,
       visibleTiles: ALL_TILES_COVERING,
       guessInput: null,
       isKeyBoardOpen: false,
       guessesLeft: 3,
       revealsLeft: 12,
       atLeastOneGameStarted: false,
-      showModal: false
+      showModal: false,
+      usedHint: false
     }
 
     this.storedData = null
@@ -229,6 +230,30 @@ export default class Level extends Component {
     )
   }
 
+  showHint = () => {
+    this.setState({
+      showModal: 'hint',
+      usedHint: true,
+      points: this.state.points - 50
+    })
+  }
+
+  renderHintButton = () => {
+    return (
+      <SmallButton
+        onPress={this.showHint}
+        fontFamily='ChalkboardSE'
+        topBottomPadding={10}
+        style={{
+          position: 'absolute',
+          right: 10,
+          bottom: -55
+        }}
+        backgroundColor='#28a745'
+        text='HINT' />
+    )
+  }
+
   renderPhoto = (hideImageWhileTileLoading) => {
     return (
       <View style={{width: this.photoWidth, height: this.photoHeight, position: 'relative'}}>
@@ -240,6 +265,7 @@ export default class Level extends Component {
           {this.renderTiles()}
         </View>
         {!this.state.atLeastOneGameStarted && this.renderInstructions()}
+        {!this.state.usedHint && !this.state.isKeyBoardOpen && this.renderHintButton()}
       </View>
     )
   }
@@ -376,7 +402,7 @@ export default class Level extends Component {
       console.warn('you beat the whole category')
     } else {
       this.setState({
-        points: 200,
+        points: 250,
         visibleTiles: ALL_TILES_COVERING,
         guessInput: null,
         isKeyBoardOpen: false,
@@ -514,6 +540,26 @@ export default class Level extends Component {
     )
   }
 
+  renderHintModal = () => {
+    return (
+      <View style={modalStyle.innerContainer}>
+        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
+          {'Here is a hint:'}
+        </Text>
+        <Text h5 style={[modalStyle.field, {color: 'green'}]}>
+          {this.state.currentLevel.hint}
+        </Text>
+        <LargeButton
+          onPress={() => {this.setState({showModal: false})}}
+          fontFamily='ChalkboardSE'
+          fontSize={24}
+          backgroundColor='#28a745'
+          style={modalStyle.button}
+          text='THANKS' />
+      </View>
+    )
+  }
+
   renderModal = () => {
     const showModal = this.state.showModal
     return (
@@ -525,6 +571,7 @@ export default class Level extends Component {
           {showModal === 'win' ? this.renderWinModal() :
             showModal === 'lose' ? this.renderLoseModal() :
             showModal === 'no-reveals' ? this.renderNoReveals() :
+            showModal === 'hint' ? this.renderHintModal() :
             this.renderWrongModal()}
         </View>
       </Modal>
