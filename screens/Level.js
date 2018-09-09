@@ -631,9 +631,9 @@ export default class Level extends Component {
         activeOpacity={0.9}
         onPress={() => {console.warn('closseeeeee')}}
         style={{
-          postion: 'absolute',
-          top: 0,
-          right: 0
+          position: 'absolute',
+          top: '10%',
+          right: '5%'
         }}
         >
         <View>
