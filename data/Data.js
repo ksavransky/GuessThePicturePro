@@ -48,7 +48,7 @@ const EASY = [
       { answer: 'golden_gate',
         imagePath: require('../assets/images/places/goldengate.jpg'),
         isCompleted: false,
-        hint: 'This bridge looks amazing even when covered with fog!'
+        hint: 'This bridge looks amazing even in the SF fog!'
       },
       { answer: 'pyramid_giza',
         imagePath: require('../assets/images/places/pyramidofgiza.jpg'),

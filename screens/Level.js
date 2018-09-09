@@ -130,9 +130,6 @@ export default class Level extends Component {
   getStoredData = () => {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
       this.storedData = JSON.parse(storedData)
-      // this.setState({
-      //   atLeastOneGameStarted: this.storedData.General.atLeastOneGameStarted
-      // })
     })
   }
 
@@ -154,11 +151,6 @@ export default class Level extends Component {
         points: (this.state.revealsLeft < 11 ) ? (this.state.points - 10) : this.state.points,
         atLeastOneGameStarted: true
       })
-      //
-      // if (!this.storedData.General.atLeastOneGameStarted) {
-      //   this.storedData.General.atLeastOneGameStarted = true
-      //   AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
-      // }
     } else {
       this.setState({showModal: 'no-reveals'})
     }
@@ -246,11 +238,12 @@ export default class Level extends Component {
         topBottomPadding={10}
         style={{
           position: 'absolute',
-          right: 10,
-          bottom: -55
+          right: 20,
+          top: 10,
+          zIndex: 4
         }}
         backgroundColor='#28a745'
-        text='HINT' />
+        text='HINT!' />
     )
   }
 
@@ -265,7 +258,6 @@ export default class Level extends Component {
           {this.renderTiles()}
         </View>
         {!this.state.atLeastOneGameStarted && this.renderInstructions()}
-        {!this.state.usedHint && !this.state.isKeyBoardOpen && this.renderHintButton()}
       </View>
     )
   }
@@ -340,6 +332,7 @@ export default class Level extends Component {
           labelStyle={{color: 'grey', fontSize: formLabelFontSize, fontWeight: '400'}}>
           {'Your Guess:'}
         </FormLabel>
+        {!this.state.usedHint && !this.state.isKeyBoardOpen && this.state.revealsLeft < 12 && this.renderHintButton()}
         <View style={{marginTop: formInputMarginTop, width: '100%', flexDirection: 'row', position: 'relative'}}>
           <FormInput
             spellCheck={false}
@@ -408,7 +401,8 @@ export default class Level extends Component {
         isKeyBoardOpen: false,
         guessesLeft: 3,
         revealsLeft: 12,
-        showModal: false
+        showModal: false,
+        usedHint: false
       }, () => {
         if (beatLevel) {
           this.chooseRandomLevel()
@@ -546,7 +540,7 @@ export default class Level extends Component {
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
           {'Here is a hint:'}
         </Text>
-        <Text h5 style={[modalStyle.field, {color: 'green'}]}>
+        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
           {this.state.currentLevel.hint}
         </Text>
         <LargeButton
@@ -554,7 +548,10 @@ export default class Level extends Component {
           fontFamily='ChalkboardSE'
           fontSize={24}
           backgroundColor='#28a745'
-          style={modalStyle.button}
+          style={{
+              width: 150,
+              alignContent: 'center',
+              marginTop: 30}}
           text='THANKS' />
       </View>
     )
@@ -639,7 +636,9 @@ const modalStyle = StyleSheet.create({
   field: {
     textAlign: 'center',
     fontFamily: 'ChalkboardSE',
-    marginBottom: 20
+    marginBottom: 20,
+    marginLeft: 5,
+    marginRight: 5
   },
   outerContainer: {
     flex: 1,
