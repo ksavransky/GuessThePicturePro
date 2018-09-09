@@ -108,10 +108,12 @@ export default class Level extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (!isEqual(prevState.revealsLeft, this.state.revealsLeft) ||
         !isEqual(prevState.guessesLeft, this.state.guessesLeft) ||
+        !isEqual(prevState.answer, this.state.answer) ||
         !isEqual(prevState.usedHint, this.state.usedHint)) {
       const savedLevel = {
         difficulty: this.difficulty,
         categoryName: this.categoryName,
+        answer: this.state.currentLevel.answer,
         points: this.state.points,
         visibleTiles: this.state.visibleTiles,
         revealsLeft: this.state.revealsLeft,
@@ -429,6 +431,7 @@ export default class Level extends Component {
       this.storedData.SavedLevel = {
         difficulty: null,
         categoryName: null,
+        answer: null,
         points: null,
         visibleTiles: null,
         revealsLeft: null,
