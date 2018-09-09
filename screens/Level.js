@@ -363,7 +363,7 @@ export default class Level extends Component {
     this.props.navigation.navigate('CategoriesScreen', {difficulty: this.difficulty})
   }
 
-  getAvailableLevelsWithoutCurrentLevel () => {
+  getAvailableLevelsWithoutCurrentLevel = () => {
     let availableLevels = cloneDeep(this.state.availableLevels)
     remove(availableLevels, (level) => {
       return level.answer === this.state.currentLevel.answer
@@ -455,8 +455,8 @@ export default class Level extends Component {
 
   handleWin = () => {
     const difficultyArray = this.storedData.Game[this.difficulty]
-    const categoryObjectIndex = findIndex(difficultyArray, ['name', this.category])
-    const levelsArray = difficultyArray[categoryObjectIndex].levels
+    const categoryObjectIndex = findIndex(difficultyArray, ['name', this.categoryName])
+    const levelsArray = this.storedData.Game[this.difficulty][categoryObjectIndex].levels
     const currentLevelIndex = findIndex(levelsArray, ['answer', this.state.currentLevel.answer])
     this.storedData.Game[this.difficulty][categoryObjectIndex].levels[currentLevelIndex].isCompleted = true
     this.storedData.Game[this.difficulty][categoryObjectIndex].points += this.state.points
