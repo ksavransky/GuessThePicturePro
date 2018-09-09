@@ -44,6 +44,14 @@ const ALL_TILES_COVERING = [
   [true, true, true, true, true]
 ]
 
+const WRONG_MESSAGES = [
+  "Sorry, that's wrong.",
+  "Wrong answer. Try again.",
+  "Nope. That's wrong.",
+  "You can do better.",
+  "Keep trying. You'll get it."
+]
+
 export default class Level extends Component {
   constructor(props) {
     super(props)
@@ -121,14 +129,14 @@ export default class Level extends Component {
   getStoredData = () => {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
       this.storedData = JSON.parse(storedData)
-      this.setState({
-        atLeastOneGameStarted: this.storedData.General.atLeastOneGameStarted
-      })
+      // this.setState({
+      //   atLeastOneGameStarted: this.storedData.General.atLeastOneGameStarted
+      // })
     })
   }
 
-  chooseRandomLevel = (remainingLevels) => {
-    const availableLevels = remainingLevels || this.state.availableLevels
+  chooseRandomLevel = (differentLevels) => {
+    const availableLevels = differentLevels || this.state.availableLevels
     const randomLevel = Math.floor(Math.random() * availableLevels.length);
     this.setState({
       currentLevel: availableLevels[randomLevel]
@@ -145,13 +153,13 @@ export default class Level extends Component {
         points: (this.state.revealsLeft < 11 ) ? (this.state.points - 10) : this.state.points,
         atLeastOneGameStarted: true
       })
-
-      if (!this.storedData.General.atLeastOneGameStarted) {
-        this.storedData.General.atLeastOneGameStarted = true
-        AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
-      }
+      //
+      // if (!this.storedData.General.atLeastOneGameStarted) {
+      //   this.storedData.General.atLeastOneGameStarted = true
+      //   AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
+      // }
     } else {
-      console.warn('No more reveals')
+      this.setState({showModal: 'no-reveals'})
     }
   }
 
@@ -172,7 +180,7 @@ export default class Level extends Component {
 
   handleCorrectAnswer = () => {
     this.setState({
-      showModal: 'correct'
+      showModal: 'win'
     })
   }
 
@@ -355,35 +363,43 @@ export default class Level extends Component {
     this.props.navigation.navigate('CategoriesScreen', {difficulty: this.difficulty})
   }
 
-  setAnotherLevel = () => {
-    this.setState({
-      points: 200,
-      visibleTiles: ALL_TILES_COVERING,
-      guessInput: null,
-      isKeyBoardOpen: false,
-      guessesLeft: 3,
-      revealsLeft: 12,
-      showModal: false
-    }, () => {
-      let remainingLevels = null
-      if (this.state.availableLevels.length > 1) {
-        let availableLevels = cloneDeep(this.state.availableLevels)
-        remove(availableLevels, (level) => {
-          return level.answer === this.state.currentLevel.answer
-        })
-        remainingLevels = availableLevels
-      }
-      this.chooseRandomLevel(remainingLevels)
-    })
+  setAnotherLevel = (beatLevel = false) => {
+    if (beatLevel && this.state.availableLevels.length === 0) {
+
+    } else {
+      this.setState({
+        points: 200,
+        visibleTiles: ALL_TILES_COVERING,
+        guessInput: null,
+        isKeyBoardOpen: false,
+        guessesLeft: 3,
+        revealsLeft: 12,
+        showModal: false
+      }, () => {
+        if (beatLevel) {
+          this.chooseRandomLevel()
+        } else {
+          let differentLevels = null
+          if (this.state.availableLevels.length > 1) {
+            let availableLevels = cloneDeep(this.state.availableLevels)
+            remove(availableLevels, (level) => {
+              return level.answer === this.state.currentLevel.answer
+            })
+            differentLevels = availableLevels
+          }
+          this.chooseRandomLevel(differentLevels)
+        }
+      })
+    }
   }
 
   renderLoseModal = () => {
     return (
       <View style={modalStyle.innerContainer}>
-        <Text h4 style={modalStyle.field}>
+        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
           {"You're out of guesses."}
         </Text>
-        <Text h4 style={modalStyle.field}>
+        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
           {'You Lose!'}
         </Text>
         <View style={{
@@ -413,20 +429,13 @@ export default class Level extends Component {
   }
 
   renderWrongModal = () => {
-    const wrongMessages = [
-      "Sorry, that's wrong.",
-      "Wrong answer. Try again.",
-      "Nope. That's wrong.",
-      "You can do better.",
-      "Keep trying. You'll get it."
-    ]
-    const randomWrongMessage = wrongMessages[Math.floor(Math.random() * wrongMessages.length)]
+    const randomWrongMessage = WRONG_MESSAGES[Math.floor(Math.random() * WRONG_MESSAGES.length)]
     return (
       <View style={modalStyle.innerContainer}>
-        <Text h4 style={modalStyle.field}>
+        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
           {randomWrongMessage}
         </Text>
-        <Text h4 style={modalStyle.field}>
+        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
           {'You have ' + this.state.guessesLeft + ' guesses left!'}
         </Text>
         <LargeButton
@@ -440,30 +449,46 @@ export default class Level extends Component {
     )
   }
 
+  handleWin = () => {
+    this.setAnotherLevel(true)
+  }
+
   renderWinModal = () => {
     return (
-      <View style={{
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: 'pink',
-        marginTop: '35%',
-        marginBottom: '45%',
-        marginLeft: '5%',
-        marginRight: '5%',
-        borderWidth: 1,
-        borderColor: 'grey'
-      }}>
-        <View>
-          <Text>{this.state.showModal}</Text>
-          <TouchableHighlight
-            onPress={() => {
-              this.setState({
-                showModal: false
-              })
-            }}>
-            <Text>Hide Modal</Text>
-          </TouchableHighlight>
-        </View>
+      <View style={modalStyle.innerContainer}>
+        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
+          {"That's Right! You Win!"}
+        </Text>
+        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
+          {'You scored ' + this.state.points + ' points.'}
+        </Text>
+        <LargeButton
+          onPress={this.handleWin}
+          fontFamily='ChalkboardSE'
+          fontSize={24}
+          backgroundColor='#28a745'
+          style={modalStyle.button}
+          text='NEXT' />
+      </View>
+    )
+  }
+
+  renderNoReveals = () => {
+    return (
+      <View style={modalStyle.innerContainer}>
+        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+          {'You have no reveals left!'}
+        </Text>
+        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+          {'Just figure it out!'}
+        </Text>
+        <LargeButton
+          onPress={() => {this.setState({showModal: false})}}
+          fontFamily='ChalkboardSE'
+          fontSize={24}
+          backgroundColor='#28a745'
+          style={modalStyle.button}
+          text='OKAY' />
       </View>
     )
   }
@@ -478,6 +503,7 @@ export default class Level extends Component {
         <View style={modalStyle.outerContainer}>
           {showModal === 'win' ? this.renderWinModal() :
             showModal === 'lose' ? this.renderLoseModal() :
+            showModal === 'no-reveals' ? this.renderNoReveals() :
             this.renderWrongModal()}
         </View>
       </Modal>
@@ -544,7 +570,6 @@ export default class Level extends Component {
 const modalStyle = StyleSheet.create({
   field: {
     textAlign: 'center',
-    color: 'red',
     fontFamily: 'ChalkboardSE',
     marginBottom: 20
   },

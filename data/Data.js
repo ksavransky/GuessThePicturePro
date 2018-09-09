@@ -57,7 +57,7 @@ const EASY = [
 
 export const AsyncStorageData = {
   General: {
-    atLeastOneGameStarted: false
+    isSoundOn: true
   },
   Game: {
     Easy: EASY,
