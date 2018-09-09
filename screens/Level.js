@@ -12,7 +12,7 @@ import { View,
   Modal
 } from 'react-native';
 import { Text, FormLabel, FormInput } from 'react-native-elements';
-import { get, filter, cloneDeep, every, remove } from 'lodash'
+import { get, filter, cloneDeep, every, remove, findIndex } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 import LargeButton from '../components/buttons/LargeButton'
@@ -363,9 +363,17 @@ export default class Level extends Component {
     this.props.navigation.navigate('CategoriesScreen', {difficulty: this.difficulty})
   }
 
+  getAvailableLevelsWithoutCurrentLevel () => {
+    let availableLevels = cloneDeep(this.state.availableLevels)
+    remove(availableLevels, (level) => {
+      return level.answer === this.state.currentLevel.answer
+    })
+    return availableLevels
+  }
+
   setAnotherLevel = (beatLevel = false) => {
     if (beatLevel && this.state.availableLevels.length === 0) {
-
+      console.warn('you beat the whole category')
     } else {
       this.setState({
         points: 200,
@@ -381,11 +389,7 @@ export default class Level extends Component {
         } else {
           let differentLevels = null
           if (this.state.availableLevels.length > 1) {
-            let availableLevels = cloneDeep(this.state.availableLevels)
-            remove(availableLevels, (level) => {
-              return level.answer === this.state.currentLevel.answer
-            })
-            differentLevels = availableLevels
+            differentLevels = this.getAvailableLevelsWithoutCurrentLevel()
           }
           this.chooseRandomLevel(differentLevels)
         }
@@ -450,7 +454,24 @@ export default class Level extends Component {
   }
 
   handleWin = () => {
-    this.setAnotherLevel(true)
+    const difficultyArray = this.storedData.Game[this.difficulty]
+    const categoryObjectIndex = findIndex(difficultyArray, ['name', this.category])
+    const levelsArray = difficultyArray[categoryObjectIndex].levels
+    const currentLevelIndex = findIndex(levelsArray, ['answer', this.state.currentLevel.answer])
+    this.storedData.Game[this.difficulty][categoryObjectIndex].levels[currentLevelIndex].isCompleted = true
+    this.storedData.Game[this.difficulty][categoryObjectIndex].points += this.state.points
+    this.storedData.Game[this.difficulty][categoryObjectIndex].levelsComplete += 1
+    this.storedData.Game[this.difficulty][categoryObjectIndex].savedLevel = {
+      answer: null,
+      points: null,
+      visibleTiles: null
+    }
+    AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
+    this.setState({
+      availableLevels: this.getAvailableLevelsWithoutCurrentLevel()
+    }, () => {
+      this.setAnotherLevel(true)
+    })
   }
 
   renderWinModal = () => {
