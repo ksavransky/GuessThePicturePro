@@ -4,11 +4,6 @@ const EASY = [
     iconPath: require('../assets/images/places/eiffel.jpeg'),
     levelsComplete: 0,
     points: 0,
-    savedLevel: {
-      answer: null,
-      points: null,
-      visibleTiles: null
-    },
     levels: [
       { answer: 'colosseum',
         imagePath: require('../assets/images/places/colosseum.jpeg'),
@@ -73,5 +68,15 @@ export const AsyncStorageData = {
     Easy: EASY,
     Medium: [],
     Hard: []
-  }
+  },
+  SavedLevel: {
+    difficulty: null,
+    categoryName: null,
+    answer: null,
+    points: null,
+    visibleTiles: null,
+    revealsLeft: null,
+    guessesLeft: null,
+    usedHint: null
+  },
 }

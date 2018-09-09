@@ -12,7 +12,7 @@ import { View,
   Modal
 } from 'react-native';
 import { Text, FormLabel, FormInput } from 'react-native-elements';
-import { get, filter, cloneDeep, every, remove, findIndex } from 'lodash'
+import { get, filter, cloneDeep, every, remove, findIndex, find, isEqual } from 'lodash'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 import LargeButton from '../components/buttons/LargeButton'
@@ -97,13 +97,29 @@ export default class Level extends Component {
   componentDidMount() {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
-    this.getAvailableLevels()
     this.getStoredData()
   }
 
   componentWillUnmount () {
     this.keyboardDidShowListener.remove();
     this.keyboardDidHideListener.remove();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!isEqual(prevState.revealsLeft, this.state.revealsLeft) ||
+        !isEqual(prevState.guessesLeft, this.state.guessesLeft) ||
+        !isEqual(prevState.usedHint, this.state.usedHint)) {
+      const savedLevel = {
+        difficulty: this.difficulty,
+        categoryName: this.categoryName,
+        points: this.state.points,
+        visibleTiles: this.state.visibleTiles,
+        revealsLeft: this.state.revealsLeft,
+        guessesLeft: this.state.guessesLeft,
+        usedHint: this.state.usedHint
+      }
+      this.saveLevel(savedLevel)
+    }
   }
 
   _keyboardDidShow = () => {
@@ -118,18 +134,36 @@ export default class Level extends Component {
     })
   }
 
+  loadSavedLevel = () => {
+    const savedLevel = this.storedData.SavedLevel
+    const currentLevel = find(availableLevels, ['answer', savedLevel.answer])
+    this.setState({
+      currentLevel: currentLevel,
+      points: savedLevel.points,
+      visibleTiles: savedLevel.visibleTiles,
+      revealsLeft: savedLevel.revealsLeft,
+      guessesLeft: savedLevel.guessesLeft,
+      usedHint: savedLevel.usedHint,
+    })
+  }
+
   getAvailableLevels = () => {
     const availableLevels = filter(this.props.navigation.state.params.categoryLevels, ['isCompleted', false])
     this.setState({
       availableLevels: availableLevels
     }, () => {
-      this.chooseRandomLevel()
+      if (!this.storedData.SavedLevel.difficulty){
+        this.chooseRandomLevel()
+      } else {
+        this.loadSavedLevel()
+      }
     })
   }
 
   getStoredData = () => {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
       this.storedData = JSON.parse(storedData)
+      this.getAvailableLevels()
     })
   }
 
@@ -390,9 +424,28 @@ export default class Level extends Component {
     return availableLevels
   }
 
+  saveLevel = (savedLevel) => {
+    if (!savedLevel) {
+      this.storedData.SavedLevel = {
+        difficulty: null,
+        categoryName: null,
+        points: null,
+        visibleTiles: null,
+        revealsLeft: null,
+        guessesLeft: null,
+        usedHint: null
+      }
+    } else {
+      this.storedData.SavedLevel = savedLevel
+    }
+    AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
+  }
+
   setAnotherLevel = (beatLevel = false) => {
     if (beatLevel && this.state.availableLevels.length === 0) {
+      // show beat category modal here
       console.warn('you beat the whole category')
+      this.saveLevel(null)
     } else {
       this.setState({
         points: 250,
@@ -481,11 +534,6 @@ export default class Level extends Component {
     this.storedData.Game[this.difficulty][categoryObjectIndex].levels[currentLevelIndex].isCompleted = true
     this.storedData.Game[this.difficulty][categoryObjectIndex].points += this.state.points
     this.storedData.Game[this.difficulty][categoryObjectIndex].levelsComplete += 1
-    this.storedData.Game[this.difficulty][categoryObjectIndex].savedLevel = {
-      answer: null,
-      points: null,
-      visibleTiles: null
-    }
     AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
     this.setState({
       availableLevels: this.getAvailableLevelsWithoutCurrentLevel()
