@@ -4,7 +4,6 @@ import { View,
   Image,
   StyleSheet,
   TouchableOpacity,
-  TouchableHighlight,
   AsyncStorage,
   ActivityIndicator,
   Keyboard,
@@ -138,7 +137,7 @@ export default class Level extends Component {
 
   loadSavedLevel = () => {
     const savedLevel = this.storedData.SavedLevel
-    const currentLevel = find(availableLevels, ['answer', savedLevel.answer])
+    const currentLevel = find(this.state.availableLevels, ['answer', savedLevel.answer])
     this.setState({
       currentLevel: currentLevel,
       points: savedLevel.points,
@@ -293,7 +292,7 @@ export default class Level extends Component {
         <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2}}>
           {this.renderTiles()}
         </View>
-        {!this.state.atLeastOneGameStarted && this.renderInstructions()}
+        {!this.state.atLeastOneGameStarted && this.state.revealsLeft === 12 && this.renderInstructions()}
       </View>
     )
   }
@@ -626,6 +625,26 @@ export default class Level extends Component {
     )
   }
 
+  renderCloseButton = () => {
+    return (
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={() => {console.warn('closseeeeee')}}
+        style={{
+          postion: 'absolute',
+          top: 0,
+          right: 0
+        }}
+        >
+        <View>
+          <Text>
+            {'X'}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    )
+  }
+
   render() {
     let hideTitleAndGameInfoWhenKeyboardOpen = 'flex'
     let formLabelMarginTop = 20
@@ -666,6 +685,7 @@ export default class Level extends Component {
     if (this.state.currentLevel) {
       return (
         <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
+          {this.renderCloseButton()}
           {this.renderTitle(hideTitleAndGameInfoWhenKeyboardOpen)}
           {this.renderGameInfo(hideTitleAndGameInfoWhenKeyboardOpen)}
           {this.renderPhoto(hideImageWhileTileLoading)}
