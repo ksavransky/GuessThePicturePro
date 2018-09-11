@@ -96,7 +96,7 @@ export default class Level extends Component {
   componentDidMount() {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
-    this.getStoredData()
+    this.getStoredDataAndLoadLevel()
   }
 
   componentWillUnmount () {
@@ -153,15 +153,15 @@ export default class Level extends Component {
     this.setState({
       availableLevels: availableLevels
     }, () => {
-      if (!this.storedData.SavedLevel.difficulty){
-        this.chooseRandomLevel()
-      } else {
+      if (this.props.navigation.state.params.loadSavedLevel && this.storedData.SavedLevel.difficulty){
         this.loadSavedLevel()
+      } else {
+        this.chooseRandomLevel()
       }
     })
   }
 
-  getStoredData = () => {
+  getStoredDataAndLoadLevel = () => {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
       this.storedData = JSON.parse(storedData)
       this.getAvailableLevels()
