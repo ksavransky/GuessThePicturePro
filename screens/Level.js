@@ -584,6 +584,39 @@ export default class Level extends Component {
     )
   }
 
+  renderCloseModal = () => {
+    return (
+      <View style={modalStyle.innerContainer}>
+        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+          {"Are you sure you want to quit?"}
+        </Text>
+        <View style={{
+          flexDirection: 'row'
+        }}>
+          <LargeButton
+            onPress={() => {this.setState({showModal: false})}}
+            fontFamily='ChalkboardSE'
+            fontSize={24}
+            backgroundColor='#28a745'
+            style={modalStyle.button}
+            style={[modalStyle.button, {marginRight: 20}]}
+            text='STAY' />
+          <LargeButton
+            onPress={() => {
+              this.setState({showModal: false}, () => {
+                this.navigateToCategoriesScreen()
+              })
+            }}
+            fontFamily='ChalkboardSE'
+            fontSize={24}
+            backgroundColor='red'
+            style={modalStyle.button}
+            text='QUIT' />
+        </View>
+      </View>
+    )
+  }
+
   renderHintModal = () => {
     return (
       <View style={modalStyle.innerContainer}>
@@ -619,6 +652,7 @@ export default class Level extends Component {
             showModal === 'lose' ? this.renderLoseModal() :
             showModal === 'no-reveals' ? this.renderNoReveals() :
             showModal === 'hint' ? this.renderHintModal() :
+            showModal === 'close' ? this.renderCloseModal() :
             this.renderWrongModal()}
         </View>
       </Modal>
@@ -629,10 +663,12 @@ export default class Level extends Component {
     return (
       <TouchableOpacity
         activeOpacity={0.9}
-        onPress={() => {console.warn('closseeeeee')}}
+        onPress={() => {this.setState({
+          showModal: 'close'
+        })}}
         style={{
           position: 'absolute',
-          top: '10%',
+          top: '5%',
           right: '5%'
         }}
         >
