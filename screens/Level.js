@@ -636,9 +636,22 @@ export default class Level extends Component {
           right: '5%'
         }}
         >
-        <View>
-          <Text>
-            {'X'}
+        <View style={{
+          backgroundColor: '#f5f5f5',
+          width: 20,
+          height: 20,
+          borderRadius: 100,
+          borderWidth: 1,
+          borderColor: '#444',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <Text style={{
+            color: '#444',
+            fontWeight: '700',
+            textAlign: 'center'
+          }}>
+            {'x'}
           </Text>
         </View>
       </TouchableOpacity>
