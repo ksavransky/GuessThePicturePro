@@ -137,7 +137,13 @@ export default class Level extends Component {
 
   loadSavedLevel = () => {
     const savedLevel = this.storedData.SavedLevel
+    console.warn('savedLevel')
+    console.warn(savedLevel)
+    console.warn('this.state.availableLevels')
+    console.warn(this.state.availableLevels)
     const currentLevel = find(this.state.availableLevels, ['answer', savedLevel.answer])
+    console.warn('currentLevel')
+    console.warn(currentLevel)
     this.setState({
       currentLevel: currentLevel,
       points: savedLevel.points,
@@ -149,11 +155,13 @@ export default class Level extends Component {
   }
 
   getAvailableLevels = () => {
+    console.warn('this.props.navigation.state.params.categoryLevels');
+    console.warn(this.props.navigation.state.params.categoryLevels);
     const availableLevels = filter(this.props.navigation.state.params.categoryLevels, ['isCompleted', false])
     this.setState({
       availableLevels: availableLevels
     }, () => {
-      if (this.props.navigation.state.params.loadSavedLevel && this.storedData.SavedLevel.difficulty){
+      if (this.props.navigation.state.params.loadSavedLevel && this.storedData.SavedLevel.answer){
         this.loadSavedLevel()
       } else {
         this.chooseRandomLevel()

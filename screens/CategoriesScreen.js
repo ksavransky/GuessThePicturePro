@@ -4,6 +4,7 @@ import { Text } from 'react-native-elements';
 import { containerStyle, backgroundColorStyle } from '../styles/common.js'
 import { get } from 'lodash'
 import Categories from '../components/Categories.js'
+import { getTitleColorFromDifficulty } from '../utils/utils.js'
 import { AsyncStorage } from 'react-native';
 
 export default class CategoriesScreen extends Component {
@@ -30,21 +31,8 @@ export default class CategoriesScreen extends Component {
     })
   }
 
-
-
-  getTitleColor = () => {
-    const difficulty = this.state.difficulty
-    if ( difficulty === 'Easy' ) {
-        return '#28a745'
-    } else if ( difficulty === 'Medium' ) {
-      return 'orange'
-    } else {
-      return 'red'
-    }
-  }
-
   render() {
-    const titleColor = this.getTitleColor()
+    const titleColor = getTitleColorFromDifficulty(this.state.difficulty)
     if (!this.state.asyncStorageData) {
       return (
         <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
