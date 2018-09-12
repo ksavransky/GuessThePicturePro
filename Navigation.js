@@ -14,7 +14,7 @@ export const RootStack = createStackNavigator(
     Level: Level,
   },
   {
-    initialRouteName: 'LoadSavedLevel',
+    initialRouteName: 'Intro',
     navigationOptions: {
       headerStyle: {
         display: 'none',

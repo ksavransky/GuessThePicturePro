@@ -5,11 +5,22 @@ import LargeButton from '../components/buttons/LargeButton'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
 
 export default class LoadSavedLevel extends Component {
+  handleContinueClick = () => {
+    // this.props.navigation.navigate('Level', {categoryName: categoryName, difficulty: this.props.difficulty, categoryLevels: categoryLevels, titleColor: this.props.titleColor})
+    // this.props.navigation.navigate('Level', {categoryName: categoryName, difficulty: this.props.difficulty, categoryLevels: categoryLevels, titleColor: this.props.titleColor})
+  }
+
   render() {
+    const {difficulty, categoryName} = this.props.navigation.state.params
+    const displayDifficulty = difficulty.toLowerCase()
     return (
       <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
-        <Text fontFamily='ChalkboardSE' h4 style={{color: 'green', textAlign: 'center', marginBottom: 20}}>You currently have a game in progress!</Text>
-        <Text fontFamily='ChalkboardSE' h4 style={{color: 'green', textAlign: 'center', marginBottom: 50}}>Would you like to continue it?</Text>
+        <Text fontFamily='ChalkboardSE' h4 style={{color: '#28a745', textAlign: 'center', marginBottom: 20}}>
+          {'You currently have ' + (displayDifficulty === 'easy' ? 'an ' : 'a ' ) + displayDifficulty + ' ' + categoryName.toLowerCase() + ' puzzle in progress!'}
+        </Text>
+        <Text fontFamily='ChalkboardSE' h4 style={{color: '#28a745', textAlign: 'center', marginBottom: 50}}>
+          Would you like to continue solving it?
+        </Text>
           <LargeButton
             onPress={() => this.props.navigation.navigate('ChooseDifficulty')}
             backgroundColor='blue'
@@ -19,7 +30,7 @@ export default class LoadSavedLevel extends Component {
             fontFamily='ChalkboardSE'
             text='NEW' />
           <LargeButton
-            onPress={() => this.props.navigation.navigate('ChooseDifficulty')}
+            onPress={() => {console.warn('clicked on continue')}}
             backgroundColor='#28a745'
             fontFamily='ChalkboardSE'
             text='CONTINUE' />

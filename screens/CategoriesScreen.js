@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import { Text } from 'react-native-elements';
 import { containerStyle, backgroundColorStyle } from '../styles/common.js'
-import { AsyncStorageData } from '../data/Data.js'
 import { get } from 'lodash'
 import Categories from '../components/Categories.js'
-import { clearAllData } from '../utils/asyncstorage'
 import { AsyncStorage } from 'react-native';
 
 export default class CategoriesScreen extends Component {
@@ -13,9 +11,8 @@ export default class CategoriesScreen extends Component {
     super(props)
     this.state = {
       difficulty: get(props, 'navigation.state.params.difficulty', 'Easy'),
-      asyncStorageData: AsyncStorageData
+      asyncStorageData: null
     }
-    // clearAllData()
     this.getLocalStorageData()
   }
 
@@ -27,13 +24,9 @@ export default class CategoriesScreen extends Component {
 
   getLocalStorageData = () => {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
-      if (storedData) {
-        this.setState({
-          asyncStorageData: JSON.parse(storedData)
-        })
-      } else {
-        AsyncStorage.setItem('AsyncStorageData', JSON.stringify(AsyncStorageData))
-      }
+      this.setState({
+        asyncStorageData: JSON.parse(storedData)
+      })
     })
   }
 
@@ -52,6 +45,13 @@ export default class CategoriesScreen extends Component {
 
   render() {
     const titleColor = this.getTitleColor()
+    if (!this.state.asyncStorageData) {
+      return (
+        <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
+          <ActivityIndicator size="large" color='black' />
+        </View>
+      )
+    }
     return (
       <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
         <Text
