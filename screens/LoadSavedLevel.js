@@ -12,11 +12,10 @@ export default class LoadSavedLevel extends Component {
 
   render() {
     const {difficulty, categoryName} = this.props.navigation.state.params
-    const displayDifficulty = difficulty.toLowerCase()
     return (
       <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
         <Text fontFamily='ChalkboardSE' h4 style={{color: '#28a745', textAlign: 'center', marginBottom: 20}}>
-          {'You currently have ' + (displayDifficulty === 'easy' ? 'an ' : 'a ' ) + displayDifficulty + ' ' + categoryName.toLowerCase() + ' puzzle in progress!'}
+          {'You currently have ' + (difficulty === 'Easy' ? 'an ' : 'a ' ) + difficulty + ' ' + categoryName + ' puzzle in progress!'}
         </Text>
         <Text fontFamily='ChalkboardSE' h4 style={{color: '#28a745', textAlign: 'center', marginBottom: 50}}>
           Would you like to continue solving it?

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, ActivityIndicator } from 'react-native';
 import { Text } from 'react-native-elements';
 import LargeButton from '../components/buttons/LargeButton'
 import { containerStyle, backgroundColorStyle } from '../styles/common'
@@ -12,8 +12,9 @@ export default class Intro extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      asyncStorageData: AsyncStorageData
+      asyncStorageData: null
     }
+    // Leave clearAllData() below for dev testing
     // clearAllData()
     this.getLocalStorageData()
   }
@@ -25,6 +26,9 @@ export default class Intro extends Component {
           asyncStorageData: JSON.parse(storedData)
         })
       } else {
+        this.setState({
+          asyncStorageData: AsyncStorageData
+        })
         AsyncStorage.setItem('AsyncStorageData', JSON.stringify(AsyncStorageData))
       }
     })
@@ -32,15 +36,6 @@ export default class Intro extends Component {
 
   handlePlayClick = () => {
     const {categoryName,  difficulty} = this.state.asyncStorageData.SavedLevel
-    // difficulty: null,
-    // categoryName: null,
-    // answer: null,
-    // points: null,
-    // visibleTiles: null,
-    // revealsLeft: null,
-    // guessesLeft: null,
-    // usedHint: null
-
     if (difficulty && categoryName) {
       this.props.navigation.navigate('LoadSavedLevel', {categoryName: categoryName, difficulty: difficulty})
     } else {
@@ -49,6 +44,13 @@ export default class Intro extends Component {
   }
 
   render() {
+    if (!this.state.asyncStorageData) {
+      return (
+        <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
+          <ActivityIndicator size="large" color='black' />
+        </View>
+      )
+    }
     return (
       <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
         <Image style={{width: 70, height: 90}} source={require('../assets/images/monkey.png')} />
