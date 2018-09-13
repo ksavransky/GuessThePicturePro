@@ -138,13 +138,7 @@ export default class Level extends Component {
 
   loadSavedLevel = () => {
     const savedLevel = this.storedData.SavedLevel
-    // console.warn('savedLevel')
-    // console.warn(savedLevel)
-    // console.warn('this.state.availableLevels')
-    // console.warn(this.state.availableLevels)
     const currentLevel = find(this.state.availableLevels, ['answer', savedLevel.answer])
-    // console.warn('currentLevel')
-    // console.warn(currentLevel)
     this.setState({
       currentLevel: currentLevel,
       points: savedLevel.points,
@@ -156,8 +150,6 @@ export default class Level extends Component {
   }
 
   getAvailableLevels = () => {
-    // console.warn('this.props.navigation.state.params.categoryLevels');
-    // console.warn(this.props.navigation.state.params.categoryLevels);
     const availableLevels = filter(this.props.navigation.state.params.categoryLevels, ['isCompleted', false])
     this.setState({
       availableLevels: availableLevels
@@ -434,21 +426,22 @@ export default class Level extends Component {
     return availableLevels
   }
 
-  saveLevel = (savedLevel) => {
-    if (!savedLevel) {
-      this.storedData.SavedLevel = {
-        difficulty: null,
-        categoryName: null,
-        answer: null,
-        points: null,
-        visibleTiles: null,
-        revealsLeft: null,
-        guessesLeft: null,
-        usedHint: null
-      }
-    } else {
-      this.storedData.SavedLevel = savedLevel
+  clearSavedLevel = () => {
+    this.storedData.SavedLevel = {
+      difficulty: null,
+      categoryName: null,
+      answer: null,
+      points: null,
+      visibleTiles: null,
+      revealsLeft: null,
+      guessesLeft: null,
+      usedHint: null
     }
+    AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
+  }
+
+  saveLevel = (savedLevel) => {
+    this.storedData.SavedLevel = savedLevel
     AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
   }
 
@@ -456,7 +449,7 @@ export default class Level extends Component {
     if (beatLevel && this.state.availableLevels.length === 0) {
       // show beat category modal here
       console.warn('you beat the whole category')
-      this.saveLevel(null)
+      this.clearSavedLevel()
     } else {
       this.setState({
         points: 250,
@@ -612,6 +605,7 @@ export default class Level extends Component {
             text='STAY' />
           <LargeButton
             onPress={() => {
+              this.clearSavedLevel()
               this.setState({showModal: false}, () => {
                 this.navigateToCategoriesScreen()
               })

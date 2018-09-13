@@ -37,7 +37,6 @@ export default class Intro extends Component {
   }
 
   handlePlayClick = () => {
-    console.warn(this.state.asyncStorageData.SavedLevel)
     const {categoryName,  difficulty, revealsLeft} = this.state.asyncStorageData.SavedLevel
     if (difficulty && categoryName && revealsLeft !== CONSTANTS.MAX_REVEALS_LEFT) {
       const titleColor = getTitleColorFromDifficulty(difficulty)
