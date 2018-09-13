@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity} from 'react-native';
 import { Text } from 'react-native-elements';
 import LargeButton from '../components/buttons/LargeButton'
-import { containerStyle, backgroundColorStyle } from '../styles/common.js'
+import { containerStyle, backgroundColorStyle } from '../styles/Common.js'
 
 export default class ChooseDifficulty extends Component {
   render() {

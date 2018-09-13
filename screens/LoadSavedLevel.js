@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import { Text } from 'react-native-elements';
 import LargeButton from '../components/buttons/LargeButton'
-import { containerStyle, backgroundColorStyle } from '../styles/common'
+import { containerStyle, backgroundColorStyle } from '../styles/Common'
 
 export default class LoadSavedLevel extends Component {
   handleContinueClick = (difficulty, categoryName, categoryLevels, titleColor) => {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import { Text } from 'react-native-elements';
-import { containerStyle, backgroundColorStyle } from '../styles/common.js'
+import { containerStyle, backgroundColorStyle } from '../styles/Common.js'
 import { get } from 'lodash'
 import Categories from '../components/Categories.js'
-import { getTitleColorFromDifficulty } from '../utils/utils.js'
+import { getTitleColorFromDifficulty } from '../utils/Utils.js'
 import { AsyncStorage } from 'react-native';
 
 export default class CategoriesScreen extends Component {

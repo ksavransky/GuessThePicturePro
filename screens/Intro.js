@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { View, Image, ActivityIndicator } from 'react-native';
 import { Text } from 'react-native-elements';
 import LargeButton from '../components/buttons/LargeButton'
-import { containerStyle, backgroundColorStyle } from '../styles/common'
+import { containerStyle, backgroundColorStyle } from '../styles/Common'
 import { AsyncStorageData } from '../data/Data.js'
 import { get, find } from 'lodash'
-import { clearAllData } from '../utils/asyncstorage'
-import { getTitleColorFromDifficulty } from '../utils/utils.js'
+import { clearAllData } from '../utils/Asyncstorage'
+import { getTitleColorFromDifficulty } from '../utils/Utils.js'
 import { AsyncStorage } from 'react-native';
+import { CONSTANTS } from '../Constants'
 
 export default class Intro extends Component {
   constructor(props) {
@@ -36,8 +37,9 @@ export default class Intro extends Component {
   }
 
   handlePlayClick = () => {
-    const {categoryName,  difficulty} = this.state.asyncStorageData.SavedLevel
-    if (difficulty && categoryName) {
+    console.warn(this.state.asyncStorageData.SavedLevel)
+    const {categoryName,  difficulty, revealsLeft} = this.state.asyncStorageData.SavedLevel
+    if (difficulty && categoryName && revealsLeft !== CONSTANTS.MAX_REVEALS_LEFT) {
       const titleColor = getTitleColorFromDifficulty(difficulty)
       const categoryLevels = find(this.state.asyncStorageData.Game[difficulty], ['name', categoryName]).levels
       this.props.navigation.navigate('LoadSavedLevel', {categoryName: categoryName, difficulty: difficulty, categoryLevels: categoryLevels})
