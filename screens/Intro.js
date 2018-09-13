@@ -38,7 +38,7 @@ export default class Intro extends Component {
 
   handlePlayClick = () => {
     const {categoryName,  difficulty, revealsLeft} = this.state.asyncStorageData.SavedLevel
-    if (difficulty && categoryName && revealsLeft !== CONSTANTS.MAX_REVEALS_LEFT) {
+    if (difficulty && categoryName && revealsLeft !== CONSTANTS.STARTING_REVEALS_LEFT) {
       const titleColor = getTitleColorFromDifficulty(difficulty)
       const categoryLevels = find(this.state.asyncStorageData.Game[difficulty], ['name', categoryName]).levels
       this.props.navigation.navigate('LoadSavedLevel', {categoryName: categoryName, difficulty: difficulty, categoryLevels: categoryLevels})

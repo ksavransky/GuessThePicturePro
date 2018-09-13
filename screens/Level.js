@@ -85,7 +85,7 @@ export default class Level extends Component {
       guessInput: null,
       isKeyBoardOpen: false,
       guessesLeft: 3,
-      revealsLeft: CONSTANTS.MAX_REVEALS_LEFT,
+      revealsLeft: CONSTANTS.STARTING_REVEALS_LEFT,
       atLeastOneGameStarted: false,
       showModal: false,
       usedHint: false
@@ -184,7 +184,7 @@ export default class Level extends Component {
       this.setState({
         visibleTiles: visibleTiles,
         revealsLeft: this.state.revealsLeft - 1,
-        points: (this.state.revealsLeft < (CONSTANTS.MAX_REVEALS_LEFT - 1) ) ? (this.state.points - 10) : this.state.points,
+        points: (this.state.revealsLeft < (CONSTANTS.STARTING_REVEALS_LEFT - 1) ) ? (this.state.points - 10) : this.state.points,
         atLeastOneGameStarted: true
       })
     } else {
@@ -293,7 +293,7 @@ export default class Level extends Component {
         <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2}}>
           {this.renderTiles()}
         </View>
-        {!this.state.atLeastOneGameStarted && this.state.revealsLeft === CONSTANTS.MAX_REVEALS_LEFT && this.renderInstructions()}
+        {!this.state.atLeastOneGameStarted && this.state.revealsLeft === CONSTANTS.STARTING_REVEALS_LEFT && this.renderInstructions()}
       </View>
     )
   }
@@ -368,7 +368,7 @@ export default class Level extends Component {
           labelStyle={{color: 'grey', fontSize: formLabelFontSize, fontWeight: '400'}}>
           {'Your Guess:'}
         </FormLabel>
-        {!this.state.usedHint && !this.state.isKeyBoardOpen && this.state.revealsLeft < CONSTANTS.MAX_REVEALS_LEFT && this.renderHintButton()}
+        {!this.state.usedHint && !this.state.isKeyBoardOpen && this.state.revealsLeft < CONSTANTS.STARTING_REVEALS_LEFT && this.renderHintButton()}
         <View style={{marginTop: formInputMarginTop, width: '100%', flexDirection: 'row', position: 'relative'}}>
           <FormInput
             spellCheck={false}
@@ -457,7 +457,7 @@ export default class Level extends Component {
         guessInput: null,
         isKeyBoardOpen: false,
         guessesLeft: 3,
-        revealsLeft: CONSTANTS.MAX_REVEALS_LEFT,
+        revealsLeft: CONSTANTS.STARTING_REVEALS_LEFT,
         showModal: false,
         usedHint: false
       }, () => {

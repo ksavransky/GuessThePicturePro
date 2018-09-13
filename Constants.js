@@ -1,3 +1,3 @@
 export const CONSTANTS = {
-  MAX_REVEALS_LEFT: 12
+  STARTING_REVEALS_LEFT: 12
 }
