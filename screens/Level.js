@@ -59,6 +59,7 @@ export default class Level extends Component {
     this.difficulty = get(props, 'navigation.state.params.difficulty', 'Easy')
     this.categoryName = get(props, 'navigation.state.params.categoryName', 'Places')
     this.titleColor = get(props, 'navigation.state.params.titleColor', '#28a745')
+    this.categoryPoints =0
 
     const { height, width } = Dimensions.get('window')
     this.screenHeight = height
@@ -445,10 +446,11 @@ export default class Level extends Component {
     AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
   }
 
-  setAnotherLevel = (beatLevel = false) => {
-    if (beatLevel && this.state.availableLevels.length === 0) {
-      // show beat category modal here
-      console.warn('you beat the whole category')
+  setAnotherLevel = (beatCategory = false) => {
+    if (beatCategory && this.state.availableLevels.length === 0) {
+      this.setState({
+        showModal: 'beatCategory'
+      })
       this.clearSavedLevel()
     } else {
       this.setState({
@@ -461,7 +463,7 @@ export default class Level extends Component {
         showModal: false,
         usedHint: false
       }, () => {
-        if (beatLevel) {
+        if (beatCategory) {
           this.chooseRandomLevel()
         } else {
           let differentLevels = null
@@ -537,6 +539,7 @@ export default class Level extends Component {
     const currentLevelIndex = findIndex(levelsArray, ['answer', this.state.currentLevel.answer])
     this.storedData.Game[this.difficulty][categoryObjectIndex].levels[currentLevelIndex].isCompleted = true
     this.storedData.Game[this.difficulty][categoryObjectIndex].points += this.state.points
+    this.categoryPoints = this.storedData.Game[this.difficulty][categoryObjectIndex].points
     this.storedData.Game[this.difficulty][categoryObjectIndex].levelsComplete += 1
     AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
     this.setState({
@@ -557,6 +560,33 @@ export default class Level extends Component {
         </Text>
         <LargeButton
           onPress={this.handleWin}
+          fontFamily='ChalkboardSE'
+          fontSize={24}
+          backgroundColor='#28a745'
+          style={modalStyle.button}
+          text='NEXT' />
+      </View>
+    )
+  }
+
+  renderBeatCategoryModal = () => {
+    return (
+      <View style={modalStyle.innerContainer}>
+        <Text h5 style={[modalStyle.field, {color: 'green'}]}>
+          {"Congratulations!"}
+        </Text>
+        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
+          {'You beat the entire ' + this.difficulty + ' ' + this.categoryName + ' category!'}
+        </Text>
+        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
+          {'You earned ' + this.categoryPoints + ' out of ' + (this.props.navigation.state.params.categoryLevels.length * 250) + ' points!'}
+        </Text>
+        <LargeButton
+          onPress={() => {
+            this.setState({showModal: false}, () => {
+              this.navigateToCategoriesScreen()
+            })
+          }}
           fontFamily='ChalkboardSE'
           fontSize={24}
           backgroundColor='#28a745'
@@ -656,6 +686,7 @@ export default class Level extends Component {
             showModal === 'no-reveals' ? this.renderNoReveals() :
             showModal === 'hint' ? this.renderHintModal() :
             showModal === 'close' ? this.renderCloseModal() :
+            showModal === 'beatCategory' ? this.renderBeatCategoryModal() :
             this.renderWrongModal()}
         </View>
       </Modal>
