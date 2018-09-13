@@ -12,7 +12,7 @@ import { View,
 } from 'react-native';
 import { Text, FormLabel, FormInput } from 'react-native-elements';
 import { get, filter, cloneDeep, every, remove, findIndex, find, isEqual } from 'lodash'
-import { containerStyle, backgroundColorStyle } from '../styles/Common'
+import { containerStyle, backgroundColorStyle, modalStyle } from '../styles/Common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 import LargeButton from '../components/buttons/LargeButton'
 import SmallButton from '../components/buttons/SmallButton'
@@ -572,11 +572,8 @@ export default class Level extends Component {
   renderBeatCategoryModal = () => {
     return (
       <View style={modalStyle.innerContainer}>
-        <Text h5 style={[modalStyle.field, {color: 'green'}]}>
-          {"Congratulations!"}
-        </Text>
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
-          {'You beat the entire ' + this.difficulty + ' ' + this.categoryName + ' category!'}
+          {'Congratulations! You beat the ' + this.difficulty + ' ' + this.categoryName + ' category!'}
         </Text>
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
           {'You earned ' + this.categoryPoints + ' out of ' + (this.props.navigation.state.params.categoryLevels.length * 250) + ' points!'}
@@ -785,36 +782,3 @@ export default class Level extends Component {
     )
   }
 }
-
-const modalStyle = StyleSheet.create({
-  field: {
-    textAlign: 'center',
-    fontFamily: 'ChalkboardSE',
-    marginBottom: 20,
-    marginLeft: 5,
-    marginRight: 5
-  },
-  outerContainer: {
-    flex: 1,
-    backgroundColor: 'rgba(50, 50, 50, 0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  innerContainer: {
-    backgroundColor: '#dceff7',
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 10,
-    height: '52%',
-    width: '90%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 100,
-    paddingBottom: 10
-  },
-  button: {
-    width: 120,
-    alignContent: 'center',
-    marginTop: 30
-  }
-})

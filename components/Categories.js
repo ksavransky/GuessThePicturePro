@@ -24,7 +24,13 @@ export default class Categories extends Component {
               rightTitle={category.levelsComplete + '/' + (category.levels.length || '0') + ' completed'}
               subtitleStyle={{color: 'gold'}}
               rightTitleStyle={{color: 'grey'}}
-              onPress={() => { this.launchCategory(category.name, category.levels)}}
+              onPress={() => {
+                if (category.levelsComplete !== category.levels.length) {
+                  this.launchCategory(category.name, category.levels)
+                } else {
+                  this.props.setShowModal(category.name)
+                }
+              }}
             />
           ))
         }
