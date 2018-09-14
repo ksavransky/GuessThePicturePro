@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ActivityIndicator, Modal } from 'react-native';
 import { Text } from 'react-native-elements';
 import { containerStyle, backgroundColorStyle, modalStyle } from '../styles/Common.js'
-import { get } from 'lodash'
+import { get, findIndex } from 'lodash'
 import Categories from '../components/Categories.js'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
 import { AsyncStorage } from 'react-native';
@@ -44,11 +44,14 @@ export default class CategoriesScreen extends Component {
   resetCategory = () => {
     const categoryName = this.state.showModal
     const { difficulty } = this.state
-    this.asyncStorageData.Game[difficulty]
-    // findIndex(
-
-
+    const categoryIndex = findIndex(this.asyncStorageData.Game[difficulty], ['name', categoryName])
+    this.asyncStorageData.Game[difficulty][categoryIndex].levelsComplete = 0
+    this.asyncStorageData.Game[difficulty][categoryIndex].points = 0
+    for (let i = 0; i < this.asyncStorageData.Game[difficulty][categoryIndex].levels.length; i++) {
+      this.asyncStorageData.Game[difficulty][categoryIndex].levels[i].isCompleted = false
+    }
     AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.asyncStorageData))
+    this.setState({showModal: false})
   }
 
   renderModal = () => {
