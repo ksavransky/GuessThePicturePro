@@ -7,7 +7,9 @@ import { AsyncStorageData } from '../data/Data.js'
 import { get, find } from 'lodash'
 import { clearAllData } from '../utils/Asyncstorage'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from 'react-native'
+import Video from 'react-native-video'
+import Sound from 'react-native-sound'
 import { CONSTANTS } from '../Constants'
 
 export default class Intro extends Component {
@@ -66,6 +68,8 @@ export default class Intro extends Component {
           backgroundColor='#28a745'
           fontFamily='ChalkboardSE'
           text='PLAY' />
+        <Video source={uri: require('../assets/sounds/monkey.mov')}// Can be a URL or a local file.
+        />
       </View>
     )
   }

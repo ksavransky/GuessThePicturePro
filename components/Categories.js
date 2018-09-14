@@ -25,7 +25,7 @@ export default class Categories extends Component {
               subtitle={category.points + '/' + (category.levels.length * CONSTANTS.STARTING_POINTS) + ' points'}
               rightTitle={category.levelsComplete + '/' + (category.levels.length || '0') + ' completed'}
               subtitleStyle={{color: 'gold'}}
-              rightTitleStyle={{color: 'grey'}}
+              rightTitleStyle={{color: category.levelsComplete === category.levels.length ? '#28a745' : 'grey'}}
               onPress={() => {
                 if (category.levelsComplete !== category.levels.length) {
                   this.launchCategory(category.name, category.levels)

@@ -8,7 +8,12 @@ export default class LargeButton extends Component {
     return (
       <TouchableOpacity
         activeOpacity={this.props.activeOpacity || 0.9}
-        onPress={this.props.onPress}
+        onPress={() => {
+          // if (this.props.isSoundOn) {
+            // sound goes here
+          // }
+          this.props.onPress()
+        }}
         style={this.props.style}
         disabled={this.props.disabled}
         >
