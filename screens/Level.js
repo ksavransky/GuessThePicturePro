@@ -59,7 +59,7 @@ export default class Level extends Component {
     this.difficulty = get(props, 'navigation.state.params.difficulty', 'Easy')
     this.categoryName = get(props, 'navigation.state.params.categoryName', 'Places')
     this.titleColor = get(props, 'navigation.state.params.titleColor', '#28a745')
-    this.categoryPoints =0
+    this.categoryPoints = 0
 
     const { height, width } = Dimensions.get('window')
     this.screenHeight = height
@@ -185,7 +185,7 @@ export default class Level extends Component {
       this.setState({
         visibleTiles: visibleTiles,
         revealsLeft: this.state.revealsLeft - 1,
-        points: (this.state.revealsLeft < (CONSTANTS.STARTING_REVEALS_LEFT - 1) ) ? (this.state.points - 10) : this.state.points,
+        points: (this.state.revealsLeft < (CONSTANTS.STARTING_REVEALS_LEFT - 1) ) ? (this.state.points - 1) : this.state.points,
         atLeastOneGameStarted: true
       })
     } else {
@@ -204,7 +204,7 @@ export default class Level extends Component {
     this.setState({
       showModal: guessesLeft > 0 ? 'wrong' : 'lose',
       guessesLeft: guessesLeft,
-      points: this.state.points - 50
+      points: this.state.points - 5
     })
   }
 
@@ -263,7 +263,7 @@ export default class Level extends Component {
     this.setState({
       showModal: 'hint',
       usedHint: true,
-      points: this.state.points - 50
+      points: this.state.points - 5
     })
   }
 
