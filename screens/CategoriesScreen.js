@@ -24,6 +24,7 @@ export default class CategoriesScreen extends Component {
     this.setState({
       difficulty: get(nextProps, 'navigation.state.params.difficulty', 'Easy')
     })
+    this.getLocalStorageData()
   }
 
   getLocalStorageData = () => {

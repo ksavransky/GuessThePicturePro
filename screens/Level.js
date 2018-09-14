@@ -81,7 +81,7 @@ export default class Level extends Component {
       isTileLoaded: false,
       availableLevels: [],
       currentLevel: null,
-      points: 250,
+      points: CONSTANTS.STARTING_POINTS,
       visibleTiles: ALL_TILES_COVERING,
       guessInput: null,
       isKeyBoardOpen: false,
@@ -454,7 +454,7 @@ export default class Level extends Component {
       this.clearSavedLevel()
     } else {
       this.setState({
-        points: 250,
+        points: CONSTANTS.STARTING_POINTS,
         visibleTiles: ALL_TILES_COVERING,
         guessInput: null,
         isKeyBoardOpen: false,
@@ -576,7 +576,7 @@ export default class Level extends Component {
           {'Congratulations! You beat the ' + this.difficulty + ' ' + this.categoryName + ' category!'}
         </Text>
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
-          {'You earned ' + this.categoryPoints + ' out of ' + (this.props.navigation.state.params.categoryLevels.length * 250) + ' points!'}
+          {'You earned ' + this.categoryPoints + ' out of ' + (this.props.navigation.state.params.categoryLevels.length * CONSTANTS.STARTING_POINTS) + ' points!'}
         </Text>
         <LargeButton
           onPress={() => {

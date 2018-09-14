@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { List, ListItem } from 'react-native-elements'
+import { CONSTANTS } from '../Constants'
 import { sortBy } from 'lodash'
+
 
 export default class Categories extends Component {
   launchCategory = (categoryName, categoryLevels) => {
@@ -20,7 +22,7 @@ export default class Categories extends Component {
               avatarStyle={{width: '120%', height: '120%'}}
               key={category.name}
               title={category.name}
-              subtitle={category.points + ' points'}
+              subtitle={category.points + '/' + (category.levels.length * CONSTANTS.STARTING_POINTS) + ' points'}
               rightTitle={category.levelsComplete + '/' + (category.levels.length || '0') + ' completed'}
               subtitleStyle={{color: 'gold'}}
               rightTitleStyle={{color: 'grey'}}
