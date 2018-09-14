@@ -58,6 +58,17 @@ export const modalStyle = StyleSheet.create({
     marginBottom: 100,
     paddingBottom: 10
   },
+  innerContainerTall: {
+    backgroundColor: '#dceff7',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 10,
+    height: '90%%',
+    width: '96%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 10
+  },
   button: {
     width: 120,
     alignContent: 'center',

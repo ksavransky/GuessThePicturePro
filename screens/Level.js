@@ -551,13 +551,19 @@ export default class Level extends Component {
 
   renderWinModal = () => {
     return (
-      <View style={modalStyle.innerContainer}>
+      <View style={modalStyle.innerContainerTall}>
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
-          {"That's Right! You Win!"}
+          {this.state.guessInput + ' is correct! '}
         </Text>
-        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
+        <Text h5 style={[modalStyle.field, {color: 'orange'}]}>
           {'You scored ' + this.state.points + ' points.'}
         </Text>
+        <View style={{width: this.photoWidth, height: this.photoHeight}}>
+          <Image
+            style={{width: '100%', height: '100%', zIndex: 1, borderWidth: 1, borderColor: 'grey'}}
+            source={this.state.currentLevel.imagePath}
+          />
+        </View>
         <LargeButton
           onPress={this.handleWin}
           fontFamily='ChalkboardSE'
