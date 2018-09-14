@@ -95,6 +95,10 @@ export default class Level extends Component {
     this.storedData = null
   }
 
+  componentWillReceiveProps() {
+    this.getStoredDataAndLoadLevel()
+  }
+
   componentDidMount() {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
