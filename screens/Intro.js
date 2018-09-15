@@ -7,10 +7,11 @@ import { AsyncStorageData } from '../data/Data.js'
 import { get, find } from 'lodash'
 import { clearAllData } from '../utils/Asyncstorage'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
-import { AsyncStorage } from 'react-native'
-import Video from 'react-native-video'
-import Sound from 'react-native-sound'
+import { AsyncStorage } from 'react-native';
 import { CONSTANTS } from '../Constants'
+import { Constants, Audio } from 'expo'
+
+const CLICKSOUND = require('../assets/sounds/click1.mp3')
 
 export default class Intro extends Component {
   constructor(props) {
@@ -19,9 +20,22 @@ export default class Intro extends Component {
       asyncStorageData: null
     }
     // Leave clearAllData() below for dev testing
-    // clearAllData()
+    clearAllData()
     this.getLocalStorageData()
   }
+
+  // componentDidMount() {
+  //   const soundObject = new Expo.Audio.Sound();
+  //   async () => {
+  //     try {
+  //       await soundObject.loadAsync(require('../assets/sounds/click1.mp3'));
+  //       await soundObject.playAsync();
+  //       // Your sound is playing!
+  //     } catch (error) {
+  //       // An error occurred!
+  //     }
+  //   }
+  // }
 
   getLocalStorageData = () => {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
@@ -64,12 +78,20 @@ export default class Intro extends Component {
         <Text style={{marginBottom: 20}}>Presents</Text>
         <Text h3 style={{color: 'blue', marginBottom: 200}}>Guess The Picture Pro</Text>
         <LargeButton
-          onPress={this.handlePlayClick}
+          // onPress={this.handlePlayClick}
+          onPress={async () => {
+            try {
+              await Audio.setIsEnabledAsync(true);
+              const sound = new Audio.Sound();
+              await sound.loadAsync(CLICKSOUND);
+              await sound.playAsync();
+            } catch(error) {
+              console.error(error);
+            }
+          }}
           backgroundColor='#28a745'
           fontFamily='ChalkboardSE'
           text='PLAY' />
-        <Video source={uri: require('../assets/sounds/monkey.mov')}// Can be a URL or a local file.
-        />
       </View>
     )
   }
