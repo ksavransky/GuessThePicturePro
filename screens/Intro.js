@@ -11,7 +11,7 @@ import { AsyncStorage } from 'react-native';
 import { CONSTANTS } from '../Constants'
 import { Constants, Audio } from 'expo'
 
-const CLICKSOUND = require('../assets/sounds/click1.mp3')
+const MONKEY_SOUND = require('../assets/sounds/monkey.mov')
 
 export default class Intro extends Component {
   constructor(props) {
@@ -22,20 +22,24 @@ export default class Intro extends Component {
     // Leave clearAllData() below for dev testing
     clearAllData()
     this.getLocalStorageData()
+    this.playedMonkeySoundOnce = false
   }
 
-  // componentDidMount() {
-  //   const soundObject = new Expo.Audio.Sound();
-  //   async () => {
-  //     try {
-  //       await soundObject.loadAsync(require('../assets/sounds/click1.mp3'));
-  //       await soundObject.playAsync();
-  //       // Your sound is playing!
-  //     } catch (error) {
-  //       // An error occurred!
-  //     }
-  //   }
-  // }
+  playMonkeySound = async () => {
+    console.warn('this.state.asyncStorageData.General.isSoundOn')
+    console.warn(this.state.asyncStorageData.General.isSoundOn)
+    if (this.state.asyncStorageData.General.isSoundOn) {
+      console.warn('herere3')
+      try {
+        await Audio.setIsEnabledAsync(true);
+        const sound = new Audio.Sound();
+        await sound.loadAsync(MONKEY_SOUND);
+        await sound.playAsync();
+      } catch(error) {
+        console.error(error);
+      }
+    }
+  }
 
   getLocalStorageData = () => {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
@@ -71,6 +75,10 @@ export default class Intro extends Component {
         </View>
       )
     }
+    if (!this.playedMonkeySoundOnce) {
+      this.playMonkeySound()
+      this.playedMonkeySoundOnce = true
+    }
     return (
       <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
         <Image style={{width: 70, height: 90}} source={require('../assets/images/monkey.png')} />
@@ -78,17 +86,8 @@ export default class Intro extends Component {
         <Text style={{marginBottom: 20}}>Presents</Text>
         <Text h3 style={{color: 'blue', marginBottom: 200}}>Guess The Picture Pro</Text>
         <LargeButton
-          // onPress={this.handlePlayClick}
-          onPress={async () => {
-            try {
-              await Audio.setIsEnabledAsync(true);
-              const sound = new Audio.Sound();
-              await sound.loadAsync(CLICKSOUND);
-              await sound.playAsync();
-            } catch(error) {
-              console.error(error);
-            }
-          }}
+          onPress={this.handlePlayClick}
+          isSoundOn={this.state.asyncStorageData.General.isSoundOn}
           backgroundColor='#28a745'
           fontFamily='ChalkboardSE'
           text='PLAY' />
