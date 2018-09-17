@@ -3,6 +3,7 @@ import { View, TouchableOpacity} from 'react-native';
 import { Text } from 'react-native-elements';
 import LargeButton from '../components/buttons/LargeButton'
 import { containerStyle, backgroundColorStyle } from '../styles/Common.js'
+import { get } from 'lodash'
 
 export default class ChooseDifficulty extends Component {
   render() {
@@ -15,6 +16,7 @@ export default class ChooseDifficulty extends Component {
             return (
               <LargeButton
                 key={buttonData.difficulty}
+                isSoundOn={this.props.navigation.state.params.isSoundOn}
                 onPress={() => this.props.navigation.navigate('CategoriesScreen', {difficulty: buttonData.difficulty})}
                 backgroundColor={buttonData.color}
                 style={{marginBottom: 50}}

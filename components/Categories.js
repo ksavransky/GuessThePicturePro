@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { List, ListItem } from 'react-native-elements'
 import { CONSTANTS } from '../Constants'
 import { sortBy } from 'lodash'
+import { Constants, Audio } from 'expo'
 
+const CLICK_SOUND = require('../assets/sounds/click1.mp3')
 
 export default class Categories extends Component {
   launchCategory = (categoryName, categoryLevels) => {

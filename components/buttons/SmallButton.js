@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity} from 'react-native';
+import { Constants, Audio } from 'expo'
+
+const CLICK_SOUND = require('../../assets/sounds/click1.mp3')
 
 export default class SmallButton extends Component {
   render() {
@@ -8,7 +11,19 @@ export default class SmallButton extends Component {
     return (
       <TouchableOpacity
         activeOpacity={this.props.activeOpacity || 0.9}
-        onPress={this.props.onPress}
+        onPress={async () => {
+          this.props.onPress()
+          if (this.props.isSoundOn) {
+            try {
+              await Audio.setIsEnabledAsync(true);
+              const sound = new Audio.Sound();
+              await sound.loadAsync(CLICK_SOUND);
+              await sound.playAsync();
+            } catch(error) {
+              console.error(error);
+            }
+          }
+        }}
         style={this.props.style}
         disabled={this.props.disabled}
         >

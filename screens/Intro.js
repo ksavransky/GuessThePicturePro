@@ -9,9 +9,7 @@ import { clearAllData } from '../utils/Asyncstorage'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
 import { AsyncStorage } from 'react-native';
 import { CONSTANTS } from '../Constants'
-import { Constants, Audio } from 'expo'
-
-const MONKEY_SOUND = require('../assets/sounds/monkey.mov')
+import { playSound } from '../utils/Utils'
 
 export default class Intro extends Component {
   constructor(props) {
@@ -26,10 +24,7 @@ export default class Intro extends Component {
   }
 
   playMonkeySound = async () => {
-    console.warn('this.state.asyncStorageData.General.isSoundOn')
-    console.warn(this.state.asyncStorageData.General.isSoundOn)
     if (this.state.asyncStorageData.General.isSoundOn) {
-      console.warn('herere3')
       try {
         await Audio.setIsEnabledAsync(true);
         const sound = new Audio.Sound();
@@ -63,7 +58,7 @@ export default class Intro extends Component {
       const categoryLevels = find(this.state.asyncStorageData.Game[difficulty], ['name', categoryName]).levels
       this.props.navigation.navigate('LoadSavedLevel', {categoryName: categoryName, difficulty: difficulty, categoryLevels: categoryLevels})
     } else {
-      this.props.navigation.navigate('ChooseDifficulty')
+      this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.asyncStorageData.General.isSoundOn})
     }
   }
 
@@ -76,7 +71,7 @@ export default class Intro extends Component {
       )
     }
     if (!this.playedMonkeySoundOnce) {
-      this.playMonkeySound()
+      playSound('monkey', this.state.asyncStorageData.General.isSoundOn)
       this.playedMonkeySoundOnce = true
     }
     return (

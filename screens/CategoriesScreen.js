@@ -7,6 +7,9 @@ import Categories from '../components/Categories.js'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
 import { AsyncStorage } from 'react-native';
 import LargeButton from '../components/buttons/LargeButton'
+import { Constants, Audio } from 'expo'
+
+const CLICK_SOUND = require('../assets/sounds/click1.mp3')
 
 export default class CategoriesScreen extends Component {
   constructor(props) {
@@ -15,7 +18,8 @@ export default class CategoriesScreen extends Component {
     this.state = {
       difficulty: get(props, 'navigation.state.params.difficulty', 'Easy'),
       loadedData: false,
-      showModal: false
+      showModal: false,
+      isSoundOn: false
     }
     this.getLocalStorageData()
   }
@@ -31,7 +35,8 @@ export default class CategoriesScreen extends Component {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
       this.asyncStorageData = JSON.parse(storedData)
       this.setState({
-        loadedData: true
+        loadedData: true,
+        isSoundOn: this.asyncStorageData.General.isSoundOn
       })
     })
   }
@@ -40,6 +45,7 @@ export default class CategoriesScreen extends Component {
     this.setState({
       showModal: categoryName
     })
+    this.playClickSound()
   }
 
   resetCategory = () => {
@@ -75,6 +81,7 @@ export default class CategoriesScreen extends Component {
             }}>
               <LargeButton
                 onPress={() => {this.setState({showModal: false})}}
+                isSoundOn={this.state.isSoundOn}
                 fontFamily='ChalkboardSE'
                 fontSize={24}
                 backgroundColor='#28a745'
@@ -83,6 +90,7 @@ export default class CategoriesScreen extends Component {
                 text='KEEP' />
               <LargeButton
                 onPress={this.resetCategory}
+                isSoundOn={this.state.isSoundOn}
                 fontFamily='ChalkboardSE'
                 fontSize={24}
                 backgroundColor='red'
@@ -99,6 +107,24 @@ export default class CategoriesScreen extends Component {
     )
   }
 
+  playClickSound = async () => {
+    if (this.state.isSoundOn) {
+      try {
+        await Audio.setIsEnabledAsync(true);
+        const sound = new Audio.Sound();
+        await sound.loadAsync(CLICK_SOUND);
+        await sound.playAsync();
+      } catch(error) {
+        // console.error(error);
+      }
+    }
+  }
+
+  navigateToChooseDifficulty = () => {
+    this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.isSoundOn})
+    this.playClickSound()
+  }
+
   render() {
     const titleColor = getTitleColorFromDifficulty(this.state.difficulty)
     if (!this.state.loadedData) {
@@ -113,9 +139,7 @@ export default class CategoriesScreen extends Component {
         <Text
           h5
           style={{alignSelf: 'flex-start', margin: 10}}
-          onPress={() => {
-            this.props.navigation.navigate('ChooseDifficulty')
-          }}>
+          onPress={this.navigateToChooseDifficulty}>
           {'< Select Difficulty'}
         </Text>
         <Text h4 fontFamily='ChalkboardSE' style={{color: titleColor}}>
