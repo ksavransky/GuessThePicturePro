@@ -197,9 +197,13 @@ export default class Level extends Component {
         revealsLeft: this.state.revealsLeft - 1,
         points: (this.state.revealsLeft < (CONSTANTS.STARTING_REVEALS_LEFT - 1) ) ? (this.state.points - 1) : this.state.points,
         atLeastOneGameStarted: true
+      }, () => {
+        playSound('reveal', this.state.isSoundOn)
       })
     } else {
-      this.setState({showModal: 'no-reveals'})
+      this.setState({showModal: 'no-reveals'}, () => {
+        playSound('wrongbuzz', this.state.isSoundOn)
+      })
     }
   }
 
@@ -221,6 +225,8 @@ export default class Level extends Component {
   handleCorrectAnswer = () => {
     this.setState({
       showModal: 'win'
+    }, () => {
+      playSound('applause', this.state.isSoundOn)
     })
   }
 
@@ -463,6 +469,8 @@ export default class Level extends Component {
     if (beatCategory && this.state.availableLevels.length === 0) {
       this.setState({
         showModal: 'beatCategory'
+      }, () => {
+        playSound('applause', this.state.isSoundOn)
       })
       this.clearSavedLevel()
     } else {
