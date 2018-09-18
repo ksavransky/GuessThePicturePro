@@ -16,6 +16,8 @@ import { containerStyle, backgroundColorStyle, modalStyle } from '../styles/Comm
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 import LargeButton from '../components/buttons/LargeButton'
 import SmallButton from '../components/buttons/SmallButton'
+import SoundButton from '../components/buttons/SoundButton'
+import CloseButton from '../components/buttons/CloseButton'
 import { CONSTANTS } from '../Constants'
 import { playSound } from '../utils/Utils'
 
@@ -728,43 +730,21 @@ export default class Level extends Component {
     )
   }
 
-  renderCloseButton = () => {
-    return (
-      <TouchableOpacity
-        activeOpacity={0.9}
-        onPress={() => {
-            this.setState({
-              showModal: 'close'
-            })
-            playSound('click', this.state.isSoundOn)
-          }
-        }
-        style={{
-          position: 'absolute',
-          top: '5%',
-          right: '5%'
-        }}
-        >
-        <View style={{
-          backgroundColor: '#f5f5f5',
-          width: 20,
-          height: 20,
-          borderRadius: 100,
-          borderWidth: 1,
-          borderColor: '#444',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
-          <Text style={{
-            color: '#444',
-            fontWeight: '700',
-            textAlign: 'center'
-          }}>
-            {'x'}
-          </Text>
-        </View>
-      </TouchableOpacity>
-    )
+  showCloseModal = () => {
+    this.setState({
+      showModal: 'close'
+    })
+    playSound('click', this.state.isSoundOn)
+  }
+
+  setSound = () => {
+    this.setState({
+      isSoundOn: !this.state.isSoundOn
+    }, () => {
+      playSound('click', this.state.isSoundOn)
+      this.storedData.General.isSoundOn = this.state.isSoundOn
+      AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
+    })
   }
 
   render() {
@@ -807,7 +787,8 @@ export default class Level extends Component {
     if (this.state.currentLevel) {
       return (
         <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
-          {this.renderCloseButton()}
+          <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound}/>
+          <CloseButton showCloseModal={this.showCloseModal} />
           {this.renderTitle(hideTitleAndGameInfoWhenKeyboardOpen)}
           {this.renderGameInfo(hideTitleAndGameInfoWhenKeyboardOpen)}
           {this.renderPhoto(hideImageWhileTileLoading)}
