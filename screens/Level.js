@@ -617,6 +617,7 @@ export default class Level extends Component {
               this.navigateToCategoriesScreen()
             })
           }}
+          isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
           fontSize={24}
           backgroundColor='#28a745'
