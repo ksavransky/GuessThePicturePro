@@ -18,6 +18,8 @@ export const getTitleColorFromDifficulty = (difficulty) => {
 }
 
 export const playSound = async (sound, isSoundOn) => {
+  // console.warn('in sound')
+  // console.warn(sound)
   let playSound = null
   if (sound === 'monkey') {
     playSound = MONKEY_SOUND
@@ -34,6 +36,8 @@ export const playSound = async (sound, isSoundOn) => {
   }
 
   if (isSoundOn) {
+    // console.warn('playSound')
+    // console.warn(playSound)
     try {
       await Audio.setIsEnabledAsync(true);
       const sound = new Audio.Sound();
