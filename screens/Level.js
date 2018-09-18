@@ -219,6 +219,8 @@ export default class Level extends Component {
       showModal: guessesLeft > 0 ? 'wrong' : 'lose',
       guessesLeft: guessesLeft,
       points: this.state.points - 5
+    }, () => {
+      playSound('wrongbuzz', this.state.isSoundOn)
     })
   }
 

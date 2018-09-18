@@ -5,7 +5,6 @@ const CLICK_SOUND = require('../assets/sounds/click1.mp3')
 const APPLAUSE_SOUND = require('../assets/sounds/applause.wav')
 const REVEAL_SOUND = require('../assets/sounds/reveal.wav')
 const WRONG_SOUND = require('../assets/sounds/wrongbuzz.mp3')
-const TADA_SOUND = require('../assets/sounds/tada.wav')
 
 export const getTitleColorFromDifficulty = (difficulty) => {
   if ( difficulty === 'Easy' ) {
@@ -29,8 +28,6 @@ export const playSound = async (sound, isSoundOn) => {
     playSound = WRONG_SOUND
   } else if (sound === 'reveal') {
     playSound = REVEAL_SOUND
-  } else if (sound === 'tada') {
-    playSound = TADA_SOUND
   }
 
   if (isSoundOn) {
