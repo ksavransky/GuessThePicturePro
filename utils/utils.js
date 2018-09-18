@@ -18,26 +18,22 @@ export const getTitleColorFromDifficulty = (difficulty) => {
 }
 
 export const playSound = async (sound, isSoundOn) => {
-  // console.warn('in sound')
-  // console.warn(sound)
   let playSound = null
   if (sound === 'monkey') {
     playSound = MONKEY_SOUND
-  } else if (sound = 'click') {
+  } else if (sound === 'click') {
     playSound = CLICK_SOUND
-  } else if (sound = 'applause') {
+  } else if (sound === 'applause') {
     playSound = APPLAUSE_SOUND
-  } else if (sound = 'wrongbuzz') {
+  } else if (sound === 'wrongbuzz') {
     playSound = WRONG_SOUND
-  } else if (sound = 'reveal') {
+  } else if (sound === 'reveal') {
     playSound = REVEAL_SOUND
-  } else if (sound = 'tada') {
+  } else if (sound === 'tada') {
     playSound = TADA_SOUND
   }
 
   if (isSoundOn) {
-    // console.warn('playSound')
-    // console.warn(playSound)
     try {
       await Audio.setIsEnabledAsync(true);
       const sound = new Audio.Sound();

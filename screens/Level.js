@@ -198,7 +198,6 @@ export default class Level extends Component {
         points: (this.state.revealsLeft < (CONSTANTS.STARTING_REVEALS_LEFT - 1) ) ? (this.state.points - 1) : this.state.points,
         atLeastOneGameStarted: true
       }, () => {
-        // console.warn('in handleTilePress')
         playSound('reveal', this.state.isSoundOn)
       })
     } else {
