@@ -7,9 +7,7 @@ import Categories from '../components/Categories.js'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
 import { AsyncStorage } from 'react-native';
 import LargeButton from '../components/buttons/LargeButton'
-import { Constants, Audio } from 'expo'
-
-const CLICK_SOUND = require('../assets/sounds/click1.mp3')
+import { playSound } from '../utils/Utils'
 
 export default class CategoriesScreen extends Component {
   constructor(props) {
@@ -45,7 +43,7 @@ export default class CategoriesScreen extends Component {
     this.setState({
       showModal: categoryName
     })
-    this.playClickSound()
+    playSound('click', this.state.isSoundOn)
   }
 
   resetCategory = () => {
@@ -107,22 +105,9 @@ export default class CategoriesScreen extends Component {
     )
   }
 
-  playClickSound = async () => {
-    if (this.state.isSoundOn) {
-      try {
-        await Audio.setIsEnabledAsync(true);
-        const sound = new Audio.Sound();
-        await sound.loadAsync(CLICK_SOUND);
-        await sound.playAsync();
-      } catch(error) {
-        // console.error(error);
-      }
-    }
-  }
-
   navigateToChooseDifficulty = () => {
     this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.isSoundOn})
-    this.playClickSound()
+    playSound('click', this.state.isSoundOn)
   }
 
   render() {
@@ -151,6 +136,7 @@ export default class CategoriesScreen extends Component {
           asyncStorageData={this.asyncStorageData}
           titleColor={titleColor}
           setShowModal={this.setShowModal}
+          isSoundOn={this.state.isSoundOn}
         />
         {this.renderModal()}
       </View>

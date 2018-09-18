@@ -17,6 +17,7 @@ import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 import LargeButton from '../components/buttons/LargeButton'
 import SmallButton from '../components/buttons/SmallButton'
 import { CONSTANTS } from '../Constants'
+import { playSound } from '../utils/Utils'
 
 const window = Dimensions.get('window');
 
@@ -89,7 +90,8 @@ export default class Level extends Component {
       revealsLeft: CONSTANTS.STARTING_REVEALS_LEFT,
       atLeastOneGameStarted: false,
       showModal: false,
-      usedHint: false
+      usedHint: false,
+      isSoundOn: false
     }
 
     this.storedData = null
@@ -170,7 +172,11 @@ export default class Level extends Component {
   getStoredDataAndLoadLevel = () => {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
       this.storedData = JSON.parse(storedData)
-      this.getAvailableLevels()
+      this.setState({
+        isSoundOn: this.storedData.General.isSoundOn
+      }, () => {
+        this.getAvailableLevels()
+      })
     })
   }
 
@@ -277,6 +283,7 @@ export default class Level extends Component {
         onPress={this.showHint}
         fontFamily='ChalkboardSE'
         topBottomPadding={10}
+        isSoundOn={this.state.isSoundOn}
         style={{
           position: 'absolute',
           right: 20,
@@ -386,6 +393,7 @@ export default class Level extends Component {
           {this.state.isKeyBoardOpen &&
             <SmallButton
               onPress={this.handleSubmit}
+              isSoundOn={this.state.isSoundOn}
               fontFamily='ChalkboardSE'
               topBottomPadding={10}
               disabled={!this.state.guessInput}
@@ -407,6 +415,7 @@ export default class Level extends Component {
       return (
           <LargeButton
             onPress={this.handleSubmit}
+            isSoundOn={this.state.isSoundOn}
             disabled={!this.state.guessInput}
             fontFamily='ChalkboardSE'
             fontSize={24}
@@ -498,6 +507,7 @@ export default class Level extends Component {
                 this.navigateToCategoriesScreen()
               })
             }}
+            isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
             fontSize={24}
             backgroundColor='grey'
@@ -505,6 +515,7 @@ export default class Level extends Component {
             text='BACK' />
           <LargeButton
             onPress={this.setAnotherLevel}
+            isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
             fontSize={24}
             backgroundColor='#28a745'
@@ -527,6 +538,7 @@ export default class Level extends Component {
         </Text>
         <LargeButton
           onPress={() => {this.setState({showModal: false})}}
+          isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
           fontSize={24}
           backgroundColor='#28a745'
@@ -570,6 +582,7 @@ export default class Level extends Component {
         </View>
         <LargeButton
           onPress={this.handleWin}
+          isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
           fontSize={24}
           backgroundColor='#28a745'
@@ -614,6 +627,7 @@ export default class Level extends Component {
         </Text>
         <LargeButton
           onPress={() => {this.setState({showModal: false})}}
+          isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
           fontSize={24}
           backgroundColor='#28a745'
@@ -634,6 +648,7 @@ export default class Level extends Component {
         }}>
           <LargeButton
             onPress={() => {this.setState({showModal: false})}}
+            isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
             fontSize={24}
             backgroundColor='#28a745'
@@ -647,6 +662,7 @@ export default class Level extends Component {
                 this.navigateToCategoriesScreen()
               })
             }}
+            isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
             fontSize={24}
             backgroundColor='red'
@@ -668,6 +684,7 @@ export default class Level extends Component {
         </Text>
         <LargeButton
           onPress={() => {this.setState({showModal: false})}}
+          isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
           fontSize={24}
           backgroundColor='#28a745'
@@ -704,9 +721,13 @@ export default class Level extends Component {
     return (
       <TouchableOpacity
         activeOpacity={0.9}
-        onPress={() => {this.setState({
-          showModal: 'close'
-        })}}
+        onPress={() => {
+            this.setState({
+              showModal: 'close'
+            })
+            playSound('click', this.state.isSoundOn)
+          }
+        }
         style={{
           position: 'absolute',
           top: '5%',
