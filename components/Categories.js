@@ -14,7 +14,9 @@ export default class Categories extends Component {
 
   render() {
     return (
-        <List style={{width: '100%', marginTop: 10}}>
+        <List
+          containerStyle={{marginTop: 0}}
+          >
         {
           sortBy(this.props.asyncStorageData.Game[this.props.difficulty], ['name']).map((category) => (
             <ListItem

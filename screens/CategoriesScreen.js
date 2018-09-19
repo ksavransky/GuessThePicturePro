@@ -127,11 +127,12 @@ export default class CategoriesScreen extends Component {
           onPress={this.navigateToChooseDifficulty}>
           {'< Select Difficulty'}
         </Text>
-        <Text h4 fontFamily='ChalkboardSE' style={{color: titleColor}}>
+        <Text h4 fontFamily='ChalkboardSE' style={{color: titleColor, marginBottom: 10}}>
           {this.state.difficulty}
         </Text>
         <ScrollView
           showsVerticalScrollIndicator={false}
+          bounces={false}
           style={{width: '90%'}}>
           <Categories
             navigation={this.props.navigation}
