@@ -3,6 +3,8 @@ import { List, ListItem } from 'react-native-elements'
 import { CONSTANTS } from '../Constants'
 import { sortBy } from 'lodash'
 import { playSound } from '../utils/Utils'
+import { ScrollView } from 'react-native';
+
 
 export default class Categories extends Component {
   launchCategory = (categoryName, categoryLevels) => {
@@ -12,7 +14,7 @@ export default class Categories extends Component {
 
   render() {
     return (
-      <List containerStyle={{width: '90%'}}>
+        <List style={{width: '100%', marginTop: 10}}>
         {
           sortBy(this.props.asyncStorageData.Game[this.props.difficulty], ['name']).map((category) => (
             <ListItem

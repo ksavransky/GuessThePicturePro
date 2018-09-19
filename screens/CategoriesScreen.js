@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ActivityIndicator, Modal } from 'react-native';
+import { View, ActivityIndicator, Modal, ScrollView } from 'react-native';
 import { Text } from 'react-native-elements';
 import { containerStyle, backgroundColorStyle, modalStyle } from '../styles/Common.js'
 import { get, findIndex } from 'lodash'
@@ -130,14 +130,18 @@ export default class CategoriesScreen extends Component {
         <Text h4 fontFamily='ChalkboardSE' style={{color: titleColor}}>
           {this.state.difficulty}
         </Text>
-        <Categories
-          navigation={this.props.navigation}
-          difficulty={this.state.difficulty}
-          asyncStorageData={this.asyncStorageData}
-          titleColor={titleColor}
-          setShowModal={this.setShowModal}
-          isSoundOn={this.state.isSoundOn}
-        />
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={{width: '90%'}}>
+          <Categories
+            navigation={this.props.navigation}
+            difficulty={this.state.difficulty}
+            asyncStorageData={this.asyncStorageData}
+            titleColor={titleColor}
+            setShowModal={this.setShowModal}
+            isSoundOn={this.state.isSoundOn}
+          />
+        </ScrollView>
         {this.renderModal()}
       </View>
     )
