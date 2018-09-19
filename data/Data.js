@@ -11,7 +11,13 @@ const EASY = [
     iconPath: require('../assets/images/places/eiffel.jpeg'),
     ...defaultLevelsAndPoints,
     levels: EasyPlaces
-  }
+  },
+  {
+    name: 'Places2',
+    iconPath: require('../assets/images/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
 ]
 
 export const AsyncStorageData = {
