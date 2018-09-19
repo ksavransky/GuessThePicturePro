@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity} from 'react-native'
+import { View, Image, TouchableOpacity} from 'react-native'
+
+const volumeUp = require('../../assets/images/icons/sound-on.png')
+const volumeOff = require('../../assets/images/icons/sound-off.png')
 
 export default class SoundButton extends Component {
   render() {
@@ -14,22 +17,16 @@ export default class SoundButton extends Component {
         }}
         >
         <View style={{
-          backgroundColor: 'blue',
-          width: 20,
-          height: 20,
+          backgroundColor: 'white',
+          width: 25,
+          height: 25,
+          borderWidth: 2,
           borderRadius: 100,
-          borderWidth: 1,
-          borderColor: 'blue',
+          borderColor: 'black',
           justifyContent: 'center',
           alignItems: 'center'
         }}>
-          <Text style={{
-            color: 'white',
-            fontWeight: '700',
-            textAlign: 'center'
-          }}>
-            {this.props.isSoundOn ? 'Y' : 'N'}
-          </Text>
+        <Image style={{width: 17, height: 17}} source={this.props.isSoundOn ? volumeUp : volumeOff} />
         </View>
       </TouchableOpacity>
     )
