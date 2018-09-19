@@ -18,6 +18,66 @@ const EASY = [
     ...defaultLevelsAndPoints,
     levels: EasyPlaces
   },
+  {
+    name: 'Places3',
+    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
+  {
+    name: 'Places3b',
+    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
+  {
+    name: 'Places4',
+    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
+  {
+    name: 'Places5',
+    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
+  {
+    name: 'Places6',
+    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
+  {
+    name: 'Places7',
+    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
+  {
+    name: 'Places9',
+    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
+  {
+    name: 'Places10',
+    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
+  {
+    name: 'Places11',
+    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
+  {
+    name: 'Places12',
+    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyPlaces
+  },
 ]
 
 export const AsyncStorageData = {
