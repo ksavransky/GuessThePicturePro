@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { AppLoading, Font } from 'expo';
 import { RootStack } from './Navigation'
+// import FontAwesome, { Icons } from 'react-native-fontawesome';
+
 
 export default class App extends Component {
   state = {
@@ -14,6 +16,7 @@ export default class App extends Component {
   _loadAssetsAsync = async () => {
     await Font.loadAsync({
       ChalkboardSE: require('./assets/fonts/ChalkboardSE.ttf'),
+      // FontAwesome: FontAwesome
     })
     this.setState({ loaded: true })
   }

@@ -11,7 +11,7 @@ export default class ChooseDifficulty extends Component {
   constructor(props) {
     super(props)
     this.state ={
-      isSoundOn: this.props.navigation.state.params.isSoundOn
+      isSoundOn: false
     }
 
     this.storedData = null
@@ -21,6 +21,9 @@ export default class ChooseDifficulty extends Component {
   getStoredData = () => {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
       this.storedData = JSON.parse(storedData)
+      this.setState({
+        isSoundOn: this.storedData.General.isSoundOn
+      })
     })
   }
 
