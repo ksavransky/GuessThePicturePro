@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity} from 'react-native'
-// import FontAwesome, { Icons } from 'react-native-fontawesome';
 
 export default class SoundButton extends Component {
   render() {
@@ -29,7 +28,6 @@ export default class SoundButton extends Component {
             fontWeight: '700',
             textAlign: 'center'
           }}>
-            {/* {<FontAwesome>{this.props.isSoundOn ? Icons.chevronLeft : Icons.chevronRight}</FontAwesome>} */}
             {this.props.isSoundOn ? 'Y' : 'N'}
           </Text>
         </View>
