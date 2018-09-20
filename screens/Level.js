@@ -68,6 +68,7 @@ export default class Level extends Component {
     this.screenHeight = height
     this.screenWidth = width
     this.isiPad = this.screenHeight > 900
+    this.isiPhoneSE = this.screenHeight < 600
 
     const photoPercentWidthOfScreen = this.screenWidth * PHOTO_SCREEN_PERCENT.WIDTH
     const widthRemainder = photoPercentWidthOfScreen % NUMBER_OF_TILES_PER.ROW
@@ -79,8 +80,12 @@ export default class Level extends Component {
     this.photoHeight = photoPercentHeightOfScreen - heightRemainder
     this.tileHeight = this.photoHeight / NUMBER_OF_TILES_PER.COLUMN
 
+    if (this.isiPhoneSE) {
+      this.photoHeight = this.photoHeight * 0.9
+      this.tileHeight = this.tileHeight * 0.9
+    }
+
     this.state = {
-      isiPad: false,
       isTileLoaded: false,
       availableLevels: [],
       currentLevel: null,
@@ -264,15 +269,16 @@ export default class Level extends Component {
   }
 
   renderGameInfo = (hideTitleAndGameInfoWhenKeyboardOpen) => {
+    const fontSizeForInfo = this.isiPhoneSE ? 12 : 14
     return (
       <View style={{marginLeft: '10%', width: '100%', flexDirection: 'row', display: hideTitleAndGameInfoWhenKeyboardOpen, marginBottom: 10}}>
-        <Text h5 style={{color: '#3e3e3e', width: '33%'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: '#3e3e3e', width: '33%'}}>
           {'Reveals Left: ' + this.state.revealsLeft}
         </Text>
-        <Text h5 style={{color: '#3e3e3e', width: '27%', textAlign: 'center'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: '#3e3e3e', width: '28%', textAlign: 'center'}}>
           {'Guesses Left: ' + this.state.guessesLeft}
         </Text>
-        <Text h5 style={{color: '#3e3e3e', width: '30%', textAlign: 'right'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: '#3e3e3e', width: '29%', textAlign: 'right'}}>
           {'Points: ' + this.state.points}
         </Text>
       </View>
@@ -749,12 +755,12 @@ export default class Level extends Component {
 
   render() {
     let hideTitleAndGameInfoWhenKeyboardOpen = 'flex'
-    let formLabelMarginTop = 20
-    let formLabelFontSize = 20
-    let formInputMarginTop = 10
+    let formLabelMarginTop = this.isiPhoneSE ? 0 : 20
+    let formLabelFontSize = this.isiPhoneSE ? 16 : 20
+    let formInputMarginTop = this.isiPhoneSE ? 0 : 10
     let formInputWidth = '90%'
     let formInputAlignment = 'center'
-    let inputFontSize = 20
+    let inputFontSize = this.isiPhoneSE ? 16 : 20
     let totalFormWidth = '100%'
 
     let hideBigButtonWhenKeyboardOpen = 'flex'

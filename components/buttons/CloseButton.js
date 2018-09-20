@@ -13,7 +13,7 @@ export default class CloseButton extends Component {
           right: '5%'
         }}>
         <View style={{
-          backgroundColor: 'white',
+          backgroundColor: 'transparent',
           width: 25,
           height: 25,
           padding: 10,

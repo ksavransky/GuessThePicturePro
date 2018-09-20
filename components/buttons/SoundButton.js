@@ -17,7 +17,7 @@ export default class SoundButton extends Component {
         }}
         >
         <View style={{
-          backgroundColor: 'white',
+          backgroundColor: 'transparent',
           width: 25,
           height: 25,
           borderWidth: 2,
