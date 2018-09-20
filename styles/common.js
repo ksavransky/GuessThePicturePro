@@ -25,10 +25,7 @@ export const containerStyle = StyleSheet.create({
 export const backgroundColorStyle = StyleSheet.create({
   lightBlue: {
     backgroundColor: '#dceff7'
-  },
-  burgundy: {
-    backgroundColor: '#5d0000'
-  },
+  }
 })
 
 

@@ -13,7 +13,7 @@ export default class CloseButton extends Component {
           right: '5%'
         }}>
         <View style={{
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
           width: 25,
           height: 25,
           padding: 10,
@@ -21,7 +21,11 @@ export default class CloseButton extends Component {
           borderRadius: 100,
           borderColor: 'transparent',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          shadowOpacity: 0.4,
+          shadowRadius: 1,
+          shadowColor: 'black',
+          shadowOffset: { height: 1, width: 1 }
         }}>
           <Image style={{width: 25, height: 25}} source={require('../../assets/images/icons/times-circle.png')} />
         </View>

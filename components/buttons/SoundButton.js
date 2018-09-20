@@ -17,14 +17,18 @@ export default class SoundButton extends Component {
         }}
         >
         <View style={{
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
           width: 25,
           height: 25,
           borderWidth: 2,
           borderRadius: 100,
           borderColor: 'black',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          shadowOpacity: 0.4,
+          shadowRadius: 1,
+          shadowColor: 'black',
+          shadowOffset: { height: 1, width: 1 }
         }}>
         <Image style={{width: 17, height: 17}} source={this.props.isSoundOn ? volumeUp : volumeOff} />
         </View>
