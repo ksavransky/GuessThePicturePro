@@ -18,7 +18,7 @@ export default class Intro extends Component {
       asyncStorageData: null
     }
     // Leave clearAllData() below for dev testing
-    // clearAllData()
+    clearAllData()
     this.getLocalStorageData()
     this.playedMonkeySoundOnce = false
   }
