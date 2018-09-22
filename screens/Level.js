@@ -233,7 +233,7 @@ export default class Level extends Component {
 
   handleCorrectAnswer = () => {
     this.setState({
-      showModal: 'win'
+      showModal: 'winner'
     }, () => {
       playSound('applause', this.state.isSoundOn)
     })
@@ -593,7 +593,7 @@ export default class Level extends Component {
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
           {this.state.guessInput + ' is correct! '}
         </Text>
-        <Text h5 style={[modalStyle.field, {color: 'orange'}]}>
+        {/* <Text h5 style={[modalStyle.field, {color: 'orange'}]}>
           {'You scored ' + this.state.points + ' points.'}
         </Text>
         <View style={{width: this.photoWidth, height: this.photoHeight}}>
@@ -609,7 +609,7 @@ export default class Level extends Component {
           fontSize={24}
           backgroundColor='#28a745'
           style={modalStyle.button}
-          text='NEXT' />
+          text='NEXT' /> */}
       </View>
     )
   }
@@ -733,7 +733,7 @@ export default class Level extends Component {
         onRequestClose={() => {}}
         visible={!!showModal}>
         <View style={modalStyle.outerContainer}>
-          {showModal === 'win' ? this.renderWinModal() :
+          {showModal === 'winner' ? this.renderWinModal() :
             showModal === 'lose' ? this.renderLoseModal() :
             showModal === 'no-reveals' ? this.renderNoReveals() :
             showModal === 'hint' ? this.renderHintModal() :

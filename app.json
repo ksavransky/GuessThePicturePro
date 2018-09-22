@@ -1,5 +1,16 @@
+
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+   "name": "Picture Guess Pro",
+   "icon": "./assets/images/levels/places/eiffel.jpeg",
+   "version": "1.0.0",
+   "slug": "picture-guess-pro",
+   "sdkVersion": "27.0.0",
+   "ios": {
+     "bundleIdentifier": "com.spunkymonkeygames.picture-guess-pro"
+   },
+   "android": {
+     "package": "com.spunkymonkeygames.picture-guess-pro"
+   }
   }
 }
