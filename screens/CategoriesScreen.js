@@ -65,6 +65,7 @@ export default class CategoriesScreen extends Component {
       <Modal
         animationType='fade'
         transparent
+        onRequestClose={() => {}}
         visible={!!showModal}>
         <View style={modalStyle.outerContainer}>
           <View style={modalStyle.innerContainer}>

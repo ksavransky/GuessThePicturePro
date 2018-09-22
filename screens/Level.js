@@ -725,6 +725,7 @@ export default class Level extends Component {
       <Modal
         animationType='fade'
         transparent
+        onRequestClose={() => {}}
         visible={!!showModal}>
         <View style={modalStyle.outerContainer}>
           {showModal === 'win' ? this.renderWinModal() :
