@@ -456,7 +456,7 @@ export default class Level extends Component {
     return availableLevels
   }
 
-  clearSavedLevel = () => {
+  clearSavedLevel = (callback) => {
     this.storedData.SavedLevel = {
       difficulty: null,
       categoryName: null,
@@ -467,7 +467,11 @@ export default class Level extends Component {
       guessesLeft: null,
       usedHint: null
     }
-    AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
+    if (callback) {
+      AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData)).then(callback)
+    } else {
+      AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
+    }
   }
 
   saveLevel = (savedLevel) => {
@@ -679,9 +683,10 @@ export default class Level extends Component {
             text='STAY' />
           <LargeButton
             onPress={() => {
-              this.clearSavedLevel()
-              this.setState({showModal: false}, () => {
-                this.navigateToCategoriesScreen()
+              this.clearSavedLevel(() => {
+                this.setState({showModal: false}, () => {
+                  this.navigateToCategoriesScreen()
+                })
               })
             }}
             isSoundOn={this.state.isSoundOn}
