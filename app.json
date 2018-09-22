@@ -7,10 +7,10 @@
    "slug": "picture-guess-pro",
    "sdkVersion": "27.0.0",
    "ios": {
-     "bundleIdentifier": "com.spunkymonkeygames.picture-guess-pro"
+     "bundleIdentifier": "com.spunkymonkeygames.pictureguesspro"
    },
    "android": {
-     "package": "com.spunkymonkeygames.picture-guess-pro"
+     "package": "com.spunkymonkeygames.pictureguesspro"
    }
   }
 }
