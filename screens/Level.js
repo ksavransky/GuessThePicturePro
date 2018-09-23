@@ -589,24 +589,7 @@ export default class Level extends Component {
 
   renderWinModal = () => {
     return (
-      // <View style={modalStyle.innerContainer}>
-      //   <Text h4 style={[modalStyle.field, {color: 'red'}]}>
-      //     {'You have no reveals left!'}
-      //   </Text>
-      //   <Text h4 style={[modalStyle.field, {color: 'red'}]}>
-      //     {'Just figure it out!'}
-      //   </Text>
-      //   <LargeButton
-      //     onPress={() => {this.setState({showModal: false})}}
-      //     isSoundOn={this.state.isSoundOn}
-      //     fontFamily='ChalkboardSE'
-      //     fontSize={24}
-      //     backgroundColor='#28a745'
-      //     style={modalStyle.button}
-      //     text='OKAY' />
-      // </View>
-
-      <View style={modalStyle.innerContainer}>
+      <View style={modalStyle.innerContainerTall}>
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
           {this.state.guessInput + ' is correct! '}
         </Text>
