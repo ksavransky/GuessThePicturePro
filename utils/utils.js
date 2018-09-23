@@ -1,9 +1,9 @@
-import { Constants, Audio } from 'expo'
+import { Audio } from 'expo'
 
 const MONKEY_SOUND = require('../assets/sounds/monkey.mov')
 const CLICK_SOUND = require('../assets/sounds/click1.mp3')
-const APPLAUSE_SOUND = require('../assets/sounds/applause.wav')
-const REVEAL_SOUND = require('../assets/sounds/reveal.wav')
+const TADA_SOUND = require('../assets/sounds/tada.mp3')
+const REVEAL_SOUND = require('../assets/sounds/reveal.mp3')
 const WRONG_SOUND = require('../assets/sounds/wrongbuzz.mp3')
 
 export const getTitleColorFromDifficulty = (difficulty) => {
@@ -22,8 +22,8 @@ export const playSound = async (sound, isSoundOn) => {
     playSound = MONKEY_SOUND
   } else if (sound === 'click') {
     playSound = CLICK_SOUND
-  } else if (sound === 'applause') {
-    playSound = APPLAUSE_SOUND
+  } else if (sound === 'tada') {
+    playSound = TADA_SOUND
   } else if (sound === 'wrongbuzz') {
     playSound = WRONG_SOUND
   } else if (sound === 'reveal') {
@@ -32,7 +32,7 @@ export const playSound = async (sound, isSoundOn) => {
 
   if (isSoundOn) {
     try {
-      await Audio.setIsEnabledAsync(true);
+      // await Audio.setIsEnabledAsync(true);
       const sound = new Audio.Sound();
       await sound.loadAsync(playSound);
       await sound.playAsync();
