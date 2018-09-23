@@ -60,7 +60,7 @@ export const modalStyle = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 10,
-    height: '90%%',
+    height: '90%',
     width: '96%',
     justifyContent: 'center',
     alignItems: 'center',

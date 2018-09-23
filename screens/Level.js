@@ -233,7 +233,7 @@ export default class Level extends Component {
 
   handleCorrectAnswer = () => {
     this.setState({
-      showModal: 'winner'
+      showModal: 'win'
     }, () => {
       playSound('applause', this.state.isSoundOn)
     })
@@ -589,11 +589,28 @@ export default class Level extends Component {
 
   renderWinModal = () => {
     return (
-      <View style={modalStyle.innerContainerTall}>
+      // <View style={modalStyle.innerContainer}>
+      //   <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+      //     {'You have no reveals left!'}
+      //   </Text>
+      //   <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+      //     {'Just figure it out!'}
+      //   </Text>
+      //   <LargeButton
+      //     onPress={() => {this.setState({showModal: false})}}
+      //     isSoundOn={this.state.isSoundOn}
+      //     fontFamily='ChalkboardSE'
+      //     fontSize={24}
+      //     backgroundColor='#28a745'
+      //     style={modalStyle.button}
+      //     text='OKAY' />
+      // </View>
+
+      <View style={modalStyle.innerContainer}>
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
           {this.state.guessInput + ' is correct! '}
         </Text>
-        {/* <Text h5 style={[modalStyle.field, {color: 'orange'}]}>
+        <Text h5 style={[modalStyle.field, {color: 'orange'}]}>
           {'You scored ' + this.state.points + ' points.'}
         </Text>
         <View style={{width: this.photoWidth, height: this.photoHeight}}>
@@ -609,7 +626,7 @@ export default class Level extends Component {
           fontSize={24}
           backgroundColor='#28a745'
           style={modalStyle.button}
-          text='NEXT' /> */}
+          text='NEXT' />
       </View>
     )
   }
@@ -733,7 +750,7 @@ export default class Level extends Component {
         onRequestClose={() => {}}
         visible={!!showModal}>
         <View style={modalStyle.outerContainer}>
-          {showModal === 'winner' ? this.renderWinModal() :
+          {showModal === 'win' ? this.renderWinModal() :
             showModal === 'lose' ? this.renderLoseModal() :
             showModal === 'no-reveals' ? this.renderNoReveals() :
             showModal === 'hint' ? this.renderHintModal() :
