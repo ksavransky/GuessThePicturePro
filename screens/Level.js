@@ -87,6 +87,7 @@ export default class Level extends Component {
 
     this.state = {
       isTileLoaded: false,
+      isPhotoLoaded: false,
       availableLevels: [],
       currentLevel: null,
       points: CONSTANTS.STARTING_POINTS,
@@ -312,11 +313,19 @@ export default class Level extends Component {
   }
 
   renderPhoto = (hideImageWhileTileLoading) => {
+    const photoOpacity = this.state.isPhotoLoaded ? hideImageWhileTileLoading : 0
     return (
       <View style={{width: this.photoWidth, height: this.photoHeight, position: 'relative'}}>
         <Image
           style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading, zIndex: 1}}
           source={this.state.currentLevel.imagePath}
+          onLoad={() => {
+            if (!this.state.isPhotoLoaded){              
+              this.setState({
+                isPhotoLoaded: true
+              })
+            }
+          }}
         />
         <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2}}>
           {this.renderTiles()}
