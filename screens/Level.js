@@ -192,7 +192,12 @@ export default class Level extends Component {
     const availableLevels = differentLevels || this.state.availableLevels
     const randomLevel = Math.floor(Math.random() * availableLevels.length);
     this.setState({
-      currentLevel: availableLevels[randomLevel]
+      currentLevel: availableLevels[randomLevel],
+      points: CONSTANTS.STARTING_POINTS,
+      visibleTiles: ALL_TILES_COVERING,
+      guessInput: null,
+      guessesLeft: 3,
+      revealsLeft: CONSTANTS.STARTING_REVEALS_LEFT,
     })
   }
 
@@ -320,7 +325,7 @@ export default class Level extends Component {
           style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading, zIndex: 1}}
           source={this.state.currentLevel.imagePath}
           onLoad={() => {
-            if (!this.state.isPhotoLoaded){              
+            if (!this.state.isPhotoLoaded){
               this.setState({
                 isPhotoLoaded: true
               })
