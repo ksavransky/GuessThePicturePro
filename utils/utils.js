@@ -6,8 +6,6 @@ const TADA_SOUND = require('../assets/sounds/tada.mp3')
 const REVEAL_SOUND = require('../assets/sounds/reveal.mp3')
 const WRONG_SOUND = require('../assets/sounds/wrongbuzz.mp3')
 
-const audioPlayer = new Audio.Sound();
-
 export const getTitleColorFromDifficulty = (difficulty) => {
   if ( difficulty === 'Easy' ) {
       return '#28a745'
@@ -33,23 +31,16 @@ export const playSound = async (sound, isSoundOn) => {
   }
 
   if (isSoundOn) {
-    try
-      await audioPlayer.unloadAsync()
-      await audioPlayer.loadAsync(playSound);
-      await audioPlayer.playAsync();
+    try {
+      // await Audio.setIsEnabledAsync(true);
+      const sound = new Audio.Sound();
+      await sound.loadAsync(playSound);
+      await sound.playAsync();
+      setTimeout(() => {
+        sound.unloadAsync()
+      }, 5000)
     } catch(error) {
       // console.error(error);
-      console.warn("Couldn't Play audio", err)
     }
   }
-  // if (isSoundOn) {
-  //   try {
-  //     // await Audio.setIsEnabledAsync(true);
-  //     const sound = new Audio.Sound();
-  //     await sound.loadAsync(playSound);
-  //     await sound.playAsync();
-  //   } catch(error) {
-  //     // console.error(error);
-  //   }
-  // }
 }
