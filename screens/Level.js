@@ -241,7 +241,9 @@ export default class Level extends Component {
     this.setState({
       showModal: 'win'
     }, () => {
-      playSound('tada', this.state.isSoundOn)
+      setTimeout(() => {
+        playSound('applause', this.state.isSoundOn)
+      }, 500)
     })
   }
 
@@ -498,7 +500,9 @@ export default class Level extends Component {
       this.setState({
         showModal: 'beatCategory'
       }, () => {
-        playSound('tada', this.state.isSoundOn)
+        setTimeout(() => {
+          playSound('applause', this.state.isSoundOn)
+        }, 500)
       })
       this.clearSavedLevel()
     } else {
