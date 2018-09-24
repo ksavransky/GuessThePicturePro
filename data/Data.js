@@ -8,7 +8,7 @@ const defaultLevelsAndPoints = {
 const EASY = [
   {
     name: 'Places',
-    iconPath: require('../assets/images/levels/places/eiffel.jpeg'),
+    iconPath: require('../assets/images/levels/places/easy/eiffel.jpeg'),
     ...defaultLevelsAndPoints,
     levels: EasyPlaces
   }
