@@ -416,7 +416,7 @@ export default class Level extends Component {
               style={{
                 position: 'absolute',
                 right: 9,
-                bottom: 7
+                bottom: 10
               }}
               backgroundColor='#28a745'
               text='SUBMIT' />
