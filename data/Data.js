@@ -1,4 +1,4 @@
-import { EasyPlaces } from './easy/Places'
+import { EasyLandmarks } from './easy/Landmarks'
 
 const defaultLevelsAndPoints = {
   levelsComplete: 0,
@@ -7,10 +7,10 @@ const defaultLevelsAndPoints = {
 
 const EASY = [
   {
-    name: 'Places',
-    iconPath: require('../assets/images/levels/places/easy/eiffel.jpeg'),
+    name: 'Landmarks',
+    iconPath: require('../assets/images/levels/landmarks/easy/eiffel.jpeg'),
     ...defaultLevelsAndPoints,
-    levels: EasyPlaces
+    levels: EasyLandmarks
   }
 ]
 
