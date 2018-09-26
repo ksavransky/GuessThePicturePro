@@ -44,7 +44,7 @@ export const EasyLandmarks = [
     imagePath: require('../../assets/images/levels/landmarks/easy/grandcanyon.jpg'),
     isCompleted: false,
     optionalAnswer: [['grand', 'canyon'], ['horseshoe', 'bend']],
-    hint: 'Ahhh, a big hole in the ground in the USA Southwest.'
+    hint: 'A big hole in the ground in the USA Southwest.'
   },
   { answer: 'great_wall_china',
     imagePath: require('../../assets/images/levels/landmarks/easy/greatwall.jpg'),
@@ -59,12 +59,17 @@ export const EasyLandmarks = [
   { answer: 'london_eye',
     imagePath: require('../../assets/images/levels/landmarks/easy/londoneye.jpeg'),
     isCompleted: false,
-    hint: "'I' bed you can figure out this London landmark!"
+    hint: "'I' bet you can figure out this London landmark!"
   },
   { answer: 'notre_dame',
     imagePath: require('../../assets/images/levels/landmarks/easy/notredame.jpeg'),
     isCompleted: false,
-    hint: 'A french dame. Kinda.'
+    hint: "A french 'dame'. Kinda."
+  },
+  { answer: 'parthenon',
+    imagePath: require('../../assets/images/levels/landmarks/easy/parthenon.jpeg'),
+    isCompleted: false,
+    hint: 'Democracy was born in Athens around the same time this was built.'
   },
   { answer: 'pyramid_giza',
     imagePath: require('../../assets/images/levels/landmarks/easy/pyramidofgiza.jpg'),
@@ -72,10 +77,33 @@ export const EasyLandmarks = [
     optionalAnswer: [['pyramid', 'giza'], ['great', 'pyramid']],
     hint: 'The most famous ancient Egyptian structure.'
   },
+  { answer: 'saint_basil_red_square',
+    imagePath: require('../../assets/images/levels/landmarks/easy/saint-basils-cathedral-red-square.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['red', 'square'], ["basil's", 'cathedral'], ["basil", 'cathedral']],
+    hint: "Moscow's center. A color and a shape. Also, a cathedral of a saint sharing a name with a salad leaf."
+  },
+  { answer: 'sphinx',
+    imagePath: require('../../assets/images/levels/landmarks/easy/sphinx.jpg'),
+    isCompleted: false,
+    hint: 'Why did the ancient Egyptian love combining humans and animals so much?'
+  },
   { answer: 'statue_liberty',
     imagePath: require('../../assets/images/levels/landmarks/easy/statueofliberty.jpeg'),
     isCompleted: false,
     hint: 'You know this! Check your spelling.'
+  },
+  { answer: 'stonehenge',
+    imagePath: require('../../assets/images/levels/landmarks/easy/stonehenge.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['stonehenge'], ['stone', 'henge']],
+    hint: 'How many druids does it take to drag a bolder across a plain?'
+  },
+  { answer: 'vatican',
+    imagePath: require('../../assets/images/levels/landmarks/easy/stpeterssquare-vatican.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['vatican'], ["peter's", 'square']],
+    hint: 'The Pope likes to hang out here.'
   },
   { answer: 'sydney_opera_house',
     imagePath: require('../../assets/images/levels/landmarks/easy/sydneyoperahouse.jpg'),
@@ -86,5 +114,10 @@ export const EasyLandmarks = [
     imagePath: require('../../assets/images/levels/landmarks/easy/tajmahal.jpg'),
     isCompleted: false,
     hint: 'World famous Indian palace.'
+  },
+  { answer: 'times_square',
+    imagePath: require('../../assets/images/levels/landmarks/easy/timessquare.jpeg'),
+    isCompleted: false,
+    hint: 'New York is a bustling place!'
   }
 ]
