@@ -61,6 +61,16 @@ export const EasyLandmarks = [
     isCompleted: false,
     hint: "'I' bet you can figure out this London landmark!"
   },
+  { answer: 'louvre',
+    imagePath: require('../../assets/images/levels/landmarks/easy/louvre.jpg'),
+    isCompleted: false,
+    hint: "A famous museum in Paris. The Mona Lisa is on display there."
+  },
+  { answer: 'mount_rushmore',
+    imagePath: require('../../assets/images/levels/landmarks/easy/mount-rushmore.jpg'),
+    isCompleted: false,
+    hint: "The faces of U.S. presidents carved on a mountain. What can it be?"
+  },
   { answer: 'notre_dame',
     imagePath: require('../../assets/images/levels/landmarks/easy/notredame.jpeg'),
     isCompleted: false,

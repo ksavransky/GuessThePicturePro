@@ -1,4 +1,5 @@
 import { EasyLandmarks } from './easy/Landmarks'
+import { MediumLandmarks } from './medium/Landmarks'
 
 const defaultLevelsAndPoints = {
   levelsComplete: 0,
@@ -14,13 +15,22 @@ const EASY = [
   }
 ]
 
+const MEDIUM = [
+  {
+    name: 'Landmarks',
+    iconPath: require('../assets/images/levels/landmarks/medium/mount-fuji.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: MediumLandmarks
+  }
+]
+
 export const AsyncStorageData = {
   General: {
     isSoundOn: true
   },
   Game: {
     Easy: EASY,
-    Medium: [],
+    Medium: MEDIUM,
     Hard: []
   },
   SavedLevel: {
