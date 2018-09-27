@@ -28,12 +28,59 @@ export const MediumLandmarks = [
   { answer: 'chichen_itza',
     imagePath: require('../../assets/images/levels/landmarks/medium/chichen-itza.jpg'),
     isCompleted: false,
-    hint: "Mayan pyramid in Mexico. Two words. First word is one letter away from chicken!"
+    hint: "Ancient Mayan pyramid in Mexico. Rhymes with 'Chicken eats a'."
   },
   { answer: 'cristo_redentor',
     imagePath: require('../../assets/images/levels/landmarks/medium/cristo-redentor-christ-redeemer.jpg'),
     isCompleted: false,
     optionalAnswer: [['cristo', 'redentor'], ['redeemer', 'christ']],
     hint: "Famous Rio de Janeiro statue of Christ"
+  },
+  { answer: 'duomo',
+    imagePath: require('../../assets/images/levels/landmarks/medium/florence-cathedral-duomo.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['florence', 'duomo'], ['duomo'], ['florence', 'cathedral'], ['firenze', 'duomo']],
+    hint: "Built at the heart of Renaissance Italy."
+  },
+  { answer: 'forbidden_city',
+    imagePath: require('../../assets/images/levels/landmarks/medium/forbidden-city.jpg'),
+    isCompleted: false,
+    hint: "Palace complex in Beijing."
+  },
+  { answer: 'kilimanjaro',
+    imagePath: require('../../assets/images/levels/landmarks/medium/kilimanjaro.jpg'),
+    isCompleted: false,
+    hint: "Most famous mountain in Africa. Snows there sometimes... or used to :(."
+  },
+  { answer: 'machu_picchu',
+    imagePath: require('../../assets/images/levels/landmarks/medium/machu-picchu.jpg'),
+    isCompleted: false,
+    hint: "Incan citadel high up in the Andes mountains. Spelling of second word has back-to-back 'c's in it."
+  },
+  { answer: 'mecca',
+    imagePath: require('../../assets/images/levels/landmarks/medium/mecca-kaaba.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['mecca'], ['kaaba'], ['mecca', 'kaaba']],
+    hint: "Muslims from all over make a pilgrimage here."
+  },
+  { answer: 'mount_fuji',
+    imagePath: require('../../assets/images/levels/landmarks/medium/mount-fuji.jpg'),
+    isCompleted: false,
+    hint: "Famous mountain in Japan."
+  },
+  { answer: 'neuschwanstein',
+    imagePath: require('../../assets/images/levels/landmarks/medium/neuschwanstein-castle.jpg'),
+    isCompleted: false,
+    hint: "Famous castle in Germany. Starts with an 'N'. You might want to google the spelling."
+  },
+  { answer: 'niagara_falls',
+    imagePath: require('../../assets/images/levels/landmarks/medium/niagara-falls.jpg'),
+    isCompleted: false,
+    hint: "Famous waterfall in the north east corner of the United States."
+  },
+  { answer: 'pantheon',
+    imagePath: require('../../assets/images/levels/landmarks/medium/pantheon.jpg'),
+    isCompleted: false,
+    hint: "Ancient building in Rome, known for unique architecture."
   },
 ]
