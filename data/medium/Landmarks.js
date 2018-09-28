@@ -83,4 +83,15 @@ export const MediumLandmarks = [
     isCompleted: false,
     hint: "Ancient building in Rome, known for unique architecture."
   },
+  { answer: 'Petronas',
+    imagePath: require('../../assets/images/levels/landmarks/medium/Petronas-Towers-or-kuala-lumpur.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['Petronas', 'Towers'], ['kuala', 'lumpur']],
+    hint: "Malaysian towers. Tallest in the world from 1998 to 2004."
+  },
+  { answer: 'sagrada_familia',
+    imagePath: require('../../assets/images/levels/landmarks/medium/sagrada-familia.jpg'),
+    isCompleted: false,
+    hint: "Guadi's masterpiece in Barcelona. Still being built a century later."
+  },
 ]
