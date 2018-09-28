@@ -94,4 +94,14 @@ export const MediumLandmarks = [
     isCompleted: false,
     hint: "Guadi's masterpiece in Barcelona. Still being built a century later."
   },
+  { answer: 'marina_bay_sands',
+    imagePath: require('../../assets/images/levels/landmarks/medium/singapore-marina-bay-sands.jpg'),
+    isCompleted: false,
+    hint: "This famous Singapore hotel has a giant pool on its stylish roof."
+  },
+  { answer: 'space_needle',
+    imagePath: require('../../assets/images/levels/landmarks/medium/space-needle.jpg'),
+    isCompleted: false,
+    hint: "Seattle landmark. It's pointing toward _______ and is thin on top like a _______."
+  },
 ]
