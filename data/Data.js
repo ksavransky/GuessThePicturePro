@@ -1,5 +1,6 @@
 import { EasyLandmarks } from './easy/Landmarks'
 import { MediumLandmarks } from './medium/Landmarks'
+import { HardLandmarks } from './hard/Landmarks'
 
 const defaultLevelsAndPoints = {
   levelsComplete: 0,
@@ -24,6 +25,15 @@ const MEDIUM = [
   }
 ]
 
+const HARD = [
+  {
+    name: 'Landmarks',
+    iconPath: require('../assets/images/levels/landmarks/hard/Gardens-by-the-Bay.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: HardLandmarks
+  }
+]
+
 export const AsyncStorageData = {
   General: {
     isSoundOn: true
@@ -31,7 +41,7 @@ export const AsyncStorageData = {
   Game: {
     Easy: EASY,
     Medium: MEDIUM,
-    Hard: []
+    Hard: HARD
   },
   SavedLevel: {
     difficulty: null,

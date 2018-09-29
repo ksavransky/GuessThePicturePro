@@ -86,7 +86,7 @@ export const MediumLandmarks = [
   { answer: 'Petronas',
     imagePath: require('../../assets/images/levels/landmarks/medium/Petronas-Towers-or-kuala-lumpur.jpg'),
     isCompleted: false,
-    optionalAnswer: [['Petronas', 'Towers'], ['kuala', 'lumpur']],
+    optionalAnswer: [['petronas', 'towers'], ['kuala', 'lumpur']],
     hint: "Malaysian towers. Tallest in the world from 1998 to 2004."
   },
   { answer: 'sagrada_familia',
@@ -104,4 +104,30 @@ export const MediumLandmarks = [
     isCompleted: false,
     hint: "Seattle landmark. It's pointing toward _______ and is thin on top like a _______."
   },
+  { answer: 'tower_bridge',
+    imagePath: require('../../assets/images/levels/landmarks/medium/tower-london-bridge.jpg'),
+    isCompleted: false,
+    hint: "In London, but not London bridge."
+  },
+  { answer: 'versailles',
+    imagePath: require('../../assets/images/levels/landmarks/medium/versailles.jpg'),
+    isCompleted: false,
+    hint: "Royal residence of Louis XIV. Near Paris."
+  },
+  { answer: 'trevi',
+    imagePath: require('../../assets/images/levels/landmarks/medium/trevi-fountain.jpg'),
+    isCompleted: false,
+    hint: "Most famous fountain in Rome."
+  },
+  { answer: 'wailing_wall',
+    imagePath: require('../../assets/images/levels/landmarks/medium/wailing-wall.jpg'),
+    isCompleted: false,
+    hint: "People come to Jerusalam to pray here."
+  },
+  { answer: 'hermitage',
+    imagePath: require('../../assets/images/levels/landmarks/medium/winter-palace-hermitage.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['hermitage'], ['winter', 'palace']],
+    hint: "Catherine the Great founded this world famous art museum."
+  }
 ]
