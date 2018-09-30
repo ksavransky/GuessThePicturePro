@@ -1,27 +1,27 @@
 export const HardLandmarks = [
-  { answer: 'reichstag.jpg',
+  { answer: 'reichstag',
     imagePath: require('../../assets/images/levels/landmarks/hard/berlin-reichstag.jpg'),
     isCompleted: false,
     hint: 'A building in Berlin that is the meeting place of the Bundestag (parliament).'
   },
-  { answer: 'burj.jpg',
+  { answer: 'burj',
     imagePath: require('../../assets/images/levels/landmarks/hard/Burj-Khalifa-or-tower.jpg'),
     isCompleted: false,
-    optionalAnswer: [['burj', 'khalifa'], ['burj', 'dubai']],
+    optionalAnswer: [['burj', 'khalifa'], ['burj', 'dubai'], ['burj']],
     hint: 'In Dubai. Tallest building in the world! 163 floors!'
   },
-  { answer: 'castelstangelo.jpg',
+  { answer: 'castelstangelo',
     imagePath: require('../../assets/images/levels/landmarks/hard/castelstangelo.jpg'),
     isCompleted: false,
     optionalAnswer: [['castelstangelo'], ['castel', "santangelo"], ['castel', "angelo"], ['castle', "angelo"], ['mausoleum', 'hadrian']],
     hint: 'In Rome. It was initially commissioned by Emperor Hadrian. Later used by the popes as a fortress and castle.'
   },
-  { answer: 'moher.jpg',
+  { answer: 'moher',
     imagePath: require('../../assets/images/levels/landmarks/hard/cliffs-of-moher.jpg'),
     isCompleted: false,
     hint: 'Sea cliffs located at the southwestern edge of the Burren region in County Clare, Ireland.'
   },
-  { answer: 'gardens_bay.jpg',
+  { answer: 'gardens_bay',
     imagePath: require('../../assets/images/levels/landmarks/hard/Gardens-by-the-Bay.jpg'),
     isCompleted: false,
     hint: 'A nature park spanning 101 hectares of reclaimed land in the Central Region of Singapore.'
@@ -45,7 +45,7 @@ export const HardLandmarks = [
   { answer: "iguazu",
     imagePath: require("../../assets/images/levels/landmarks/hard/iguazu-falls.jpg"),
     isCompleted: false,
-    optionalAnswer: [['Iguaçu'], ['iguazu']],
+    optionalAnswer: [['iguaçu'], ['iguazu']],
     hint: "In Argentina. The largest waterfall system in the world."
   },
   { answer: "matterhorn",
@@ -79,10 +79,5 @@ export const HardLandmarks = [
     isCompleted: false,
     optionalAnswer: [["cape", "town"], ["table", "mountain"]],
     hint: "A famous South African mountain with a flat-topped. Or the city it overlooks."
-  },
-  { answer: "victoria_falls",
-    imagePath: require("../../assets/images/levels/landmarks/hard/victoria-falls.jpg"),
-    isCompleted: false,
-    hint: "The world's largest waterfall. In southern Africa between Zambia and Zimbabwe. Named after a British Monarch."
   }
 ]

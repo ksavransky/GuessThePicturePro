@@ -720,7 +720,7 @@ export default class Level extends Component {
 
   renderHintModal = () => {
     return (
-      <View style={modalStyle.innerContainer}>
+      <View style={[modalStyle.innerContainer, {height: '67%'}]}>
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
           {'Here is a hint:'}
         </Text>
