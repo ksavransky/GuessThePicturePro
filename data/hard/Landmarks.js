@@ -13,7 +13,7 @@ export const HardLandmarks = [
   { answer: 'castelstangelo.jpg',
     imagePath: require('../../assets/images/levels/landmarks/hard/castelstangelo.jpg'),
     isCompleted: false,
-    optionalAnswer: [['castelstangelo'], ['castel', "sant'angelo"], ['castel', "angelo"], ['castle', "angelo"], ['mausoleum', 'hadrian']],
+    optionalAnswer: [['castelstangelo'], ['castel', "santangelo"], ['castel', "angelo"], ['castle', "angelo"], ['mausoleum', 'hadrian']],
     hint: 'In Rome. It was initially commissioned by Emperor Hadrian. Later used by the popes as a fortress and castle.'
   },
   { answer: 'moher.jpg',
@@ -56,7 +56,7 @@ export const HardLandmarks = [
   { answer: "orsay",
     imagePath: require("../../assets/images/levels/landmarks/hard/Musee-d'Orsay.jpg"),
     isCompleted: false,
-    optionalAnswer: [["musee", "orsay"], ["musee", "d'orsay"], ["musee", "d' orsay"], ["d'orsay"]],
+    optionalAnswer: [["musee", "orsay"], ["musee", "dorsay"], ["museum", "dorsay"], ["dorsay"]],
     hint: "A museum in Paris. Housed in a former railway station. It holds mainly French art dating from 1848 to 1914."
   },
   { answer: "guell",

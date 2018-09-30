@@ -248,7 +248,7 @@ export default class Level extends Component {
   }
 
   handleSubmit = () => {
-    const guessArray = this.state.guessInput.toLowerCase().split(' ')
+    const guessArray = this.state.guessInput.toLowerCase().replace(/[^\w\s]/gi, '').split(' ')
     const optionalAnswer = this.state.currentLevel.optionalAnswer
     let isAnswerCorrect = false
     if (optionalAnswer) {

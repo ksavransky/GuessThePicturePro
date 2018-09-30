@@ -90,7 +90,7 @@ export const EasyLandmarks = [
   { answer: 'saint_basil_red_square',
     imagePath: require('../../assets/images/levels/landmarks/easy/saint-basils-cathedral-red-square.jpg'),
     isCompleted: false,
-    optionalAnswer: [['red', 'square'], ["basil's", 'cathedral'], ["basil", 'cathedral']],
+    optionalAnswer: [['red', 'square'], ["basils", 'cathedral'], ["basil", 'cathedral']],
     hint: "Moscow's center. A color and a shape. Also, a cathedral of a saint sharing a name with a salad leaf."
   },
   { answer: 'sphinx',
@@ -112,7 +112,7 @@ export const EasyLandmarks = [
   { answer: 'vatican',
     imagePath: require('../../assets/images/levels/landmarks/easy/stpeterssquare-vatican.jpg'),
     isCompleted: false,
-    optionalAnswer: [['vatican'], ["peter's", 'square']],
+    optionalAnswer: [['vatican'], ["peters", 'square']],
     hint: 'The Pope likes to hang out here.'
   },
   { answer: 'sydney_opera_house',
