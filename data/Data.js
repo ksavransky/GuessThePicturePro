@@ -1,6 +1,7 @@
 import { EasyLandmarks } from './easy/Landmarks'
 import { EasyFood } from './easy/Food'
 import { MediumLandmarks } from './medium/Landmarks'
+import { MediumFood } from './medium/Food'
 import { HardLandmarks } from './hard/Landmarks'
 
 const defaultLevelsAndPoints = {
@@ -29,6 +30,12 @@ const MEDIUM = [
     iconPath: require('../assets/images/levels/landmarks/medium/mount-fuji.jpg'),
     ...defaultLevelsAndPoints,
     levels: MediumLandmarks
+  },
+  {
+    name: 'Food',
+    iconPath: require('../assets/images/levels/food/medium/dosa.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: MediumFood
   }
 ]
 
