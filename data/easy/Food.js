@@ -85,7 +85,7 @@ export const EasyFood = [
   { answer: 'tacos',
     imagePath: require('../../assets/images/levels/food/easy/tacos.jpg'),
     isCompleted: false,
-    optionalAnswer: [['tacos', 'taco']],
+    optionalAnswer: [['tacos'], ['taco']],
     hint: "It's ___ Tuesday!"
   },
   { answer: 'tamales',
