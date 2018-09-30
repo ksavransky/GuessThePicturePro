@@ -3,7 +3,7 @@ export const MediumLandmarks = [
     imagePath: require('../../assets/images/levels/landmarks/medium/acropolis-parthenon.jpg'),
     isCompleted: false,
     optionalAnswer: [['acropolis'], ['parthenon']],
-    hint: 'Athens. Famous ancient ruin site.'
+    hint: 'Athens. Famous ancient ruin site. Or, the remains of the temple to Athena.'
   },
   { answer: 'alhambra',
     imagePath: require('../../assets/images/levels/landmarks/medium/alhambra.jpg'),
@@ -66,17 +66,17 @@ export const MediumLandmarks = [
   { answer: 'mount_fuji',
     imagePath: require('../../assets/images/levels/landmarks/medium/mount-fuji.jpg'),
     isCompleted: false,
-    hint: "Famous mountain in Japan."
+    hint: "Most famous mountain in Japan."
   },
   { answer: 'neuschwanstein',
     imagePath: require('../../assets/images/levels/landmarks/medium/neuschwanstein-castle.jpg'),
     isCompleted: false,
-    hint: "Famous castle in Germany. Starts with an 'N'. You might want to google the spelling."
+    hint: "Castle in Germany. Starts with an 'N'. You might want to google the spelling."
   },
   { answer: 'niagara_falls',
     imagePath: require('../../assets/images/levels/landmarks/medium/niagara-falls.jpg'),
     isCompleted: false,
-    hint: "Famous waterfall in the north east corner of the United States."
+    hint: "Waterfall in the north east corner of the United States."
   },
   { answer: 'pantheon',
     imagePath: require('../../assets/images/levels/landmarks/medium/pantheon.jpg'),
