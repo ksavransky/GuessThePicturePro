@@ -91,7 +91,7 @@ export const EasyFood = [
   { answer: 'tamales',
     imagePath: require('../../assets/images/levels/food/easy/tamales-tamale.jpg'),
     isCompleted: false,
-    optionalAnswer: [['tamales', 'tamale']],
+    optionalAnswer: [['tamales'], ['tamale']],
     hint: "A traditional Mesoamerican dish made of masa or dough, which is steamed in a corn husk or banana leaf."
   },
   { answer: 'tiramisu',
