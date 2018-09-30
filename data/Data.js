@@ -3,6 +3,7 @@ import { EasyFood } from './easy/Food'
 import { MediumLandmarks } from './medium/Landmarks'
 import { MediumFood } from './medium/Food'
 import { HardLandmarks } from './hard/Landmarks'
+import { HardFood } from './hard/Food'
 
 const defaultLevelsAndPoints = {
   levelsComplete: 0,
@@ -45,6 +46,12 @@ const HARD = [
     iconPath: require('../assets/images/levels/landmarks/hard/Gardens-by-the-Bay.jpg'),
     ...defaultLevelsAndPoints,
     levels: HardLandmarks
+  },
+  {
+    name: 'Food',
+    iconPath: require('../assets/images/levels/food/hard/SHAKSHUKA-kagyana.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: HardFood
   }
 ]
 
