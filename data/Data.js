@@ -1,4 +1,5 @@
 import { EasyLandmarks } from './easy/Landmarks'
+import { EasyFood } from './easy/Food'
 import { MediumLandmarks } from './medium/Landmarks'
 import { HardLandmarks } from './hard/Landmarks'
 
@@ -13,6 +14,12 @@ const EASY = [
     iconPath: require('../assets/images/levels/landmarks/easy/eiffel.jpeg'),
     ...defaultLevelsAndPoints,
     levels: EasyLandmarks
+  },
+  {
+    name: 'Food',
+    iconPath: require('../assets/images/levels/food/easy/hamburger.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyFood
   }
 ]
 
