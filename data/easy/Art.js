@@ -40,4 +40,16 @@ export const EasyArt = [
     isCompleted: false,
     hint: "Rodin's famous sculpture of a man contemplating stuff."
   },
+  { answer: 'venus_milo',
+    imagePath: require('../../assets/images/levels/art/easy/Venus_de_Milo.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['venus', 'milo'], ['aphrodite', 'milos']],
+    hint: "One of the most famous works of ancient Greek sculpture."
+  },
+  { answer: 'whistlers_mother',
+    imagePath: require('../../assets/images/levels/art/easy/Whistlers_Mother.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['whistlers', 'mother'], ['arrangement', 'grey'], ['black']],
+    hint: "American painting icon. The painter painted his own mother."
+  }
 ]
