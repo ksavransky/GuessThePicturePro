@@ -38,8 +38,8 @@ export const MediumArt = [
     isCompleted: false,
     hint: "Picasso's famous work. Painted as a reaction to the Nazi's devastating bombing practice on a Basque town."
   },
-  { answer: 'irisis',
-    imagePath: require('../../assets/images/levels/art/medium/irisis.jpg'),
+  { answer: 'irises',
+    imagePath: require('../../assets/images/levels/art/medium/irises.jpg'),
     isCompleted: false,
     hint: "Vincent van Gogh's painting of these flowers, in the last year before his death in 1890."
   },
@@ -78,22 +78,22 @@ export const MediumArt = [
   { answer: 'night_watch',
     imagePath: require('../../assets/images/levels/art/medium/The_Night_Watch.jpg'),
     isCompleted: false,
-    hint: "A 1642 painting by Rembrandt van Rijn. It depicts a group doing its late rounds."
+    hint: "A 1642 painting by Rembrandt van Rijn. It depicts a security detail doing its late rounds."
   },
   { answer: 'water_lily_pond',
     imagePath: require('../../assets/images/levels/art/medium/The_Water-Lily_Pond.jpg'),
     isCompleted: false,
-    hint: ""
+    hint: "Monet's classic version of the these flowers in this small body of water."
   },
   { answer: 'birth_venus',
     imagePath: require('../../assets/images/levels/art/medium/the-birth-of-venus.jpg'),
     isCompleted: false,
-    hint: ""
+    hint: "Sandro Botticelli's painting from mid 1480s. It depicts the arrival of a famous goddess."
   },
   { answer: 'kiss',
     imagePath: require('../../assets/images/levels/art/medium/the-kiss.jpg'),
     isCompleted: false,
-    hint: ""
+    hint: "Rodin's sculpture of Paolo and Francesca, two characters borrowed from Dante’s Divine Comedy"
   },
   { answer: 'vangoghselfportrait',
     imagePath: require('../../assets/images/levels/art/medium/vangoghselfportrait.jpg'),
@@ -104,6 +104,6 @@ export const MediumArt = [
   { answer: 'wheatfield_crows',
     imagePath: require('../../assets/images/levels/art/medium/Wheatfield_with_crows.jpg'),
     isCompleted: false,
-    hint: ""
+    hint: "A July 1890 painting by Vincent van Gogh, cited by critics as possibly his greatest and final painting. It depicts a ______ with _______."
   }
 ]

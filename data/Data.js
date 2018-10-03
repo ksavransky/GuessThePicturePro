@@ -3,6 +3,7 @@ import { EasyFood } from './easy/Food'
 import { EasyArt } from './easy/Art'
 import { MediumLandmarks } from './medium/Landmarks'
 import { MediumFood } from './medium/Food'
+import { MediumArt } from './medium/Art'
 import { HardLandmarks } from './hard/Landmarks'
 import { HardFood } from './hard/Food'
 
@@ -44,6 +45,12 @@ const MEDIUM = [
     iconPath: require('../assets/images/levels/food/medium/dosa.jpg'),
     ...defaultLevelsAndPoints,
     levels: MediumFood
+  },
+  {
+    name: 'Art',
+    iconPath: require('../assets/images/levels/art/medium/The_Kiss.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: MediumArt
   }
 ]
 
