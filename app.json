@@ -6,6 +6,7 @@
    "version": "1.0.1",
    "slug": "picture-guess-pro",
    "sdkVersion": "27.0.0",
+   "orientation": "portrait",
    "ios": {
      "bundleIdentifier": "com.spunkymonkeygames.pictureguesspro"
    },
