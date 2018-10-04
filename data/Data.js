@@ -1,6 +1,7 @@
 import { EasyLandmarks } from './easy/Landmarks'
 import { EasyFood } from './easy/Food'
 import { EasyArt } from './easy/Art'
+import { EasyRappers } from './easy/Rappers'
 import { MediumLandmarks } from './medium/Landmarks'
 import { MediumFood } from './medium/Food'
 import { MediumArt } from './medium/Art'
@@ -31,6 +32,12 @@ const EASY = [
     iconPath: require('../assets/images/levels/art/easy/david.jpg'),
     ...defaultLevelsAndPoints,
     levels: EasyArt
+  },
+  {
+    name: 'Rappers',
+    iconPath: require('../assets/images/levels/rappers/easy/Nicki_Minaj.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyRappers
   }
 ]
 
