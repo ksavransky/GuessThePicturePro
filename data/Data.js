@@ -6,6 +6,7 @@ import { MediumFood } from './medium/Food'
 import { MediumArt } from './medium/Art'
 import { HardLandmarks } from './hard/Landmarks'
 import { HardFood } from './hard/Food'
+import { HardArt } from './hard/Art'
 
 const defaultLevelsAndPoints = {
   levelsComplete: 0,
@@ -66,6 +67,12 @@ const HARD = [
     iconPath: require('../assets/images/levels/food/hard/SHAKSHUKA-kagyana.jpg'),
     ...defaultLevelsAndPoints,
     levels: HardFood
+  },
+  {
+    name: 'Art',
+    iconPath: require('../assets/images/levels/art/hard/Balloon_Dog.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: HardArt
   }
 ]
 

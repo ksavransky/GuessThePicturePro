@@ -57,7 +57,7 @@ export const HardArt = [
     hint: "This portrait is a 1434 oil painting by Jan van Eyck. It depicts an Italian merchant and his wife."
   },
   { answer: 'artists_garden_giverny',
-    imagePath: require('../../assets/images/levels/art/hard/artists_garden_giverny.jpg'),
+    imagePath: require('../../assets/images/levels/art/hard/artists_garden_giverny.jpeg'),
     isCompleted: false,
     optionalAnswer: [['artists', 'garden', 'giverny'], ['lartiste', 'jardin', 'giverny']],
     hint: "An oil on canvas painting by Monet done in 1900. It is one of many works by the artist of his garden at _____ over the last thirty years of his life."
