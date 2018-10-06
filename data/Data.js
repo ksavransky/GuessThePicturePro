@@ -2,12 +2,17 @@ import { EasyLandmarks } from './easy/Landmarks'
 import { EasyFood } from './easy/Food'
 import { EasyArt } from './easy/Art'
 import { EasyRappers } from './easy/Rappers'
+import { EasyAnimals } from './easy/Animals'
+
 import { MediumLandmarks } from './medium/Landmarks'
 import { MediumFood } from './medium/Food'
 import { MediumArt } from './medium/Art'
+import { MediumAnimals } from './medium/Animals'
+
 import { HardLandmarks } from './hard/Landmarks'
 import { HardFood } from './hard/Food'
 import { HardArt } from './hard/Art'
+import { HardAnimals } from './hard/Animals'
 
 const defaultLevelsAndPoints = {
   levelsComplete: 0,
@@ -38,7 +43,13 @@ const EASY = [
     iconPath: require('../assets/images/levels/rappers/easy/Nicki_Minaj.jpg'),
     ...defaultLevelsAndPoints,
     levels: EasyRappers
-  }
+  },
+  {
+    name: 'Animals',
+    iconPath: require('../assets/images/levels/animals/easy/dog.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: EasyAnimals
+  },
 ]
 
 const MEDIUM = [
@@ -59,7 +70,13 @@ const MEDIUM = [
     iconPath: require('../assets/images/levels/art/medium/The_Kiss.jpg'),
     ...defaultLevelsAndPoints,
     levels: MediumArt
-  }
+  },
+  {
+    name: 'Animals',
+    iconPath: require('../assets/images/levels/animals/medium/yak.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: MediumAnimals
+  },
 ]
 
 const HARD = [
@@ -80,7 +97,13 @@ const HARD = [
     iconPath: require('../assets/images/levels/art/hard/Balloon_Dog.jpg'),
     ...defaultLevelsAndPoints,
     levels: HardArt
-  }
+  },
+  {
+    name: 'Animals',
+    iconPath: require('../assets/images/levels/animals/hard/ibis.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: HardAnimals
+  },
 ]
 
 export const AsyncStorageData = {
