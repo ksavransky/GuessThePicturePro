@@ -167,5 +167,15 @@ export const EasyAnimals = [
     imagePath: require('../../assets/images/levels/animals/easy/zebra.jpg'),
     isCompleted: false,
     hint: "Look at those stripes."
-  }
+  },
+  { answer: 'camel',
+    imagePath: require('../../assets/images/levels/animals/easy/camel.jpg'),
+    isCompleted: false,
+    hint: "Look at those humps."
+  },
+  { answer: 'dolphin',
+    imagePath: require('../../assets/images/levels/animals/easy/dolphin.jpg'),
+    isCompleted: false,
+    hint: "Really smart and help humans often."
+  },
 ]
