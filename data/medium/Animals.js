@@ -9,6 +9,11 @@ export const MediumAnimals = [
     isCompleted: false,
     hint: "A member of the fab four?"
   },
+  { answer: 'bison',
+    imagePath: require('../../assets/images/levels/animals/medium/bison.jpg'),
+    isCompleted: false,
+    hint: "Not a bull. Not a cow. Once roamed American grasslands in huge herds."
+  },
   { answer: 'centipede',
     imagePath: require('../../assets/images/levels/animals/medium/centipede.jpg'),
     isCompleted: false,
@@ -23,6 +28,11 @@ export const MediumAnimals = [
     imagePath: require('../../assets/images/levels/animals/medium/dove.jpg'),
     isCompleted: false,
     hint: "A symbol of peace."
+  },
+  { answer: 'emu',
+    imagePath: require('../../assets/images/levels/animals/medium/emu.jpg'),
+    isCompleted: false,
+    hint: "Remember when teenagers in the 2000s died their hair black and wore make up. Off by one letter."
   },
   { answer: 'guinea_pig',
     imagePath: require('../../assets/images/levels/animals/medium/guinea-pig.jpg'),
@@ -39,6 +49,18 @@ export const MediumAnimals = [
     isCompleted: false,
     hint: "If it stings you, ask someone to pee on you."
   },
+  { answer: 'king_vulture',
+    imagePath: require('../../assets/images/levels/animals/medium/king-vulture-or-condor.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['vulture'], ['condor']],
+    hint: "Sometimes it's electric."
+  },
+  { answer: 'llama',
+    imagePath: require('../../assets/images/levels/animals/medium/llama.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['llama'], ['alpaca']],
+    hint: "From South America. Great fur for sweaters and rugs."
+  },
   { answer: 'moray',
     imagePath: require('../../assets/images/levels/animals/medium/moray-eel.jpg'),
     isCompleted: false,
@@ -50,10 +72,32 @@ export const MediumAnimals = [
     isCompleted: false,
     hint: "Great ape native to Malayasia and Indonesia."
   },
+  { answer: 'orca',
+    imagePath: require('../../assets/images/levels/animals/medium/orca.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['orca'], ['whale']],
+    hint: "It's a killer type of these."
+  },
   { answer: 'ostrich',
     imagePath: require('../../assets/images/levels/animals/medium/ostrich.jpg'),
     isCompleted: false,
     hint: "If the going get's tough, it will bury it head in the sand."
+  },
+  { answer: 'platypus',
+    imagePath: require('../../assets/images/levels/animals/medium/platypus.jpg'),
+    isCompleted: false,
+    hint: "From down under. An egg laying mammal. Really."
+  },
+  { answer: 'porcupine',
+    imagePath: require('../../assets/images/levels/animals/medium/porcupine.jpg'),
+    isCompleted: false,
+    hint: "Watch out for those needles. Ouch."
+  },
+  { answer: 'possum',
+    imagePath: require('../../assets/images/levels/animals/medium/possum.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['possum'], ['opossum']],
+    hint: "Stop playing _____. A large marsupial."
   },
   { answer: 'racoon',
     imagePath: require('../../assets/images/levels/animals/medium/racoon.jpg'),

@@ -9,6 +9,11 @@ export const EasyAnimals = [
     isCompleted: false,
     hint: "Meow. Do you have any mice for me to chase?"
   },
+  { answer: 'camel',
+    imagePath: require('../../assets/images/levels/animals/easy/camel.jpg'),
+    isCompleted: false,
+    hint: "Look at those humps."
+  },
   { answer: 'chimpanzee',
     imagePath: require('../../assets/images/levels/animals/easy/chimpanzee-monkey.jpg'),
     isCompleted: false,
@@ -19,6 +24,11 @@ export const EasyAnimals = [
     imagePath: require('../../assets/images/levels/animals/easy/dog.jpg'),
     isCompleted: false,
     hint: "Woof! Man's best friend."
+  },
+  { answer: 'dolphin',
+    imagePath: require('../../assets/images/levels/animals/easy/dolphin.jpg'),
+    isCompleted: false,
+    hint: "Really smart and help humans often."
   },
   { answer: 'donkey',
     imagePath: require('../../assets/images/levels/animals/easy/donkey.jpg'),
@@ -167,15 +177,5 @@ export const EasyAnimals = [
     imagePath: require('../../assets/images/levels/animals/easy/zebra.jpg'),
     isCompleted: false,
     hint: "Look at those stripes."
-  },
-  { answer: 'camel',
-    imagePath: require('../../assets/images/levels/animals/easy/camel.jpg'),
-    isCompleted: false,
-    hint: "Look at those humps."
-  },
-  { answer: 'dolphin',
-    imagePath: require('../../assets/images/levels/animals/easy/dolphin.jpg'),
-    isCompleted: false,
-    hint: "Really smart and help humans often."
   },
 ]
