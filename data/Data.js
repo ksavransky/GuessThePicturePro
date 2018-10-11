@@ -100,7 +100,7 @@ const HARD = [
   },
   {
     name: 'Animals',
-    iconPath: require('../assets/images/levels/animals/hard/ibis.jpg'),
+    iconPath: require('../assets/images/levels/animals/hard/mantis.jpg'),
     ...defaultLevelsAndPoints,
     levels: HardAnimals
   },
