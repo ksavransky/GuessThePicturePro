@@ -3,7 +3,7 @@ export const HardAnimals = [
     imagePath: require('../../assets/images/levels/animals/hard/alcedo-atthis-or-kingfisher.jpg'),
     isCompleted: false,
     optionalAnswer: [['alcedo', 'atthis'], ['kingfisher'], ['alcedinidae']],
-    hint: "A bright colored bird mostl found outside the Americas."
+    hint: "A bright colored bird mostly found outside the Americas."
   },
   { answer: 'angora_rabbit',
     imagePath: require('../../assets/images/levels/animals/hard/angora_rabbit.jpg'),
@@ -36,28 +36,32 @@ export const HardAnimals = [
   { answer: 'hoatzin',
     imagePath: require('../../assets/images/levels/animals/hard/hoatzin.jpg'),
     isCompleted: false,
-    hint: ""
+    optionalAnswer: [['hoatzin'], ['hoazin'], ['reptile'], ['skunk'], ['stinkbird'], ['canje'], ['reptilebird'], ['skunkbird'], ['stink']],
+    hint: "A species of tropical bird found in the Amazon and the Orinoco basins in South America. Its nicknames reflect its bad smell."
   },
   { answer: 'ibex',
     imagePath: require('../../assets/images/levels/animals/hard/ibex.jpg'),
     isCompleted: false,
-    hint: ""
+    optionalAnswer: [['ibex'], ['steinbock'], ['bouquetin']],
+    hint: "A species of wild goat that lives in the mountains of the European Alps. It is a sexually dimorphic species with larger males. Sounds like Imax!"
   },
   { answer: 'mantis',
     imagePath: require('../../assets/images/levels/animals/hard/mantis.jpg'),
     isCompleted: false,
+    optionalAnswer: [['mantis'], ['stomatopod']],
     hint: "A very colorful shrimp. Packs a punch. Loved by Oatmeal comics."
   },
   { answer: 'markhor',
     imagePath: require('../../assets/images/levels/animals/hard/markhor.jpg'),
     isCompleted: false,
-    hint: ""
+    optionalAnswer: [['markhor'], ['screw', 'horn']],
+    hint: "A large species of wild goat that is found in northeastern Afghanistan. Its horns look like _____."
   },
   { answer: 'mata',
     imagePath: require('../../assets/images/levels/animals/hard/Matamata_turtle_or_mata_mata.jpg'),
     isCompleted: false,
     optionalAnswer: [['matamata'], ['mata', 'mata']],
-    hint: "This is one cool looking turtle."
+    hint: "A freshwater turtle found in South America. Its neck is longer than the backbone within the distinct shell. Has a repetitious name."
   },
   { answer: 'mongoose',
     imagePath: require('../../assets/images/levels/animals/hard/mongoose.jpg'),
@@ -67,8 +71,8 @@ export const HardAnimals = [
   { answer: 'opisthoproctus',
     imagePath: require('../../assets/images/levels/animals/hard/Opisthoproctus_soleatus_barreleye.png'),
     isCompleted: false,
-    optionalAnswer: [['opisthoproctus', 'soleatus'], ['barreleye']],
-    hint: ""
+    optionalAnswer: [['opisthoproctus', 'soleatus'], ['barreleye'], ['spook', 'fish'], ['barrel', 'eye']],
+    hint: "Small deep-sea argentiniform fish. Found in oceans. Named for what its eye looks like."
   },
   { answer: 'poodle_moth',
     imagePath: require('../../assets/images/levels/animals/hard/poodle_moth.jpg'),
@@ -78,7 +82,8 @@ export const HardAnimals = [
   { answer: 'shoebill',
     imagePath: require('../../assets/images/levels/animals/hard/shoebill.jpg'),
     isCompleted: false,
-    hint: ""
+    optionalAnswer: [['shoebill'], ['whale', 'head']],
+    hint: "A large stork-like bird. Derives its name from its big ____-looking bill."
   },
   { answer: 'frogmouth',
     imagePath: require('../../assets/images/levels/animals/hard/Sri_Lanka_Frogmouth.jpg'),
@@ -89,17 +94,17 @@ export const HardAnimals = [
   { answer: 'kakapo',
     imagePath: require('../../assets/images/levels/animals/hard/Strigops_habroptilus_kakapo.jpg'),
     isCompleted: false,
-    optionalAnswer: [['strigops'], ['habroptilus'], ['kakapo']],
-    hint: "The cutest parrot in the world."
+    optionalAnswer: [['strigops'], ['habroptilus'], ['kakapo'], ['night', 'parrot', ['owl', 'parrot']]],
+    hint: "The cutest parrot. Flightless and nocturnal. Found in New Zealand."
   },
   { answer: 'tarsier',
     imagePath: require('../../assets/images/levels/animals/hard/tarsier.jpg'),
     isCompleted: false,
-    hint: "Yes, this is a real animal."
+    hint: "Yes, this is a real animal. A primate in Southeast Asia. Exclusively carnivorous."
   },
   { answer: 'wombat',
     imagePath: require('../../assets/images/levels/animals/hard/wombat.jpg'),
     isCompleted: false,
-    hint: ""
+    hint: "Short-legged, muscrular marsupials from Australia. Not a 'bat'."
   },
 ]
