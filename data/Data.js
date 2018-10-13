@@ -67,7 +67,7 @@ const MEDIUM = [
   },
   {
     name: 'Art',
-    iconPath: require('../assets/images/levels/art/medium/The_Kiss.jpg'),
+    iconPath: require('../assets/images/levels/art/medium/Cafe_Terrace_at_Night.jpg'),
     ...defaultLevelsAndPoints,
     levels: MediumArt
   },

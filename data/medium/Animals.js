@@ -56,7 +56,7 @@ export const MediumAnimals = [
     hint: "Sometimes it's electric."
   },
   { answer: 'llama',
-    imagePath: require('../../assets/images/levels/animals/medium/llama.jpg'),
+    imagePath: require('../../assets/images/levels/animals/medium/llama-alpaca.jpg'),
     isCompleted: false,
     optionalAnswer: [['llama'], ['alpaca']],
     hint: "From South America. Great fur for sweaters and rugs."
