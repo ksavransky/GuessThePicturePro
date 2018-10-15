@@ -7,7 +7,7 @@ import Categories from '../components/Categories.js'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
 import { AsyncStorage } from 'react-native';
 import LargeButton from '../components/buttons/LargeButton'
-// import { playSound } from '../utils/Utils'
+import { playSound } from '../utils/Utils'
 
 export default class CategoriesScreen extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export default class CategoriesScreen extends Component {
       difficulty: get(props, 'navigation.state.params.difficulty', 'Easy'),
       loadedData: false,
       showModal: false,
-      // isSoundOn: false
+      isSoundOn: false
     }
     this.getLocalStorageData()
   }
@@ -34,7 +34,7 @@ export default class CategoriesScreen extends Component {
       this.asyncStorageData = JSON.parse(storedData)
       this.setState({
         loadedData: true,
-        // isSoundOn: this.asyncStorageData.General.isSoundOn
+        isSoundOn: this.asyncStorageData.General.isSoundOn
       })
     })
   }
@@ -43,7 +43,7 @@ export default class CategoriesScreen extends Component {
     this.setState({
       showModal: categoryName
     })
-    // playSound('click', this.state.isSoundOn)
+    playSound('click', this.state.isSoundOn)
   }
 
   resetCategory = () => {
@@ -80,7 +80,7 @@ export default class CategoriesScreen extends Component {
             }}>
               <LargeButton
                 onPress={() => {this.setState({showModal: false})}}
-                // isSoundOn={this.state.isSoundOn}
+                isSoundOn={this.state.isSoundOn}
                 fontFamily='ChalkboardSE'
                 fontSize={24}
                 backgroundColor='#28a745'
@@ -89,7 +89,7 @@ export default class CategoriesScreen extends Component {
                 text='KEEP' />
               <LargeButton
                 onPress={this.resetCategory}
-                // isSoundOn={this.state.isSoundOn}
+                isSoundOn={this.state.isSoundOn}
                 fontFamily='ChalkboardSE'
                 fontSize={24}
                 backgroundColor='red'
@@ -107,9 +107,8 @@ export default class CategoriesScreen extends Component {
   }
 
   navigateToChooseDifficulty = () => {
-    this.props.navigation.navigate('ChooseDifficulty')
-    // this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.isSoundOn})
-    // playSound('click', this.state.isSoundOn)
+    this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.isSoundOn})
+    playSound('click', this.state.isSoundOn)
   }
 
   render() {
@@ -142,7 +141,7 @@ export default class CategoriesScreen extends Component {
             asyncStorageData={this.asyncStorageData}
             titleColor={titleColor}
             setShowModal={this.setShowModal}
-            // isSoundOn={this.state.isSoundOn}
+            isSoundOn={this.state.isSoundOn}
           />
         </ScrollView>
         {this.renderModal()}

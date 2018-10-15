@@ -9,7 +9,7 @@ import { clearAllData } from '../utils/Asyncstorage'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
 import { AsyncStorage } from 'react-native';
 import { CONSTANTS } from '../Constants'
-// import { playSound } from '../utils/Utils'
+import { playSound } from '../utils/Utils'
 
 export default class Intro extends Component {
   constructor(props) {
@@ -20,21 +20,21 @@ export default class Intro extends Component {
     // Leave clearAllData() below for dev testing
     // clearAllData()
     this.getLocalStorageData()
-    // this.playedMonkeySoundOnce = false
+    this.playedMonkeySoundOnce = false
   }
 
-  // playMonkeySound = async () => {
-  //   if (this.state.asyncStorageData.General.isSoundOn) {
-  //     try {
-  //       await Audio.setIsEnabledAsync(true);
-  //       const sound = new Audio.Sound();
-  //       await sound.loadAsync(MONKEY_SOUND);
-  //       await sound.playAsync();
-  //     } catch(error) {
-  //       console.error(error);
-  //     }
-  //   }
-  // }
+  playMonkeySound = async () => {
+    if (this.state.asyncStorageData.General.isSoundOn) {
+      try {
+        await Audio.setIsEnabledAsync(true);
+        const sound = new Audio.Sound();
+        await sound.loadAsync(MONKEY_SOUND);
+        await sound.playAsync();
+      } catch(error) {
+        console.error(error);
+      }
+    }
+  }
 
   getLocalStorageData = () => {
     AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
@@ -58,8 +58,7 @@ export default class Intro extends Component {
       const categoryLevels = find(this.state.asyncStorageData.Game[difficulty], ['name', categoryName]).levels
       this.props.navigation.navigate('LoadSavedLevel', {categoryName: categoryName, difficulty: difficulty, categoryLevels: categoryLevels})
     } else {
-      // this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.asyncStorageData.General.isSoundOn})
-      this.props.navigation.navigate('ChooseDifficulty')
+      this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.asyncStorageData.General.isSoundOn})
     }
   }
 
@@ -72,8 +71,8 @@ export default class Intro extends Component {
       )
     }
     if (!this.playedMonkeySoundOnce) {
-      // playSound('monkey', this.state.asyncStorageData.General.isSoundOn)
-      // this.playedMonkeySoundOnce = true
+      playSound('monkey', this.state.asyncStorageData.General.isSoundOn)
+      this.playedMonkeySoundOnce = true
     }
     return (
       <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
@@ -83,7 +82,7 @@ export default class Intro extends Component {
         <Text h3 style={{color: 'blue', marginBottom: 200}}>Picture Guess Pro</Text>
         <LargeButton
           onPress={this.handlePlayClick}
-          // isSoundOn={this.state.asyncStorageData.General.isSoundOn}
+          isSoundOn={this.state.asyncStorageData.General.isSoundOn}
           backgroundColor='#28a745'
           fontFamily='ChalkboardSE'
           text='PLAY' />
