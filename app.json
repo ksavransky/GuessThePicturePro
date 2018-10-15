@@ -11,9 +11,7 @@
      "bundleIdentifier": "com.spunkymonkeygames.pictureguesspro"
    },
    "android": {
-     "package": "com.spunkymonkeygames.pictureguesspro",
-     "allowBackup": false,
-     "fullBackupContent": false
+     "package": "com.spunkymonkeygames.pictureguesspro"
    }
   }
 }
