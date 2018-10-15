@@ -12,8 +12,8 @@
    },
    "android": {
      "package": "com.spunkymonkeygames.pictureguesspro",
-     "allowBackup": "false",
-     "fullBackupContent": "false"
+     "allowBackup": false,
+     "fullBackupContent": false
    }
   }
 }
