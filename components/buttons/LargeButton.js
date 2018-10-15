@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity} from 'react-native'
-import { playSound } from '../../utils/Utils'
+// import { playSound } from '../../utils/Utils'
 
 export default class LargeButton extends Component {
   render() {
@@ -11,7 +11,7 @@ export default class LargeButton extends Component {
         activeOpacity={this.props.activeOpacity || 0.9}
         onPress={() => {
           this.props.onPress()
-          playSound('click', this.props.isSoundOn)
+          // playSound('click', this.props.isSoundOn)
         }}
         style={this.props.style}
         disabled={this.props.disabled}

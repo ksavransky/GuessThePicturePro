@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { List, ListItem } from 'react-native-elements'
 import { CONSTANTS } from '../Constants'
 import { sortBy } from 'lodash'
-import { playSound } from '../utils/Utils'
+// import { playSound } from '../utils/Utils'
 import { ScrollView } from 'react-native';
 
 
 export default class Categories extends Component {
   launchCategory = (categoryName, categoryLevels) => {
     this.props.navigation.navigate('Level', {categoryName: categoryName, difficulty: this.props.difficulty, categoryLevels: categoryLevels, titleColor: this.props.titleColor})
-    playSound('click', this.props.isSoundOn)
+    // playSound('click', this.props.isSoundOn)
   }
 
   render() {

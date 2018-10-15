@@ -107,9 +107,9 @@ const HARD = [
 ]
 
 export const AsyncStorageData = {
-  General: {
-    isSoundOn: true
-  },
+  // General: {
+  //   isSoundOn: true
+  // },
   Game: {
     Easy: EASY,
     Medium: MEDIUM,
