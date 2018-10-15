@@ -97,7 +97,7 @@ export const MediumFood = [
     isCompleted: false,
     hint: "Bean curd. Often found in East Asian and Southeast Asian cuisines."
   },
-  { answer: 'tom_kha_gai',
+  { answer: 'tom_kha',
     imagePath: require('../../assets/images/levels/food/medium/tom-kha-gai.jpg'),
     isCompleted: false,
     hint: "Thai coconut soup."

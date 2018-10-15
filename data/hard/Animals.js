@@ -68,12 +68,6 @@ export const HardAnimals = [
     isCompleted: false,
     hint: "Kills snakes!"
   },
-  { answer: 'opisthoproctus',
-    imagePath: require('../../assets/images/levels/animals/hard/Opisthoproctus_soleatus_barreleye.png'),
-    isCompleted: false,
-    optionalAnswer: [['opisthoproctus', 'soleatus'], ['barreleye'], ['spook', 'fish'], ['barrel', 'eye']],
-    hint: "Small deep-sea argentiniform fish. Found in oceans. Named for what its eye looks like."
-  },
   { answer: 'poodle_moth',
     imagePath: require('../../assets/images/levels/animals/hard/poodle_moth.jpg'),
     isCompleted: false,
