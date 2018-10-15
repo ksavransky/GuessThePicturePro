@@ -58,7 +58,8 @@ export default class Intro extends Component {
       const categoryLevels = find(this.state.asyncStorageData.Game[difficulty], ['name', categoryName]).levels
       this.props.navigation.navigate('LoadSavedLevel', {categoryName: categoryName, difficulty: difficulty, categoryLevels: categoryLevels})
     } else {
-      this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.asyncStorageData.General.isSoundOn})
+      // this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.asyncStorageData.General.isSoundOn})
+      this.props.navigation.navigate('ChooseDifficulty')
     }
   }
 
