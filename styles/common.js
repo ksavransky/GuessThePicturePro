@@ -13,6 +13,11 @@ export const containerStyle = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  verticalSpaceAround: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
   centeredHorizontal: {
     flex: 1,
     alignItems: 'center',

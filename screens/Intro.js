@@ -75,11 +75,20 @@ export default class Intro extends Component {
       this.playedMonkeySoundOnce = true
     }
     return (
-      <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
-        <Image style={{width: 70, height: 90}} source={require('../assets/images/monkey.png')} />
-        <Text fontFamily='ChalkboardSE' h4 style={{color: 'red', marginBottom: 20}}>Spunky Monkey Games</Text>
-        <Text style={{marginBottom: 20}}>Presents</Text>
-        <Text h3 style={{color: 'blue', marginBottom: 200}}>Picture Guess Pro</Text>
+      <View style={[containerStyle.verticalSpaceAround]}>
+        <Image
+          style={{
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
+          source={require('../assets/images/levels/landmarks/easy/eiffel.jpeg')} />
+        {/* <Image style={{width: 70, height: 90}} source={require('../assets/images/monkey.png')} /> */}
+        {/* <Text fontFamily='ChalkboardSE' h4 style={{color: 'red', marginBottom: 20}}>Spunky Monkey Games</Text>
+        <Text style={{marginBottom: 20}}>Presents</Text> */}
+        <Text h2 style={{color: 'white', marginBottom: 0, fontFamily: 'ChalkboardSE'}}>Picture Guess Pro</Text>
         <LargeButton
           onPress={this.handlePlayClick}
           isSoundOn={this.state.asyncStorageData.General.isSoundOn}
