@@ -71,7 +71,7 @@ const titleStyle = StyleSheet.create({
 
 const subtitleStyle = StyleSheet.create({
   normal: {
-    color: 'gold'
+    color: 'blue'
   },
   big: {
     fontSize: 14,

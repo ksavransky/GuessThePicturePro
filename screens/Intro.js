@@ -88,7 +88,7 @@ export default class Intro extends Component {
         {/* <Image style={{width: 70, height: 90}} source={require('../assets/images/monkey.png')} /> */}
         {/* <Text fontFamily='ChalkboardSE' h4 style={{color: 'red', marginBottom: 20}}>Spunky Monkey Games</Text>
         <Text style={{marginBottom: 20}}>Presents</Text> */}
-        <Text h2 style={{color: 'white', marginBottom: 0, fontFamily: 'ChalkboardSE'}}>Picture Guess Pro</Text>
+        <Text h2 style={{color: 'white', marginBottom: 0}}>Picture Guess Pro</Text>
         <LargeButton
           onPress={this.handlePlayClick}
           isSoundOn={this.state.asyncStorageData.General.isSoundOn}

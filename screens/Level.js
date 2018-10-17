@@ -833,6 +833,15 @@ export default class Level extends Component {
     }
     return (
       <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
+        <Image
+          style={{
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
+          source={require('../assets/images/background/woodblue.jpg')} />
         <ActivityIndicator size="large" color='black' />
       </View>
     )
