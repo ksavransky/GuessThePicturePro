@@ -12,7 +12,7 @@ export const EasyPeople = [
   { answer: 'anne_hathaway',
     imagePath: require('../../assets/images/levels/people/easy/anne_hathaway.jpg'),
     isCompleted: false,
-    hint: ""
+    hint: "Actress. Devil Wears Prada. The Princess Diaries."
   },
   { answer: 'ben_stiller',
     imagePath: require('../../assets/images/levels/people/easy/ben_stiller.jpg'),
@@ -44,23 +44,113 @@ export const EasyPeople = [
     isCompleted: false,
     hint: "West coast rap mastermind. Beats. If you don't know who this is, you don't know rap."
   },
+  { answer: 'dustin_hoffman',
+    imagePath: require('../../assets/images/levels/people/easy/dustin_hoffman.jpg'),
+    isCompleted: false,
+    hint: "'Definitely', 'definitely' a famous actor. The Graduate."
+  },
+  { answer: 'elon_musk',
+    imagePath: require('../../assets/images/levels/people/easy/elon_musk.jpg'),
+    isCompleted: false,
+    hint: "Futurist CEO. Paypal. Tesla. Space X."
+  },
+  { answer: 'elton_john',
+    imagePath: require('../../assets/images/levels/people/easy/elton_john.jpg'),
+    isCompleted: false,
+    hint: "Singer-Songwriter. Rocket Man. Candle in the Wind."
+  },
+  { answer: 'elvis',
+    imagePath: require('../../assets/images/levels/people/easy/elvis.jpg'),
+    isCompleted: false,
+    hint: "The King of Rock'n Roll."
+  },
   { answer: 'eminem',
     imagePath: require('../../assets/images/levels/people/easy/Eminem.jpg'),
     isCompleted: false,
     optionalAnswer: [['slim', 'shady'], ['eminem'], ['marshall', 'mathers']],
     hint: "Starred in the hip hop film 8 Mile. Hit songs include, 'Lose Yourself', 'The Way I Am', and 'My Name is'."
   },
+  { answer: 'gwyneth_paltrow',
+    imagePath: require('../../assets/images/levels/people/easy/gwyneth_paltrow.jpg'),
+    isCompleted: false,
+    hint: "Actress. Was married to singer of Coldplay."
+  },
+  { answer: 'halle_berry',
+    imagePath: require('../../assets/images/levels/people/easy/halle_berry.jpg'),
+    isCompleted: false,
+    hint: "Actress. Sex symbol. Bond girl. Swordfish. Storm in X-men."
+  },
+  { answer: 'jagger',
+    imagePath: require('../../assets/images/levels/people/easy/jagger.jpg'),
+    isCompleted: false,
+    hint: "Front man of The Rolling Stones."
+  },
   { answer: 'jay_z',
     imagePath: require('../../assets/images/levels/people/easy/jay-z.jpg'),
     isCompleted: false,
     optionalAnswer: [['jay', 'z'], ['jayz']],
-    hint: "He's got 99 problems but a ___ aint' one. Married to Beyonce."
+    hint: "Rapper. Entrepreneur. He's got 99 problems but a ___ aint' one. Married to Beyonce."
+  },
+  { answer: 'jennifer_aniston',
+    imagePath: require('../../assets/images/levels/people/easy/jennifer_aniston.jpg'),
+    isCompleted: false,
+    hint: "Rachel from Friends!"
   },
   { answer: 'kanye',
     imagePath: require('../../assets/images/levels/people/easy/kanye.jpg'),
     isCompleted: false,
     optionalAnswer: [['kanye'], ['ye'], ['yeezus']],
     hint: "Loves controversy. Married to Kim. Hits include 'Stronger' and 'Gold Digger'."
+  },
+  { answer: 'kate_moss',
+    imagePath: require('../../assets/images/levels/people/easy/kate_moss.jpg'),
+    isCompleted: false,
+    hint: "Very thin model."
+  },
+  { answer: 'katy_perry',
+    imagePath: require('../../assets/images/levels/people/easy/katy_perry.jpg'),
+    isCompleted: false,
+    hint: "Singer. She kissed a girl and she liked it."
+  },
+  { answer: 'matt_damon',
+    imagePath: require('../../assets/images/levels/people/easy/matt_damon.jpg'),
+    isCompleted: false,
+    hint: "Actor. Bourne Identity. The Martian."
+  },
+  { answer: 'michael_jackson',
+    imagePath: require('../../assets/images/levels/people/easy/michael_jackson.jpg'),
+    isCompleted: false,
+    hint: "King of Pop. Hee-hee. Shmoan."
+  },
+  { answer: 'nicole_kidman',
+    imagePath: require('../../assets/images/levels/people/easy/nicole_kidman.jpg'),
+    isCompleted: false,
+    hint: "Actress. Eyes Wide Shut. Moulin Rouge. The Others. Was married to Tom Cruise."
+  },
+  { answer: 'paul_mccartney',
+    imagePath: require('../../assets/images/levels/people/easy/paul_mccartney.jpg'),
+    isCompleted: false,
+    hint: "Member of The Fab Four. Bassist, singer, and one of main song writers."
+  },
+  { answer: 'prince_harry',
+    imagePath: require('../../assets/images/levels/people/easy/prince_harry.jpg'),
+    isCompleted: false,
+    hint: "A prince from Britain. The younger one."
+  },
+  { answer: 'reese_witherspoon',
+    imagePath: require('../../assets/images/levels/people/easy/reese_witherspoon.jpg'),
+    isCompleted: false,
+    hint: "Actress. Walk the Line. Legally Blonde."
+  },
+  { answer: 'sandra_bullock',
+    imagePath: require('../../assets/images/levels/people/easy/sandra_bullock.jpg'),
+    isCompleted: false,
+    hint: "Actress. Speed. Gravity. Miss Congeniality. Blind Side."
+  },
+  { answer: 'sarah_jessica_parker',
+    imagePath: require('../../assets/images/levels/people/easy/sarah_jessica_parker.jpg'),
+    isCompleted: false,
+    hint: "Carrie from Sex and the City."
   },
   { answer: 'sean',
     imagePath: require('../../assets/images/levels/people/easy/Sean_Combs-puff-daddy-diddy.jpg'),
@@ -72,5 +162,10 @@ export const EasyPeople = [
     imagePath: require('../../assets/images/levels/people/easy/Snoop_Dogg.jpg'),
     isCompleted: false,
     hint: "Likes pot. You know who this is."
-  }
+  },
+  { answer: 'tom_cruise',
+    imagePath: require('../../assets/images/levels/people/easy/tom_cruise.jpg'),
+    isCompleted: false,
+    hint: "Actor. Top Gun. Risky Business. Mission Impossible."
+  },
 ]
