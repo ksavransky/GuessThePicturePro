@@ -8,11 +8,15 @@ import { MediumLandmarks } from './medium/Landmarks'
 import { MediumFood } from './medium/Food'
 import { MediumArt } from './medium/Art'
 import { MediumAnimals } from './medium/Animals'
+import { MediumPeople } from './easy/People'
+
 
 import { HardLandmarks } from './hard/Landmarks'
 import { HardFood } from './hard/Food'
 import { HardArt } from './hard/Art'
 import { HardAnimals } from './hard/Animals'
+import { HardPeople } from './easy/People'
+
 
 const defaultLevelsAndPoints = {
   levelsComplete: 0,
@@ -77,6 +81,12 @@ const MEDIUM = [
     ...defaultLevelsAndPoints,
     levels: MediumAnimals
   },
+  {
+    name: 'People',
+    iconPath: require('../assets/images/levels/people/medium/Nicki_Minaj.jpg'),
+    ...defaultLevelsAndPoints,
+    levels: MediumPeople
+  },
 ]
 
 const HARD = [
@@ -103,6 +113,12 @@ const HARD = [
     iconPath: require('../assets/images/levels/animals/hard/mantis.jpg'),
     ...defaultLevelsAndPoints,
     levels: HardAnimals
+  },
+  {
+    name: 'People',
+    iconPath: require('../assets/images/levels/people/hard/billy_idol.jpeg'),
+    ...defaultLevelsAndPoints,
+    levels: HardPeople
   },
 ]
 
