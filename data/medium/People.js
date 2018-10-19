@@ -10,12 +10,6 @@ export const MediumPeople = [
     isCompleted: false,
     hint: "Leader of Germany."
   },
-  { answer: 'cardi_b',
-    imagePath: require('../../assets/images/levels/people/medium/Cardi_B.jpg'),
-    isCompleted: false,
-    optionalAnswer: [['cardi', 'b'], ['cardib']],
-    hint: "Discussed her career as a stripper on social media. Hit songs include 'I like it' and 'Bodak yellow'."
-  },
   { answer: 'drake',
     imagePath: require('../../assets/images/levels/people/medium/drake.jpg'),
     isCompleted: false,

@@ -63,6 +63,7 @@ export const HardPeople = [
   { answer: 'michael_gorbatchov',
     imagePath: require('../../assets/images/levels/people/hard/michael_gorbatchov.jpg'),
     isCompleted: false,
+    optionalAnswer: [['gorbatchov'], ['gorbachov']],
     hint: "Last leader of the Soviet Union. Helped to end communism."
   },
   { answer: 'nas',
@@ -79,6 +80,7 @@ export const HardPeople = [
   { answer: 'nikita_khrushchev',
     imagePath: require('../../assets/images/levels/people/hard/nikita_khrushchev.jpg'),
     isCompleted: false,
+    optionalAnswer: [['khrushchev'], ['krushchev'], ['kruschev'], ['krooschev']],
     hint: "Cold War Soviet leader."
   },
   { answer: 'rasputin',
@@ -94,7 +96,8 @@ export const HardPeople = [
   { answer: 'trotzki_trotsky',
     imagePath: require('../../assets/images/levels/people/hard/trotzki_trotsky.jpg'),
     isCompleted: false,
-    hint: "One of the Architects of the Soviet Revolution."
+    optionalAnswer: [['trotzki'], ['trotsky']],
+    hint: "One of the Architects of the Soviet Revolution. Assassinated in South America."
   },
   { answer: 'victoria',
     imagePath: require('../../assets/images/levels/people/hard/victoria.jpg'),
