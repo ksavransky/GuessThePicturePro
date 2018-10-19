@@ -41,7 +41,7 @@ export const HardPeople = [
     hint: "Actor. Casablanca."
   },
   { answer: 'james_stewart',
-    imagePath: require('../../assets/images/levels/people/hard/james_stewart.jpg'),
+    imagePath: require('../../assets/images/levels/people/hard/james_stewart.jpeg'),
     isCompleted: false,
     hint: "Actor. Mr. Smith goes to Washington."
   },
@@ -75,5 +75,35 @@ export const HardPeople = [
     imagePath: require('../../assets/images/levels/people/hard/natalie_wood.jpg'),
     isCompleted: false,
     hint: "Russian born Actress. West Side Story. Rebel Without a Cause."
+  },
+  { answer: 'nikita_khrushchev',
+    imagePath: require('../../assets/images/levels/people/hard/nikita_khrushchev.jpg'),
+    isCompleted: false,
+    hint: "Cold War Soviet leader."
+  },
+  { answer: 'rasputin',
+    imagePath: require('../../assets/images/levels/people/hard/rasputin.jpeg'),
+    isCompleted: false,
+    hint: "Counsel to the Romanovs. Mystic and healer. Womenizer."
+  },
+  { answer: 'thomas_edison',
+    imagePath: require('../../assets/images/levels/people/hard/thomas_edison.jpg'),
+    isCompleted: false,
+    hint: "Famous inventor."
+  },
+  { answer: 'trotzki_trotsky',
+    imagePath: require('../../assets/images/levels/people/hard/trotzki_trotsky.jpg'),
+    isCompleted: false,
+    hint: "One of the Architects of the Soviet Revolution."
+  },
+  { answer: 'victoria',
+    imagePath: require('../../assets/images/levels/people/hard/victoria.jpg'),
+    isCompleted: false,
+    hint: "God save the Queen."
+  },
+  { answer: 'walt_disney',
+    imagePath: require('../../assets/images/levels/people/hard/walt_disney.jpeg'),
+    isCompleted: false,
+    hint: "Founder of children's entertainment empire."
   },
 ]

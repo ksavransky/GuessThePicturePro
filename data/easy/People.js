@@ -133,7 +133,7 @@ export const EasyPeople = [
     hint: "Member of The Fab Four. Bassist, singer, and one of main song writers."
   },
   { answer: 'prince_harry',
-    imagePath: require('../../assets/images/levels/people/easy/prince_harry.jpg'),
+    imagePath: require('../../assets/images/levels/people/easy/Prince_Harry.jpg'),
     isCompleted: false,
     hint: "A prince from Britain. The younger one."
   },

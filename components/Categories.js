@@ -63,7 +63,7 @@ const avatarStyle = StyleSheet.create({
 const titleStyle = StyleSheet.create({
   normal: {},
   big: {
-    fontSize: 20,
+    fontSize: 18,
     marginLeft: 36,
     marginBottom: 7
   },
@@ -71,17 +71,17 @@ const titleStyle = StyleSheet.create({
 
 const subtitleStyle = StyleSheet.create({
   normal: {
-    color: 'blue'
+    color: 'orange'
   },
   big: {
     fontSize: 14,
-    marginLeft: 34,
+    marginLeft: 36,
   },
 })
 
 const rightTitleStyle = StyleSheet.create({
   big: {
-    fontSize: 16,
+    fontSize: 14,
   },
 })
 
@@ -94,7 +94,7 @@ const listItemContainerStyle = StyleSheet.create({
     borderLeftColor: '#cbd2d9'
   },
   big: {
-    height: 100,
+    height: 90,
     justifyContent: 'center',
   }
 })

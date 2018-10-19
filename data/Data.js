@@ -8,14 +8,14 @@ import { MediumLandmarks } from './medium/Landmarks'
 import { MediumFood } from './medium/Food'
 import { MediumArt } from './medium/Art'
 import { MediumAnimals } from './medium/Animals'
-import { MediumPeople } from './easy/People'
+import { MediumPeople } from './medium/People'
 
 
 import { HardLandmarks } from './hard/Landmarks'
 import { HardFood } from './hard/Food'
 import { HardArt } from './hard/Art'
 import { HardAnimals } from './hard/Animals'
-import { HardPeople } from './easy/People'
+import { HardPeople } from './hard/People'
 
 
 const defaultLevelsAndPoints = {
@@ -83,7 +83,7 @@ const MEDIUM = [
   },
   {
     name: 'People',
-    iconPath: require('../assets/images/levels/people/medium/Nicki_Minaj.jpg'),
+    iconPath: require('../assets/images/levels/people/medium/usain_bolt.jpg'),
     ...defaultLevelsAndPoints,
     levels: MediumPeople
   },

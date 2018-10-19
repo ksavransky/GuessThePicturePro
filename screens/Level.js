@@ -351,7 +351,7 @@ export default class Level extends Component {
         zIndex: 3,
         backgroundColor: 'rgba(255, 255, 255, 0.7)'
       }}>
-        <Text h3 style={{color: 'black', marginTop: (this.tileHeight + 10), textAlign: 'center'}}>
+        <Text h4 style={{color: 'black', marginTop: (this.tileHeight + 10), textAlign: 'center'}}>
           {INSTRUCTIONS.LINE_1}
         </Text>
         {/* <Text h5 style={{color: 'black', marginTop: 10, textAlign: 'center'}}>
