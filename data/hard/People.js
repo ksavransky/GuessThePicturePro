@@ -119,6 +119,11 @@ export const HardPeople = [
     isCompleted: false,
     hint: "Counsel to the Romanovs. Mystic and healer. Womenizer."
   },
+  { answer: 'ted_turner',
+    imagePath: require('../../assets/images/levels/people/hard/ted_turner.jpeg'),
+    isCompleted: false,
+    hint: "Media mogul. Founder of CNN."
+  },
   { answer: 'thomas_edison',
     imagePath: require('../../assets/images/levels/people/hard/thomas_edison.jpg'),
     isCompleted: false,
@@ -139,5 +144,11 @@ export const HardPeople = [
     imagePath: require('../../assets/images/levels/people/hard/walt_disney.jpeg'),
     isCompleted: false,
     hint: "Founder of children's entertainment empire."
+  },
+  { answer: 'weeknd',
+    imagePath: require('../../assets/images/levels/people/hard/weeknd.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['tesfaye'], ['weeknd']],
+    hint: "Singer and rapper. Starboy. Can't Feel My Face. The Hills."
   },
 ]

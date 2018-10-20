@@ -25,6 +25,11 @@ export const MediumPeople = [
     isCompleted: false,
     hint: "WWII hero. 50s President."
   },
+  { answer: 'elton_john',
+    imagePath: require('../../assets/images/levels/people/medium/elton_john.jpg'),
+    isCompleted: false,
+    hint: "Singer-Songwriter. Rocket Man. Candle in the Wind."
+  },
   { answer: 'isaac_newton',
     imagePath: require('../../assets/images/levels/people/medium/isaac_newton.jpg'),
     isCompleted: false,
@@ -127,11 +132,6 @@ export const MediumPeople = [
     isCompleted: false,
     hint: "Singer from Fleetwood Mac."
   },
-  { answer: 'ted_turner',
-    imagePath: require('../../assets/images/levels/people/medium/ted_turner.jpeg'),
-    isCompleted: false,
-    hint: "Media mogul. Founder of CNN."
-  },
   { answer: 'tony_blair',
     imagePath: require('../../assets/images/levels/people/medium/tony_blair.jpg'),
     isCompleted: false,
@@ -147,12 +147,6 @@ export const MediumPeople = [
     isCompleted: false,
     optionalAnswer: [['victoria', 'beckham'], ['posh', 'spice']],
     hint: "A Spice Girl. Married to a famous soccer player."
-  },
-  { answer: 'weeknd',
-    imagePath: require('../../assets/images/levels/people/medium/weeknd.jpg'),
-    isCompleted: false,
-    optionalAnswer: [['tesfaye'], ['weeknd']],
-    hint: "Singer and rapper. Starboy. Can't Feel My Face. The Hills."
   },
   { answer: 'woodrow_wilson',
     imagePath: require('../../assets/images/levels/people/medium/woodrow_wilson.jpg'),

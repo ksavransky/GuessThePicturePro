@@ -10,13 +10,18 @@ export const HardAnimals = [
     isCompleted: false,
     hint: "One of the oldest types of domestic bunnies. Makes for a nice coat."
   },
+  { answer: 'armadillo',
+    imagePath: require('../../assets/images/levels/animals/hard/armadillo.jpg'),
+    isCompleted: false,
+    hint: "Its name means 'little armoured one' in Spanish. From the New World."
+  },
   { answer: 'axolotl',
     imagePath: require('../../assets/images/levels/animals/hard/axolotl.jpg'),
     isCompleted: false,
     optionalAnswer: [['walking', 'fish'], ['axolotl']],
-    hint: "a neotenic salamander related to the tiger salamander. From Mexico."
+    hint: "A neotenic Mexican salamander related to the tiger salamander. Has an 'x' in it."
   },
-  { answer: 'Aye_aye_daubentonia',
+  { answer: 'aye_aye_daubentonia',
     imagePath: require('../../assets/images/levels/animals/hard/Aye_aye_daubentonia.jpg'),
     isCompleted: false,
     optionalAnswer: [['aye', 'aye'], ['daubentonia']],
@@ -26,6 +31,11 @@ export const HardAnimals = [
     imagePath: require('../../assets/images/levels/animals/hard/colugo.jpg'),
     isCompleted: false,
     hint: "Arboreal gliding mammals found in Southeast Asia."
+  },
+  { answer: 'dragonfly',
+    imagePath: require('../../assets/images/levels/animals/hard/dragonfly.jpg'),
+    isCompleted: false,
+    hint: "Characterized by large, multifaceted eyes and two pairs of strong transparent wings. They don't breath fire and like a _____ and they aren't a common house___."
   },
   { answer: 'dumbo_octopus',
     imagePath: require('../../assets/images/levels/animals/hard/dumbo_octopus.jpg'),

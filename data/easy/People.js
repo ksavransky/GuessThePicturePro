@@ -54,11 +54,6 @@ export const EasyPeople = [
     isCompleted: false,
     hint: "Futurist CEO. Paypal. Tesla. Space X."
   },
-  { answer: 'elton_john',
-    imagePath: require('../../assets/images/levels/people/easy/elton_john.jpg'),
-    isCompleted: false,
-    hint: "Singer-Songwriter. Rocket Man. Candle in the Wind."
-  },
   { answer: 'elvis',
     imagePath: require('../../assets/images/levels/people/easy/elvis.jpg'),
     isCompleted: false,

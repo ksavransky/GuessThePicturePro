@@ -4,6 +4,12 @@ export const MediumAnimals = [
     isCompleted: false,
     hint: "This monkey is known for its red bottom."
   },
+  { answer: 'badger',
+    imagePath: require('../../assets/images/levels/animals/medium/badger.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['badger'], ['honeybadger'] ['honey', 'badger']],
+    hint: "Short-legged omnivores related to weasels and wolverines. Meme: _____ ______ don't give a damn."
+  },
   { answer: 'beetle',
     imagePath: require('../../assets/images/levels/animals/medium/beetle.jpg'),
     isCompleted: false,
@@ -13,6 +19,11 @@ export const MediumAnimals = [
     imagePath: require('../../assets/images/levels/animals/medium/bison.jpg'),
     isCompleted: false,
     hint: "Not a bull. Not a cow. Once roamed American grasslands in huge herds."
+  },
+  { answer: 'cheetah',
+    imagePath: require('../../assets/images/levels/animals/medium/cheetah.jpg'),
+    isCompleted: false,
+    hint: "Large African cat. Fastest land animal."
   },
   { answer: 'centipede',
     imagePath: require('../../assets/images/levels/animals/medium/centipede.jpg'),
