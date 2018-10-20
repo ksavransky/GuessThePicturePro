@@ -10,6 +10,11 @@ export const MediumPeople = [
     isCompleted: false,
     hint: "Leader of Germany."
   },
+  { answer: 'beethoven',
+    imagePath: require('../../assets/images/levels/people/medium/beethoven.jpg'),
+    isCompleted: false,
+    hint: "One of the greatest composers of all time. Ode to Joy. For Elise. Moonlight Sonata."
+  },
   { answer: 'drake',
     imagePath: require('../../assets/images/levels/people/medium/drake.jpg'),
     isCompleted: false,
@@ -61,6 +66,11 @@ export const MediumPeople = [
     isCompleted: false,
     hint: "Best rapper out there. From Compton. Hit albums: 'good kid, m.A.A.d city' and 'To Pimp a Butterfly'. Hit songs: 'Humble', 'King Kunta'."
   },
+  { answer: 'kevin_durant',
+    imagePath: require('../../assets/images/levels/people/medium/Kendrick_Lamar.jpg'),
+    isCompleted: false,
+    hint: "Basketball superstar. Played for Thunder, then Warriors."
+  },
   { answer: 'lil_wayne',
     imagePath: require('../../assets/images/levels/people/medium/Lil_Wayne.jpg'),
     isCompleted: false,
@@ -76,6 +86,11 @@ export const MediumPeople = [
     imagePath: require('../../assets/images/levels/people/medium/mark_cuban.jpg'),
     isCompleted: false,
     hint: "Tech billionaire. Owner of Mavericks. On Shark Tank."
+  },
+  { answer: 'mozart',
+    imagePath: require('../../assets/images/levels/people/medium/mozart.jpg'),
+    isCompleted: false,
+    hint: "One of the greatest composers of all time. Magic Flute. Marriage of Figaro. Turkish March. Requim Mass."
   },
   { answer: 'nancy_kerrigan',
     imagePath: require('../../assets/images/levels/people/medium/nancy_kerrigan.jpg'),
@@ -107,10 +122,20 @@ export const MediumPeople = [
     isCompleted: false,
     hint: "Actress. Alex Russo oin Wizards of Waverly Place. Singer. Same Old Love. Hands to Myself."
   },
+  { answer: 'stevie_nicks',
+    imagePath: require('../../assets/images/levels/people/medium/stevie_nicks.jpg'),
+    isCompleted: false,
+    hint: "Singer from Fleetwood Mac."
+  },
   { answer: 'ted_turner',
     imagePath: require('../../assets/images/levels/people/medium/ted_turner.jpeg'),
     isCompleted: false,
     hint: "Media mogul. Founder of CNN."
+  },
+  { answer: 'tony_blair',
+    imagePath: require('../../assets/images/levels/people/medium/tony_blair.jpg'),
+    isCompleted: false,
+    hint: "Former Prime Minister of Britain."
   },
   { answer: 'usain_bolt',
     imagePath: require('../../assets/images/levels/people/medium/usain_bolt.jpg'),

@@ -1,6 +1,6 @@
 export const HardPeople = [
   { answer: 'billy_idol',
-    imagePath: require('../../assets/images/levels/people/hard/billy_idol.jpeg'),
+    imagePath: require('../../assets/images/levels/people/hard/billy_idol.jpg'),
     isCompleted: false,
     hint: "Rocker. Rebel Yell. White Wedding."
   },
@@ -8,6 +8,16 @@ export const HardPeople = [
     imagePath: require('../../assets/images/levels/people/hard/bobby_orr.jpg'),
     isCompleted: false,
     hint: "Boston Bruin's legendary defenseman."
+  },
+  { answer: 'bret_michaels',
+    imagePath: require('../../assets/images/levels/people/hard/bret_michaels.jpg'),
+    isCompleted: false,
+    hint: "Singer of Poison. Had a TV show called Rock of Love."
+  },
+  { answer: 'chris_cornell',
+    imagePath: require('../../assets/images/levels/people/hard/chris_cornell.jpg'),
+    isCompleted: false,
+    hint: "Singer of Soundgarden and Audioslave."
   },
   { answer: 'common',
     imagePath: require('../../assets/images/levels/people/hard/common.jpg'),
@@ -19,6 +29,11 @@ export const HardPeople = [
     imagePath: require('../../assets/images/levels/people/hard/franco.jpg'),
     isCompleted: false,
     hint: "Spain's fascist leader."
+  },
+  { answer: 'ginger_baker',
+    imagePath: require('../../assets/images/levels/people/hard/ginger_baker.jpg'),
+    isCompleted: false,
+    hint: "Redhead drummer from Cream."
   },
   { answer: 'grace_kelly',
     imagePath: require('../../assets/images/levels/people/hard/grace_kelly.jpg'),
@@ -40,10 +55,16 @@ export const HardPeople = [
     isCompleted: false,
     hint: "Actor. Casablanca."
   },
-  { answer: 'james_stewart',
+  { answer: 'stewart',
     imagePath: require('../../assets/images/levels/people/hard/james_stewart.jpeg'),
     isCompleted: false,
+    optionalAnswer: [['james', 'stewart'], ['jimmy', 'stewart']],
     hint: "Actor. Mr. Smith goes to Washington."
+  },
+  { answer: 'james_harden',
+    imagePath: require('../../assets/images/levels/people/hard/james_harden.jpg'),
+    isCompleted: false,
+    hint: "NBA superstar. Played on Thunder, then the Houston Rockets."
   },
   { answer: 'jane_russell',
     imagePath: require('../../assets/images/levels/people/hard/jane_russell.jpg'),
@@ -66,6 +87,11 @@ export const HardPeople = [
     optionalAnswer: [['gorbatchov'], ['gorbachov']],
     hint: "Last leader of the Soviet Union. Helped to end communism."
   },
+  { answer: 'miles_davis',
+    imagePath: require('../../assets/images/levels/people/hard/miles_davis.jpg'),
+    isCompleted: false,
+    hint: "One of the greatest trump players ever. Jazz icon. Kind of Blue."
+  },
   { answer: 'nas',
     imagePath: require('../../assets/images/levels/people/hard/nas.jpeg'),
     isCompleted: false,
@@ -82,6 +108,11 @@ export const HardPeople = [
     isCompleted: false,
     optionalAnswer: [['khrushchev'], ['krushchev'], ['kruschev'], ['krooschev']],
     hint: "Cold War Soviet leader."
+  },
+  { answer: 'ritchie_blackmore',
+    imagePath: require('../../assets/images/levels/people/hard/ritchie_blackmore.jpg'),
+    isCompleted: false,
+    hint: "Guitar player from Deep Purple and Rainbow. Wrote the riff to Smoke on the Water."
   },
   { answer: 'rasputin',
     imagePath: require('../../assets/images/levels/people/hard/rasputin.jpeg'),

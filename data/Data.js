@@ -116,7 +116,7 @@ const HARD = [
   },
   {
     name: 'People',
-    iconPath: require('../assets/images/levels/people/hard/billy_idol.jpeg'),
+    iconPath: require('../assets/images/levels/people/hard/billy_idol.jpg'),
     ...defaultLevelsAndPoints,
     levels: HardPeople
   },

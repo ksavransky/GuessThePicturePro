@@ -112,6 +112,11 @@ export const EasyPeople = [
     isCompleted: false,
     hint: "Singer. She kissed a girl and she liked it."
   },
+  { answer: 'kobe_bryant',
+    imagePath: require('../../assets/images/levels/people/easy/kobe_bryant.jpg'),
+    isCompleted: false,
+    hint: "Lakers superstar. 3rd highest NBA scorer of all time."
+  },
   { answer: 'matt_damon',
     imagePath: require('../../assets/images/levels/people/easy/matt_damon.jpg'),
     isCompleted: false,
@@ -131,6 +136,11 @@ export const EasyPeople = [
     imagePath: require('../../assets/images/levels/people/easy/paul_mccartney.jpg'),
     isCompleted: false,
     hint: "Member of The Fab Four. Bassist, singer, and one of main song writers."
+  },
+  { answer: 'peyton_manning',
+    imagePath: require('../../assets/images/levels/people/easy/peyton_manning.jpg'),
+    isCompleted: false,
+    hint: "One of the best quarter backs of the last 20 years. Loves doing Papa John's ads."
   },
   { answer: 'prince_harry',
     imagePath: require('../../assets/images/levels/people/easy/Prince_Harry.jpg'),
@@ -162,6 +172,11 @@ export const EasyPeople = [
     imagePath: require('../../assets/images/levels/people/easy/Snoop_Dogg.jpg'),
     isCompleted: false,
     hint: "Likes pot. You know who this is."
+  },
+  { answer: 'tom_brady',
+    imagePath: require('../../assets/images/levels/people/easy/tom_brady.jpg'),
+    isCompleted: false,
+    hint: "Patriots QB and best of all time. Married to Gisele."
   },
   { answer: 'tom_cruise',
     imagePath: require('../../assets/images/levels/people/easy/tom_cruise.jpg'),
