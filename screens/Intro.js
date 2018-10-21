@@ -9,7 +9,6 @@ import { clearAllData } from '../utils/Asyncstorage'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
 import { AsyncStorage } from 'react-native';
 import { CONSTANTS } from '../Constants'
-import { playSound } from '../utils/Utils'
 
 export default class Intro extends Component {
   constructor(props) {
@@ -18,22 +17,8 @@ export default class Intro extends Component {
       asyncStorageData: null
     }
     // Leave clearAllData() below for dev testing
-    // clearAllData()
+    clearAllData()
     this.getLocalStorageData()
-    this.playedMonkeySoundOnce = false
-  }
-
-  playMonkeySound = async () => {
-    if (this.state.asyncStorageData.General.isSoundOn) {
-      try {
-        await Audio.setIsEnabledAsync(true);
-        const sound = new Audio.Sound();
-        await sound.loadAsync(MONKEY_SOUND);
-        await sound.playAsync();
-      } catch(error) {
-        console.error(error);
-      }
-    }
   }
 
   getLocalStorageData = () => {
@@ -70,10 +55,6 @@ export default class Intro extends Component {
         </View>
       )
     }
-    if (!this.playedMonkeySoundOnce) {
-      playSound('monkey', this.state.asyncStorageData.General.isSoundOn)
-      this.playedMonkeySoundOnce = true
-    }
     return (
       <View style={[containerStyle.verticalSpaceAround]}>
         <Image
@@ -85,9 +66,6 @@ export default class Intro extends Component {
             left: 0,
           }}
           source={require('../assets/images/levels/landmarks/easy/eiffel.jpeg')} />
-        {/* <Image style={{width: 70, height: 90}} source={require('../assets/images/monkey.png')} /> */}
-        {/* <Text fontFamily='ChalkboardSE' h4 style={{color: 'red', marginBottom: 20}}>Spunky Monkey Games</Text>
-        <Text style={{marginBottom: 20}}>Presents</Text> */}
         <Text h2 style={{color: 'white', marginBottom: 0}}>Picture Guess Pro</Text>
         <LargeButton
           onPress={this.handlePlayClick}
