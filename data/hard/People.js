@@ -61,6 +61,12 @@ export const HardPeople = [
     optionalAnswer: [['james', 'stewart'], ['jimmy', 'stewart']],
     hint: "Actor. Mr. Smith goes to Washington."
   },
+  { answer: 'j_cole',
+    imagePath: require('../../assets/images/levels/people/hard/j-cole.jpg'),
+    isCompleted: false,
+    optionalAnswer: [['j', 'cole'], ['jcole']],
+    hint: "Raised in North Carolina. Hit songs include 'No Role Modelz' and 'Wet Dreamz'."
+  },
   { answer: 'james_harden',
     imagePath: require('../../assets/images/levels/people/hard/james_harden.jpg'),
     isCompleted: false,

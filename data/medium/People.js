@@ -15,6 +15,11 @@ export const MediumPeople = [
     isCompleted: false,
     hint: "One of the greatest composers of all time. Ode to Joy. For Elise. Moonlight Sonata."
   },
+  { answer: 'che_guevara',
+    imagePath: require('../../assets/images/levels/people/medium/che_guevara.jpg'),
+    isCompleted: false,
+    hint: "Argentine Marxist revolutionary, politician, author, physician, and guerrilla leader. Assasinated by the CIA."
+  },
   { answer: 'drake',
     imagePath: require('../../assets/images/levels/people/medium/drake.jpg'),
     isCompleted: false,
@@ -34,12 +39,6 @@ export const MediumPeople = [
     imagePath: require('../../assets/images/levels/people/medium/isaac_newton.jpg'),
     isCompleted: false,
     hint: "Father of modern physics."
-  },
-  { answer: 'j_cole',
-    imagePath: require('../../assets/images/levels/people/medium/j-cole.jpg'),
-    isCompleted: false,
-    optionalAnswer: [['j', 'cole'], ['jcole']],
-    hint: "Raised in North Carolina. Hit songs include 'No Role Modelz' and 'Wet Dreamz'."
   },
   { answer: 'james_dean',
     imagePath: require('../../assets/images/levels/people/medium/james_dean.jpg'),

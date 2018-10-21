@@ -20,6 +20,11 @@ export const HardArt = [
     optionalAnswer: [['estasi', 'teresa'], ['ecstasy', 'teresa']],
     hint: "Berini's central sculptural group in white marble set in the Cornaro Chapel. Mixing religion and well..."
   },
+  { answer: 'odalisque',
+    imagePath: require('../../assets/images/levels/art/hard/grand_odalisque.jpg'),
+    isCompleted: false,
+    hint: "Jean Auguste Dominique Ingres painting. Signifies Ingres' break from Neoclassicism, indicating a shift toward exotic Romanticism."
+  },
   { answer: 'fountain',
     imagePath: require('../../assets/images/levels/art/hard/fountain.jpg'),
     isCompleted: false,
