@@ -685,7 +685,7 @@ export default class Level extends Component {
           {"Are you sure you want to quit?"}
         </Text>
         <Text h5 style={[modalStyle.field, {color: 'red'}]}>
-          {"Quitting does not save your progress on this puzzle. Simply closing the app will save your progress on this puzzle."}
+          {"Quitting takes you back to the categories screen, but doesn't save your progress on this puzzle. Simply closing the app will save your progress on this puzzle."}
         </Text>
         <View style={{
           flexDirection: 'row'

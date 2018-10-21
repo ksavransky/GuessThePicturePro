@@ -78,7 +78,7 @@ export const EasyPeople = [
   { answer: 'jagger',
     imagePath: require('../../assets/images/levels/people/easy/jagger.jpg'),
     isCompleted: false,
-    hint: "Front man of The Rolling Stones."
+    hint: "Frontman of The Rolling Stones."
   },
   { answer: 'jay_z',
     imagePath: require('../../assets/images/levels/people/easy/jay-z.jpg'),

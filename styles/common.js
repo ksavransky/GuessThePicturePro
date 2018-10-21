@@ -37,10 +37,10 @@ export const backgroundColorStyle = StyleSheet.create({
 export const modalStyle = StyleSheet.create({
   field: {
     textAlign: 'center',
-    fontFamily: 'ChalkboardSE',
+    // fontFamily: 'ChalkboardSE',
     marginBottom: 20,
-    marginLeft: 5,
-    marginRight: 5
+    marginLeft: 10,
+    marginRight: 10,
   },
   outerContainer: {
     flex: 1,

@@ -38,7 +38,7 @@ export const EasyAnimals = [
   { answer: 'elephant',
     imagePath: require('../../assets/images/levels/animals/easy/elephant.jpg'),
     isCompleted: false,
-    hint: "Consider to be wise."
+    hint: "Considered to be wise. Found in Africa, India, and a zoo near you. Dumbo."
   },
   { answer: 'fly',
     imagePath: require('../../assets/images/levels/animals/easy/fly.jpg'),
@@ -58,7 +58,7 @@ export const EasyAnimals = [
   { answer: 'goose',
     imagePath: require('../../assets/images/levels/animals/easy/goose.jpg'),
     isCompleted: false,
-    hint: "Always pooping at a park near you."
+    hint: "Always pooping at a park near you. A group is called a Gaggle."
   },
   { answer: 'gorilla',
     imagePath: require('../../assets/images/levels/animals/easy/gorilla.jpg'),
@@ -176,6 +176,6 @@ export const EasyAnimals = [
   { answer: 'zebra',
     imagePath: require('../../assets/images/levels/animals/easy/zebra.jpg'),
     isCompleted: false,
-    hint: "Look at those stripes."
+    hint: "Look at those stripes. Relative of a horse."
   },
 ]

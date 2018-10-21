@@ -13,10 +13,10 @@ export default class LoadSavedLevel extends Component {
     const { difficulty, categoryName, categoryLevels, titleColor } = this.props.navigation.state.params
     return (
       <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
-        <Text fontFamily='ChalkboardSE' h4 style={{color: '#28a745', textAlign: 'center', marginBottom: 20}}>
+        <Text h4 style={{color: '#28a745', textAlign: 'center', marginBottom: 20}}>
           {'You currently have ' + (difficulty === 'Easy' ? 'an ' : 'a ' ) + difficulty + ' ' + categoryName + ' puzzle in progress!'}
         </Text>
-        <Text fontFamily='ChalkboardSE' h4 style={{color: '#28a745', textAlign: 'center', marginBottom: 40}}>
+        <Text h4 style={{color: '#28a745', textAlign: 'center', marginBottom: 40}}>
           Would you like to continue playing it?
         </Text>
           <LargeButton
