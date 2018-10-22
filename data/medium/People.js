@@ -124,7 +124,7 @@ export const MediumPeople = [
   { answer: 'selena_gomez',
     imagePath: require('../../assets/images/levels/people/medium/selena_gomez.jpg'),
     isCompleted: false,
-    hint: "Actress. Alex Russo oin Wizards of Waverly Place. Singer. Same Old Love. Hands to Myself."
+    hint: "As Actress: Alex Russo oin Wizards of Waverly Place. As Singer: Same Old Love. Hands to Myself."
   },
   { answer: 'stevie_nicks',
     imagePath: require('../../assets/images/levels/people/medium/stevie_nicks.jpg'),

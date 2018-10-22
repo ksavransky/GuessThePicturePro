@@ -33,7 +33,7 @@ export const MediumAnimals = [
   { answer: 'coyote',
     imagePath: require('../../assets/images/levels/animals/medium/coyote.jpg'),
     isCompleted: false,
-    hint: "A dessert dog."
+    hint: "A North American canine. Smaller than a wolf but related to it. Hockey team from Phoenix animal."
   },
   { answer: 'dove',
     imagePath: require('../../assets/images/levels/animals/medium/dove.jpg'),

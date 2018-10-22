@@ -19,7 +19,8 @@ export const HardLandmarks = [
   { answer: 'moher',
     imagePath: require('../../assets/images/levels/landmarks/hard/cliffs-of-moher.jpg'),
     isCompleted: false,
-    hint: 'Sea cliffs located at the southwestern edge of the Burren region in County Clare, Ireland.'
+    optionalAnswer: [['moher'], ['mohr']],
+    hint: 'Sea selena located at the southwestern edge of the Burren region in County Clare, Ireland.'
   },
   { answer: 'gardens_bay',
     imagePath: require('../../assets/images/levels/landmarks/hard/Gardens-by-the-Bay.jpg'),

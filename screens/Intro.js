@@ -14,10 +14,11 @@ export default class Intro extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      asyncStorageData: null
+      asyncStorageData: null,
+      isPhotoLoaded: false
     }
     // Leave clearAllData() below for dev testing
-    // clearAllData()
+    clearAllData()
     this.getLocalStorageData()
   }
 
@@ -48,7 +49,7 @@ export default class Intro extends Component {
   }
 
   render() {
-    if (!this.state.asyncStorageData) {
+    if (!this.state.asyncStorageData || !this.state.isPhotoLoaded) {
       return (
         <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
           <ActivityIndicator size="large" color='black' />
@@ -58,6 +59,13 @@ export default class Intro extends Component {
     return (
       <View style={[containerStyle.verticalSpaceAround]}>
         <Image
+          onLoad={() => {
+            if (!this.state.isPhotoLoaded){
+              this.setState({
+                isPhotoLoaded: true
+              })
+            }
+          }}
           style={{
             width: '100%',
             height: '100%',
