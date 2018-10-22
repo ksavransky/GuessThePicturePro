@@ -268,18 +268,18 @@ export default class Level extends Component {
     }
   }
 
-  renderTitle = (hideTitleAndGameInfoWhenKeyboardOpen) => {
+  renderTitle = (hideTitleAndGameInfoWhenKeyboardOpen, allImagesLoaded) => {
     return (
-      <Text h4 style={{color: this.titleColor, margin: 10, display: hideTitleAndGameInfoWhenKeyboardOpen}}>
+      <Text h4 style={{color: this.titleColor, margin: 10, display: hideTitleAndGameInfoWhenKeyboardOpen, opacity: allImagesLoaded ? 1 : 0}}>
         {this.categoryName}
       </Text>
     )
   }
 
-  renderGameInfo = (hideTitleAndGameInfoWhenKeyboardOpen) => {
+  renderGameInfo = (hideTitleAndGameInfoWhenKeyboardOpen, allImagesLoaded) => {
     const fontSizeForInfo = this.isiPhoneSE ? 12 : 14
     return (
-      <View style={{marginLeft: '10%', width: '100%', flexDirection: 'row', display: hideTitleAndGameInfoWhenKeyboardOpen, marginBottom: 10}}>
+      <View style={{marginLeft: '10%', width: '100%', flexDirection: 'row', display: hideTitleAndGameInfoWhenKeyboardOpen, marginBottom: 10, opacity: allImagesLoaded ? 1 : 0}}>
         <Text style={{fontSize: fontSizeForInfo, color: '#3e3e3e', width: '33%'}}>
           {'Reveals Left: ' + this.state.revealsLeft}
         </Text>
@@ -319,10 +319,10 @@ export default class Level extends Component {
     )
   }
 
-  renderPhoto = (hideImageWhileTileLoading) => {
-    const photoOpacity = this.state.isPhotoLoaded ? hideImageWhileTileLoading : 0
+  renderPhoto = (hideImageWhileTileLoading, allImagesLoaded) => {
+    // const photoOpacity = this.state.isPhotoLoaded ? hideImageWhileTileLoading : 0
     return (
-      <View style={{width: this.photoWidth, height: this.photoHeight, position: 'relative'}}>
+      <View style={{width: this.photoWidth, height: this.photoHeight, position: 'relative', opacity: allImagesLoaded ? 1 : 0}}>
         <Image
           style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading, zIndex: 1}}
           source={this.state.currentLevel.imagePath}
@@ -404,9 +404,9 @@ export default class Level extends Component {
     return tiles
   }
 
-  renderForm = (totalFormWidth, formLabelMarginTop, formLabelFontSize, formInputMarginTop, formInputWidth, inputFontSize) => {
+  renderForm = (totalFormWidth, formLabelMarginTop, formLabelFontSize, formInputMarginTop, formInputWidth, inputFontSize, allImagesLoaded) => {
     return (
-      <View style={{width: totalFormWidth, flexDirection: 'column'}}>
+      <View style={{width: totalFormWidth, flexDirection: 'column', display: allImagesLoaded ? 'flex' : 'none'}}>
         <FormLabel
           containerStyle={{width: '100%', marginTop: formLabelMarginTop}}
           labelStyle={{color: 'grey', fontSize: formLabelFontSize, fontWeight: '400'}}>
@@ -442,7 +442,7 @@ export default class Level extends Component {
     )
   }
 
-  renderBottomButton = () => {
+  renderBottomButton = (allImagesLoaded) => {
     if (!this.state.isKeyBoardOpen) {
       return (
           <LargeButton
@@ -451,7 +451,7 @@ export default class Level extends Component {
             disabled={!this.state.guessInput}
             fontFamily='ChalkboardSE'
             fontSize={24}
-            style={{marginTop: 30}}
+            style={{marginTop: 30, display: allImagesLoaded ? 'flex' : 'none'}}
             backgroundColor='#28a745'
             text='SUBMIT' />
         )
@@ -818,15 +818,17 @@ export default class Level extends Component {
     }
 
     if (this.state.currentLevel) {
+      const allImagesLoaded = this.state.isTileLoaded && this.state.isPhotoLoaded
       return (
         <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
-          <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound}/>
-          <CloseButton showCloseModal={this.showCloseModal} />
-          {this.renderTitle(hideTitleAndGameInfoWhenKeyboardOpen)}
-          {this.renderGameInfo(hideTitleAndGameInfoWhenKeyboardOpen)}
-          {this.renderPhoto(hideImageWhileTileLoading)}
-          {this.renderForm(totalFormWidth, formLabelMarginTop, formLabelFontSize, formInputMarginTop, formInputWidth, inputFontSize)}
-          {this.renderBottomButton()}
+          {!allImagesLoaded && <ActivityIndicator size="large" color='black' style={{marginTop: '50%'}}/>}
+          <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound} display={allImagesLoaded ? 'flex' : 'none'}/>
+          <CloseButton showCloseModal={this.showCloseModal} display={allImagesLoaded ? 'flex' : 'none'} />
+          {this.renderTitle(hideTitleAndGameInfoWhenKeyboardOpen, allImagesLoaded)}
+          {this.renderGameInfo(hideTitleAndGameInfoWhenKeyboardOpen, allImagesLoaded)}
+          {this.renderPhoto(hideImageWhileTileLoading, allImagesLoaded)}
+          {this.renderForm(totalFormWidth, formLabelMarginTop, formLabelFontSize, formInputMarginTop, formInputWidth, inputFontSize, allImagesLoaded)}
+          {this.renderBottomButton(allImagesLoaded)}
           {this.renderModal()}
         </KeyboardAvoidingView>
       )

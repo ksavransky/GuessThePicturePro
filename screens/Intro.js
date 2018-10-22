@@ -18,7 +18,7 @@ export default class Intro extends Component {
       isPhotoLoaded: false
     }
     // Leave clearAllData() below for dev testing
-    // clearAllData()
+    clearAllData()
     this.getLocalStorageData()
   }
 

@@ -10,7 +10,8 @@ export default class CloseButton extends Component {
         style={{
           position: 'absolute',
           top: '5%',
-          right: '5%'
+          right: '5%',
+          display: this.props.display || 'flex'
         }}>
         <View style={{
           backgroundColor: 'white',
