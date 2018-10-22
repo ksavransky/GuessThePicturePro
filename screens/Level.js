@@ -243,7 +243,7 @@ export default class Level extends Component {
     }, () => {
       setTimeout(() => {
         playSound('tada', this.state.isSoundOn)
-      }, 500)
+      }, 200)
     })
   }
 
@@ -502,7 +502,7 @@ export default class Level extends Component {
       }, () => {
         setTimeout(() => {
           playSound('tada', this.state.isSoundOn)
-        }, 500)
+        }, 200)
       })
       this.clearSavedLevel()
     } else {

@@ -24,7 +24,8 @@ export default class Categories extends Component {
               chevronColor='grey'
               avatar={category.iconPath}
               roundAvatar
-              avatarStyle={avatarStyle.big}
+              avatarContainerStyle={avatarStyle.big}
+              avatarStyle={{width: 60, height: 60}}
               key={category.name}
               title={category.name}
               titleStyle={titleStyle.big}
@@ -55,8 +56,8 @@ const avatarStyle = StyleSheet.create({
   big: {
     width: 60,
     height: 60,
-    position: 'absolute',
-    left: 0
+    // position: 'absolute',
+    // left: 0
   },
 })
 
@@ -64,7 +65,7 @@ const titleStyle = StyleSheet.create({
   normal: {},
   big: {
     fontSize: 18,
-    marginLeft: 36,
+    marginLeft: 10,
     marginBottom: 7
   },
 })
@@ -75,7 +76,7 @@ const subtitleStyle = StyleSheet.create({
   },
   big: {
     fontSize: 14,
-    marginLeft: 36,
+    marginLeft: 10,
   },
 })
 
