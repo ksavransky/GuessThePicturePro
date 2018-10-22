@@ -6,7 +6,7 @@ import { containerStyle, backgroundColorStyle } from '../styles/Common'
 import { AsyncStorageData } from '../data/Data.js'
 import { get, find } from 'lodash'
 import { clearAllData } from '../utils/Asyncstorage'
-import { getTitleColorFromDifficulty } from '../utils/Utils.js'
+import { getTitleColorFromDifficulty } from '../utils/Utils'
 import { AsyncStorage } from 'react-native';
 import { CONSTANTS } from '../Constants'
 
@@ -18,7 +18,7 @@ export default class Intro extends Component {
       isPhotoLoaded: false
     }
     // Leave clearAllData() below for dev testing
-    clearAllData()
+    // clearAllData()
     this.getLocalStorageData()
   }
 
@@ -49,7 +49,7 @@ export default class Intro extends Component {
   }
 
   render() {
-    if (!this.state.asyncStorageData || !this.state.isPhotoLoaded) {
+    if (!this.state.asyncStorageData) {
       return (
         <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
           <ActivityIndicator size="large" color='black' />
