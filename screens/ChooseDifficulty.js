@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, AsyncStorage, Image} from 'react-native';
+import { View, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Text } from 'react-native-elements';
 import LargeButton from '../components/buttons/LargeButton'
 import SoundButton from '../components/buttons/SoundButton'
@@ -40,17 +40,8 @@ export default class ChooseDifficulty extends Component {
   render() {
     return (
       <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
-        <Image
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-          }}
-          source={require('../assets/images/levels/landmarks/easy/eiffel.jpeg')} />
         <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound}/>
-        <Text h2 style={{color: 'white', marginBottom: 100}}>Choose Difficulty</Text>
+        <Text h2 style={{color: '#242531', marginTop: 10, marginBottom: 60}}>Choose Difficulty</Text>
         {[{difficulty: 'Easy', color: '#28a745', title: 'EASY'},
           {difficulty: 'Medium', color: 'orange', title: 'MEDIUM'},
           {difficulty: 'Hard', color: 'red', title: 'HARD'}].map((buttonData) => {

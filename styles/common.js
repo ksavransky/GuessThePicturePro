@@ -30,6 +30,9 @@ export const containerStyle = StyleSheet.create({
 export const backgroundColorStyle = StyleSheet.create({
   lightBlue: {
     backgroundColor: '#dceff7'
+  },
+  nightBlue: {
+    backgroundColor: '#242531'
   }
 })
 

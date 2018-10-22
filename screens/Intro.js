@@ -17,7 +17,7 @@ export default class Intro extends Component {
       asyncStorageData: null
     }
     // Leave clearAllData() below for dev testing
-    clearAllData()
+    // clearAllData()
     this.getLocalStorageData()
   }
 
@@ -64,9 +64,10 @@ export default class Intro extends Component {
             position: 'absolute',
             top: 0,
             left: 0,
+            opacity: 0.7,
           }}
-          source={require('../assets/images/levels/landmarks/easy/eiffel.jpeg')} />
-        <Text h2 style={{color: 'white', marginBottom: 0}}>Picture Guess Pro</Text>
+          source={require('../assets/images/eiffel-large.jpg')} />
+        <Text h2 style={{color: '#242531', marginBottom: 0}}>Picture Guess Pro</Text>
         <LargeButton
           onPress={this.handlePlayClick}
           isSoundOn={this.state.asyncStorageData.General.isSoundOn}
