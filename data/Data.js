@@ -26,31 +26,31 @@ const defaultLevelsAndPoints = {
 const EASY = [
   {
     name: 'Landmarks',
-    iconPath: require('../assets/images/levels/landmarks/easy/eiffel.jpeg'),
+    iconPath: require('../assets/images/thumbs/eiffel.jpg'),
     ...defaultLevelsAndPoints,
     levels: EasyLandmarks
   },
   {
     name: 'Food',
-    iconPath: require('../assets/images/levels/food/easy/hamburger.jpg'),
+    iconPath: require('../assets/images/thumbs/hamburger.jpg'),
     ...defaultLevelsAndPoints,
     levels: EasyFood
   },
   {
     name: 'Art',
-    iconPath: require('../assets/images/levels/art/easy/david.jpg'),
+    iconPath: require('../assets/images/thumbs/david.jpg'),
     ...defaultLevelsAndPoints,
     levels: EasyArt
   },
   {
     name: 'People',
-    iconPath: require('../assets/images/levels/people/easy/elvis.jpg'),
+    iconPath: require('../assets/images/thumbs/elvis.jpg'),
     ...defaultLevelsAndPoints,
     levels: EasyPeople
   },
   {
     name: 'Animals',
-    iconPath: require('../assets/images/levels/animals/easy/dog.jpg'),
+    iconPath: require('../assets/images/thumbs/dog.jpg'),
     ...defaultLevelsAndPoints,
     levels: EasyAnimals
   },
@@ -59,31 +59,31 @@ const EASY = [
 const MEDIUM = [
   {
     name: 'Landmarks',
-    iconPath: require('../assets/images/levels/landmarks/medium/mount-fuji.jpg'),
+    iconPath: require('../assets/images/thumbs/fuji.jpg'),
     ...defaultLevelsAndPoints,
     levels: MediumLandmarks
   },
   {
     name: 'Food',
-    iconPath: require('../assets/images/levels/food/medium/dosa.jpg'),
+    iconPath: require('../assets/images/thumbs/dosa.jpg'),
     ...defaultLevelsAndPoints,
     levels: MediumFood
   },
   {
     name: 'Art',
-    iconPath: require('../assets/images/levels/art/medium/Cafe_Terrace_at_Night.jpg'),
+    iconPath: require('../assets/images/thumbs/Cafe_Terrace_at_Night.jpg'),
     ...defaultLevelsAndPoints,
     levels: MediumArt
   },
   {
     name: 'Animals',
-    iconPath: require('../assets/images/levels/animals/medium/yak.jpg'),
+    iconPath: require('../assets/images/thumbs/yak.jpg'),
     ...defaultLevelsAndPoints,
     levels: MediumAnimals
   },
   {
     name: 'People',
-    iconPath: require('../assets/images/levels/people/medium/usain_bolt.jpg'),
+    iconPath: require('../assets/images/thumbs/usain_bolt.jpg'),
     ...defaultLevelsAndPoints,
     levels: MediumPeople
   },
@@ -92,19 +92,19 @@ const MEDIUM = [
 const HARD = [
   {
     name: 'Landmarks',
-    iconPath: require('../assets/images/levels/landmarks/hard/Gardens-by-the-Bay.jpg'),
+    iconPath: require('../assets/images/thumbs/gardens.jpg'),
     ...defaultLevelsAndPoints,
     levels: HardLandmarks
   },
   {
     name: 'Food',
-    iconPath: require('../assets/images/levels/food/hard/SHAKSHUKA-kagyana.jpg'),
+    iconPath: require('../assets/images/thumbs/shakshuka.jpg'),
     ...defaultLevelsAndPoints,
     levels: HardFood
   },
   {
     name: 'Art',
-    iconPath: require('../assets/images/levels/art/hard/Balloon_Dog.jpg'),
+    iconPath: require('../assets/images/thumbs/Balloon_Dog.jpg'),
     ...defaultLevelsAndPoints,
     levels: HardArt
   },
@@ -116,7 +116,7 @@ const HARD = [
   },
   {
     name: 'People',
-    iconPath: require('../assets/images/levels/people/hard/billy_idol.jpg'),
+    iconPath: require('../assets/images/thumbs/billy_idol.jpg'),
     ...defaultLevelsAndPoints,
     levels: HardPeople
   },
