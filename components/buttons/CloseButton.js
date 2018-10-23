@@ -5,7 +5,7 @@ export default class CloseButton extends Component {
   render() {
     return (
       <TouchableOpacity
-        activeOpacity={0.9}
+        activeOpacity={this.props.activeOpacity || 0.9}
         onPress={this.props.showCloseModal}
         style={{
           position: 'absolute',

@@ -161,6 +161,7 @@ export default class Level extends Component {
       revealsLeft: savedLevel.revealsLeft,
       guessesLeft: savedLevel.guessesLeft,
       usedHint: savedLevel.usedHint,
+      allImagesLoaded: false,
     })
   }
 
@@ -198,6 +199,7 @@ export default class Level extends Component {
       guessInput: null,
       guessesLeft: 3,
       revealsLeft: CONSTANTS.STARTING_REVEALS_LEFT,
+      allImagesLoaded: false,
     })
   }
 
@@ -515,7 +517,7 @@ export default class Level extends Component {
         guessesLeft: 3,
         revealsLeft: CONSTANTS.STARTING_REVEALS_LEFT,
         showModal: false,
-        usedHint: false
+        usedHint: false,
       }, () => {
         if (beatCategory) {
           this.chooseRandomLevel()
@@ -594,6 +596,15 @@ export default class Level extends Component {
     const categoryObjectIndex = findIndex(difficultyArray, ['name', this.categoryName])
     const levelsArray = this.storedData.Game[this.difficulty][categoryObjectIndex].levels
     const currentLevelIndex = findIndex(levelsArray, ['answer', this.state.currentLevel.answer])
+    // bug in line below?
+    console.warn('this.storedData.Game[this.difficulty][categoryObjectIndex]')
+    console.warn(this.storedData.Game[this.difficulty][categoryObjectIndex]);
+    console.warn('this.storedData.Game[this.difficulty][categoryObjectIndex].levels')
+    console.warn(this.storedData.Game[this.difficulty][categoryObjectIndex].levels)
+    console.warn('this.storedData.Game[this.difficulty][categoryObjectIndex].levels[currentLevelIndex]')
+    console.warn(this.storedData.Game[this.difficulty][categoryObjectIndex].levels[currentLevelIndex])
+    console.warn('currentLevelIndex')
+    console.warn(currentLevelIndex)
     this.storedData.Game[this.difficulty][categoryObjectIndex].levels[currentLevelIndex].isCompleted = true
     this.storedData.Game[this.difficulty][categoryObjectIndex].points += this.state.points
     this.categoryPoints = this.storedData.Game[this.difficulty][categoryObjectIndex].points
@@ -823,8 +834,8 @@ export default class Level extends Component {
       return (
         <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
           {!allImagesLoaded && <ActivityIndicator size="large" color='black' style={{marginTop: '50%'}}/>}
-          <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound} display={allImagesLoaded ? 'flex' : 'none'}/>
-          <CloseButton showCloseModal={this.showCloseModal} display={allImagesLoaded ? 'flex' : 'none'} />
+          <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound} activeOpacity={allImagesLoaded ? 0.9 : 0}/>
+          <CloseButton showCloseModal={this.showCloseModal} activeOpacity={allImagesLoaded ? 0.9 : 0} />
           {this.renderTitle(hideTitleAndGameInfoWhenKeyboardOpen, allImagesLoaded)}
           {this.renderGameInfo(hideTitleAndGameInfoWhenKeyboardOpen, allImagesLoaded)}
           {this.renderPhoto(hideImageWhileTileLoading, allImagesLoaded)}
