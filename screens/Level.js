@@ -201,18 +201,20 @@ export default class Level extends Component {
     })
   }
 
-  handleTilePress = (i, j) => {
+  handleTilePress = (i, j, allImagesLoaded) => {
     if (this.state.revealsLeft > 0) {
-      let visibleTiles = cloneDeep(this.state.visibleTiles)
-      visibleTiles[i][j] = false
-      this.setState({
-        visibleTiles: visibleTiles,
-        revealsLeft: this.state.revealsLeft - 1,
-        points: (this.state.revealsLeft < (CONSTANTS.STARTING_REVEALS_LEFT - 1) ) ? (this.state.points - 1) : this.state.points,
-        atLeastOneGameStarted: true
-      }, () => {
-        playSound('reveal', this.state.isSoundOn)
-      })
+      if (allImagesLoaded) {
+        let visibleTiles = cloneDeep(this.state.visibleTiles)
+        visibleTiles[i][j] = false
+        this.setState({
+          visibleTiles: visibleTiles,
+          revealsLeft: this.state.revealsLeft - 1,
+          points: (this.state.revealsLeft < (CONSTANTS.STARTING_REVEALS_LEFT - 1) ) ? (this.state.points - 1) : this.state.points,
+          atLeastOneGameStarted: true
+        }, () => {
+          playSound('reveal', this.state.isSoundOn)
+        })
+      }
     } else {
       this.setState({showModal: 'no-reveals'}, () => {
         playSound('wrongbuzz', this.state.isSoundOn)
@@ -320,7 +322,6 @@ export default class Level extends Component {
   }
 
   renderPhoto = (hideImageWhileTileLoading, allImagesLoaded) => {
-    // const photoOpacity = this.state.isPhotoLoaded ? hideImageWhileTileLoading : 0
     return (
       <View style={{width: this.photoWidth, height: this.photoHeight, position: 'relative', opacity: allImagesLoaded ? 1 : 0}}>
         <Image
@@ -335,7 +336,7 @@ export default class Level extends Component {
           }}
         />
         <View style={{width: '100%', height: '100%', position: 'absolute', zIndex: 2}}>
-          {this.renderTiles()}
+          {this.renderTiles(allImagesLoaded)}
         </View>
         {!this.state.atLeastOneGameStarted && this.state.revealsLeft === CONSTANTS.STARTING_REVEALS_LEFT && this.renderInstructions()}
       </View>
@@ -364,7 +365,7 @@ export default class Level extends Component {
     )
   }
 
-  renderTiles = () => {
+  renderTiles = (allImagesLoaded) => {
     let tiles = []
 
     for (let i = 0; i < NUMBER_OF_TILES_PER.ROW; i++) {
@@ -375,7 +376,7 @@ export default class Level extends Component {
           tiles.push(
             <TouchableOpacity
               activeOpacity={(this.state.revealsLeft > 0) ? 0.5 : 1}
-              onPress={() => this.handleTilePress(i, j)}
+              onPress={() => this.handleTilePress(i, j, allImagesLoaded)}
               key={i + '_' + j}
               style={{
                 top: top,
