@@ -5,13 +5,13 @@ export default class CloseButton extends Component {
   render() {
     return (
       <TouchableOpacity
-        activeOpacity={this.props.activeOpacity || 0.9}
+        activeOpacity={0.9}
         onPress={this.props.showCloseModal}
         style={{
           position: 'absolute',
           top: '5%',
           right: '5%',
-          display: this.props.display || 'flex'
+          display: this.props.display || 'flex',
         }}>
         <View style={{
           backgroundColor: 'white',

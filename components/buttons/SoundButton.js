@@ -8,13 +8,13 @@ export default class SoundButton extends Component {
   render() {
     return (
       <TouchableOpacity
-        activeOpacity={this.props.activeOpacity || 0.9}
+        activeOpacity={0.9}
         onPress={this.props.setSound}
         style={{
           position: 'absolute',
           top: '5%',
           left: '5%',
-          display: this.props.display || 'flex'
+          display: this.props.display || 'flex',
         }}
         >
         <View style={{
