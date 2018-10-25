@@ -7,6 +7,7 @@ import Categories from '../components/Categories.js'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
 import { AsyncStorage } from 'react-native';
 import LargeButton from '../components/buttons/LargeButton'
+import SmallButton from '../components/buttons/SmallButton'
 import { playSound } from '../utils/Utils'
 
 export default class CategoriesScreen extends Component {
@@ -122,12 +123,20 @@ export default class CategoriesScreen extends Component {
     }
     return (
       <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
-        <Text
+        {/* <Text
           h5
           style={{alignSelf: 'flex-start', margin: 10}}
           onPress={this.navigateToChooseDifficulty}>
           {'< Select Difficulty'}
-        </Text>
+        </Text> */}
+        <SmallButton
+          onPress={this.navigateToChooseDifficulty}
+          isSoundOn={this.state.isSoundOn}
+          fontSize={14}
+          backgroundColor='blue'
+          style={{ alignSelf: 'flex-start', margin: 10 }}
+          text='< Select Difficulty'
+        />
         <Text h4 style={{color: titleColor, marginBottom: 20}}>
           {this.state.difficulty}
         </Text>
