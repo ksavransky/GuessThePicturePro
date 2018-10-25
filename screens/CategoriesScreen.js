@@ -132,8 +132,10 @@ export default class CategoriesScreen extends Component {
         <SmallButton
           onPress={this.navigateToChooseDifficulty}
           isSoundOn={this.state.isSoundOn}
-          fontSize={14}
-          backgroundColor='blue'
+          fontSize={12}
+          backgroundColor='white'
+          borderColor='black'
+          color='black'
           style={{ alignSelf: 'flex-start', margin: 10 }}
           text='< Select Difficulty'
         />
