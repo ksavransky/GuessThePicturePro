@@ -73,6 +73,7 @@ export const EasyAnimals = [
   { answer: 'hummingbird',
     imagePath: require('../../assets/images/levels/animals/easy/hummingbird.jpg'),
     isCompleted: false,
+    optionalAnswer: [['hummingbird'], ['humming', 'bird']],
     hint: "Have a very fast heartbeat. Can barely see its wings move. Can hover."
   },
   { answer: 'ladybug',
@@ -129,7 +130,7 @@ export const EasyAnimals = [
     imagePath: require('../../assets/images/levels/animals/easy/rattlesnake-snake.jpg'),
     isCompleted: false,
     optionalAnswer: [['rattlesnake'], ['snake']],
-    hint: ""
+    hint: "Slithery, can be poisonus. Corputted Adam and Eve."
   },
   { answer: 'rhino',
     imagePath: require('../../assets/images/levels/animals/easy/rhino.jpg'),

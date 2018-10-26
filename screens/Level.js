@@ -162,7 +162,7 @@ export default class Level extends Component {
       revealsLeft: savedLevel.revealsLeft,
       guessesLeft: savedLevel.guessesLeft,
       usedHint: savedLevel.usedHint,
-      allImagesLoaded: false,
+      isPhotoLoaded: false,
     })
   }
 
@@ -202,7 +202,7 @@ export default class Level extends Component {
       guessInput: null,
       guessesLeft: 3,
       revealsLeft: CONSTANTS.STARTING_REVEALS_LEFT,
-      allImagesLoaded: false,
+      isPhotoLoaded: false,
     })
   }
 
