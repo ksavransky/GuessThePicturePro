@@ -83,6 +83,7 @@ export const MediumArt = [
   { answer: 'water_lily_pond',
     imagePath: require('../../assets/images/levels/art/medium/The_Water-Lily_Pond.jpg'),
     isCompleted: false,
+    optionalAnswer: [['lily', 'pond'], ['lilies', 'pond'], ['water', 'lilies']],
     hint: "Monet's classic version of the these flowers in this small body of water."
   },
   { answer: 'birth_venus',

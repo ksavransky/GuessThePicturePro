@@ -12,6 +12,7 @@ export const EasyArt = [
   { answer: 'water_lilies',
     imagePath: require('../../assets/images/levels/art/easy/water_lilies.jpg'),
     isCompleted: false,
+    optionalAnswer: [['water', 'lilies'], ['lilies']],
     hint: "Monet's famous flowers in a pond."
   },
   { answer: 'sistine_chapel',
