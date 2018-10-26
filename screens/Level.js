@@ -334,9 +334,11 @@ export default class Level extends Component {
           source={this.state.currentLevel.imagePath}
           onLoad={() => {
             if (!this.state.isPhotoLoaded){
-              this.setState({
-                isPhotoLoaded: true
-              })
+              setTimeout(() => {
+                this.setState({
+                  isPhotoLoaded: true
+                })
+              }, 100)
             }
           }}
         />
