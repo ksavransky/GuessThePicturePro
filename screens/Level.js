@@ -59,8 +59,6 @@ export default class Level extends Component {
   constructor(props) {
     super(props)
 
-    this.difficulty = get(props, 'navigation.state.params.difficulty', 'Easy')
-    this.categoryName = get(props, 'navigation.state.params.categoryName', 'Places')
     this.titleColor = get(props, 'navigation.state.params.titleColor', '#28a745')
     this.categoryPoints = 0
 
@@ -89,6 +87,8 @@ export default class Level extends Component {
       isTileLoaded: false,
       isPhotoLoaded: false,
       availableLevels: [],
+      difficulty: get(props, 'navigation.state.params.difficulty', 'Easy'),
+      categoryName: get(props, 'navigation.state.params.categoryName', 'Places'),
       currentLevel: null,
       points: CONSTANTS.STARTING_POINTS,
       visibleTiles: ALL_TILES_COVERING,
@@ -126,8 +126,8 @@ export default class Level extends Component {
         !isEqual(prevState.answer, this.state.answer) ||
         !isEqual(prevState.usedHint, this.state.usedHint)) {
       const savedLevel = {
-        difficulty: this.difficulty,
-        categoryName: this.categoryName,
+        difficulty: this.state.difficulty,
+        categoryName: this.state.categoryName,
         answer: this.state.currentLevel.answer,
         points: this.state.points,
         visibleTiles: this.state.visibleTiles,
@@ -154,10 +154,10 @@ export default class Level extends Component {
   loadSavedLevel = () => {
     const savedLevel = this.storedData.SavedLevel
     const currentLevel = find(this.state.availableLevels, ['answer', savedLevel.answer])
-    this.categoryName = this.storedData.SavedLevel.categoryName
     this.setState({
       currentLevel: currentLevel,
       points: savedLevel.points,
+      categoryName: this.storedData.SavedLevel.categoryName,
       visibleTiles: savedLevel.visibleTiles,
       revealsLeft: savedLevel.revealsLeft,
       guessesLeft: savedLevel.guessesLeft,
@@ -168,9 +168,9 @@ export default class Level extends Component {
 
   getAvailableLevels = () => {
     const availableLevels = filter(this.props.navigation.state.params.categoryLevels, ['isCompleted', false])
-    this.categoryName = get(this.props, 'navigation.state.params.categoryName', 'Places')
-    this.difficulty = get(this.props, 'navigation.state.params.difficulty', 'Easy')
     this.setState({
+      categoryName: get(this.props, 'navigation.state.params.categoryName', 'Places'),
+      difficulty: get(this.props, 'navigation.state.params.difficulty', 'Easy'),
       availableLevels: availableLevels
     }, () => {
       if (this.props.navigation.state.params.loadSavedLevel && this.storedData.SavedLevel.answer){
@@ -202,6 +202,7 @@ export default class Level extends Component {
       guessInput: null,
       guessesLeft: 3,
       revealsLeft: CONSTANTS.STARTING_REVEALS_LEFT,
+      usedHint: false,
       isPhotoLoaded: false,
     })
   }
@@ -278,7 +279,7 @@ export default class Level extends Component {
   renderTitle = (hideTitleAndGameInfoWhenKeyboardOpen) => {
     return (
       <Text h4 style={{color: this.titleColor, margin: 10, display: hideTitleAndGameInfoWhenKeyboardOpen}}>
-        {this.categoryName}
+        {this.state.categoryName}
       </Text>
     )
   }
@@ -469,7 +470,7 @@ export default class Level extends Component {
   }
 
   navigateToCategoriesScreen = () => {
-    this.props.navigation.navigate('CategoriesScreen', {difficulty: this.difficulty})
+    this.props.navigation.navigate('CategoriesScreen', {difficulty: this.state.difficulty})
   }
 
   getAvailableLevelsWithoutCurrentLevel = () => {
@@ -597,14 +598,14 @@ export default class Level extends Component {
   }
 
   handleWin = () => {
-    const difficultyArray = this.storedData.Game[this.difficulty]
-    const categoryObjectIndex = findIndex(difficultyArray, ['name', this.categoryName])
-    const levelsArray = this.storedData.Game[this.difficulty][categoryObjectIndex].levels
+    const difficultyArray = this.storedData.Game[this.state.difficulty]
+    const categoryObjectIndex = findIndex(difficultyArray, ['name', this.state.categoryName])
+    const levelsArray = this.storedData.Game[this.state.difficulty][categoryObjectIndex].levels
     const currentLevelIndex = findIndex(levelsArray, ['answer', this.state.currentLevel.answer])
-    this.storedData.Game[this.difficulty][categoryObjectIndex].levels[currentLevelIndex].isCompleted = true
-    this.storedData.Game[this.difficulty][categoryObjectIndex].points += this.state.points
-    this.categoryPoints = this.storedData.Game[this.difficulty][categoryObjectIndex].points
-    this.storedData.Game[this.difficulty][categoryObjectIndex].levelsComplete += 1
+    this.storedData.Game[this.state.difficulty][categoryObjectIndex].levels[currentLevelIndex].isCompleted = true
+    this.storedData.Game[this.state.difficulty][categoryObjectIndex].points += this.state.points
+    this.categoryPoints = this.storedData.Game[this.state.difficulty][categoryObjectIndex].points
+    this.storedData.Game[this.state.difficulty][categoryObjectIndex].levelsComplete += 1
     AsyncStorage.setItem('AsyncStorageData', JSON.stringify(this.storedData))
     this.setState({
       availableLevels: this.getAvailableLevelsWithoutCurrentLevel()
@@ -644,7 +645,7 @@ export default class Level extends Component {
     return (
       <View style={modalStyle.innerContainer}>
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
-          {'Congratulations! You beat the ' + this.difficulty + ' ' + this.categoryName + ' category!'}
+          {'Congratulations! You beat the ' + this.state.difficulty + ' ' + this.state.categoryName + ' category!'}
         </Text>
         <Text h4 style={[modalStyle.field, {color: 'green'}]}>
           {'You earned ' + this.categoryPoints + ' out of ' + (this.props.navigation.state.params.categoryLevels.length * CONSTANTS.STARTING_POINTS) + ' points!'}
@@ -754,7 +755,7 @@ export default class Level extends Component {
     const showModal = this.state.showModal
     return (
       <Modal
-        animationType='fade'
+        // animationType='fade'
         transparent
         onRequestClose={() => {}}
         visible={!!showModal}>
