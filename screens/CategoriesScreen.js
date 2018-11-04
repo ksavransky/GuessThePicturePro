@@ -116,13 +116,13 @@ export default class CategoriesScreen extends Component {
     const titleColor = getTitleColorFromDifficulty(this.state.difficulty)
     if (!this.state.loadedData) {
       return (
-        <View style={[containerStyle.centeredBoth, {backgroundColor: '#fff'}]}>
+        <View style={[containerStyle.centeredBoth, {backgroundColor: '#eeeeee'}]}>
           <ActivityIndicator size="large" color='black' />
         </View>
       )
     }
     return (
-      <View style={[containerStyle.centeredHorizontal, {backgroundColor: '#fff'}]}>
+      <View style={[containerStyle.centeredHorizontal, {backgroundColor: '#eeeeee'}]}>
         {/* <Text
           h5
           style={{alignSelf: 'flex-start', margin: 10}}

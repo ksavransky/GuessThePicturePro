@@ -89,7 +89,7 @@ const rightTitleStyle = StyleSheet.create({
 
 const listItemContainerStyle = StyleSheet.create({
   normal: {
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#fff',
     borderRightWidth: 1,
     borderRightColor: '#cbd2d9',
     borderLeftWidth: 1,

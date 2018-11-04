@@ -58,7 +58,9 @@ export const colors = {
     grey: '#757575',
     darkGrey: '#424242',
     lightGrey: '#eeeeee',
+    xLightGrey: '#FAFAFA',
     lightBlue: '#E3F2FD',
+    blue: '#E3F2FD',
   }
 }
 
