@@ -21,7 +21,7 @@ export default class Categories extends Component {
           sortBy(this.props.asyncStorageData.Game[this.props.difficulty], ['name']).map((category) => (
             <ListItem
               containerStyle={[listItemContainerStyle.normal, listItemContainerStyle.big]}
-              chevronColor='#424242'
+              chevronColor='grey'
               avatar={category.iconPath}
               roundAvatar
               avatarContainerStyle={avatarStyle.big}
@@ -32,7 +32,7 @@ export default class Categories extends Component {
               subtitle={category.points + '/' + (category.levels.length * CONSTANTS.STARTING_POINTS) + ' points'}
               rightTitle={category.levelsComplete + '/' + (category.levels.length || '0') + ' completed'}
               subtitleStyle={[subtitleStyle.normal, subtitleStyle.big]}
-              rightTitleStyle={[{color: category.levelsComplete === category.levels.length ? '#43A047' : 'grey'}, rightTitleStyle.big]}
+              rightTitleStyle={[{color: category.levelsComplete === category.levels.length ? '#28a745' : 'grey'}, rightTitleStyle.big]}
               onPress={() => {
                 if (category.levelsComplete !== category.levels.length) {
                   this.launchCategory(category.name, category.levels)
@@ -72,7 +72,7 @@ const titleStyle = StyleSheet.create({
 
 const subtitleStyle = StyleSheet.create({
   normal: {
-    color: '#FB8C00'
+    color: 'orange'
   },
   big: {
     fontSize: 14,
@@ -88,7 +88,7 @@ const rightTitleStyle = StyleSheet.create({
 
 const listItemContainerStyle = StyleSheet.create({
   normal: {
-    backgroundColor: '#fff',
+    backgroundColor: '#eff7fd',
     borderRightWidth: 1,
     borderRightColor: '#cbd2d9',
     borderLeftWidth: 1,
