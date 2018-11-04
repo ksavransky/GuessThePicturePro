@@ -12,7 +12,7 @@ export default class LoadSavedLevel extends Component {
   render() {
     const { difficulty, categoryName, categoryLevels, titleColor } = this.props.navigation.state.params
     return (
-      <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
+      <View style={[containerStyle.centeredBoth, {backgroundColor: '#fff'}]}>
         <Text h4 style={{color: '#242531', textAlign: 'center', marginBottom: 20, paddingLeft: 10, paddingRight: 10}}>
           {'You currently have ' + (difficulty === 'Easy' ? 'an ' : 'a ' ) + difficulty + ' ' + categoryName + ' puzzle in progress!'}
         </Text>
@@ -21,7 +21,7 @@ export default class LoadSavedLevel extends Component {
         </Text>
           <LargeButton
             onPress={() => this.handleContinueClick(difficulty, categoryName, categoryLevels, titleColor)}
-            backgroundColor='#28a745'
+            backgroundColor='#43A047'
             fontFamily='ChalkboardSE'
             style={{
               marginBottom: 40
@@ -29,7 +29,7 @@ export default class LoadSavedLevel extends Component {
             text='CONTINUE' />
           <LargeButton
             onPress={() => this.props.navigation.navigate('ChooseDifficulty')}
-            backgroundColor='blue'
+            backgroundColor='#1E88E5'
             fontFamily='ChalkboardSE'
             text='NEW' />
       </View>
