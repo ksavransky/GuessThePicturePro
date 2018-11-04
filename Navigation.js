@@ -14,7 +14,7 @@ export const RootStack = createStackNavigator(
     Level: Level,
   },
   {
-    initialRouteName: 'Intro',
+    initialRouteName: 'ChooseDifficulty',
     navigationOptions: {
       headerStyle: {
         display: 'none',

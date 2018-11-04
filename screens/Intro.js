@@ -51,13 +51,13 @@ export default class Intro extends Component {
   render() {
     if (!this.state.asyncStorageData) {
       return (
-        <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
+        <View style={[containerStyle.centeredBoth, {backgroundColor: '#E3F2FD'}]}>
           <ActivityIndicator size="large" color='black' />
         </View>
       )
     }
     const { isPhotoLoaded } = this.state
-    const viewStyle = isPhotoLoaded ? [containerStyle.verticalSpaceAround] : [containerStyle.centeredBoth, backgroundColorStyle.lightBlue]
+    const viewStyle = isPhotoLoaded ? [containerStyle.verticalSpaceAround] : [containerStyle.centeredBoth, {backgroundColor: '#E3F2FD'}]
 
     return (
       <View style={viewStyle}>
@@ -79,11 +79,11 @@ export default class Intro extends Component {
             opacity: isPhotoLoaded ? 0.7 : 0,
           }}
           source={require('../assets/images/eiffel-large.jpg')} />
-        <Text h2 style={{color: '#242531', marginBottom: 0, opacity: isPhotoLoaded ? 1 : 0}}>Picture Guess Pro</Text>
+        <Text h2 style={{color: '#424242', marginBottom: 0, opacity: isPhotoLoaded ? 1 : 0}}>Picture Guess Pro</Text>
         <LargeButton
           onPress={this.handlePlayClick}
           isSoundOn={this.state.asyncStorageData.General.isSoundOn}
-          backgroundColor='#28a745'
+          backgroundColor='#43A047'
           fontFamily='ChalkboardSE'
           style={{display: isPhotoLoaded ? 'flex' : 'none'}}
           text='PLAY' />

@@ -39,12 +39,12 @@ export default class ChooseDifficulty extends Component {
 
   render() {
     return (
-      <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
+      <View style={[containerStyle.centeredBoth, {backgroundColor: '#eeeeee'}]}>
         <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound}/>
-        <Text h2 style={{color: '#242531', marginTop: 10, marginBottom: 60}}>Choose Difficulty</Text>
-        {[{difficulty: 'Easy', color: '#28a745', title: 'EASY'},
-          {difficulty: 'Medium', color: 'orange', title: 'MEDIUM'},
-          {difficulty: 'Hard', color: 'red', title: 'HARD'}].map((buttonData) => {
+        <Text h2 style={{color: '#424242', marginTop: 10, marginBottom: 60}}>Choose Difficulty</Text>
+        {[{difficulty: 'Easy', color: '#43A047', title: 'EASY'},
+          {difficulty: 'Medium', color: '#FB8C00', title: 'MEDIUM'},
+          {difficulty: 'Hard', color: '#E53935', title: 'HARD'}].map((buttonData) => {
             return (
               <LargeButton
                 key={buttonData.difficulty}

@@ -116,13 +116,13 @@ export default class CategoriesScreen extends Component {
     const titleColor = getTitleColorFromDifficulty(this.state.difficulty)
     if (!this.state.loadedData) {
       return (
-        <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
-          <ActivityIndicator size="large" color='black' />
+        <View style={[containerStyle.centeredBoth, {backgroundColor: '#eeeeee'}]}>
+          <ActivityIndicator size="large" color='#424242' />
         </View>
       )
     }
     return (
-      <View style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
+      <View style={[containerStyle.centeredHorizontal, {backgroundColor: '#eeeeee'}]}>
         {/* <Text
           h5
           style={{alignSelf: 'flex-start', margin: 10}}
@@ -139,7 +139,7 @@ export default class CategoriesScreen extends Component {
           style={{ alignSelf: 'flex-start', margin: 10 }}
           text='< Select Difficulty'
         />
-        <Text h4 style={{color: titleColor, marginBottom: 20}}>
+        <Text h4 style={{color: '#424242', marginBottom: 20}}>
           {this.state.difficulty}
         </Text>
         <ScrollView
