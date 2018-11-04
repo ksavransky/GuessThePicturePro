@@ -829,7 +829,7 @@ export default class Level extends Component {
     if (this.state.currentLevel) {
       const allImagesLoaded = this.state.isTileLoaded && this.state.isPhotoLoaded
       return (
-        <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, {backgroundColor: '#fff'}]}>
+        <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, {backgroundColor: '#FAFAFA'}]}>
           {!allImagesLoaded && <ActivityIndicator size="large" color='#424242' style={{marginTop: '50%'}}/>}
           {allImagesLoaded && <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound} />}
           {allImagesLoaded && <CloseButton showCloseModal={this.showCloseModal} />}
@@ -843,7 +843,7 @@ export default class Level extends Component {
       )
     }
     return (
-      <View style={[containerStyle.centeredBoth, {backgroundColor: '#fff'}]}>
+      <View style={[containerStyle.centeredBoth, {backgroundColor: '#FAFAFA'}]}>
         <ActivityIndicator size="large" color='#424242' />
       </View>
     )

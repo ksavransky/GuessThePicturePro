@@ -39,9 +39,9 @@ export default class ChooseDifficulty extends Component {
 
   render() {
     return (
-      <View style={[containerStyle.centeredBoth, {backgroundColor: '#fff'}]}>
+      <View style={[containerStyle.centeredBoth, {backgroundColor: '#FAFAFA'}]}>
         <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound}/>
-        <Text h2 style={{color: '#424242', marginTop: 10, marginBottom: 60}}>Choose Difficulty</Text>
+        <Text h2 style={{color: '#757575', marginTop: 10, marginBottom: 60}}>Choose Difficulty</Text>
         {[{difficulty: 'Easy', color: '#43A047', title: 'EASY'},
           {difficulty: 'Medium', color: '#FB8C00', title: 'MEDIUM'},
           {difficulty: 'Hard', color: '#E53935', title: 'HARD'}].map((buttonData) => {
