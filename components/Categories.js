@@ -21,7 +21,7 @@ export default class Categories extends Component {
           sortBy(this.props.asyncStorageData.Game[this.props.difficulty], ['name']).map((category) => (
             <ListItem
               containerStyle={[listItemContainerStyle.normal, listItemContainerStyle.big]}
-              chevronColor='grey'
+              chevronColor='#424242'
               avatar={category.iconPath}
               roundAvatar
               avatarContainerStyle={avatarStyle.big}
@@ -66,13 +66,14 @@ const titleStyle = StyleSheet.create({
   big: {
     fontSize: 18,
     marginLeft: 10,
-    marginBottom: 7
+    marginBottom: 7,
+    color: '#424242',
   },
 })
 
 const subtitleStyle = StyleSheet.create({
   normal: {
-    color: 'orange'
+    color: '#FB8C00'
   },
   big: {
     fontSize: 14,
@@ -88,7 +89,7 @@ const rightTitleStyle = StyleSheet.create({
 
 const listItemContainerStyle = StyleSheet.create({
   normal: {
-    backgroundColor: '#eff7fd',
+    backgroundColor: '#FAFAFA',
     borderRightWidth: 1,
     borderRightColor: '#cbd2d9',
     borderLeftWidth: 1,

@@ -59,7 +59,7 @@ export default class Level extends Component {
   constructor(props) {
     super(props)
 
-    this.titleColor = get(props, 'navigation.state.params.titleColor', '#28a745')
+    this.titleColor = get(props, 'navigation.state.params.titleColor', '#43A047')
     this.categoryPoints = 0
 
     const { height, width } = Dimensions.get('window')
@@ -288,13 +288,13 @@ export default class Level extends Component {
     const fontSizeForInfo = this.isiPhoneSE ? 12 : 14
     return (
       <View style={{marginLeft: '10%', width: '100%', flexDirection: 'row', display: hideTitleAndGameInfoWhenKeyboardOpen, marginBottom: 10}}>
-        <Text style={{fontSize: fontSizeForInfo, color: '#3e3e3e', width: '33%'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: '#424242', width: '33%'}}>
           {'Reveals Left: ' + this.state.revealsLeft}
         </Text>
-        <Text style={{fontSize: fontSizeForInfo, color: '#3e3e3e', width: '28%', textAlign: 'center'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: '#424242', width: '28%', textAlign: 'center'}}>
           {'Guesses Left: ' + this.state.guessesLeft}
         </Text>
-        <Text style={{fontSize: fontSizeForInfo, color: '#3e3e3e', width: '29%', textAlign: 'right'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: '#424242', width: '29%', textAlign: 'right'}}>
           {'Points: ' + this.state.points}
         </Text>
       </View>
@@ -829,8 +829,8 @@ export default class Level extends Component {
     if (this.state.currentLevel) {
       const allImagesLoaded = this.state.isTileLoaded && this.state.isPhotoLoaded
       return (
-        <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, backgroundColorStyle.lightBlue]}>
-          {!allImagesLoaded && <ActivityIndicator size="large" color='black' style={{marginTop: '50%'}}/>}
+        <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, {backgroundColor: '#fff'}]}>
+          {!allImagesLoaded && <ActivityIndicator size="large" color='#424242' style={{marginTop: '50%'}}/>}
           {allImagesLoaded && <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound} />}
           {allImagesLoaded && <CloseButton showCloseModal={this.showCloseModal} />}
           {allImagesLoaded && this.renderTitle(hideTitleAndGameInfoWhenKeyboardOpen)}
@@ -843,8 +843,8 @@ export default class Level extends Component {
       )
     }
     return (
-      <View style={[containerStyle.centeredBoth, backgroundColorStyle.lightBlue]}>
-        <ActivityIndicator size="large" color='black' />
+      <View style={[containerStyle.centeredBoth, {backgroundColor: '#fff'}]}>
+        <ActivityIndicator size="large" color='#424242' />
       </View>
     )
   }
