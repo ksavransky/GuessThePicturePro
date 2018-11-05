@@ -10,22 +10,29 @@ import { playSound } from '../utils/Utils'
 export default class ChooseDifficulty extends Component {
   constructor(props) {
     super(props)
-    this.state ={
-      isSoundOn: false
+    this.state = {
+      isSoundOn: this.props.navigation.state.params.data.General.isSoundOn
     }
 
-    this.storedData = null
-    this.getStoredData()
+    this.storedData = this.props.navigation.state.params.data
+    // this.getStoredData()
   }
 
-  getStoredData = () => {
-    AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
-      this.storedData = JSON.parse(storedData)
-      this.setState({
-        isSoundOn: this.storedData.General.isSoundOn
-      })
+  componentWillReceiveProps(nextProps){
+    this.storedData = nextProps.navigation.state.params.data
+    this.setState({
+      isSoundOn: this.storedData.General.isSoundOn
     })
   }
+
+  // getStoredData = () => {
+  //   AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
+  //     this.storedData = JSON.parse(storedData)
+  //     this.setState({
+  //       isSoundOn: this.storedData.General.isSoundOn
+  //     })
+  //   })
+  // }
 
   setSound = () => {
     this.setState({
@@ -49,7 +56,7 @@ export default class ChooseDifficulty extends Component {
               <LargeButton
                 key={buttonData.difficulty}
                 isSoundOn={this.state.isSoundOn}
-                onPress={() => this.props.navigation.navigate('CategoriesScreen', {difficulty: buttonData.difficulty})}
+                onPress={() => this.props.navigation.navigate('CategoriesScreen', {difficulty: buttonData.difficulty, data: this.storedData})}
                 backgroundColor={buttonData.color}
                 style={{marginBottom: 50}}
                 fontFamily='ChalkboardSE'

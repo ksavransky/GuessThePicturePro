@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native';
 
 export default class Categories extends Component {
   launchCategory = (categoryName, categoryLevels) => {
-    this.props.navigation.navigate('Level', {categoryName: categoryName, difficulty: this.props.difficulty, categoryLevels: categoryLevels, titleColor: this.props.titleColor})
+    this.props.navigation.navigate('Level', {categoryName: categoryName, difficulty: this.props.difficulty, categoryLevels: categoryLevels, titleColor: this.props.titleColor, data: this.props.asyncStorageData})
     playSound('click', this.props.isSoundOn)
   }
 

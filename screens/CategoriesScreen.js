@@ -13,32 +13,35 @@ import { playSound } from '../utils/Utils'
 export default class CategoriesScreen extends Component {
   constructor(props) {
     super(props)
-    this.asyncStorageData = null
     this.state = {
       difficulty: get(props, 'navigation.state.params.difficulty', 'Easy'),
-      loadedData: false,
       showModal: false,
-      isSoundOn: false
+      isSoundOn: this.props.navigation.state.params.data.General.isSoundOn
     }
-    this.getLocalStorageData()
+
+    this.asyncStorageData = this.props.navigation.state.params.data
+
+    // this.getLocalStorageData()
   }
 
   componentWillReceiveProps(nextProps) {
+    this.asyncStorageData = nextProps.navigation.state.params.data
     this.setState({
-      difficulty: get(nextProps, 'navigation.state.params.difficulty', 'Easy')
+      difficulty: get(nextProps, 'navigation.state.params.difficulty', 'Easy'),
+      isSoundOn: this.asyncStorageData.General.isSoundOn
     })
-    this.getLocalStorageData()
+    // this.getLocalStorageData()
   }
 
-  getLocalStorageData = () => {
-    AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
-      this.asyncStorageData = JSON.parse(storedData)
-      this.setState({
-        loadedData: true,
-        isSoundOn: this.asyncStorageData.General.isSoundOn
-      })
-    })
-  }
+  // getLocalStorageData = () => {
+  //   AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
+  //     this.asyncStorageData = JSON.parse(storedData)
+  //     this.setState({
+  //       loadedData: true,
+  //       isSoundOn: this.asyncStorageData.General.isSoundOn
+  //     })
+  //   })
+  // }
 
   setShowModal = (categoryName) => {
     this.setState({
@@ -108,19 +111,11 @@ export default class CategoriesScreen extends Component {
   }
 
   navigateToChooseDifficulty = () => {
-    this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.isSoundOn})
-    playSound('click', this.state.isSoundOn)
+    this.props.navigation.navigate('ChooseDifficulty', {isSoundOn: this.state.isSoundOn, data: this.asyncStorageData})
   }
 
   render() {
     const titleColor = getTitleColorFromDifficulty(this.state.difficulty)
-    if (!this.state.loadedData) {
-      return (
-        <View style={[containerStyle.centeredBoth, {backgroundColor: '#FAFAFA'}]}>
-          <ActivityIndicator size="large" color='black' />
-        </View>
-      )
-    }
     return (
       <View style={[containerStyle.centeredHorizontal, {backgroundColor: '#FAFAFA'}]}>
         {/* <Text

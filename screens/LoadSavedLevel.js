@@ -6,11 +6,11 @@ import { containerStyle, backgroundColorStyle } from '../styles/Common'
 
 export default class LoadSavedLevel extends Component {
   handleContinueClick = (difficulty, categoryName, categoryLevels, titleColor) => {
-    this.props.navigation.navigate('Level', {loadSavedLevel: true, categoryName: categoryName, difficulty: difficulty, categoryLevels: categoryLevels, titleColor: titleColor})
+    this.props.navigation.navigate('Level', {loadSavedLevel: true, categoryName: categoryName, difficulty: difficulty, categoryLevels: categoryLevels, titleColor: titleColor, data: data})
   }
 
   render() {
-    const { difficulty, categoryName, categoryLevels, titleColor } = this.props.navigation.state.params
+    const { difficulty, categoryName, categoryLevels, titleColor,data } = this.props.navigation.state.params
     return (
       <View style={[containerStyle.centeredBoth, {backgroundColor: '#fff'}]}>
         <Text h4 style={{color: '#242531', textAlign: 'center', marginBottom: 20, paddingLeft: 10, paddingRight: 10}}>
@@ -20,7 +20,7 @@ export default class LoadSavedLevel extends Component {
           Would you like to continue playing it?
         </Text>
           <LargeButton
-            onPress={() => this.handleContinueClick(difficulty, categoryName, categoryLevels, titleColor)}
+            onPress={() => this.handleContinueClick(difficulty, categoryName, categoryLevels, titleColor, data)}
             backgroundColor='#43A047'
             fontFamily='ChalkboardSE'
             style={{
@@ -28,7 +28,7 @@ export default class LoadSavedLevel extends Component {
             }}
             text='CONTINUE' />
           <LargeButton
-            onPress={() => this.props.navigation.navigate('ChooseDifficulty')}
+            onPress={() => this.props.navigation.navigate('ChooseDifficulty', {data: data})}
             backgroundColor='#1E88E5'
             fontFamily='ChalkboardSE'
             text='NEW' />
