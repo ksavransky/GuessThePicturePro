@@ -99,20 +99,21 @@ export default class Level extends Component {
       atLeastOneGameStarted: false,
       showModal: false,
       usedHint: false,
-      isSoundOn: false
+      isSoundOn: this.props.navigation.state.params.data.General.isSoundOn
     }
 
-    this.storedData = null
+    this.storedData = this.props.navigation.state.params.data
   }
 
   componentWillReceiveProps() {
-    this.getStoredDataAndLoadLevel()
+    this.storedData = this.props.navigation.state.params.data
+    this.loadLevel()
   }
 
   componentDidMount() {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
-    this.getStoredDataAndLoadLevel()
+    this.loadLevel()
   }
 
   componentWillUnmount () {
@@ -154,16 +155,23 @@ export default class Level extends Component {
   loadSavedLevel = () => {
     const savedLevel = this.storedData.SavedLevel
     const currentLevel = find(this.state.availableLevels, ['answer', savedLevel.answer])
-    this.setState({
-      currentLevel: currentLevel,
-      points: savedLevel.points,
-      categoryName: this.storedData.SavedLevel.categoryName,
-      visibleTiles: savedLevel.visibleTiles,
-      revealsLeft: savedLevel.revealsLeft,
-      guessesLeft: savedLevel.guessesLeft,
-      usedHint: savedLevel.usedHint,
-      isPhotoLoaded: false,
-    })
+    const canLoad = (currentLevel && savedLevel.points && savedLevel.categoryName
+                    && savedLevel.visibleTiles && savedLevel.revealsLeft
+                    && savedLevel.guessesLeft && savedLevel.usedHint)
+    if (currentLevel) {
+      this.setState({
+        currentLevel: currentLevel,
+        points: savedLevel.points,
+        categoryName: savedLevel.categoryName,
+        visibleTiles: savedLevel.visibleTiles,
+        revealsLeft: savedLevel.revealsLeft,
+        guessesLeft: savedLevel.guessesLeft,
+        usedHint: savedLevel.usedHint,
+        isPhotoLoaded: false,
+      })
+    } else {
+      this.props.navigation.navigate('CategoriesScreen', {difficulty: get(this.props, 'navigation.state.params.difficulty', 'Easy')})
+    }
   }
 
   getAvailableLevels = () => {
@@ -181,30 +189,31 @@ export default class Level extends Component {
     })
   }
 
-  getStoredDataAndLoadLevel = () => {
-    AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
-      this.storedData = JSON.parse(storedData)
-      this.setState({
-        isSoundOn: this.storedData.General.isSoundOn
-      }, () => {
-        this.getAvailableLevels()
-      })
+  loadLevel = () => {
+    this.setState({
+      isSoundOn: this.storedData.General.isSoundOn
+    }, () => {
+      this.getAvailableLevels()
     })
   }
 
   chooseRandomLevel = (differentLevels) => {
     const availableLevels = differentLevels || this.state.availableLevels
-    const randomLevel = Math.floor(Math.random() * availableLevels.length);
-    this.setState({
-      currentLevel: availableLevels[randomLevel],
-      points: CONSTANTS.STARTING_POINTS,
-      visibleTiles: ALL_TILES_COVERING,
-      guessInput: null,
-      guessesLeft: 3,
-      revealsLeft: CONSTANTS.STARTING_REVEALS_LEFT,
-      usedHint: false,
-      isPhotoLoaded: false,
-    })
+    if (availableLevels && availableLevels.length > 0) {
+      const randomLevel = Math.floor(Math.random() * availableLevels.length);
+      this.setState({
+        currentLevel: availableLevels[randomLevel],
+        points: CONSTANTS.STARTING_POINTS,
+        visibleTiles: ALL_TILES_COVERING,
+        guessInput: null,
+        guessesLeft: 3,
+        revealsLeft: CONSTANTS.STARTING_REVEALS_LEFT,
+        usedHint: false,
+        isPhotoLoaded: false,
+      })
+    } else {
+      this.props.navigation.navigate('CategoriesScreen', {difficulty: get(this.props, 'navigation.state.params.difficulty', 'Easy')})
+    }
   }
 
   handleTilePress = (i, j, allImagesLoaded) => {

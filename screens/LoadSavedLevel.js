@@ -5,12 +5,12 @@ import LargeButton from '../components/buttons/LargeButton'
 import { containerStyle, backgroundColorStyle } from '../styles/Common'
 
 export default class LoadSavedLevel extends Component {
-  handleContinueClick = (difficulty, categoryName, categoryLevels, titleColor) => {
+  handleContinueClick = (difficulty, categoryName, categoryLevels, titleColor, data) => {
     this.props.navigation.navigate('Level', {loadSavedLevel: true, categoryName: categoryName, difficulty: difficulty, categoryLevels: categoryLevels, titleColor: titleColor, data: data})
   }
 
   render() {
-    const { difficulty, categoryName, categoryLevels, titleColor,data } = this.props.navigation.state.params
+    const { difficulty, categoryName, categoryLevels, titleColor, data } = this.props.navigation.state.params
     return (
       <View style={[containerStyle.centeredBoth, {backgroundColor: '#fff'}]}>
         <Text h4 style={{color: '#242531', textAlign: 'center', marginBottom: 20, paddingLeft: 10, paddingRight: 10}}>
