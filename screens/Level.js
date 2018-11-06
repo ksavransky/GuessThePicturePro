@@ -170,7 +170,7 @@ export default class Level extends Component {
         isPhotoLoaded: false,
       })
     } else {
-      this.props.navigation.navigate('CategoriesScreen', {difficulty: get(this.props, 'navigation.state.params.difficulty', 'Easy')})
+      this.props.navigation.navigate('CategoriesScreen', {difficulty: (this.state.difficulty || get(this.props, 'navigation.state.params.difficulty', 'Easy')), data: this.storedData})
     }
   }
 
@@ -212,7 +212,7 @@ export default class Level extends Component {
         isPhotoLoaded: false,
       })
     } else {
-      this.props.navigation.navigate('CategoriesScreen', {difficulty: get(this.props, 'navigation.state.params.difficulty', 'Easy')})
+      this.props.navigation.navigate('CategoriesScreen', {difficulty: (this.state.difficulty || get(this.props, 'navigation.state.params.difficulty', 'Easy')), data: this.storedData})
     }
   }
 
@@ -479,7 +479,7 @@ export default class Level extends Component {
   }
 
   navigateToCategoriesScreen = () => {
-    this.props.navigation.navigate('CategoriesScreen', {difficulty: this.state.difficulty})
+    this.props.navigation.navigate('CategoriesScreen', {difficulty: (this.state.difficulty || get(this.props, 'navigation.state.params.difficulty', 'Easy')), data: this.storedData})
   }
 
   getAvailableLevelsWithoutCurrentLevel = () => {
