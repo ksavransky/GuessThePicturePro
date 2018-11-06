@@ -15,7 +15,6 @@ export default class ChooseDifficulty extends Component {
     }
 
     this.storedData = this.props.navigation.state.params.data
-    // this.getStoredData()
   }
 
   componentWillReceiveProps(nextProps){
@@ -24,15 +23,6 @@ export default class ChooseDifficulty extends Component {
       isSoundOn: this.storedData.General.isSoundOn
     })
   }
-
-  // getStoredData = () => {
-  //   AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
-  //     this.storedData = JSON.parse(storedData)
-  //     this.setState({
-  //       isSoundOn: this.storedData.General.isSoundOn
-  //     })
-  //   })
-  // }
 
   setSound = () => {
     this.setState({

@@ -20,8 +20,6 @@ export default class CategoriesScreen extends Component {
     }
 
     this.asyncStorageData = this.props.navigation.state.params.data
-
-    // this.getLocalStorageData()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -30,18 +28,7 @@ export default class CategoriesScreen extends Component {
       difficulty: get(nextProps, 'navigation.state.params.difficulty', 'Easy'),
       isSoundOn: this.asyncStorageData.General.isSoundOn
     })
-    // this.getLocalStorageData()
   }
-
-  // getLocalStorageData = () => {
-  //   AsyncStorage.getItem('AsyncStorageData').then((storedData) => {
-  //     this.asyncStorageData = JSON.parse(storedData)
-  //     this.setState({
-  //       loadedData: true,
-  //       isSoundOn: this.asyncStorageData.General.isSoundOn
-  //     })
-  //   })
-  // }
 
   setShowModal = (categoryName) => {
     this.setState({
