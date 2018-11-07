@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, ActivityIndicator } from 'react-native';
 import { Text } from 'react-native-elements';
 import LargeButton from '../components/buttons/LargeButton'
-import { containerStyle, backgroundColorStyle } from '../styles/Common'
+import { containerStyle, colors } from '../styles/Common'
 import { AsyncStorageData } from '../data/Data.js'
 import { get, find } from 'lodash'
 import { clearAllData } from '../utils/Asyncstorage'
@@ -51,17 +51,17 @@ export default class Intro extends Component {
   render() {
     if (!this.state.asyncStorageData) {
       return (
-        <View style={[containerStyle.centeredBoth, {backgroundColor: '#E3F2FD'}]}>
-          <ActivityIndicator size="large" color='black' />
+        <View style={[containerStyle.centeredBoth, {backgroundColor: colors.xLightGrey}]}>
+          <ActivityIndicator size="large" color={colors.darkGrey} />
         </View>
       )
     }
     const { isPhotoLoaded } = this.state
-    const viewStyle = isPhotoLoaded ? [containerStyle.verticalSpaceAround] : [containerStyle.centeredBoth, {backgroundColor: '#E3F2FD'}]
+    const viewStyle = isPhotoLoaded ? [containerStyle.verticalSpaceAround] : [containerStyle.centeredBoth, {backgroundColor: colors.xLightGrey}]
 
     return (
       <View style={viewStyle}>
-        <ActivityIndicator size="large" color='black' style={{display: isPhotoLoaded ? 'none' : 'flex'}}/>
+        <ActivityIndicator size="large" color={colors.darkGrey} style={{display: isPhotoLoaded ? 'none' : 'flex'}}/>
         <Image
           onLoad={() => {
             if (!isPhotoLoaded){
@@ -79,11 +79,11 @@ export default class Intro extends Component {
             opacity: isPhotoLoaded ? 0.7 : 0,
           }}
           source={require('../assets/images/eiffel-large.jpg')} />
-        <Text h2 style={{color: '#424242', marginBottom: 0, opacity: isPhotoLoaded ? 1 : 0}}>Picture Guess Pro</Text>
+        <Text h2 style={{color: colors.darkGrey, marginBottom: 0, opacity: isPhotoLoaded ? 1 : 0}}>Picture Guess Pro</Text>
         <LargeButton
           onPress={this.handlePlayClick}
           isSoundOn={this.state.asyncStorageData.General.isSoundOn}
-          backgroundColor='#43A047'
+          backgroundColor={colors.green}
           fontFamily='ChalkboardSE'
           style={{display: isPhotoLoaded ? 'flex' : 'none'}}
           text='PLAY' />

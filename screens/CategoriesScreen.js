@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, ActivityIndicator, Modal, ScrollView } from 'react-native';
 import { Text } from 'react-native-elements';
-import { containerStyle, backgroundColorStyle, modalStyle } from '../styles/Common.js'
+import { containerStyle, modalStyle, colors } from '../styles/Common.js'
 import { get, findIndex } from 'lodash'
 import Categories from '../components/Categories.js'
 import { getTitleColorFromDifficulty } from '../utils/Utils.js'
@@ -60,10 +60,10 @@ export default class CategoriesScreen extends Component {
         visible={!!showModal}>
         <View style={modalStyle.outerContainer}>
           <View style={modalStyle.innerContainer}>
-            <Text h4 style={[modalStyle.field, {color: '#28a745'}]}>
+            <Text h4 style={[modalStyle.field, {color: colors.darkGrey}]}>
               {"You already beat this category, would you like to restart it?"}
             </Text>
-            <Text h5 style={[modalStyle.field, {color: 'red'}]}>
+            <Text h5 style={[modalStyle.field, {color: colors.red}]}>
               {"Restarting erases your points for the category."}
             </Text>
             <View style={{

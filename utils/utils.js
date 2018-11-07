@@ -1,4 +1,5 @@
 import { Audio } from 'expo'
+import { colors } from '../styles/Common'
 
 const CLICK_SOUND = require('../assets/sounds/click1.mp3')
 const TADA_SOUND = require('../assets/sounds/tada.mp3')
@@ -7,11 +8,11 @@ const WRONG_SOUND = require('../assets/sounds/wrongbuzz.mp3')
 
 export const getTitleColorFromDifficulty = (difficulty) => {
   if ( difficulty === 'Easy' ) {
-      return '#28a745'
+      return colors.green
   } else if ( difficulty === 'Medium' ) {
-    return 'orange'
+    return colors.orange
   } else {
-    return 'red'
+    return colors.red
   }
 }
 

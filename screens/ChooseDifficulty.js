@@ -3,7 +3,7 @@ import { View, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Text } from 'react-native-elements';
 import LargeButton from '../components/buttons/LargeButton'
 import SoundButton from '../components/buttons/SoundButton'
-import { containerStyle, backgroundColorStyle } from '../styles/Common.js'
+import { containerStyle, colors } from '../styles/Common.js'
 import { get } from 'lodash'
 import { playSound } from '../utils/Utils'
 
@@ -36,12 +36,12 @@ export default class ChooseDifficulty extends Component {
 
   render() {
     return (
-      <View style={[containerStyle.centeredBoth, {backgroundColor: '#FAFAFA'}]}>
+      <View style={[containerStyle.centeredBoth, {backgroundColor: colors.xLightGrey}]}>
         <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound}/>
-        <Text h2 style={{color: '#424242', marginTop: 10, marginBottom: 60}}>Choose Difficulty</Text>
-        {[{difficulty: 'Easy', color: '#43A047', title: 'EASY'},
-          {difficulty: 'Medium', color: '#FB8C00', title: 'MEDIUM'},
-          {difficulty: 'Hard', color: '#E53935', title: 'HARD'}].map((buttonData) => {
+        <Text h2 style={{color: colors.darkGrey, marginTop: 10, marginBottom: 60}}>Choose Difficulty</Text>
+        {[{difficulty: 'Easy', color: colors.green, title: 'EASY'},
+          {difficulty: 'Medium', color: colors.orange, title: 'MEDIUM'},
+          {difficulty: 'Hard', color: colors.red, title: 'HARD'}].map((buttonData) => {
             return (
               <LargeButton
                 key={buttonData.difficulty}
