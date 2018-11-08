@@ -12,7 +12,7 @@ import { View,
 } from 'react-native';
 import { Text, FormLabel, FormInput } from 'react-native-elements';
 import { get, filter, cloneDeep, every, remove, findIndex, find, isEqual } from 'lodash'
-import { containerStyle, modalStyle } from '../styles/Common'
+import { containerStyle, modalStyle, colors } from '../styles/Common'
 import { TileIndex } from '../assets/images/whitemarbletiles/tileIndex.js'
 import LargeButton from '../components/buttons/LargeButton'
 import SmallButton from '../components/buttons/SmallButton'
@@ -59,7 +59,9 @@ export default class Level extends Component {
   constructor(props) {
     super(props)
 
-    this.titleColor = get(props, 'navigation.state.params.titleColor', '#43A047')
+    console.warn('in level, props.navigation.state.params.titleColor')
+    console.warn(props.navigation.state.params.titleColor)
+    this.titleColor = get(props, 'navigation.state.params.titleColor', colors.darkGrey)
     this.categoryPoints = 0
 
     const { height, width } = Dimensions.get('window')

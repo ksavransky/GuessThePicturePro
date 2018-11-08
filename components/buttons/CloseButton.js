@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Image, TouchableOpacity} from 'react-native'
+import { colors } from '../../styles/Common'
 
 export default class CloseButton extends Component {
   render() {
@@ -14,7 +15,7 @@ export default class CloseButton extends Component {
           display: this.props.display || 'flex',
         }}>
         <View style={{
-          backgroundColor: 'white',
+          backgroundColor: colors.white,
           width: 25,
           height: 25,
           padding: 10,
@@ -25,7 +26,7 @@ export default class CloseButton extends Component {
           alignItems: 'center',
           shadowOpacity: 0.4,
           shadowRadius: 1,
-          shadowColor: 'black',
+          shadowColor: colors.black,
           shadowOffset: { height: 1, width: 1 }
         }}>
           <Image style={{width: 25, height: 25}} source={require('../../assets/images/icons/times-circle.png')} />

@@ -8,7 +8,7 @@ const WRONG_SOUND = require('../assets/sounds/wrongbuzz.mp3')
 
 export const getTitleColorFromDifficulty = (difficulty) => {
   if ( difficulty === 'Easy' ) {
-      return colors.green
+    return colors.green
   } else if ( difficulty === 'Medium' ) {
     return colors.orange
   } else {

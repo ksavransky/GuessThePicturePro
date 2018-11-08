@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import { Text } from 'react-native-elements';
 import LargeButton from '../components/buttons/LargeButton'
-import { containerStyle } from '../styles/Common'
+import { containerStyle, colors } from '../styles/Common'
 
 export default class LoadSavedLevel extends Component {
   handleContinueClick = (difficulty, categoryName, categoryLevels, titleColor, data) => {
@@ -11,17 +11,19 @@ export default class LoadSavedLevel extends Component {
 
   render() {
     const { difficulty, categoryName, categoryLevels, titleColor, data } = this.props.navigation.state.params
+    console.warn('in loadSavedLevel, titleColor')
+    console.warn(titleColor)
     return (
-      <View style={[containerStyle.centeredBoth, {backgroundColor: '#fff'}]}>
-        <Text h4 style={{color: '#242531', textAlign: 'center', marginBottom: 20, paddingLeft: 10, paddingRight: 10}}>
+      <View style={[containerStyle.centeredBoth, {backgroundColor: colors.white}]}>
+        <Text h4 style={{color: colors.darkGrey, textAlign: 'center', marginBottom: 20, paddingLeft: 10, paddingRight: 10}}>
           {'You currently have ' + (difficulty === 'Easy' ? 'an ' : 'a ' ) + difficulty + ' ' + categoryName + ' puzzle in progress!'}
         </Text>
-        <Text h4 style={{color: '#242531', textAlign: 'center', marginBottom: 40, paddingLeft: 10, paddingRight: 10}}>
+        <Text h4 style={{color: colors.darkGrey, textAlign: 'center', marginBottom: 40, paddingLeft: 10, paddingRight: 10}}>
           Would you like to continue playing it?
         </Text>
           <LargeButton
             onPress={() => this.handleContinueClick(difficulty, categoryName, categoryLevels, titleColor, data)}
-            backgroundColor='#43A047'
+            backgroundColor={colors.green}
             fontFamily='ChalkboardSE'
             style={{
               marginBottom: 40
@@ -29,7 +31,7 @@ export default class LoadSavedLevel extends Component {
             text='CONTINUE' />
           <LargeButton
             onPress={() => this.props.navigation.navigate('ChooseDifficulty', {data: data})}
-            backgroundColor='#1E88E5'
+            backgroundColor={colors.blue}
             fontFamily='ChalkboardSE'
             text='NEW' />
       </View>

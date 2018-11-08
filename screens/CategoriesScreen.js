@@ -74,7 +74,7 @@ export default class CategoriesScreen extends Component {
                 isSoundOn={this.state.isSoundOn}
                 fontFamily='ChalkboardSE'
                 fontSize={24}
-                backgroundColor='#28a745'
+                backgroundColor={colors.green}
                 style={modalStyle.button}
                 style={[modalStyle.button, {marginRight: 20}]}
                 text='KEEP' />
@@ -83,7 +83,7 @@ export default class CategoriesScreen extends Component {
                 isSoundOn={this.state.isSoundOn}
                 fontFamily='ChalkboardSE'
                 fontSize={24}
-                backgroundColor='red'
+                backgroundColor={colors.red}
                 style={{
                   width: 160,
                   alignContent: 'center',
@@ -104,7 +104,7 @@ export default class CategoriesScreen extends Component {
   render() {
     const titleColor = getTitleColorFromDifficulty(this.state.difficulty)
     return (
-      <View style={[containerStyle.centeredHorizontal, {backgroundColor: '#FAFAFA'}]}>
+      <View style={[containerStyle.centeredHorizontal, {backgroundColor: colors.xLightGrey}]}>
         {/* <Text
           h5
           style={{alignSelf: 'flex-start', margin: 10}}
@@ -115,9 +115,9 @@ export default class CategoriesScreen extends Component {
           onPress={this.navigateToChooseDifficulty}
           isSoundOn={this.state.isSoundOn}
           fontSize={12}
-          backgroundColor='white'
-          borderColor='black'
-          color='black'
+          backgroundColor={colors.white}
+          borderColor={colors.black}
+          color={colors.black}
           style={{ alignSelf: 'flex-start', margin: 10 }}
           text='< Choose Difficulty'
         />

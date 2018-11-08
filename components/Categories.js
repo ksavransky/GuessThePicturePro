@@ -3,6 +3,7 @@ import { List, ListItem } from 'react-native-elements'
 import { CONSTANTS } from '../Constants'
 import { sortBy } from 'lodash'
 import { playSound } from '../utils/Utils'
+import { colors } from '../styles/Common'
 import { ScrollView } from 'react-native';
 import { StyleSheet } from 'react-native';
 
@@ -21,7 +22,7 @@ export default class Categories extends Component {
           sortBy(this.props.asyncStorageData.Game[this.props.difficulty], ['name']).map((category) => (
             <ListItem
               containerStyle={[listItemContainerStyle.normal, listItemContainerStyle.big]}
-              chevronColor='#424242'
+              chevronColor={colors.grey}
               avatar={category.iconPath}
               roundAvatar
               avatarContainerStyle={avatarStyle.big}
@@ -32,7 +33,7 @@ export default class Categories extends Component {
               subtitle={category.points + '/' + (category.levels.length * CONSTANTS.STARTING_POINTS) + ' points'}
               rightTitle={category.levelsComplete + '/' + (category.levels.length || '0') + ' completed'}
               subtitleStyle={[subtitleStyle.normal, subtitleStyle.big]}
-              rightTitleStyle={[{color: category.levelsComplete === category.levels.length ? '#28a745' : 'grey'}, rightTitleStyle.big]}
+              rightTitleStyle={[{color: category.levelsComplete === category.levels.length ? colors.green : colors.grey}, rightTitleStyle.big]}
               onPress={() => {
                 if (category.levelsComplete !== category.levels.length) {
                   this.launchCategory(category.name, category.levels)
@@ -67,13 +68,13 @@ const titleStyle = StyleSheet.create({
     fontSize: 18,
     marginLeft: 10,
     marginBottom: 7,
-    color: '#424242',
+    color: colors.darkGrey,
   },
 })
 
 const subtitleStyle = StyleSheet.create({
   normal: {
-    color: '#FB8C00'
+    color: colors.orange
   },
   big: {
     fontSize: 14,
@@ -89,11 +90,11 @@ const rightTitleStyle = StyleSheet.create({
 
 const listItemContainerStyle = StyleSheet.create({
   normal: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     borderRightWidth: 1,
-    borderRightColor: '#cbd2d9',
+    borderRightColor: colors.lightGrey,
     borderLeftWidth: 1,
-    borderLeftColor: '#cbd2d9'
+    borderLeftColor: colors.lightGrey
   },
   big: {
     height: 90,
