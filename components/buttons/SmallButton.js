@@ -29,9 +29,9 @@ export default class SmallButton extends Component {
           <View style={{
              borderWidth: this.props.borderWidth || 1,
              borderRadius: this.props.borderRadius || 50,
-             borderColor: this.props.disabled ? colors.grey : (this.props.borderColor || this.props.backgroundColor || 'transparent'),
+             borderColor: this.props.disabled ? colors.lightGrey : (this.props.borderColor || this.props.backgroundColor || 'transparent'),
              width: '100%',
-             backgroundColor: this.props.disabled ? colors.grey : (this.props.backgroundColor || colors.green)
+             backgroundColor: this.props.disabled ? colors.lightGrey : (this.props.backgroundColor || colors.green)
           }}>
             <Text fontFamily='ChalkboardSE' style={{
               textAlign: 'center',

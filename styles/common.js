@@ -16,7 +16,7 @@ export const colors = {
 
 export const buttonStyle = StyleSheet.create({
   success: {
-    backgroundColor: '#28a745',
+    backgroundColor: colors.green,
     borderRadius: 10
   },
 })

@@ -689,7 +689,7 @@ export default class Level extends Component {
           isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
           fontSize={24}
-          backgroundColor='#28a745'
+          backgroundColor={colors.green}
           style={modalStyle.button}
           text='OKAY' />
       </View>
