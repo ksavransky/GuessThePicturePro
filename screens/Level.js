@@ -837,11 +837,12 @@ export default class Level extends Component {
 
     if (this.state.currentLevel) {
       const allImagesLoaded = this.state.isTileLoaded && this.state.isPhotoLoaded
+      const { showModal } = this.state
       return (
         <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, {backgroundColor: colors.xLightGrey}]}>
           {!allImagesLoaded && <ActivityIndicator size="large" color={colors.darkGrey} style={{marginTop: '50%'}}/>}
-          {allImagesLoaded && <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound} />}
-          {allImagesLoaded && <CloseButton showCloseModal={this.showCloseModal} />}
+          {!showModal && allImagesLoaded && <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound} />}
+          {!showModal && allImagesLoaded && <CloseButton showCloseModal={this.showCloseModal} />}
           {allImagesLoaded && this.renderTitle(hideTitleAndGameInfoWhenKeyboardOpen)}
           {allImagesLoaded && this.renderGameInfo(hideTitleAndGameInfoWhenKeyboardOpen)}
           {this.renderPhoto(hideImageWhileTileLoading, allImagesLoaded)}
