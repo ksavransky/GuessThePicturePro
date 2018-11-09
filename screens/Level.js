@@ -59,8 +59,6 @@ export default class Level extends Component {
   constructor(props) {
     super(props)
 
-    console.warn('in level, props.navigation.state.params.titleColor')
-    console.warn(props.navigation.state.params.titleColor)
     this.titleColor = get(props, 'navigation.state.params.titleColor', colors.darkGrey)
     this.categoryPoints = 0
 
@@ -299,13 +297,13 @@ export default class Level extends Component {
     const fontSizeForInfo = this.isiPhoneSE ? 12 : 14
     return (
       <View style={{marginLeft: '10%', width: '100%', flexDirection: 'row', display: hideTitleAndGameInfoWhenKeyboardOpen, marginBottom: 10}}>
-        <Text style={{fontSize: fontSizeForInfo, color: '#424242', width: '33%'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: colors.darkGrey, width: '33%'}}>
           {'Reveals Left: ' + this.state.revealsLeft}
         </Text>
-        <Text style={{fontSize: fontSizeForInfo, color: '#424242', width: '28%', textAlign: 'center'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: colors.darkGrey, width: '28%', textAlign: 'center'}}>
           {'Guesses Left: ' + this.state.guessesLeft}
         </Text>
-        <Text style={{fontSize: fontSizeForInfo, color: '#424242', width: '29%', textAlign: 'right'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: colors.darkGrey, width: '29%', textAlign: 'right'}}>
           {'Points: ' + this.state.points}
         </Text>
       </View>
@@ -333,7 +331,7 @@ export default class Level extends Component {
           top: 10,
           zIndex: 4
         }}
-        backgroundColor='#28a745'
+        backgroundColor={colors.green}
         text='HINT!' />
     )
   }
@@ -371,13 +369,13 @@ export default class Level extends Component {
         zIndex: 3,
         backgroundColor: 'rgba(255, 255, 255, 0.7)'
       }}>
-        <Text h4 style={{color: 'black', marginTop: (this.tileHeight + 30), textAlign: 'center', marginLeft: 5, marginRight: 5}}>
+        <Text h4 style={{color: colors.darkGrey, marginTop: (this.tileHeight + 30), textAlign: 'center', marginLeft: 5, marginRight: 5}}>
           {INSTRUCTIONS.LINE_1}
         </Text>
-        {/* <Text h5 style={{color: 'black', marginTop: 10, textAlign: 'center'}}>
+        {/* <Text h5 style={{color: colors.darkGrey, marginTop: 10, textAlign: 'center'}}>
           {INSTRUCTIONS.LINE_2}
         </Text>
-        <Text h5 style={{color: 'black', marginTop: 10, textAlign: 'center'}}>
+        <Text h5 style={{color: colors.darkGrey, marginTop: 10, textAlign: 'center'}}>
           {INSTRUCTIONS.LINE_3}
         </Text> */}
       </View>
@@ -403,7 +401,7 @@ export default class Level extends Component {
                 position: 'absolute',
                 height: this.tileHeight,
                 width: this.tileWidth,
-                borderColor: 'grey',
+                borderColor: colors.grey,
                 borderWidth: 1
               }}
               >
@@ -429,7 +427,7 @@ export default class Level extends Component {
       <View style={{width: totalFormWidth, flexDirection: 'column'}}>
         <FormLabel
           containerStyle={{width: '100%', marginTop: formLabelMarginTop}}
-          labelStyle={{color: 'grey', fontSize: formLabelFontSize, fontWeight: '400'}}>
+          labelStyle={{color: colors.grey, fontSize: formLabelFontSize, fontWeight: '400'}}>
           {'Your Guess:'}
         </FormLabel>
         {!this.state.usedHint && !this.state.isKeyBoardOpen && this.state.revealsLeft < CONSTANTS.STARTING_REVEALS_LEFT && this.renderHintButton()}
@@ -438,8 +436,8 @@ export default class Level extends Component {
             spellCheck={false}
             autoCorrect={false}
             maxLength={32}
-            containerStyle={{borderBottomColor: 'grey', width: formInputWidth}}
-            inputStyle={{paddingLeft: 3, color: 'black', fontSize: inputFontSize}}
+            containerStyle={{borderBottomColor: colors.grey, width: formInputWidth}}
+            inputStyle={{paddingLeft: 3, color: colors.darkGrey, fontSize: inputFontSize}}
             value={this.state.guessInput}
             onChangeText={this.handleGuessInput}/>
           {this.state.isKeyBoardOpen &&
@@ -454,7 +452,7 @@ export default class Level extends Component {
                 right: 9,
                 bottom: 10
               }}
-              backgroundColor='#28a745'
+              backgroundColor={colors.green}
               text='SUBMIT' />
           }
         </View>
@@ -472,7 +470,7 @@ export default class Level extends Component {
             fontFamily='ChalkboardSE'
             fontSize={24}
             style={{marginTop: 30}}
-            backgroundColor='#28a745'
+            backgroundColor={colors.green}
             text='SUBMIT' />
         )
     } else {
@@ -552,10 +550,10 @@ export default class Level extends Component {
   renderLoseModal = () => {
     return (
       <View style={modalStyle.innerContainer}>
-        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.red}]}>
           {"You're out of guesses."}
         </Text>
-        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.red}]}>
           {'You Lose!'}
         </Text>
         <View style={{
@@ -570,7 +568,7 @@ export default class Level extends Component {
             isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
             fontSize={24}
-            backgroundColor='grey'
+            backgroundColor={colors.grey}
             style={[modalStyle.button, {marginRight: 20}]}
             text='BACK' />
           <LargeButton
@@ -578,7 +576,7 @@ export default class Level extends Component {
             isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
             fontSize={24}
-            backgroundColor='#28a745'
+            backgroundColor={colors.green}
             style={modalStyle.button}
             text='NEXT' />
         </View>
@@ -590,10 +588,10 @@ export default class Level extends Component {
     const randomWrongMessage = WRONG_MESSAGES[Math.floor(Math.random() * WRONG_MESSAGES.length)]
     return (
       <View style={modalStyle.innerContainer}>
-        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.red}]}>
           {randomWrongMessage}
         </Text>
-        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.red}]}>
           {'You have ' + this.state.guessesLeft + ' guesses left!'}
         </Text>
         <LargeButton
@@ -601,7 +599,7 @@ export default class Level extends Component {
           isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
           fontSize={24}
-          backgroundColor='#28a745'
+          backgroundColor={colors.green}
           style={modalStyle.button}
           text='OKAY' />
       </View>
@@ -628,15 +626,15 @@ export default class Level extends Component {
   renderWinModal = () => {
     return (
       <View style={modalStyle.innerContainerTall}>
-        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.green}]}>
           {this.state.guessInput + ' is correct! '}
         </Text>
-        <Text h5 style={[modalStyle.field, {color: 'orange'}]}>
+        <Text h5 style={[modalStyle.field, {color: colors.darkGrey}]}>
           {'You scored ' + this.state.points + ' points.'}
         </Text>
         <View style={{width: this.photoWidth, height: this.photoHeight}}>
           <Image
-            style={{width: '100%', height: '100%', zIndex: 1, borderWidth: 1, borderColor: 'grey'}}
+            style={{width: '100%', height: '100%', zIndex: 1, borderWidth: 1, borderColor: colors.grey}}
             source={this.state.currentLevel.imagePath}
           />
         </View>
@@ -645,7 +643,7 @@ export default class Level extends Component {
           isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
           fontSize={24}
-          backgroundColor='#28a745'
+          backgroundColor={colors.green}
           style={modalStyle.button}
           text='NEXT' />
       </View>
@@ -655,10 +653,10 @@ export default class Level extends Component {
   renderBeatCategoryModal = () => {
     return (
       <View style={modalStyle.innerContainer}>
-        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.green}]}>
           {'Congratulations! You beat the ' + this.state.difficulty + ' ' + this.state.categoryName + ' category!'}
         </Text>
-        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.green}]}>
           {'You earned ' + this.categoryPoints + ' out of ' + (this.props.navigation.state.params.categoryLevels.length * CONSTANTS.STARTING_POINTS) + ' points!'}
         </Text>
         <LargeButton
@@ -670,7 +668,7 @@ export default class Level extends Component {
           isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
           fontSize={24}
-          backgroundColor='#28a745'
+          backgroundColor={colors.green}
           style={modalStyle.button}
           text='NEXT' />
       </View>
@@ -680,10 +678,10 @@ export default class Level extends Component {
   renderNoReveals = () => {
     return (
       <View style={modalStyle.innerContainer}>
-        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.red}]}>
           {'You have no reveals left!'}
         </Text>
-        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.red}]}>
           {'Just figure it out!'}
         </Text>
         <LargeButton
@@ -701,10 +699,10 @@ export default class Level extends Component {
   renderCloseModal = () => {
     return (
       <View style={modalStyle.innerContainer}>
-        <Text h4 style={[modalStyle.field, {color: 'red'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.darkGrey}]}>
           {"Are you sure you want to quit?"}
         </Text>
-        <Text h5 style={[modalStyle.field, {color: 'red'}]}>
+        <Text h5 style={[modalStyle.field, {color: colors.darkGrey}]}>
           {"Quitting takes you back to the categories screen, but doesn't save your progress on this puzzle. Simply closing the app will save your progress on this puzzle."}
         </Text>
         <View style={{
@@ -715,7 +713,7 @@ export default class Level extends Component {
             isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
             fontSize={24}
-            backgroundColor='#28a745'
+            backgroundColor={colors.grey}
             style={modalStyle.button}
             style={[modalStyle.button, {marginRight: 20}]}
             text='STAY' />
@@ -730,7 +728,7 @@ export default class Level extends Component {
             isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
             fontSize={24}
-            backgroundColor='red'
+            backgroundColor={colors.green}
             style={modalStyle.button}
             text='QUIT' />
         </View>
@@ -741,10 +739,10 @@ export default class Level extends Component {
   renderHintModal = () => {
     return (
       <View style={[modalStyle.innerContainer, {height: '67%'}]}>
-        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
-          {'Here is a hint:'}
+        <Text h4 style={[modalStyle.field, {color: colors.darkGrey}]}>
+          {'Hint:'}
         </Text>
-        <Text h4 style={[modalStyle.field, {color: 'green'}]}>
+        <Text h4 style={[modalStyle.field, {color: colors.darkGrey}]}>
           {this.state.currentLevel.hint}
         </Text>
         <LargeButton
@@ -752,7 +750,7 @@ export default class Level extends Component {
           isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
           fontSize={24}
-          backgroundColor='#28a745'
+          backgroundColor={colors.green}
           style={{
               width: 150,
               alignContent: 'center',
@@ -840,8 +838,8 @@ export default class Level extends Component {
     if (this.state.currentLevel) {
       const allImagesLoaded = this.state.isTileLoaded && this.state.isPhotoLoaded
       return (
-        <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, {backgroundColor: '#FAFAFA'}]}>
-          {!allImagesLoaded && <ActivityIndicator size="large" color='#424242' style={{marginTop: '50%'}}/>}
+        <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, {backgroundColor: colors.xLightGrey}]}>
+          {!allImagesLoaded && <ActivityIndicator size="large" color={colors.darkGrey} style={{marginTop: '50%'}}/>}
           {allImagesLoaded && <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound} />}
           {allImagesLoaded && <CloseButton showCloseModal={this.showCloseModal} />}
           {allImagesLoaded && this.renderTitle(hideTitleAndGameInfoWhenKeyboardOpen)}
@@ -854,8 +852,8 @@ export default class Level extends Component {
       )
     }
     return (
-      <View style={[containerStyle.centeredBoth, {backgroundColor: '#FAFAFA'}]}>
-        <ActivityIndicator size="large" color='#424242' />
+      <View style={[containerStyle.centeredBoth, {backgroundColor: colors.xLightGrey}]}>
+        <ActivityIndicator size="large" color={colors.darkGrey} />
       </View>
     )
   }

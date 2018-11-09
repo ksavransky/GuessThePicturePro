@@ -11,8 +11,6 @@ export default class LoadSavedLevel extends Component {
 
   render() {
     const { difficulty, categoryName, categoryLevels, titleColor, data } = this.props.navigation.state.params
-    console.warn('in loadSavedLevel, titleColor')
-    console.warn(titleColor)
     return (
       <View style={[containerStyle.centeredBoth, {backgroundColor: colors.white}]}>
         <Text h4 style={{color: colors.darkGrey, textAlign: 'center', marginBottom: 20, paddingLeft: 10, paddingRight: 10}}>
