@@ -3,7 +3,7 @@
   "expo": {
    "name": "Picture Guess Pro",
    "icon": "./assets/images/pictureguessicon.png",
-   "version": "1.1.6",
+   "version": "1.1.7",
    "slug": "picture-guess-pro",
    "sdkVersion": "27.0.0",
    "orientation": "portrait",
@@ -19,7 +19,6 @@
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
         "MANAGE_DOCUMENTS",
-        "READ_CONTACTS",
         "READ_CALENDAR",
         "WRITE_CALENDAR",
         "READ_EXTERNAL_STORAGE",
