@@ -3,10 +3,13 @@
   "expo": {
    "name": "Picture Guess Pro",
    "icon": "./assets/images/pictureguessicon.png",
-   "version": "1.1.1",
+   "version": "1.1.2",
    "slug": "picture-guess-pro",
    "sdkVersion": "27.0.0",
    "orientation": "portrait",
+   "privacy": "public",
+   "primaryColor": "#43A047",
+   "description": "Picture Guess Pro is a fun and education picture guessing game. There are five catagories of pictures, including Animals, Landmarks, Art, Food, and People. The game features three difficulty settings and 345 pictures to guess. Enjoy!",
    "ios": {
      "bundleIdentifier": "com.spunkymonkeygames.pictureguesspro"
    },
