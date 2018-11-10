@@ -7,6 +7,8 @@ export const colors = {
   orange: '#FB8C00',
   red: '#E53935',
   blue: '#1E88E5',
+  xlightBlue: '#f6fcff',
+  xLightCream: 'fffcf6',
   xLightGrey: '#FAFAFA',
   lightGrey: '#cbd2d9',
   grey: '#757575',
@@ -55,7 +57,7 @@ export const modalStyle = StyleSheet.create({
     alignItems: 'center',
   },
   innerContainer: {
-    backgroundColor: colors.xLightGrey,
+    backgroundColor: colors.white,
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 10,
@@ -67,7 +69,7 @@ export const modalStyle = StyleSheet.create({
     paddingBottom: 10
   },
   innerContainerTall: {
-    backgroundColor: colors.xLightGrey,
+    backgroundColor: colors.white,
     borderWidth: 1,
     borderColor: colors.black,
     borderRadius: 10,

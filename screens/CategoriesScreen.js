@@ -104,7 +104,7 @@ export default class CategoriesScreen extends Component {
   render() {
     const titleColor = getTitleColorFromDifficulty(this.state.difficulty)
     return (
-      <View style={[containerStyle.centeredHorizontal, {backgroundColor: colors.xLightGrey}]}>
+      <View style={[containerStyle.centeredHorizontal, {backgroundColor: colors.white}]}>
         {/* <Text
           h5
           style={{alignSelf: 'flex-start', margin: 10}}

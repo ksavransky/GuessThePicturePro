@@ -515,6 +515,7 @@ export default class Level extends Component {
 
   setAnotherLevel = (beatCategory = false) => {
     if (beatCategory && this.state.availableLevels.length === 0) {
+      this.clearSavedLevel()
       this.setState({
         showModal: 'beatCategory'
       }, () => {
@@ -522,7 +523,6 @@ export default class Level extends Component {
           playSound('tada', this.state.isSoundOn)
         }, 200)
       })
-      this.clearSavedLevel()
     } else {
       this.setState({
         points: CONSTANTS.STARTING_POINTS,
@@ -561,8 +561,10 @@ export default class Level extends Component {
         }}>
           <LargeButton
             onPress={() => {
-              this.setState({showModal: false}, () => {
-                this.navigateToCategoriesScreen()
+              this.clearSavedLevel(() => {
+                this.setState({showModal: false}, () => {
+                  this.navigateToCategoriesScreen()
+                })
               })
             }}
             isSoundOn={this.state.isSoundOn}
@@ -839,7 +841,7 @@ export default class Level extends Component {
       const allImagesLoaded = this.state.isTileLoaded && this.state.isPhotoLoaded
       const { showModal } = this.state
       return (
-        <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, {backgroundColor: colors.xLightGrey}]}>
+        <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, {backgroundColor: colors.white}]}>
           {!allImagesLoaded && <ActivityIndicator size="large" color={colors.darkGrey} style={{marginTop: '50%'}}/>}
           {!showModal && allImagesLoaded && <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound} />}
           {!showModal && allImagesLoaded && <CloseButton showCloseModal={this.showCloseModal} />}
@@ -853,7 +855,7 @@ export default class Level extends Component {
       )
     }
     return (
-      <View style={[containerStyle.centeredBoth, {backgroundColor: colors.xLightGrey}]}>
+      <View style={[containerStyle.centeredBoth, {backgroundColor: colors.white}]}>
         <ActivityIndicator size="large" color={colors.darkGrey} />
       </View>
     )

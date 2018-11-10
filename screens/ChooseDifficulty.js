@@ -36,7 +36,7 @@ export default class ChooseDifficulty extends Component {
 
   render() {
     return (
-      <View style={[containerStyle.centeredBoth, {backgroundColor: colors.xLightGrey}]}>
+      <View style={[containerStyle.centeredBoth, {backgroundColor: colors.white}]}>
         <SoundButton isSoundOn={this.state.isSoundOn} setSound={this.setSound}/>
         <Text h2 style={{color: colors.darkGrey, marginTop: 10, marginBottom: 60}}>Choose Difficulty</Text>
         {[{difficulty: 'Easy', color: colors.green, title: 'EASY'},

@@ -51,13 +51,13 @@ export default class Intro extends Component {
   render() {
     if (!this.state.asyncStorageData) {
       return (
-        <View style={[containerStyle.centeredBoth, {backgroundColor: colors.xLightGrey}]}>
+        <View style={[containerStyle.centeredBoth, {backgroundColor: colors.white}]}>
           <ActivityIndicator size="large" color={colors.darkGrey} />
         </View>
       )
     }
     const { isPhotoLoaded } = this.state
-    const viewStyle = isPhotoLoaded ? [containerStyle.verticalSpaceAround] : [containerStyle.centeredBoth, {backgroundColor: colors.xLightGrey}]
+    const viewStyle = isPhotoLoaded ? [containerStyle.verticalSpaceAround] : [containerStyle.centeredBoth, {backgroundColor: colors.white}]
 
     return (
       <View style={viewStyle}>
