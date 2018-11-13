@@ -60,15 +60,19 @@ export default class Level extends Component {
   constructor(props) {
     super(props)
 
-    this.isAndroid = Platform.OS === 'android'
     this.titleColor = get(props, 'navigation.state.params.titleColor', colors.darkGrey)
     this.categoryPoints = 0
 
     const { height, width } = Dimensions.get('window')
     this.screenHeight = height
     this.screenWidth = width
-    this.isiPad = this.screenHeight > 900
-    this.isiPhoneSE = this.screenHeight < 600
+
+    this.isAndroid = Platform.OS === 'android'
+    //https://material.io/tools/devices/
+    // My phone's height is 740
+    this.isShortAndroid = this.isAndroid && this.screenHeight < 740
+    this.isiPad = this.screenHeight >= 1024
+    this.isiPhoneSE = this.screenHeight < 569
 
     const photoPercentWidthOfScreen = this.screenWidth * PHOTO_SCREEN_PERCENT.WIDTH
     const widthRemainder = photoPercentWidthOfScreen % NUMBER_OF_TILES_PER.ROW
@@ -338,9 +342,9 @@ export default class Level extends Component {
     )
   }
 
-  renderPhoto = (hideImageWhileTileLoading, allImagesLoaded) => {
+  renderPhoto = (hideImageWhileTileLoading, allImagesLoaded, photoMarginTop) => {
     return (
-      <View style={{width: this.photoWidth, height: this.photoHeight, position: 'relative', opacity: allImagesLoaded ? 1 : 0}}>
+      <View style={{width: this.photoWidth, height: this.photoHeight, position: 'relative', marginTop: photoMarginTop, opacity: allImagesLoaded ? 1 : 0}}>
         <Image
           style={{width: '100%', height: '100%', opacity: hideImageWhileTileLoading, zIndex: 1}}
           source={this.state.currentLevel.imagePath}
@@ -803,6 +807,7 @@ export default class Level extends Component {
   }
 
   render() {
+    const { showModal, isKeyBoardOpen, isTileLoaded, currentLevel, isPhotoLoaded } = this.state
     let hideTitleAndGameInfoWhenKeyboardOpen = 'flex'
     let formLabelMarginTop = this.isiPhoneSE ? 0 : 20
     let formLabelFontSize = this.isiPhoneSE ? 16 : 20
@@ -815,7 +820,7 @@ export default class Level extends Component {
     let hideBigButtonWhenKeyboardOpen = 'flex'
     let showSmallButtonWhenKeyboardOpen = 'none'
 
-    if (this.state.isKeyBoardOpen) {
+    if (isKeyBoardOpen) {
       hideTitleAndGameInfoWhenKeyboardOpen = 'none'
       formInputWidth = '90%'
       formInputAlignment = 'flex-start'
@@ -835,13 +840,19 @@ export default class Level extends Component {
     }
 
     let hideImageWhileTileLoading = 0
-    if (this.state.isTileLoaded) {
+    if (isTileLoaded) {
       hideImageWhileTileLoading = 1
     }
 
-    if (this.state.currentLevel) {
-      const allImagesLoaded = this.state.isTileLoaded && this.state.isPhotoLoaded
-      const { showModal } = this.state
+    let reverseStyleForShortAndroidKeyBoard = {}
+    let photoMarginTop = 0
+    if (isKeyBoardOpen && this.isShortAndroid) {
+      reverseStyleForShortAndroidKeyBoard = {flexDirection: 'column-reverse'}
+      photoMarginTop = 10
+    }
+
+    if (currentLevel) {
+      const allImagesLoaded = isTileLoaded && isPhotoLoaded
       return (
         <KeyboardAvoidingView style={[containerStyle.centeredHorizontal, {backgroundColor: colors.white}]}>
           {!allImagesLoaded && <ActivityIndicator size="large" color={colors.darkGrey} style={{marginTop: '50%'}}/>}
@@ -849,8 +860,10 @@ export default class Level extends Component {
           {!showModal && allImagesLoaded && <CloseButton showCloseModal={this.showCloseModal} />}
           {allImagesLoaded && this.renderTitle(hideTitleAndGameInfoWhenKeyboardOpen)}
           {allImagesLoaded && this.renderGameInfo(hideTitleAndGameInfoWhenKeyboardOpen)}
-          {this.renderPhoto(hideImageWhileTileLoading, allImagesLoaded)}
-          {allImagesLoaded && this.renderForm(totalFormWidth, formLabelMarginTop, formLabelFontSize, formInputMarginTop, formInputWidth, inputFontSize)}
+          <View style={[{alignItems: 'center'}, reverseStyleForShortAndroidKeyBoard]}>
+            {this.renderPhoto(hideImageWhileTileLoading, allImagesLoaded, photoMarginTop)}
+            {allImagesLoaded && this.renderForm(totalFormWidth, formLabelMarginTop, formLabelFontSize, formInputMarginTop, formInputWidth, inputFontSize)}
+          </View>
           {allImagesLoaded && this.renderBottomButton(allImagesLoaded)}
           {allImagesLoaded && this.renderModal()}
         </KeyboardAvoidingView>
