@@ -8,7 +8,8 @@ import { View,
   ActivityIndicator,
   Keyboard,
   Dimensions,
-  Modal
+  Modal,
+  Platform,
 } from 'react-native';
 import { Text, FormLabel, FormInput } from 'react-native-elements';
 import { get, filter, cloneDeep, every, remove, findIndex, find, isEqual } from 'lodash'
@@ -59,6 +60,7 @@ export default class Level extends Component {
   constructor(props) {
     super(props)
 
+    this.isAndroid = Platform.OS === 'android'
     this.titleColor = get(props, 'navigation.state.params.titleColor', colors.darkGrey)
     this.categoryPoints = 0
 
