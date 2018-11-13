@@ -569,7 +569,7 @@ export default class Level extends Component {
             }}
             isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
-            fontSize={24}
+            fontSize={22}
             backgroundColor={colors.grey}
             style={[modalStyle.button, {marginRight: 20}]}
             text='BACK' />
@@ -577,7 +577,7 @@ export default class Level extends Component {
             onPress={this.setAnotherLevel}
             isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
-            fontSize={24}
+            fontSize={22}
             backgroundColor={colors.green}
             style={modalStyle.button}
             text='NEXT' />
@@ -714,7 +714,7 @@ export default class Level extends Component {
             onPress={() => {this.setState({showModal: false})}}
             isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
-            fontSize={24}
+            fontSize={22}
             backgroundColor={colors.grey}
             style={modalStyle.button}
             style={[modalStyle.button, {marginRight: 20}]}
@@ -729,7 +729,7 @@ export default class Level extends Component {
             }}
             isSoundOn={this.state.isSoundOn}
             fontFamily='ChalkboardSE'
-            fontSize={24}
+            fontSize={22}
             backgroundColor={colors.green}
             style={modalStyle.button}
             text='QUIT' />
