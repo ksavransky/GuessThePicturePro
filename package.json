@@ -1,6 +1,6 @@
 {
   "name": "GuessThePicturePro",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": true,
   "devDependencies": {
     "jest-expo": "~27.0.0",

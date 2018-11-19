@@ -18,6 +18,7 @@ export const EasyFood = [
   { answer: 'donut',
     imagePath: require('../../assets/images/levels/food/easy/donut.jpg'),
     isCompleted: false,
+    optionalAnswer: [['donut'], ['doughnut']],
     hint: "Cops favorite food."
   },
   { answer: 'escargot',

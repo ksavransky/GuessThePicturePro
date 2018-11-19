@@ -73,7 +73,7 @@ export default class CategoriesScreen extends Component {
                 onPress={() => {this.setState({showModal: false})}}
                 isSoundOn={this.state.isSoundOn}
                 fontFamily='ChalkboardSE'
-                fontSize={24}
+                fontSize={22}
                 backgroundColor={colors.green}
                 style={modalStyle.button}
                 style={[modalStyle.button, {marginRight: 20}]}
@@ -82,7 +82,7 @@ export default class CategoriesScreen extends Component {
                 onPress={this.resetCategory}
                 isSoundOn={this.state.isSoundOn}
                 fontFamily='ChalkboardSE'
-                fontSize={24}
+                fontSize={22}
                 backgroundColor={colors.red}
                 style={{
                   width: 160,

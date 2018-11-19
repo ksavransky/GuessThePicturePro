@@ -7,6 +7,7 @@ export const EasyAnimals = [
   { answer: 'cat',
     imagePath: require('../../assets/images/levels/animals/easy/cat.jpg'),
     isCompleted: false,
+    optionalAnswer: [['cat'], ['kitty'], ['kitten']],
     hint: "Meow. Do you have any mice for me to chase?"
   },
   { answer: 'camel',

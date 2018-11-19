@@ -35,7 +35,7 @@ export default class LargeButton extends Component {
             <Text fontFamily='ChalkboardSE' style={{
               textAlign: 'center',
               color: this.props.color || colors.white,
-              fontSize: this.props.fontSize || 30,
+              fontSize: this.props.fontSize || 22,
               fontFamily: this.props.fontFamily,
               paddingLeft: this.props.leftRightPadding || leftRightPadding,
               paddingRight: this.props.leftRightPadding || leftRightPadding,

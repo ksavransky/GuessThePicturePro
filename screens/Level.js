@@ -70,7 +70,7 @@ export default class Level extends Component {
     this.isAndroid = Platform.OS === 'android'
     //https://material.io/tools/devices/
     // My phone's height is 740
-    this.isShortAndroid = this.isAndroid && this.screenHeight < 740
+    this.isShortAndroid = this.isAndroid && this.screenHeight < 720
     this.isiPad = this.screenHeight >= 1024
     this.isiPhoneSE = this.screenHeight < 569
 
@@ -302,15 +302,12 @@ export default class Level extends Component {
   renderGameInfo = (hideTitleAndGameInfoWhenKeyboardOpen) => {
     const fontSizeForInfo = this.isiPhoneSE ? 12 : 14
     return (
-      <View style={{marginLeft: '10%', width: '100%', flexDirection: 'row', display: hideTitleAndGameInfoWhenKeyboardOpen, marginBottom: 10}}>
-        <Text style={{fontSize: fontSizeForInfo, color: colors.darkGrey, width: '33%'}}>
+      <View style={{width: '100%', flexDirection: 'row', display: hideTitleAndGameInfoWhenKeyboardOpen, marginBottom: 10, justifyContent: 'space-around'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: colors.darkGrey}}>
           {'Reveals Left: ' + this.state.revealsLeft}
         </Text>
-        <Text style={{fontSize: fontSizeForInfo, color: colors.darkGrey, width: '28%', textAlign: 'center'}}>
+        <Text style={{fontSize: fontSizeForInfo, color: colors.darkGrey}}>
           {'Guesses Left: ' + this.state.guessesLeft}
-        </Text>
-        <Text style={{fontSize: fontSizeForInfo, color: colors.darkGrey, width: '29%', textAlign: 'right'}}>
-          {'Points: ' + this.state.points}
         </Text>
       </View>
     )
@@ -474,7 +471,7 @@ export default class Level extends Component {
             isSoundOn={this.state.isSoundOn}
             disabled={!this.state.guessInput}
             fontFamily='ChalkboardSE'
-            fontSize={24}
+            fontSize={22}
             style={{marginTop: 30}}
             backgroundColor={colors.green}
             text='SUBMIT' />
@@ -606,7 +603,7 @@ export default class Level extends Component {
           onPress={() => {this.setState({showModal: false})}}
           isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
-          fontSize={24}
+          fontSize={22}
           backgroundColor={colors.green}
           style={modalStyle.button}
           text='OKAY' />
@@ -650,7 +647,7 @@ export default class Level extends Component {
           onPress={this.handleWin}
           isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
-          fontSize={24}
+          fontSize={22}
           backgroundColor={colors.green}
           style={modalStyle.button}
           text='NEXT' />
@@ -675,7 +672,7 @@ export default class Level extends Component {
           }}
           isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
-          fontSize={24}
+          fontSize={22}
           backgroundColor={colors.green}
           style={modalStyle.button}
           text='NEXT' />
@@ -696,7 +693,7 @@ export default class Level extends Component {
           onPress={() => {this.setState({showModal: false})}}
           isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
-          fontSize={24}
+          fontSize={22}
           backgroundColor={colors.green}
           style={modalStyle.button}
           text='OKAY' />
@@ -757,7 +754,7 @@ export default class Level extends Component {
           onPress={() => {this.setState({showModal: false})}}
           isSoundOn={this.state.isSoundOn}
           fontFamily='ChalkboardSE'
-          fontSize={24}
+          fontSize={22}
           backgroundColor={colors.green}
           style={{
               width: 150,

@@ -84,6 +84,7 @@ export default class Intro extends Component {
           onPress={this.handlePlayClick}
           isSoundOn={this.state.asyncStorageData.General.isSoundOn}
           backgroundColor={colors.green}
+          fontSize={24}
           fontFamily='ChalkboardSE'
           style={{display: isPhotoLoaded ? 'flex' : 'none'}}
           text='PLAY' />
