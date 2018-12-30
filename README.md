@@ -1,5 +1,7 @@
-## Guess The Picture Pro
+## Picture Guess Pro
 
-Words go here!
+Picture Guess Pro is a fun mobile picture guessing game built in React Native. Please visit the Apple App Store or Google Play Store to download the app and learn more about it. 
 
-Download [here](https://www.google.com)
+Apple App Store Download [here](https://itunes.apple.com/us/app/picture-guess-pro/id1441917081)
+
+Google Play Store Download [here](https://play.google.com/store/apps/details?id=com.spunkymonkeygames.pictureguesspro)
